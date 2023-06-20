@@ -3,8 +3,8 @@
 
 The objectif of this project is to make you code a function that 
 **returns a line ending with a newline, read from a file descriptor.**
-This project will not only allow you to add a very convenient function to 
-your collection,but it will also allow you to learn a highly interesting new concept in C programming:
+This project will not only allow  to add a very convenient function to 
+our collection,but it will also allow  to learn a highly interest contest to Alx program (If you want)
 
 
 ### Function 🐧
