@@ -1533,7 +1533,7 @@ Thanks
 
 
 ## Optional 
-    A video explain how i create this project
+    A video explain why i create this project
 
 [video](hhttps://github.com/Tednoob17/Get_Next_Line/blob/main/Vid/explains.webm)
 
