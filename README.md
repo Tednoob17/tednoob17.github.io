@@ -43,11 +43,14 @@ int	*get_next_line(int fd);
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89    src/get_next_line.c include/get_next_line.h src/main.c src/get_next_line_utils.c 
 ```
 
+
+<img src="./imgs/70.png" width="600" />
 **JNL with files**
 ```bash
 ./a.out tests/xextra_test_file.txt
 ```
 
+<img src="./imgs/72.png" width="600" />
 **Output**
 ```bash
 ➜ j3kyll@42  ~/SCOP/Get_Next_Line git:(main) ✗ ./uuu tests/xextra_test_file.txt
@@ -1507,8 +1510,7 @@ valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 
 ```bash
         betty src/*.c  
 ```
-
-    **And** 
+**And** 
 
 ```bash
         betty src/*.h  
@@ -1532,7 +1534,8 @@ Thanks
 
 ## Optional 
     A video explain how i create this project
-[](https://github.com/Tednoob17/Get_Next_Line/Vid/)
+
+[video](hhttps://github.com/Tednoob17/Get_Next_Line/blob/main/Vid/explains.webm)
 
 
 
