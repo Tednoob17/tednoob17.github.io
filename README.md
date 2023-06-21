@@ -5,6 +5,7 @@
 ###	Because read a line on a  fd sucks
 
 
+
 The objectif of this project is to make you code a function that 
 **returns a line ending with a newline, read from a file descriptor.**
 This project will not only allow  to add a very convenient function to 
@@ -1502,9 +1503,18 @@ valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 
 
 
 ### Betty 
+
 ```bash
-        betty */* 
+        betty src/*.c  
 ```
+
+    **And** 
+
+```bash
+        betty src/*.h  
+```
+
+
 
 
 
