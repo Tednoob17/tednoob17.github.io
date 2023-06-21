@@ -1479,8 +1479,6 @@ fd = open(argv[1], O_RDONLY);
  |  1| A line has been read |
  |  0| EOF has been reached |
  |  -1| An error happened |
-
-
 ### VALGRIND
 **What it is ?**
 The Valgrind tool suite provides a number of debugging and profiling tools that help you make your programs faster and more correct. The most popular of these tools is called Memcheck. It can detect many memory-related errors that are common in C and C++ programs and that can lead to crashes and unpredictable behaviour.
@@ -1492,8 +1490,6 @@ sudo apt-get install -y valgrind
 ```
 **How to Use?**
 ```bash
-gcc tests/main.c -g -Wall -Wextra -Werror -D BUFFER_SIZE=32 get_next_line.c get_next_line_utils.c
-
 valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./a.out tests/files/part1_test01_with_lines
 ```
 
