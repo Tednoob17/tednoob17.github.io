@@ -1,5 +1,6 @@
 ## Jump_Next_Line (JNL)  🐒 
 
+     <img src="./imgs/jumps.jpg" width="855" />
 
 The objectif of this project is to make you code a function that 
 **returns a line ending with a newline, read from a file descriptor.**
@@ -9,20 +10,13 @@ our collection,but it will also allow  to learn a highly interest contest to Alx
 
 ### Function 🐧
 ```c
-int	jump_next_line(int fd, char **line);
+int	jump_next_line(int fd);
 ```
 
 ## Compilation 💽
 
 **JNL Mandatory Part**
 
-My program must compile with the flag -D **BUFFER_SIZE=xx**. which will be used
-as the buffer size for the read calls in the jump_next_line.
-
-I verify  that my function behaves well when it reads from a file and when it
-reads from the standard input.
-
- 	📌 Locate in the **42-silicon-valley-libft** folder.
 
 **JNL with files**
 ```bash
@@ -53,34 +47,7 @@ available on a file descriptor one line at a time until the EOF*
 Call JNL from the main
 
 ```c
-int main(int argc, char **argv)
-{
-	int fd, ret, line_count;
-	char *line;
 
-	line_count = 1;
-	ret = 0;
-	line = NULL;
-	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-		while ((ret = jump_next_line(fd, &line)) > 0)
-		{
-			printf(" \n [ Return: %d ] | A line has been read #%d => %s\n", ret, line_count, line);
-			line_count++;
-			free(line);
-		}
-		printf(" \n [ Return: %d ] A line has been read #%d: %s\n", ret, line_count++, line);
-		printf("\n");
-		if (ret == -1)
-			printf("-----------\n An error happened\n");
-		else if (ret == 0)
-		{
-			printf("-----------\n EOF has been reached\n");
-			free(line);
-		}
-		close(fd);
-	}
 ```
 
 This next line will return an integer that will be used as a parameter for the **jump_next_line** function.
