@@ -1514,11 +1514,25 @@ valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 
         betty src/*.h  
 ```
 
+## About section.
+First of all when I started Alx I had a lot of difficulty getting out of it; in C especially with pointers, static variables, structures too
+so i was looking on the net how to do it
+one day I came across the forum (whose name I forgot)
+or i was looking for information to code printf
+there a user tells me that I better try to code getline() a very useful function that will allow me to better understand pointers and files
+At that time I did not yet know how to use the files and I gave up coding getline() but the project remained in my head.
+
+Then one day a student from cohort 11 wrote to me asking for help because he saw that we were from the same country, he asked me to explain something to him and so that he would understand I told him about the getline() recode project and I coached him so I could better understand. So I started this project to help anyone who couldn't make progress with pointers, structures and writing files, and hoping that Alx could use it to help more people.
+Thanks
+
+  
+[twiteer](https://twitter.com/Ted_Kouhouenou)
+[Github repository for the project](https://github.com/Tednoob17/Get_Next_Line)
 
 
-
-
-
+## Optional 
+    A video explain how i create this project
+[](https://github.com/Tednoob17/Get_Next_Line/Vid/)
 
 
 
