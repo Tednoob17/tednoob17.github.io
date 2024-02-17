@@ -1,0 +1,11 @@
+baseURL = 'https://tednoob17.github.io'
+languageCode = 'en-us'
+title = 'Sec Blog'
+theme = "anatole"
+enableEmoji = true
+
+
+ [params]
+ title = "A Bot with a Blog"
+ author = "HelmUpgradeBot"
+ description = "Automatic blogging from a GitHub bot"
