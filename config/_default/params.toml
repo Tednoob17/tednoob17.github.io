@@ -1,0 +1,53 @@
+logo = "/imgs/logo.png"
+copyright = "Ted Kouhouenou"
+enableCodeCopy = true
+removeAttribution = true
+showThemeSwitcher = true
+defaultTheme = "auto" # light, dark, auto
+highlightCurrentMenu = true
+mainSections = ["ml-posts"]
+
+[homepage]
+headline = "Hi👋, Welcome to my Tearaway"
+showRecent = false
+showRecentLabel = "Featured"
+showRecentItems = 4
+showMore = true
+showMoreDest = "/all-posts"
+
+[list]
+groupByYear = true
+showDate = true
+
+[article]
+hidden = false
+showDate = true
+showModDate = true
+showReadingTime = true
+showPagination = true
+invertPagination = true
+showToC = true
+openToC = false
+
+[taxonomy]
+showCount = true
+cardView = true
+
+[term]
+groupByYear = true
+showDate = true
+
+[[social]]
+name = "Email"
+icon = "email"
+url = "mailto:ted.kouhouenou@epitech.eu"
+
+[[social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/Tednoob17"
+
+[[social]]
+name = "LinkedIn"
+icon = "linkedin"
+url = "https://www.linkedin.com/in/ted-kouhouenou-48b042239/"

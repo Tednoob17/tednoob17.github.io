@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{ $showDate := .Params.showDate | default (.Site.Params.list.showDate | default true) }}
+  {{ $types := .Params.types }}
+  {{ $headings := .Params.headings }}
+  <h1 class="pg-title">{{ .Title | emojify }}</h1>
+  {{ .Content }}
+  <section>
+    {{ $pagesByType := $.Site.RegularPages.GroupBy "Type" }}
+    {{ range $idx, $type := $types }}
+    {{ range $pagesByType }}
+      {{ if eq $type .Key }}
+        <h2 class="lst-type"> {{ index $headings $idx }} </h2>
+          <ul class="lst">
+              {{ range .Pages }}
+                {{ partial "list/page-link.html" (dict "page" . "showDate" $showDate) }}
+              {{ end }}
+          </ul>
+      {{ end }}
+    {{ end }}
+    {{ end }}
+  </section>
+{{ end }}

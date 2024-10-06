@@ -1,0 +1,14 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Tearaway'
+theme = "hyde"
+
+[params]
+  description = "The Hitchhiker's Guide to a random Cybersecurity Enthusiast"
+
+[Menus]
+  main = [
+      {Name = "Github", URL = "https://github.com/Tednoob17/"},
+      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/ted-kouhouenou-48b042239"},
+      {Name = "Twitter", URL = "https://x.com/Tedsig42"}
+  ]
