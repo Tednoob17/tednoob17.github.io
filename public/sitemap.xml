@@ -2,26 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:34727/posts/from-day0-to-0day-chapter-0/</loc>
-    <lastmod>2025-07-15T00:37:02+01:00</lastmod>
+    <loc>//localhost:1313/</loc>
   </url><url>
-    <loc>//localhost:34727/posts/</loc>
-    <lastmod>2025-07-15T00:37:02+01:00</lastmod>
+    <loc>//localhost:1313/categories/</loc>
   </url><url>
-    <loc>//localhost:34727/</loc>
-    <lastmod>2025-07-15T00:37:02+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:34727/about/about/</loc>
-    <lastmod>2025-07-15T00:14:33+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:34727/about/</loc>
-    <lastmod>2025-07-15T00:14:33+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:34727/posts/my-first-post/</loc>
-    <lastmod>2025-07-15T00:10:53+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:34727/categories/</loc>
-  </url><url>
-    <loc>//localhost:34727/tags/</loc>
+    <loc>//localhost:1313/tags/</loc>
   </url>
 </urlset>
