@@ -1,10 +1,14 @@
 baseURL = '/'
 languageCode = 'en-us'
-title = 'Ted Regis Kouhouenou Site'
+title = 'Ted Regis Site'
 contentdir = 'content'
 paginate =  5
 theme = 'poison'
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+    
 [params]
 	brand = "Tedsig42"
 	remote_brand_image = 'https://0xswitch.fr//static/img/gif/main-3.gif'
