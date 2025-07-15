@@ -2,7 +2,7 @@ baseURL = '/'
 languageCode = 'en-us'
 title = 'Ted Regis Site'
 contentdir = 'content'
-paginate =  5
+pagination.pagerSize = 5
 theme = 'poison'
 
 [caches]
