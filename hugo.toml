@@ -2,7 +2,7 @@ baseURL = '/'
 languageCode = 'en-us'
 title = 'Ted Regis Site'
 contentdir = 'content'
-pagination.pagerSize = 5
+#pagination.pagerSize = 5
 theme = 'poison'
 
 [caches]
@@ -26,7 +26,7 @@ theme = 'poison'
 	instagram_url = "https://instagram.com/tedsig_art"
 	linkedin_url = "https://linkedin.com/ted-kouhouenou"
 	#mastodon_url = "https://mastodon.social"
-	#matrix_url = "https://matrix.org"
+	matrix_url = "https://matrix.org/@tedsig42:matrix.org"
 	x_url = "https://x.com/Tedsig42"
 	
  	moon_sun_background_color = "#515151"   # default is #515151
@@ -66,6 +66,3 @@ theme = 'poison'
     table_stripe_color_dark = "#202020"             # default is #202020
     text_color_dark = "#EEE"                        # default is #EEE
 
-[taxonomies]
-    series = 'series'
-    tags = 'tags'	

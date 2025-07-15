@@ -1,5 +1,5 @@
 +++
-title = 'From Day0 to 0day Chapter 0'
+title = 'From Day 0 to 0day Chapter 0'
 date = 2025-07-15T00:37:02+01:00
 draft = true
 author = 'Tedsig42'
@@ -8,7 +8,7 @@ author = 'Tedsig42'
 Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book **From Day Zerp to Zero Day**
 written by Eugene "[Spaceraccoon](https://x.com/spaceraccoonsec)" Lim a security researcher and white-hat hacker.
 
-**He learned rapidly because his first training was in how to learn.** - `Frank Herbert, Dune` 
+**He learned rapidly because his first training was in how to learn.** - `Frank Herbert, Dune` .
 
 With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems
 for new vulnerabilities, has zero to zero  assumed a critical role in cybersecurity.

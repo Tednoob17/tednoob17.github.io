@@ -8,4 +8,4 @@ draft = true
 
 ## Introduction
 
-Hi everyone this is my first post
+Hi everyone this is my first post, it's just a example
