@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Ted Regis Site</title>
+    <link>//localhost:1313/about/</link>
+    <description>Recent content in Abouts on Ted Regis Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Jul 2025 00:14:33 +0100</lastBuildDate>
+    <atom:link href="//localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>//localhost:1313/about/about/</link>
+      <pubDate>Tue, 15 Jul 2025 00:14:33 +0100</pubDate>
+      <guid>//localhost:1313/about/about/</guid>
+      <description>Introduction Intro about me yes i know i&amp;rsquo;m noob in infosec and i&amp;rsquo;m not legitimate without certification or job or cve or 0day. But one day a got of these things + a awesome a beautiful wife.</description>
+    </item>
+  </channel>
+</rss>

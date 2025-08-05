@@ -6,6 +6,28 @@
     <description>Recent content on Ted Regis Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 15 Jul 2025 00:37:02 +0100</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Day 0 to 0day Chapter 0</title>
+      <link>//localhost:1313/posts/from-day0-to-0day-chapter-0/</link>
+      <pubDate>Tue, 15 Jul 2025 00:37:02 +0100</pubDate>
+      <guid>//localhost:1313/posts/from-day0-to-0day-chapter-0/</guid>
+      <description>Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book From Day Zerp to Zero Day written by Eugene &amp;ldquo;Spaceraccoon&amp;rdquo; Lim a security researcher and white-hat hacker.&#xA;He learned rapidly because his first training was in how to learn. - Frank Herbert, Dune .&#xA;With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems for new vulnerabilities, has zero to zero assumed a critical role in cybersecurity.</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>//localhost:1313/about/about/</link>
+      <pubDate>Tue, 15 Jul 2025 00:14:33 +0100</pubDate>
+      <guid>//localhost:1313/about/about/</guid>
+      <description>Introduction Intro about me yes i know i&amp;rsquo;m noob in infosec and i&amp;rsquo;m not legitimate without certification or job or cve or 0day. But one day a got of these things + a awesome a beautiful wife.</description>
+    </item>
+    <item>
+      <title>My First Post</title>
+      <link>//localhost:1313/posts/my-first-post/</link>
+      <pubDate>Tue, 15 Jul 2025 00:10:53 +0100</pubDate>
+      <guid>//localhost:1313/posts/my-first-post/</guid>
+      <description>Introduction Hi everyone this is my first post, it&amp;rsquo;s just a example</description>
+    </item>
   </channel>
 </rss>
