@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=https://0xswitch.fr//static/img/gif/main-1.gif>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Tedsig42 - From Day 0 to 0day Chapter 1</title>
+<meta property="og:title" content=Tedsig42&#32;-&#32;From&#32;Day&#32;0&#32;to&#32;0day&#32;Chapter&#32;1 />
+<meta name="twitter:title" content=Tedsig42&#32;-&#32;From&#32;Day&#32;0&#32;to&#32;0day&#32;Chapter&#32;1 />
+<meta itemprop="name" content=Tedsig42&#32;-&#32;From&#32;Day&#32;0&#32;to&#32;0day&#32;Chapter&#32;1 />
+<meta name="application-name" content=Tedsig42&#32;-&#32;From&#32;Day&#32;0&#32;to&#32;0day&#32;Chapter&#32;1 />
+<meta property="og:site_name" content="Ted Regis Site" />
+
+
+<meta name="description" content="Summary of Chapter 1" />
+<meta itemprop="description" content="Summary of Chapter 1" />
+<meta property="og:description" content="Summary of Chapter 1" />
+<meta name="twitter:description" content="Summary of Chapter 1" />
+
+
+<base href="http://localhost:1313/posts/from-day0-to-0day-chapter-1/" />
+<link rel="canonical" href="http://localhost:1313/posts/from-day0-to-0day-chapter-1/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/posts/from-day0-to-0day-chapter-1/" />
+<meta name="twitter:url" content="http://localhost:1313/posts/from-day0-to-0day-chapter-1/" />
+<meta property="og:url" content="http://localhost:1313/posts/from-day0-to-0day-chapter-1/" />
+
+
+<meta property="og:updated_time" content="2025-08-03T00:10:42&#43;02:00" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+  
+    <meta name="twitter:site" content="@Tedsig42" />
+    <meta name="twitter:creator" content="@Tedsig42" />
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="Ted Regis Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="https://0xswitch.fr//static/img/gif/main-3.gif" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Tedsig42</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A another infosec passionate blog
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+            
+                
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/from-day0-to-0day-chapter-1/">From Day 0 to 0day Chapter 1</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/from-day0-to-0day-chapter-0/">From Day 0 to 0day Chapter 0</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/my-first-post/">My First Post</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+            
+                
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/friends/">Friends</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+            
+                
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Tednoob17">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com/ted-kouhouenou">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="X" href="https://x.com/Tedsig42">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 512 472.799">
+            <path fill="currentColor" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/>
+        </svg>
+    </a>
+
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="https://discordapp.com/users/851383994317799445">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="Instagram" href="https://instagram.com/tedsig_art">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9S287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7s74.7 33.5 74.7 74.7s-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8c-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8s26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9c-26.2-26.2-58-34.4-93.9-36.2c-37-2.1-147.9-2.1-184.9 0c-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9c1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0c35.9-1.7 67.7-9.9 93.9-36.2c26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+        </svg>
+    </a>
+
+
+
+
+
+    <a target="_blank" class="social" title="Matrix" href="https://matrix.org/@tedsig42:matrix.org">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 27.9 32">
+            <path fill="currentColor" d="m27.1 31.2v-30.5h-2.19v-0.732h3.04v32h-3.04v-0.732z"/>
+            <path fill="currentColor" d="m8.23 10.4v1.54h0.044c0.385-0.564 0.893-1.03 1.49-1.37 0.58-0.323 1.25-0.485 1.99-0.485 0.72 0 1.38 0.14 1.97 0.42 0.595 0.279 1.05 0.771 1.36 1.48 0.338-0.5 0.796-0.941 1.38-1.32 0.58-0.383 1.27-0.574 2.06-0.574 0.602 0 1.16 0.074 1.67 0.22 0.514 0.148 0.954 0.383 1.32 0.707 0.366 0.323 0.653 0.746 0.859 1.27 0.205 0.522 0.308 1.15 0.308 1.89v7.63h-3.13v-6.46c0-0.383-0.015-0.743-0.044-1.08-0.0209-0.307-0.103-0.607-0.242-0.882-0.133-0.251-0.336-0.458-0.584-0.596-0.257-0.146-0.606-0.22-1.05-0.22-0.44 0-0.796 0.085-1.07 0.253-0.272 0.17-0.485 0.39-0.639 0.662-0.159 0.287-0.264 0.602-0.308 0.927-0.052 0.347-0.078 0.697-0.078 1.05v6.35h-3.13v-6.4c0-0.338-7e-3 -0.673-0.021-1-0.0114-0.314-0.0749-0.623-0.188-0.916-0.108-0.277-0.3-0.512-0.55-0.673-0.258-0.168-0.636-0.253-1.14-0.253-0.198 0.0083-0.394 0.042-0.584 0.1-0.258 0.0745-0.498 0.202-0.705 0.374-0.228 0.184-0.422 0.449-0.584 0.794-0.161 0.346-0.242 0.798-0.242 1.36v6.62h-3.13v-11.4z"/>
+            <path fill="currentColor" d="m0.936 0.732v30.5h2.19v0.732h-3.04v-32h3.03v0.732z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 Ted Regis Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/from-day0-to-0day-chapter-1/">From Day 0 to 0day Chapter 1</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+        
+          <span>Tedsig42 - </span>
+        
+      
+      
+      <time datetime=" 2025-08-03T00:10:42&#43;0200" class="post-date">
+        August 3, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>20 mins read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <p><img src="/images/stc/chap2-intro.jpeg" alt="alt"></p>
+<h2 id="introduction">Introduction</h2>
+<h2 id="taint-analysis">Taint Analysis</h2>
+<p><strong>Life is not like water. Things in life don’t necessarily flow over the shortest possible route</strong> <code>Haruki Murakami - 1Q84</code></p>
+<p><strong>Taint analysis</strong>  (or <strong>source and sink analysis</strong> ) is the analysis of the flow of <strong>input</strong>  through a <strong>program</strong>  from <strong>sources to sinks</strong> .</p>
+<p>It relies on a simple idea: a large number of vulnerabilities occur because attacker <strong>controlled input</strong> (the <strong>source</strong>) flows to a dangerous <strong>function</strong>  (the <strong>sink</strong>).
+If the input modifies other variables along the way, these
+variables become &ldquo;<strong>tainted</strong>&rdquo; and are included in the analysis.</p>
+<p>If the code later uses those tainted variables to modify others, those variables are also tainted, and so on. This is known as <strong>taint propagation</strong>.</p>
+<h3 id="buffer-overflow">Buffer Overflow</h3>
+<p>In my laptop with or without <code>-fstack-protector</code> it display   <code>stack smashing detected</code> so it detect buffer overflow when i run a exploit script</p>
+<p>Applying Taint Analysis<br>
+First, identify the source.
+For what is see here the user not directly controls input, but we have to function the main who use <code>argc and argv</code>  (who are really not used in the code), and the second function  <code>handleClient</code> who use a variable passed to parameters who is call  in main function. The variable <code>clientSocket</code> is used two time in the code and where we have problem is line <strong>19</strong> .
+<code>while ((bytesRead = recv(clientSocket, buffer, MAX_BUFFER_SIZE, 0)) &gt; 0) </code>
+Next, identify the sink, a dangerous function that could cause negative
+outcomes like memory corruption if an attacker controls its inputs
+This is line <strong>20</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memcpy</span>(finalBuffer <span style="color:#f92672">+</span> offset, buffer, bytesRead);
+</span></span></code></pre></div><p><img src="/images/stc/ch1-code_1.png" alt="alt">
+1 - Is the variables who is incremented and increase the  memory allocated.<br>
+2 - It the line who create a buffer overflow due to the memory copy done here.<br>
+3 - It&rsquo;s the  where the problem born with the limited buffer size.</p>
+<ul>
+<li>Now in main function :
+<img src="/images/stc/ch1-code_2.png" alt="alt"></li>
+</ul>
+<p>1- The vulnerable function is used only one time, but the variable passed to parameters not.<br>
+2- The <code>clientSocket</code> variable is used for accept value from connection create  in (<strong>3</strong>)<br>
+3 - The connection is create here and is listen in (<strong>4</strong>)<br>
+4 - The connection is listen here , the value is send to connection waiting like <strong>input</strong> , and the value is send to <code>handleClient</code> .</p>
+<p>So the exploit code is here :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
+</span></span><span style="display:flex;"><span>host <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>gethostname()
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234</span>
+</span></span><span style="display:flex;"><span>s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+</span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>connect((host, port))
+</span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>sendall(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>)
+</span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><p><strong>Result:</strong><br>
+<img src="/images/stc/ch1-code_3.png" alt="alt"></p>
+<h3 id="applying-taint-analysis">Applying Taint Analysis</h3>
+<p>First, identify the <strong>source</strong>. This should be the output of a function that
+retrieves and stores attacker-controlled input.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>bytesRead <span style="color:#f92672">=</span> <span style="color:#a6e22e">recv</span>(clientSocket, buffer, MAX_BUFFER_SIZE, <span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p>Next, identify the <strong>sink</strong>, a dangerous function that could cause negative
+outcomes like memory corruption if an attacker controls its inputs.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memcpy</span>(finalBuffer <span style="color:#f92672">+</span> offset, buffer, bytesRead);
+</span></span></code></pre></div><p>We must trace the flow of tainted variables from the first to the last.<br>
+Any others variables who is affected by a tainted variable is also <strong>tainted</strong> . This can conduct to <strong>path explosion</strong> .<br>
+Path explosion refers to the fact that the number of <a href="https://en.wikipedia.org/wiki/Control_flow" title="Control flow" target="_blank">control-flow</a> paths in a program <a href="https://en.wikipedia.org/wiki/Exponential_growth" title="Exponential growth" target="_blank">grows exponentially</a> (&ldquo;explodes&rdquo;) with an increase in program size and can even be infinite in the case of programs with unbounded loop iterations (<a href="https://en.wikipedia.org/wiki/Path_explosion" target="_blank">Source Wikipedia</a>).<br>
+This makes it impossible, or at least extremely time-consuming, to apply taint analysis to all possible paths in a complex target.</p>
+<p>We have here 70 lines so we not worry about path explosion.</p>
+<h2 id="sink-to-source-analysis">Sink-to-Source Analysis</h2>
+<p>Don&rsquo;t forget that  <strong>controlled input</strong> (the <strong>source</strong>) flows to a dangerous <strong>function</strong>  (the sink).<br>
+Liveoverflow video helped me to make a summary of any things (<a href="https://youtu.be/ZaOtY4i5w_U" target="_blank">https://youtu.be/ZaOtY4i5w_U</a>)<br>
+<img src="/images/stc/ch1-code_4.png" alt="alt">
+While the <strong>source-to-sink</strong> approach favors completeness, <strong>sink-to-source analysis</strong>  favors selection.
+As you saw, taking the most obvious route in taint analysis, starting from input sources and working your way through the code,
+leads to exponentially branching paths of tainted variables that are impossible to follow.</p>
+<h3 id="summary-0">Summary 0</h3>
+<p>While the source-to-sink approach favors completeness, sink-to-source analysis favors selection.</p>
+<ul>
+<li>
+<p><strong>Source-to-sink analysis favors completeness:</strong> This approach starts from all potential <em>sources</em> of data (user input, network connections, file reads) and traces how that data propagates through the system until it reaches <em>sinks</em> (database queries, file writes, display to user, command execution). The goal is to identify <strong>all possible paths</strong> that data can take, even if they are very indirect. This is crucial for finding vulnerabilities where untrusted data could eventually reach a sensitive operation without proper sanitization or validation. Because it aims to be exhaustive, it might generate more &ldquo;false positives&rdquo; (paths that are theoretically possible but might not be exploitable in practice).</p>
+</li>
+<li>
+<p><strong>Sink-to-source analysis favors selection (or relevance):</strong> This approach starts from a specific <em>sink</em> (a sensitive operation that you want to protect) and traces backward to identify <strong>what sources</strong> could feed data into that sink. The goal here is to determine <em>which inputs</em> could influence a particular sensitive operation. This is useful for prioritizing analysis, focusing on the most critical parts of the code, and reducing the number of irrelevant findings. It&rsquo;s more targeted and thus &ldquo;selective.&rdquo;<br>
+<strong>Total</strong> :</p>
+</li>
+<li>
+<p><strong>Source-to-sink:</strong> &ldquo;Where can this potentially bad data go?&rdquo; (Broad, comprehensive)</p>
+</li>
+<li>
+<p><strong>Sink-to-source:</strong> &ldquo;What data can influence this sensitive operation?&rdquo; (Targeted, selective)</p>
+</li>
+</ul>
+<h3 id="choosing-the-right-sinks">Choosing the Right Sinks</h3>
+<p>The first step is to select the <strong>sink patterns</strong> that you want to work backward
+from. You can refer to <strong>banned function</strong> lists maintained by other developers to discover common dangerous sinks and how to exploit them. or example,
+Microsoft actively updates the list of banned functions that it integrates in its
+code analysis tools <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/28719-banned-api-usage-use-updated-function-replacement" target="_blank">Microsoft baneed function</a>.</p>
+<p>In addition to the standard library functions like <code>memcpy</code>, analyze the
+source code carefully to identify wrapper functions that may help simplify
+your analysis. Developers often append <code>_copy</code> or <code>_memcpy</code> to the names of these
+wrapper functions.<br>
+Wait, wait, what is wrappers ?</p>
+<hr>
+<p>The term &ldquo;wrapper&rdquo; in computer science, and specifically in programming, refers to a piece of code (which can be a function, a class, or even an entire program) that &ldquo;encapsulates&rdquo; or &ldquo;wraps around&rdquo; another piece of code, a data structure, or an external system.<br>
+Think of it like this:</p>
+<ul>
+<li>A gift wrapper: You wrap a gift to make it look nicer, protect it, and provide a convenient way to present it. The wrapper itself isn&rsquo;t the gift, but it makes the gift more presentable and manageable.</li>
+<li>A universal adapter for electronics: You have a device with a specific plug, and you want to use it in a country with different outlets. A universal adapter &ldquo;wraps&rdquo; the device&rsquo;s plug, allowing it to connect to the new outlet without changing the device&rsquo;s original plug.</li>
+</ul>
+<hr>
+<p><strong>Ex</strong> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_simple_wrapper</span>(func):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner_function</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Calling function: </span><span style="color:#e6db74">{</span>func<span style="color:#f92672">.</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Finished calling function: </span><span style="color:#e6db74">{</span>func<span style="color:#f92672">.</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> inner_function
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greet</span>(name):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello, </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Manually wrapping the function</span>
+</span></span><span style="display:flex;"><span>wrapped_greet <span style="color:#f92672">=</span> my_simple_wrapper(greet)
+</span></span><span style="display:flex;"><span>print(wrapped_greet(<span style="color:#e6db74">&#34;Alice&#34;</span>))
+</span></span></code></pre></div><p><strong>Output</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Calling <span style="color:#66d9ef">function</span>: greet
+</span></span><span style="display:flex;"><span>Finished calling <span style="color:#66d9ef">function</span>: greet
+</span></span><span style="display:flex;"><span>Hello, Alice!
+</span></span></code></pre></div><p>Another factor in deciding which wrapper functions to include in your
+analysis is how many times the functions are used. If they include too much
+custom logic that applies only to rare cases, they cease to be useful.<br>
+By Example if a wrapper function is used (is call) only once in all codebase it not important. As a general rule, consider wrapper functions as sinks when they’re reused extensively relative to the total size of the codebase.</p>
+<h3 id="filtering-for-exploitable-scenarios">Filtering for Exploitable Scenarios</h3>
+<p>After selecting your sinks, begin tracing the flow of tainted variables
+backward from the sinks.</p>
+<p><strong>Null dereference:</strong> When the code tries to access data at an invalid null
+address, leading to crashes. For <code>memcpy</code>, this occurs when <code>dest</code> or <code>src</code> is a <strong>null pointer</strong>.
+<em><strong>Buffer overflow:</strong></em> When the code writes beyond the size of <code>dest</code>. This
+can occur when n is larger than the <code>size</code> of <code>dest</code>.</p>
+<p><strong>Information leak:</strong> When the code reads data from addresses that is not
+intended to be exposed. This occurs when <code>n</code> is larger than <code>src</code>.</p>
+<p><strong>Memory corruption:</strong> When the code makes unintended changes to
+memory, which can occur if <code>dest</code> and <code>src</code> overlap.</p>
+<p>Ex :<br>
+On <code>platform/centec-arm64/tsingma-bsp/src/ctcmac/ctcmac.c</code> (on local) or <a href="https://github.com/sonic-net/sonic-buildimage/blob/bb3362760d01055d1c30cbda8ec3bf5ea4f5d7aa/platform/centec-arm64/tsingma-bsp/src/ctcmac/ctcmac.c" target="_blank">sonic-buildimage-old-commit</a> .</p>
+<p><img src="/images/stc/ch1-code_5.png" alt="alt"></p>
+<ul>
+<li>5 : Starting from the first argument, <code>tx_buff-&gt;vaddr + offset</code> (5) , which corresponds to the destination buffer for <code>memcpy</code> function .</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">memcpy</span>(<span style="color:#66d9ef">void</span> dest[<span style="color:#66d9ef">restrict</span> .n], <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span> src[<span style="color:#66d9ef">restrict</span> .n], <span style="color:#66d9ef">size_t</span> n);
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># on man memcpy
+</span></span></span></code></pre></div><ul>
+<li>2 : Work backward to where <code>tx_buff-&gt;vaddr</code> is first assigned the return value of <code>kmalloc(alloc_size, GFP_KERNEL)</code> (2)
+This warrants greater attention because <a href="https://litux.nl/mirror/kerneldevelopment/0672327201/ch11lev1sec4.html" target="_blank">kmalloc</a>  allocates <strong>kernel memory</strong>, corruption of which could be devastating.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">kmalloc</span>(<span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">int</span> flags)
+</span></span></code></pre></div><p><img src="/images/stc/ch1-code_6.png" alt="alt"></p>
+<ul>
+<li>
+<p>1 : The <strong>size</strong> of the <strong>buffer allocated</strong> to <code>tx_buff-&gt;vaddr</code> is<code> alloc_size</code>, set by the cryptic macro <code>ALIGN(skb-&gt;len, BUF_ALIGNMENT)</code> (1) .</p>
+</li>
+<li>
+<p>3 : Before figuring out what this macro does, examine the value assigned to offset   (3 ), which also appears in the first argument to <code>memcpy</code> later on.</p>
+</li>
+<li>
+<p>4 : Because the  ((<code>u64</code>) <code>tx_buff-&gt;vaddr</code>) &amp; (<code>BUF_ALIGNMENT - 1</code>) <strong>bitwise</strong> <strong>AND</strong> <strong>operation</strong>  (&amp;) ensures that the result has a <strong>maximum value</strong> of <code>BUF_ALIGNMENT - 1</code> , offset must range from 1 to <code>BUF_ALIGNMENT</code>.
+The next if conditional block 1 moves this range down to 0 to <code>BUF_ALIGNMENT - 1</code> , since it will be reassigned the value <code>0</code> if it equals <code>BUF_ALIGNMENT</code>.
+In short, the destination address for <code>memcpy</code> ranges from</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>tx_buff<span style="color:#f92672">-&gt;</span>vaddr to tx_buff<span style="color:#f92672">-&gt;</span>vaddr <span style="color:#f92672">+</span> (BUF_ALIGNMENT <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>).
+</span></span></code></pre></div><p>in (5) .</p>
+<p>Additionally, because the buffer at <code>tx_buff-&gt;vaddr</code> is of <strong>size</strong>
+<code>ALIGN(skb-&gt;len, BUF_ALIGNMENT)</code> on (2), or at least <code>BUF_ALIGNMENT</code> bytes, it isn’t possible for <code>tx_buff-&gt;vaddr + offset</code> to exceed the allocated buffer.</p>
+<p>Thus, you can safely ignore the first argument to the <code>memcpy</code> call in your taint analysis because it will never be dangerous by itself. Instead, focus on the third argument, which determines the number of bytes copied into the buffer and could potentially cause an overflow.</p>
+<p>This process demonstrates a big advantage of sink-to-source analysis:<br>
+By checking whether a sink is exploitable from the beginning, you can decide which paths are relevant instead of chasing down every rabbit hole.<br>
+Furthermore, eliminating one potential <strong>attack vector</strong> at the <strong>sink</strong> allows you to eliminate similar <strong>patterns</strong> elsewhere.</p>
+<p>For example, because the same <code>memcpy(tx_buff-&gt;vaddr + offset, ...);</code> pattern appears in <code>frag_to_txbuff_alloc</code> and <code>skb_to_txbuff_alloc</code>, you can skim those instances instead of repeating the analysis. Remember that <strong>sink-to-source</strong> tracing <strong>prioritizes selection</strong>, while <strong>source-to-sink</strong> tracing prioritizes <strong>completeness</strong>.</p>
+<ul>
+<li>
+<p><strong>frag_to_txbuff_alloc</strong>
+<img src="/images/stc/ch1-code_7.png" alt="alt"></p>
+</li>
+<li>
+<p><strong>skb_to_txbuff_alloc</strong>
+<img src="/images/stc/ch1-code_8.png" alt="alt"></p>
+</li>
+</ul>
+<p>Fortunately, not all instances of filtering <strong>sinks</strong> require as much depth.
+Consider the following instances of memcpy in <code>platform/barefoot/bfn-modules/modules/bf_tun.c</code> :</p>
+<ul>
+<li><code>memcpy(cmd, &amp;tun-&gt;link_ksettings, sizeof(*cmd));</code><br>
+It uses sizeof to ensure the number of bytes copied into the cmd buffer matches its size
+<img src="/images/stc/ch1-code_9.png" alt="alt"></li>
+<li><code>memcpy(filter-&gt;addr[n], addr[n].u, ETH_ALEN);</code><br>
+It uses a fixed constant value for the number of bytes and thus is not attacker-controllable.
+<img src="/images/stc/ch1-code_10.png" alt="alt">
+Observe how many false positives you can filter out by locating all instances of <code>memcpy</code> in the code, then removing instances of non-vulnerable
+uses of <code>memcpy</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
+</span></span><span style="display:flex;"><span>╰─$ grep -r <span style="color:#e6db74">&#34;memcpy&#34;</span> --include<span style="color:#f92672">=</span><span style="color:#ae81ff">\*</span>.<span style="color:#f92672">{</span>c,cpp<span style="color:#f92672">}</span> . | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">237</span>
+</span></span></code></pre></div><p>This command searches all files with a <code>.c</code> or <code>.cpp</code>  file extension for
+the <code>memcpy</code> string, returning <strong>237</strong> results.<br>
+Next, tweak the regular expression to match instances of <code>memcpy</code> that
+don’t use a constant for the third argument, based on the assumption that
+constant values either are numeric or have variable names in all capital
+letters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
+</span></span><span style="display:flex;"><span>╰─$ grep -r <span style="color:#e6db74">&#34;memcpy(.*,.*, [a-z]&#34;</span> --include<span style="color:#f92672">=</span><span style="color:#ae81ff">\*</span>.<span style="color:#f92672">{</span>c,cpp<span style="color:#f92672">}</span> . | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">97</span>
+</span></span></code></pre></div><p>This regex uses <code>[a-z]</code>  to ensure that the third argument starts with a lowercase letter, returning <strong>97</strong> results. This cuts down the number of results you have to manually analyze by more than half!</p>
+<p>Next, filter out instances where the third argument is sizeof(dest):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
+</span></span><span style="display:flex;"><span>╰─$ grep -r <span style="color:#e6db74">&#34;memcpy(.*,.*, [a-z]&#34;</span> --include<span style="color:#f92672">=</span><span style="color:#ae81ff">\*</span>.<span style="color:#f92672">{</span>c,cpp<span style="color:#f92672">}</span> . | grep -v <span style="color:#e6db74">&#34;memcpy(.*,.*,\s*sizeof(&#34;</span> | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">54</span>
+</span></span></code></pre></div><p>As shown here, instead of overcomplicating the <strong>regex</strong>, you can simply
+pipe the results of the first grep command to a second grep command, which
+uses the <code>-v</code> option to filter out results that match the <strong>regex pattern</strong>.<br>
+The pattern finds <code>memcpy</code> calls whose third argument starts with sizeof(, disregarding
+any leading spaces. (space beetween <code>*,</code>  and  <code>[a-z]</code>) .<br>
+For manual <strong>code review</strong>, focus your time and energy on quickly filtering out non-exploitable scenarios to speed up sink-to-source tracing.</p>
+<h3 id="confirming-exploitability">Confirming Exploitability</h3>
+<p>Taking note of additionnal non-exploitable functions like <code>strlen</code> or <code>sizeof </code> used in third  parameters of <code>memcpy</code> .   This means that the number of bytes copied likely matches the size of the destination buffer.</p>
+<p><img src="/images/stc/ch1-code_11.png" alt="alt"></p>
+<ul>
+<li>6 :  Here the six is not exploitation because of the previous exclusions because of exclusion i talk previously.</li>
+<li>4 : For know if the buffer overflow is exploitation here it&rsquo;s important to determine the size of  <code>current_buffer_position</code> , her last value was assigned to line (2) <code>auto current_buffer_position = buffer</code> and <code>buffer</code> was declared to line (1)
+<code>static uint8_t buffer[4096]</code> , know we know that the <strong>destination buffer</strong> has a fixed size 4096 bytes</li>
+<li>5 : Here the problem is that it can provoke a buffer overflow if her value is superior of the size of (4), the <code>ntohs</code>  function converts the <strong>unsigned short integer</strong> <code>netshort</code> from network byte order to host byte order.  Continue tracing back from <code>option-optin_length</code> , we can see that the <code>option</code> is set by the function <code>parse_dhcpv6_opt</code> . This function is defined earlier in the file:</li>
+</ul>
+<p><img src="/images/stc/ch1-code_12.png" alt="alt"></p>
+<ul>
+<li>The buffer variable is parser by a <code>dhcpv6_option</code> struct who is defined in <code>src/dhcp6relay/src/relay.h</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> dhcpv6_option {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint16_t</span> option_code;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint16_t</span> option_length;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>The type of <code>option_length</code> is <code>uint16_t</code> who is a (unisgned short integer) with <strong>65535</strong> for max value.<br>
+Noted that we can choose the value used by
+<code>option-&gt;option_length</code> but the value of <strong>buffer destination</strong>  (<code>current_buffer_position</code>) is fixed to <strong>4096</strong>.<br>
+So this function is <strong>exploitable</strong> .</p>
+<h3 id="identifying-an-attacker-controlled-source">Identifying an Attacker-Controlled Source</h3>
+<p>After finding an exploitable sink pattern, work backward in the code to con-
+firm if it is reachable from an attacker-controlled source.
+At this point, you’ve confirmed three important points in the taint flow:</p>
+<ol>
+<li>A sink exists at the first <code>memcpy</code> call in the <code>relay_relay_reply function</code>.</li>
+<li>This sink is exploitable if <code>option-&gt;option_length</code> is larger than <strong>4096</strong>.</li>
+<li>The <code>option-&gt;option_length</code> parameter has a maximum value of <strong>65535</strong>.</li>
+</ol>
+<p>Now making sure there are no exploit-killing sanitization or validation steps along the way. Before the <code>memcpy</code> we have a <code>switch</code> case :</p>
+<ul>
+<li>The switch case execute this part of code if <code>ntohs(option-&gt;option_code))</code> , in the <code>src/dhcp6relay/src/relay.h </code> file reveals that <code>OPTION_RELAY_MESSAGE</code> corresponds to <code>9</code>.</li>
+<li>The <code>option</code> variable is a instance of <code>dhcpv6_option</code> struct parsed from
+the bytes at the <code>current_position</code> pointer while <code>(current_position - msg) != len</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> option <span style="color:#f92672">=</span> <span style="color:#a6e22e">parse_dhcpv6_opt</span>(current_position, <span style="color:#f92672">&amp;</span>tmp);
+</span></span></code></pre></div><p>Why ? because of <code>parse_dhcpv6_opt</code> is  a function who return a <code>dhcpv6_option</code> struct and also because option have <code>option_code</code> and <code>option_length</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">╭─</span>sig42<span style="color:#960050;background-color:#1e0010">@</span>x76 <span style="color:#f92672">~/</span>Downloads<span style="color:#f92672">/</span>sonic<span style="color:#f92672">-</span>buildimage <span style="color:#960050;background-color:#1e0010">‹</span>bcf5388f2<span style="color:#960050;background-color:#1e0010">●›</span> 
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">╰─$</span> grep <span style="color:#f92672">-</span>A <span style="color:#ae81ff">10</span> <span style="color:#e6db74">&#34;dhcpv6_option&#34;</span> src<span style="color:#f92672">/</span>dhcp6relay<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>relay.h
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> dhcpv6_option {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> option_code;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> option_length;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li><code>msg</code> argument is a pointer to the <strong>DHCPv6</strong> message header position and the <code>len</code> argument  is the <strong>size</strong> of data received (Refer to function annotation).</li>
+<li>Moreover, <code>current_position</code> is initialized as msg
+and incremented by the size of a dhcpv6_relay_msg struct:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>current_position <span style="color:#f92672">+=</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> dhcpv6_relay_msg).
+</span></span></code></pre></div><ul>
+<li>
+<p><code>parse_dhcpv6_opt</code> takes <code>current_position</code> as its first argument. <code>current_position</code> is a pointer (<code>const uint8_t *</code>) that indicates the beginning of the bytes to be interpreted.</p>
+</li>
+<li>
+<p>As the <code>relay_relay_reply</code> function progresses through the received message, <code>current_position</code> is updated to point to the beginning of the next option or the next data segment to be processed. This is the role of <code>current_position = tmp;</code> after the call to <code>parse_dhcpv6_opt</code>.</p>
+</li>
+<li>
+<p>The <code>current_position</code> pointer does not point to a separate copy of the message. It points directly into the original <code>msg</code> that was passed as an argument to the <code>relay_relay_reply</code> function.</p>
+</li>
+<li>
+<p><code>msg</code> is the raw buffer that contains the entire DHCPv6 message received from the network. Therefore, <code>current_position</code> is simply an offset (an advanced pointer) within this initial <code>msg</code>.</p>
+</li>
+<li>
+<p>you can deduce that current_position during <code>parse_dhcpv6_opt</code> is located in the <code>msg</code> bytes at this offset</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> <strong>Packet Schema</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>msg                                     current_position                                              len
+</span></span><span style="display:flex;"><span>------------------------------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>| dhcpv6_relay_msg         |  dhcpv6_option        |  dhcpv6_msg    |                  |             |            
+</span></span><span style="display:flex;"><span>+----------------------------------------------------------------------------------------------------+
+</span></span></code></pre></div><ul>
+<li>After determining that the attacker must control <code>msg</code> (the second argument to <code>relay_relay_reply</code>) to reach the vulnerable <code>memcpy</code>, look for calls to <code>relay_relay_reply</code> to determine the source of the second argument.</li>
+</ul>
+<p>This function is only used in one function on <code>server_callback</code>
+<img src="/images/stc/ch1-code_13.png" alt="alt"><br>
+The variable <code>message_buffer</code> is passed to second argument of <code>relay_relay_reply</code>, but for reached the <code>memcpy</code> in <strong>if</strong> statement , it crucial to control the <code>msg</code> variable who fortunately  have <code>message_buffer</code> who was be affected to <code>msg</code>.</p>
+<p>After that we can see the line containing the first <strong>if</strong> statement who   reads data directly from the network socket (<code>config-&gt;local_sock</code>) and stores it into <code>message_buffer</code>. And the <code>config</code> variable contain <code>arg</code> argument passed to <code>server_callback</code> function.</p>
+<h2 id="confirming-a-reachable-attack-surface">Confirming a Reachable Attack Surface</h2>
+<p>We need to confirm whether the source itself is reachable by an attacker.
+We know that <code>recvfrom</code> function open socket and copy data to <code>config-&gt;local_sock</code>
+from <code>message_buffer</code> .
+Multiple possibility are offer here, by example  a remote attacker can access to socket when <code>recvfrom</code> is open .</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●› 
+</span></span><span style="display:flex;"><span>╰─$ grep -ni <span style="color:#e6db74">&#34;config-&gt;local_sock&#34;</span> dhcp6relay/src/relay.cpp
+</span></span><span style="display:flex;"><span>317:    interface_config-&gt;local_sock <span style="color:#f92672">=</span> *local_sock; 
+</span></span><span style="display:flex;"><span>573:    relay_client<span style="color:#f92672">(</span>config-&gt;local_sock, current_position, ntohs<span style="color:#f92672">(</span>udp_header-&gt;len<span style="color:#f92672">)</span> - sizeof<span style="color:#f92672">(</span>udphdr<span style="color:#f92672">)</span>, ip_header, ether_header, config<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>594:    <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span>data <span style="color:#f92672">=</span> recvfrom<span style="color:#f92672">(</span>config-&gt;local_sock, message_buffer, 4096, 0, <span style="color:#f92672">(</span>sockaddr *<span style="color:#f92672">)</span>&amp;from, &amp;len<span style="color:#f92672">))</span> <span style="color:#f92672">==</span> -1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>719:        config-&gt;local_sock <span style="color:#f92672">=</span> local_sock;
+</span></span></code></pre></div><p>The sustainable line here is on line <strong>719</strong> because in the others line the <code>config-&gt;local_sock</code> in parameters.  <br>
+<img src="/images/stc/ch1-code_14.png" alt="alt">
+And in this line we can see that a value (<code>local_sock</code>) is affected to <code>config-&gt;local_sock</code> and before this affectation the <code>prepare_socket</code> function is used and <code>local_sock</code> value is passed to parameter.
+<img src="/images/stc/ch1-code_16.png" alt="alt"></p>
+<p>In this code portion we can see that  <code>local_sock</code>  socket  is opened  and the port is assigned to <code>in6 sockaddr_in6</code> address  <strong>struct</strong>.</p>
+<p>The <code>RELAY_PORT</code> as <strong>547</strong> like value is specified  in <code>src/dhcp6relay/src/relay.h</code> .<br>
+After observation you can conclude that the vulnerable <strong>source-to-sink</strong> path exists for any <strong>IPv6</strong>, non-link-local network interface address on port <strong>547</strong>.</p>
+<h2 id="testing-the-exploit">Testing the Exploit</h2>
+<p>However, confirming a vulnerability purely through code review won’t suffice. You need to build a working <strong>proof of concept</strong> that produces a controllable crash.<br>
+To build the <strong>PoC</strong>, you need to first develop a test environment. Without a working build of the target to test your exploit against, you can’t confirm the vulnerability.<br>
+It’s also helpful to be able to quickly debug your initial proof-of-concept exploits in case something breaks along the way.</p>
+<p>I prefer to build container images to encapsulate <strong>PoCs</strong> because it provides a consistent environment to experiment in and makes it portable for
+others to verify the exploit.
+We need <code>Docker</code> / <code>Podman</code> for do this.
+But before we need to know how to build the program locally before to build her image and run the container.</p>
+<p>For building the program check the README and install all dependency, but it&rsquo;s probably to meet other problem during building. So hesitate to copy, paste
+the error on google .
+When run <code>make</code> we see this:</p>
+<h3 id="first-problem">First problem</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#12 0.287 src/relay.cpp:3:10: fatal error: event.h: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">3</span> <span style="color:#f92672">|</span> <span style="color:#960050;background-color:#1e0010">#</span>include <span style="color:#f92672">&lt;</span>event.h<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">^~~~~~~~~</span>
+</span></span><span style="display:flex;"><span>compilation terminated.
+</span></span></code></pre></div><p>This error meaning you need to install a shared library that <code>dhcp6relay</code> depends on.<br>
+For solve that  a simple  <code>apt install libevent-dev</code>.</p>
+<h3 id="second-problem">Second Problem</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#11 0.328 src/relay.cpp:10:10: fatal error: configdb.h: No such file or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>directory
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> <span style="color:#f92672">|</span> <span style="color:#960050;background-color:#1e0010">#</span>include <span style="color:#e6db74">&#34;configdb.h&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">^~~~~~~~~~~~</span>
+</span></span><span style="display:flex;"><span>compilation terminated.
+</span></span></code></pre></div><p>Searching for <code>configdb.h</code> shows that it belongs to the <code>sonic-swss-common</code>
+library, which is referred to in the <code>-I</code> argument in the <strong>Makefile</strong>.<br>
+For this new project we need to build ans install the package yourself, the process to install it is on the <code>README.md</code> file on <a href="https://github.com/sonic-net/sonic-swss-common" target="_blank">sonic-swss-common</a> .</p>
+<h3 id="third-problem">Third Problem</h3>
+<p>After resolve all this dependency  on <code>dhcp6relay</code>, we see another problem when  we run :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>terminate called after throwing an instance of <span style="color:#960050;background-color:#1e0010">&#39;</span>std<span style="color:#f92672">::</span>system_error<span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">what</span>()<span style="color:#f92672">:</span> Unable to connect to <span style="color:#a6e22e">redis</span> (unix<span style="color:#f92672">-</span>socket)<span style="color:#f92672">:</span> Cannot assign requested
+</span></span><span style="display:flex;"><span>address
+</span></span><span style="display:flex;"><span>Aborted
+</span></span></code></pre></div><p>It appears that dhcp6relay is attempting to connect to a Redis server. If
+you analyze <code>configInterface.cpp</code>, one of the source files for <code>dhcp6relay</code>, you’ll
+see that it checks the <code>DHCP_RELAY</code> table in the <code>CONFIG_DB</code> database for a <code>dhcpv6_servers</code> field name.</p>
+<p><img src="/images/stc/ch1-code_16.png" alt="alt"></p>
+<p>Further research into this configuration setting leads to documentation
+written by a <code>SONiC</code> developer <a href="https://support.edge-core.com/hc/en-us/articles/8615164994201--Edgecore-SONiC-DHCPv6-Relay" target="_blank">SONiC-DHCPv6-Relay</a>  (He need a account) that contains the expected structure of this configuration setting in the database.</p>
+<p>After resolving this requirement by adding the expected configuration
+to the <strong>Redis</strong> database, <code>dhcp6relay</code> finally runs but it doesn’t bind to any interfaces because none of them contain <strong>non-link-local</strong> <strong>IPv6</strong> addresses, as
+<code>prepare_socket</code> requires.</p>
+<p>Rather than creating a brand new interface, you can piggyback off an existing one through a virtual local area network (<strong>VLAN</strong>), then add the required fixed <strong>IPv6</strong> addresses.<br>
+By definition, link-local <strong>IPv6</strong> addresses fall in the range <code>fe80::/10</code>, and
+thus any valid address within this range works.</p>
+<h3 id="setup-">Setup ?</h3>
+<p>File : <code>add_ipv6_addresses.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/init.d/redis-server restart
+</span></span><span style="display:flex;"><span>ip link add link eth0 name vlan type vlan id <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>ip -6 addr add fe80::20c:29ff:fe90:14c5/64 dev vlan
+</span></span><span style="display:flex;"><span>ip -6 addr add 2a00:7b80:451:1::10/64 dev vlan
+</span></span><span style="display:flex;"><span>ip link set vlan up
+</span></span><span style="display:flex;"><span>redis-cli -n <span style="color:#ae81ff">4</span> HSET <span style="color:#e6db74">&#34;DHCP_RELAY|vlan&#34;</span> dhcpv6_servers <span style="color:#e6db74">&#34;fe80::20c:29ff:fe90:14c5/64&#34;</span>
+</span></span></code></pre></div><p>The <code>Dockerfile</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:20.04</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt update<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt install -y autoconf-archive build-essential dh-exec gdb git iproute2 libboost-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>libboost-thread-dev libevent-dev libgmock-dev libgtest-dev libhiredis-dev libnl-3-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>libnl-genl-3-dev libnl-nf-3-dev libnl-route-3-dev libpython2.7-dev libpython3-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>libtool pkg-config python3 redis-server swig3.0<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Check out repo</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> git clone https://github.com/sonic-net/sonic-buildimage<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> sonic-buildimage</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> git checkout bcf5388<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Build and install sonic-swss-common</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> git submodule update --init src/sonic-swss-common<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> src/sonic-swss-common</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ./autogen.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ./configure<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> make<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> make install<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ldconfig<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Build dhcp6relay</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> ../dhcp6relay</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;8s/$/ -g/&#39;</span> Makefile<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;24s/.*/\t$(CC) $(CFLAGS) -o $(DHCP6RELAY_TARGET) $(OBJS) $(LIBS) $(LDFLAGS)/&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>Makefile<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> make<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Configure redis</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;109s/# / /&#39;</span> /etc/redis/redis.conf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;109s/\/var\/run\/redis\/redis-server.sock/\/var\/run\/redis\/redis.sock/&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/etc/redis/redis.conf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;110s/# / /&#39;</span> /etc/redis/redis.conf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;110s/700/755/&#39;</span> /etc/redis/redis.conf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy add ipv6 address script</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> add_ipv6_addresses.sh add_ipv6_addresses.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chmod +x add_ipv6_addresses.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> exploit.py /tmp/exploit.py<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># copy add ipv6 address script</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> add_ipv6_addresses.sh add_ipv6_addresses.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chmod +x add_ipv6_addresses.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Place this <code>Dockerfile</code> in a folder with the <code>add_ipv6_addresses.sh</code> script.<br>
+Now build and run it with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker build -t dhcp6relay .
+</span></span><span style="display:flex;"><span>$ docker run -it --cap-add<span style="color:#f92672">=</span>NET_ADMIN --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> dhcp6relay
+</span></span></code></pre></div><p>Finally, run the script and start <code>dhcp6relay</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@8928b41ace8c:/sonic-buildimage/src/dhcp6relay# ./add_ipv6_addresses.sh
+</span></span><span style="display:flex;"><span>Stopping redis-server: redis-server.
+</span></span><span style="display:flex;"><span>Starting redis-server: redis-server.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>integer<span style="color:#f92672">)</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>root@8928b41ace8c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
+</span></span></code></pre></div><h2 id="building-the-proof-of-concept">Building the Proof of Concept</h2>
+<p>You must send <strong>bytes</strong> that match the <code>dhcpv6_relay_msg</code> and <code>dhcpv6_option</code>
+structs, as <code>src/dhcp6relay/src/relay.h</code> defines :</p>
+<p>The link_address and peer_address members of the dhcpv6_relay_msg struct
+are of the in6_addr struct type, which is not a custom struct defined in relay.h
+but instead a shared type from the Linux operating system itself
+(see <a href="https://man7.org/linux/man-pages/man7/ipv6.7.html" target="_blank">ipv6 man</a>).<br>
+This <strong>struct</strong> contains a single <code>unsigned char s6_addr[16]</code>  member.</p>
+<p><img src="/images/stc/ch1-code_17.png" alt="alt">
+Note that the <code>dhcpv6_relay_msg</code> struct definition includes the <code>PACKED</code> attribute, which means that the <strong>compiler</strong> doesn’t add <strong>padding</strong> between the
+struct’s members to <strong>align</strong> with <strong>memory</strong> boundaries.
+<img src="/images/stc/ch1-code_18.png" alt="alt">
+Without this <strong>attribute</strong>, the <strong>compiler</strong> might, for example, add 3 or 7 <strong>bytes</strong> between <code>msg_type</code> and <code>hop_count</code> to align with 4- or 8-<strong>byte</strong> boundaries, depending on whether the target is a <strong>32 or 64-bit</strong> system.</p>
+<p>After confirming the data structures, recall the specific <strong>requirements</strong> for
+these <strong>bytes</strong> to reach the <strong>vulnerable sink</strong>:</p>
+<ul>
+<li>When parsed into a <code>dhcpv6_msg</code> struct, the payload’s <code>msg_type</code> member must equal <code>DHCPv6_MESSAGE_TYPE_RELAY_REPL</code> .</li>
+<li>The payload must include at least one dhcpv6_option struct after the
+dhcpv6_relay_msg struct. (See <strong>Packet Schema</strong> )</li>
+<li>When parsed into a <code>dhcpv6_option</code> struct, the <code>option_code</code> member
+must equal <code>OPTION_RELAY_MSG</code> (9).</li>
+</ul>
+<p>You can re-create the <strong>bytes</strong> matching these <strong>requirements</strong> using the <strong>socket</strong>
+and struct <strong>libraries</strong>. In particular, the <strong>pack</strong> function converts values (such as strings or integers)</p>
+<p>The <strong>sink-to-source analysis</strong> revealed that the <strong>vulnerability</strong> lay in an overly
+large <code>option_length</code> being used as the size of a <code>memcpy</code> to a <code>4,096-byte</code> destination <strong>buffer</strong>, so set <code>option_length</code> to the maximum <strong>65535</strong> value and add additional <strong>overflow bytes</strong> to the end of the payload. Since <code>dhcp6relay</code> converts the
+values of <code>option_code</code> and <code>option_length</code> from network to host byte order, convert these values to network byte order first using <code>socket.htons</code>.</p>
+<p>Next, rebuild the container image and start a new session:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker build -t dhcp6relay .
+</span></span><span style="display:flex;"><span>$ docker run -it --cap-add<span style="color:#f92672">=</span>NET_ADMIN --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> dhcp6relay
+</span></span></code></pre></div><pre tabindex="0"><code class="language-docker-bash" data-lang="docker-bash">root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./add_ipv6_addresses.sh
+Stopping redis-server: redis-server.
+Starting redis-server: redis-server.
+(integer) 1
+root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
+</code></pre><p>Start a second interactive session by listing the running containers and
+starting bash in the current one:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker exec -it 743a13d9862c bash
+</span></span><span style="display:flex;"><span>root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# python3 /tmp/exploit.py
+</span></span></code></pre></div><p>You should observe a segmentation fault in your first session when you
+run <code>dhcp6relay</code>:</p>
+<pre tabindex="0"><code class="language-docker-bash" data-lang="docker-bash">root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
+Segmentation fault
+</code></pre><p>To perform a quick triage of the crash, debug <code>dhcp6relay</code> using <code>gdb</code> , run the program on <code>gdb</code> with <code>run</code> command and check where the <strong>vulnerability</strong> appears with <code>backtrace</code>.<br>
+Reviewing each step in discovering <code>CVE-2022-0324</code> demonstrated the <strong>key</strong> principle of selection in the <strong>sink-to-source</strong> tactic.</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/posts/from-day0-to-0day-chapter-0/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>From Day 0 to 0day Chapter 0</a>
+        
+	    
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#taint-analysis">Taint Analysis</a>
+      <ul>
+        <li><a href="#buffer-overflow">Buffer Overflow</a></li>
+        <li><a href="#applying-taint-analysis">Applying Taint Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#sink-to-source-analysis">Sink-to-Source Analysis</a>
+      <ul>
+        <li><a href="#summary-0">Summary 0</a></li>
+        <li><a href="#choosing-the-right-sinks">Choosing the Right Sinks</a></li>
+        <li><a href="#filtering-for-exploitable-scenarios">Filtering for Exploitable Scenarios</a></li>
+        <li><a href="#confirming-exploitability">Confirming Exploitability</a></li>
+        <li><a href="#identifying-an-attacker-controlled-source">Identifying an Attacker-Controlled Source</a></li>
+      </ul>
+    </li>
+    <li><a href="#confirming-a-reachable-attack-surface">Confirming a Reachable Attack Surface</a></li>
+    <li><a href="#testing-the-exploit">Testing the Exploit</a>
+      <ul>
+        <li><a href="#first-problem">First problem</a></li>
+        <li><a href="#second-problem">Second Problem</a></li>
+        <li><a href="#third-problem">Third Problem</a></li>
+        <li><a href="#setup-">Setup ?</a></li>
+      </ul>
+    </li>
+    <li><a href="#building-the-proof-of-concept">Building the Proof of Concept</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

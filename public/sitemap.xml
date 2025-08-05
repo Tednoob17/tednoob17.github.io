@@ -2,26 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/posts/from-day0-to-0day-chapter-0/</loc>
+    <loc>http://localhost:1313/posts/from-day0-to-0day-chapter-1/</loc>
+    <lastmod>2025-08-03T00:10:42+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-08-03T00:10:42+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-08-03T00:10:42+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/from-day0-to-0day-chapter-0/</loc>
     <lastmod>2025-07-15T00:37:02+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/</loc>
-    <lastmod>2025-07-15T00:37:02+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/</loc>
-    <lastmod>2025-07-15T00:37:02+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/about/about/</loc>
+    <loc>http://localhost:1313/about/about/</loc>
     <lastmod>2025-07-15T00:14:33+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-07-15T00:14:33+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/my-first-post/</loc>
+    <loc>http://localhost:1313/friends/</loc>
     <lastmod>2025-07-15T00:10:53+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>http://localhost:1313/friends/friends/</loc>
+    <lastmod>2025-07-15T00:10:53+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/posts/my-first-post/</loc>
+    <lastmod>2025-07-15T00:10:53+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>

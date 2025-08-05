@@ -18,6 +18,7 @@ theme = 'poison'
 	menu = [
     	    {Name = "About", URL = "/about/", HasChildren = false},
         	{Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = true, Limit = 5},
+        	{Name = "Friends", URL = "/friends/", HasChrildren = false},
     ]
 
 	discord_url = "https://discordapp.com/users/851383994317799445"
@@ -64,3 +65,6 @@ theme = 'poison'
     table_border_color_dark = "#515151"             # default is #515151
     table_stripe_color_dark = "#202020"             # default is #202020
     text_color_dark = "#EEE"                        # default is #EEE
+[[module.mounts]]
+source = 'images'
+target = 'static/images'
