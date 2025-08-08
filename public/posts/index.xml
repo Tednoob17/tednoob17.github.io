@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Ted Regis Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Aug 2025 00:10:42 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 Aug 2025 00:22:36 +1300</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Day 0 to 0day Chapter 2</title>
+      <link>http://localhost:1313/posts/from-day0-to-0day-chapter-2/</link>
+      <pubDate>Wed, 06 Aug 2025 00:22:36 +1300</pubDate>
+      <guid>http://localhost:1313/posts/from-day0-to-0day-chapter-2/</guid>
+      <description>MAPPING CODE TO ATTACK SURFACE Once we know where we are, then the world becomes as narrow as a map.&#xA;When we don’t know, the world feels unlimited. Liu Cixin, The Dark Forest&#xA;Introduction Attack surface (the potential entry points to exploit a vulnerability) going often with the growing of complexity of software.&#xA;The vulnerabilities to be introduced, as developers’ capacity to properly secure these feature is limited and mistakes are inevitable when dealing with millions of lines of code.</description>
+    </item>
     <item>
       <title>From Day 0 to 0day Chapter 1</title>
       <link>http://localhost:1313/posts/from-day0-to-0day-chapter-1/</link>
@@ -21,13 +28,6 @@
       <pubDate>Tue, 15 Jul 2025 00:37:02 +0100</pubDate>
       <guid>http://localhost:1313/posts/from-day0-to-0day-chapter-0/</guid>
       <description>Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book From Day Zerp to Zero Day written by Eugene &amp;ldquo;Spaceraccoon&amp;rdquo; Lim a security researcher and white-hat hacker.&#xA;He learned rapidly because his first training was in how to learn. - Frank Herbert, Dune.&#xA;With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems for new vulnerabilities, has zero to zero assumed a critical role in cybersecurity.</description>
-    </item>
-    <item>
-      <title>My First Post</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Tue, 15 Jul 2025 00:10:53 +0100</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>Introduction Hi everyone this is my first post, it&amp;rsquo;s just a example</description>
     </item>
   </channel>
 </rss>

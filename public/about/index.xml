@@ -6,14 +6,14 @@
     <description>Recent content in Abouts on Ted Regis Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Jul 2025 00:14:33 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 08 Aug 2025 01:19:25 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/about/</link>
-      <pubDate>Tue, 15 Jul 2025 00:14:33 +0100</pubDate>
-      <guid>http://localhost:1313/about/about/</guid>
-      <description>Introduction Intro about me yes i know i&amp;rsquo;m noob in infosec and i&amp;rsquo;m not legitimate without certification or job or cve or 0day. But one day a got of these things + a awesome a beautiful wife.</description>
+      <title>Whoami</title>
+      <link>http://localhost:1313/about/whoami/</link>
+      <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
+      <guid>http://localhost:1313/about/whoami/</guid>
+      <description>I&amp;rsquo;m Ted Regis aka Tedsig42, a young Cybersecurity Enthisiast, CTF player, music lover, drawer. I spend any of my free time on Web Security Reseach . I play CTF and collaborate with @TheBugsReapers Vulnerability Researcher / Bug Hunter team .&#xA;I strive to provide as much information as I can about what I have learned on my blog tedsig42.re, which encompasses CTF writeups, research projects, and more.&#xA;PDF Resume here: English</description>
     </item>
   </channel>
 </rss>

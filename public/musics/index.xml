@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Musics on Ted Regis Site</title>
+    <link>http://localhost:1313/musics/</link>
+    <description>Recent content in Musics on Ted Regis Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Aug 2025 01:20:42 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/musics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Newwave Rap Fr</title>
+      <link>http://localhost:1313/musics/newwave-rap-fr/</link>
+      <pubDate>Fri, 08 Aug 2025 01:20:42 +0200</pubDate>
+      <guid>http://localhost:1313/musics/newwave-rap-fr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Creamland</title>
+      <link>http://localhost:1313/musics/creamland/</link>
+      <pubDate>Fri, 08 Aug 2025 01:20:30 +0200</pubDate>
+      <guid>http://localhost:1313/musics/creamland/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

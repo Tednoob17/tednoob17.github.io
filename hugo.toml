@@ -7,18 +7,26 @@ theme = 'poison'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+  [caches.assets]
+	dir = ':cacheDir/assets'
 
 [params]
 	brand = "Tedsig42"
-	remote_brand_image = 'https://0xswitch.fr//static/img/gif/main-3.gif'
-	description = 'A another infosec passionate blog'
-	favicon = "https://0xswitch.fr//static/img/gif/main-1.gif"
+	remote_brand_image = '/images/gif/main-5.gif'
+	description = 'Another infosec enthusiast blog'
+	favicon = "/images/gif/main-1.gif"
 	dark_mode = true
 	front_page_content = ["posts", "about"]
 	menu = [
     	    {Name = "About", URL = "/about/", HasChildren = false},
-        	{Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = true, Limit = 5},
+        	{Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = false},
         	{Name = "Friends", URL = "/friends/", HasChrildren = false},
+        	{Name = "Music", URL = "/music/", HasChildren = false},
+        	{Name = "Arts", URL = "/arts/", HasChildren = false},
+        	{Name = "Book", URL = "/book/", HasChildren = false},
+        	{Name = "Mode", URL = "/mode/", HasChildren = false},
+        	{Name = "Reference", URL = "/reference/", HasChildren = false},
+        	{Name = "Trip", URL = "/trip/", HasChildren = false},
     ]
 
 	discord_url = "https://discordapp.com/users/851383994317799445"
