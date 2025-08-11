@@ -6,7 +6,7 @@ author = 'Tedsig42'
 +++
 
 ![alt](/images/stc/fd0t0d.png)
-Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book **From Day Zerp to Zero Day**
+Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book **[From Day Zerp to Zero Day](https://nostarch.com/zero-day)**
 written by Eugene "[Spaceraccoon](https://x.com/spaceraccoonsec)" Lim a security researcher and white-hat hacker.
 
 **He learned rapidly because his first training was in how to learn.** - `Frank Herbert, Dune`.
