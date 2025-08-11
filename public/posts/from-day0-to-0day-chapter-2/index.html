@@ -1027,6 +1027,46 @@ they are published by <a href="https://www.ietf.org" target="_blank">IETF</a> (I
 <strong>data structures</strong> and the <strong>procedures</strong>.</p>
 <h3 id="data-structures">Data Structures</h3>
 <p>The <strong>data structures</strong> define how <strong>data</strong> is <strong>formatted and parsed in a network</strong> protocol.</p>
+<ul>
+<li>Exemple:<br>
+When you check  <code>AgentX</code>(Agent Extensibility Protocol) who is <strong>a networking protocol that enables a single SNMP master agent to manage multiple subagents</strong></li>
+</ul>
+<p>It was inplemented on <a href="https://github.com/sonic-net/sonic-snmpagent/blob/4622b8df01e6cfa818568b5a78a1a56ab555097d/src/ax_interface/pdu.py" target="_blank">sonic-snmpagent</a>  and documented in <a href="https://www.ietf.org/rfc/rfc2741.txt" target="_blank">RFC 2741</a>
+The &ldquo;<strong>Protocol Definition</strong>&rdquo; section defines the <code>AgentX</code> <strong>protocol data unit</strong> (PDU) header.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">6.</span> Protocol Definitions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>6.1. AgentX PDU Header
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   The AgentX PDU header is a fixed-format, 20-octet structure:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |   h.version   |    h.type     |    h.flags    |  &lt;<span style="color:#f92672">reserved</span>&gt;   |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                          h.sessionID                          |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                        h.transactionID                        |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                          h.packetID                           |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                        h.payload_length                       |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   An AgentX PDU header contains the following fields
+</span></span></code></pre></div><p>The maintainer define a <code>PDUHeaderTags class</code> with a <code>from_bytes</code> :</p>
+<blockquote>
+<p><code>sonic-snmpagent/src/ax_interface/pdu.py</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PDUHeaderTags</span>(namedtuple(<span style="color:#e6db74">&#39;_PDUHeaderTags&#39;</span>, (<span style="color:#e6db74">&#39;version&#39;</span>, <span style="color:#e6db74">&#39;type_&#39;</span>, <span style="color:#e6db74">&#39;flags&#39;</span>, <span style="color:#e6db74">&#39;reserved&#39;</span>))):
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">--</span>snip<span style="color:#f92672">--</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@classmethod</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_bytes</span>(cls, byte_string):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> cls(
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">*</span>struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;!BBBB&#39;</span>, byte_string[:<span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>		)
+</span></span></code></pre></div><p>Here is use <code>!BBBB</code> , mean that the <strong>bytes or octet</strong> should be interpreted in <strong>network byte order</strong> (<strong><a href="https://en.wikipedia.org/wiki/Endianness" target="_blank">big-endian</a></strong>) as four <strong>1-byte unsigned chars</strong>.</p>
+<p><img src="/images/stc/endianess-1.png" alt="alt"></p>
 
   
   <hr>

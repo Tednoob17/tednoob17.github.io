@@ -559,12 +559,53 @@ When reviewing **code for a protocol**, focus on **two main features**: the
 
 The **data structures** define how **data** is **formatted and parsed in a network** protocol.
 
+- Exemple:   
+When you check  `AgentX`(Agent Extensibility Protocol) who is **a networking protocol that enables a single SNMP master agent to manage multiple subagents**
+
+It was inplemented on [sonic-snmpagent](https://github.com/sonic-net/sonic-snmpagent/blob/4622b8df01e6cfa818568b5a78a1a56ab555097d/src/ax_interface/pdu.py)  and documented in [RFC 2741](https://www.ietf.org/rfc/rfc2741.txt)
+The "**Protocol Definition**" section defines the `AgentX` **protocol data unit** (PDU) header.
+
+```md
 
 
+6. Protocol Definitions
+
+6.1. AgentX PDU Header
+
+   The AgentX PDU header is a fixed-format, 20-octet structure:
+
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |   h.version   |    h.type     |    h.flags    |  <reserved>   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                          h.sessionID                          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        h.transactionID                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                          h.packetID                           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        h.payload_length                       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   An AgentX PDU header contains the following fields
+```
+
+The maintainer define a `PDUHeaderTags class` with a `from_bytes` :
+
+> `sonic-snmpagent/src/ax_interface/pdu.py`
 
 
+```python
+class PDUHeaderTags(namedtuple('_PDUHeaderTags', ('version', 'type_', 'flags', 'reserved'))):
+	--snip--
+	@classmethod
+	def from_bytes(cls, byte_string):
+		return cls(
+			*struct.unpack('!BBBB', byte_string[:4])
+		)
+```
+Here is use `!BBBB` , mean that the **bytes or octet** should be interpreted in **network byte order** (**[big-endian](https://en.wikipedia.org/wiki/Endianness)**) as four **1-byte unsigned chars**.
 
-
+![alt](/images/stc/endianess-1.png)
 
 
 
