@@ -1,6 +1,6 @@
 +++
 title = 'From Day 0 to 0day Chapter 2'
-description = 'Description of my first blog'
+description = 'Recap of chap 2'
 date = 2025-08-06T00:22:36+13:00
 author = 'Tedsig42'
 draft = true
@@ -23,7 +23,7 @@ Minor issues can be **chained** together into far more serious **vulnerabilities
 
 For example :
 - Microsoft Excel handles not only Excel workbook file format (`.xls`, `.xlsx`, `.xlsm`, `.xls`) but also Symbolic Link (`.slk`), dBase (`.dbf`), Data Interchange
-Format (`.dif` ), and more.
+Format (`.dif`), and more.
 And these are just **file input vectors**; you also have
 to worry about **[inter-process](https://www.geeksforgeeks.org/operating-systems/inter-process-communication-ipc/)** communication and other network vectors (Inter-Process Communication or IPC is a mechanism that allows processes to **communicate**. It helps processes **synchronize their activities**, **share information**, and **avoid conflicts** while accessing **shared resources**.).    
 For example, another process may control Excel via **[Component Object Model](https://learn.microsoft.com/en-us/windows/win32/com/component-object-model--com--portal)**
@@ -567,7 +567,6 @@ The "**Protocol Definition**" section defines the `AgentX` **protocol data unit*
 
 ```md
 
-
 6. Protocol Definitions
 
 6.1. AgentX PDU Header
@@ -595,7 +594,8 @@ The maintainer define a `PDUHeaderTags class` with a `from_bytes` :
 
 
 ```python
-class PDUHeaderTags(namedtuple('_PDUHeaderTags', ('version', 'type_', 'flags', 'reserved'))):
+class PDUHeaderTags(namedtuple('_PDUHeaderTags', ('version', 'type_', 
+							'flags', 'reserved'))):
 	--snip--
 	@classmethod
 	def from_bytes(cls, byte_string):
@@ -604,16 +604,20 @@ class PDUHeaderTags(namedtuple('_PDUHeaderTags', ('version', 'type_', 'flags', '
 		)
 ```
 Here is use `!BBBB` , mean that the **bytes or octet** should be interpreted in **network byte order** (**[big-endian](https://en.wikipedia.org/wiki/Endianness)**) as four **1-byte unsigned chars**.
+The `PDUHeaderTags` instance respect the descriptions in the **RFC**, if the differences between the implementation and
+of **data stuctures** (in the `code`) and the **expected format** required the **vulnerabilities can occurs**.
 
 ![alt](/images/stc/endianess-1.png)
 
 
+Ex :
+In `dhcpv6relay` protocol implentation the `option->option_length` variable is parsed like a **unsigned 16 bit integer** (`short` type) who normaly have `65635` for maximum value.
+before using it as **number of bytes** to copy into a fixed buffer of size `4096`.
 
 
-
-
-
-
+### Procedures
+A **network protocol’s** procedures define the rules and conventions of communication.
+These procedures include the expected order and actions taken by clients or servers.
 
 
 

@@ -64,10 +64,10 @@
 <meta property="og:site_name" content="Ted Regis Site" />
 
 
-<meta name="description" content="Description of my first blog" />
-<meta itemprop="description" content="Description of my first blog" />
-<meta property="og:description" content="Description of my first blog" />
-<meta name="twitter:description" content="Description of my first blog" />
+<meta name="description" content="Recap of chap 2" />
+<meta itemprop="description" content="Recap of chap 2" />
+<meta property="og:description" content="Recap of chap 2" />
+<meta name="twitter:description" content="Recap of chap 2" />
 
 
 <base href="http://localhost:1313/posts/from-day0-to-0day-chapter-2/" />
@@ -519,7 +519,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>15 mins read</span>
+        <span>16 mins read</span>
       </span>
     </div>
 
@@ -546,7 +546,7 @@ Minor issues can be <strong>chained</strong> together into far more serious <str
 <p>For example :</p>
 <ul>
 <li>Microsoft Excel handles not only Excel workbook file format (<code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xls</code>) but also Symbolic Link (<code>.slk</code>), dBase (<code>.dbf</code>), Data Interchange
-Format (<code>.dif</code> ), and more.
+Format (<code>.dif</code>), and more.
 And these are just <strong>file input vectors</strong>; you also have
 to worry about <strong><a href="https://www.geeksforgeeks.org/operating-systems/inter-process-communication-ipc/" target="_blank">inter-process</a></strong> communication and other network vectors (Inter-Process Communication or IPC is a mechanism that allows processes to <strong>communicate</strong>. It helps processes <strong>synchronize their activities</strong>, <strong>share information</strong>, and <strong>avoid conflicts</strong> while accessing <strong>shared resources</strong>.). <br>
 For example, another process may control Excel via <strong><a href="https://learn.microsoft.com/en-us/windows/win32/com/component-object-model--com--portal" target="_blank">Component Object Model</a></strong>
@@ -1034,7 +1034,6 @@ When you check  <code>AgentX</code>(Agent Extensibility Protocol) who is <strong
 <p>It was inplemented on <a href="https://github.com/sonic-net/sonic-snmpagent/blob/4622b8df01e6cfa818568b5a78a1a56ab555097d/src/ax_interface/pdu.py" target="_blank">sonic-snmpagent</a>  and documented in <a href="https://www.ietf.org/rfc/rfc2741.txt" target="_blank">RFC 2741</a>
 The &ldquo;<strong>Protocol Definition</strong>&rdquo; section defines the <code>AgentX</code> <strong>protocol data unit</strong> (PDU) header.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">6.</span> Protocol Definitions
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>6.1. AgentX PDU Header
@@ -1058,15 +1057,24 @@ The &ldquo;<strong>Protocol Definition</strong>&rdquo; section defines the <code
 <blockquote>
 <p><code>sonic-snmpagent/src/ax_interface/pdu.py</code></p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PDUHeaderTags</span>(namedtuple(<span style="color:#e6db74">&#39;_PDUHeaderTags&#39;</span>, (<span style="color:#e6db74">&#39;version&#39;</span>, <span style="color:#e6db74">&#39;type_&#39;</span>, <span style="color:#e6db74">&#39;flags&#39;</span>, <span style="color:#e6db74">&#39;reserved&#39;</span>))):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PDUHeaderTags</span>(namedtuple(<span style="color:#e6db74">&#39;_PDUHeaderTags&#39;</span>, (<span style="color:#e6db74">&#39;version&#39;</span>, <span style="color:#e6db74">&#39;type_&#39;</span>, 
+</span></span><span style="display:flex;"><span>							<span style="color:#e6db74">&#39;flags&#39;</span>, <span style="color:#e6db74">&#39;reserved&#39;</span>))):
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">--</span>snip<span style="color:#f92672">--</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@classmethod</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_bytes</span>(cls, byte_string):
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> cls(
 </span></span><span style="display:flex;"><span>			<span style="color:#f92672">*</span>struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;!BBBB&#39;</span>, byte_string[:<span style="color:#ae81ff">4</span>])
 </span></span><span style="display:flex;"><span>		)
-</span></span></code></pre></div><p>Here is use <code>!BBBB</code> , mean that the <strong>bytes or octet</strong> should be interpreted in <strong>network byte order</strong> (<strong><a href="https://en.wikipedia.org/wiki/Endianness" target="_blank">big-endian</a></strong>) as four <strong>1-byte unsigned chars</strong>.</p>
+</span></span></code></pre></div><p>Here is use <code>!BBBB</code> , mean that the <strong>bytes or octet</strong> should be interpreted in <strong>network byte order</strong> (<strong><a href="https://en.wikipedia.org/wiki/Endianness" target="_blank">big-endian</a></strong>) as four <strong>1-byte unsigned chars</strong>.
+The <code>PDUHeaderTags</code> instance respect the descriptions in the <strong>RFC</strong>, if the differences between the implementation and
+of <strong>data stuctures</strong> (in the <code>code</code>) and the <strong>expected format</strong> required the <strong>vulnerabilities can occurs</strong>.</p>
 <p><img src="/images/stc/endianess-1.png" alt="alt"></p>
+<p>Ex :
+In <code>dhcpv6relay</code> protocol implentation the <code>option-&gt;option_length</code> variable is parsed like a <strong>unsigned 16 bit integer</strong> (<code>short</code> type) who normaly have <code>65635</code> for maximum value.
+before using it as <strong>number of bytes</strong> to copy into a fixed buffer of size <code>4096</code>.</p>
+<h3 id="procedures">Procedures</h3>
+<p>A <strong>network protocol’s</strong> procedures define the rules and conventions of communication.
+These procedures include the expected order and actions taken by clients or servers.</p>
 
   
   <hr>
@@ -1105,6 +1113,7 @@ The &ldquo;<strong>Protocol Definition</strong>&rdquo; section defines the <code
     <li><a href="#network-protocols">Network Protocols</a>
       <ul>
         <li><a href="#data-structures">Data Structures</a></li>
+        <li><a href="#procedures">Procedures</a></li>
       </ul>
     </li>
   </ul>
