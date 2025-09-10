@@ -519,7 +519,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>16 mins read</span>
+        <span>23 mins read</span>
       </span>
     </div>
 
@@ -1075,6 +1075,178 @@ before using it as <strong>number of bytes</strong> to copy into a fixed buffer 
 <h3 id="procedures">Procedures</h3>
 <p>A <strong>network protocol’s</strong> procedures define the rules and conventions of communication.
 These procedures include the expected order and actions taken by clients or servers.</p>
+<p>When a <code>data structures</code> vulnerability lead to <strong>memory corruption</strong> issues, <code>procedures</code> problems do to <strong>higher-level business logic</strong>
+such as <strong>authentication and authorization</strong>.</p>
+<p>Knowing <strong>what constitutes a security boundary</strong> in a <strong>network protocol</strong> is
+<strong>necessary</strong> to correctly <strong>identify a business logic vulnerability</strong>.</p>
+<p>Exemple of procedures :</p>
+<ul>
+<li><strong>Handshaking:</strong> <em>Initially</em> <strong>exchanging messages</strong> in order to <strong>establish communication</strong>.</li>
+<li><strong>Session management:</strong> <strong>Tracking individual sessions</strong> between the two entities.</li>
+<li><strong>State management:</strong> <strong>Controlling the state</strong> of an individual session.</li>
+<li><strong>Flow control:</strong> Managing the <strong>rate and order of data transmission</strong>.</li>
+<li><strong>Error handling:</strong> Performing <strong>recovery or termination</strong> from <strong>invalid data</strong>.</li>
+<li><strong>Encryption:</strong> Ensuring the <strong>privacy</strong>, <strong>authenticity</strong>, and <strong>integrity</strong> of communication.</li>
+<li><strong>Session termination:</strong> Performing <strong>teardown</strong> and <strong>cleanup</strong> of the <strong>session</strong> in an orderly manner.</li>
+</ul>
+<p>YOu can see by example of <strong>procedures</strong> describes in any rfc like <code>rfc 2741</code> in section <code>7</code> (<code>Elements of Pro- cedure.</code>)</p>
+<h3 id="local-attack-surface">Local Attack Surface</h3>
+<p>Network Protocols like (<code>TCP</code>, <code>UDP</code>, <code>SCTP</code>) deal with <strong>communication between different machines</strong> (over the <strong>internet</strong> or <strong>local network</strong>).
+When program or <strong>different part</strong> of the <strong>same program running on your computer</strong> <code>IPC</code> is the way these <strong>different programs</strong>  can talk to <strong>each other and share information</strong>
+on that <strong>one computer</strong>. <code>IPC</code>  can happen <strong>between</strong> different <strong>processes</strong> or between <strong>threads</strong> within the same process.
+Network protocols are for computers talking to other computers, while IPC is for programs talking to each other on the same computer.</p>
+<p><code>AgentX</code> can operate over the network and via <code>IPC</code>.
+<strong>the attacker’s perspective</strong>, <strong>network transport protocols</strong> expose
+a <strong>remote attack vector</strong>, while <strong>local transport protocols</strong> expose a (<strong>surprise!</strong>) <strong>local attack vector</strong>.
+Why ? Because <code>AgentX</code> <strong>subagents</strong> to communicate with the <strong>master agent</strong> on the <strong>same host</strong>, <code>RFC 2741</code> suggests local mechanisms such as shared memory,
+<strong>named pipes</strong>, and <strong>sockets</strong>. This opens up a whole new attack surface for the
+<strong>same protocol</strong>.</p>
+<h3 id="-files-in-inter-process-communication">&gt; Files in Inter-Process Communication</h3>
+<p>From sockets to devices, developers can expose many input/output resources
+using files to provide a common set of channels to work with.</p>
+<p>When you <code>IPC</code> file exchange or file to exchange data between two process, the disk I/O is required for some action.</p>
+<p>One exemple for this is to use <code>lock files</code> who indicates that a <strong>another process</strong> used this file, it can help to
+prevent that <strong>multiple instance</strong> of the <strong>same file</strong> was running.
+Real exemple is when you use editor like <strong>vim</strong> in two different terminal to modify a file, it show you a <strong>warning</strong>
+showing you that another process already used this file (but here <code>vim</code> used <code>.swap</code> for temporary save data).</p>
+<ul>
+<li>Real life example: Exploiting a Hardcoded Path in Apport</li>
+</ul>
+<p>One <strong>implementation</strong> of <strong>lock files</strong> led to an interesting <strong>privilege escalation vulnerability</strong>
+<code>(CVE-2020-8831)</code> in <strong>Ubuntu</strong> via the <code>Apport</code> program.
+The code causing this vulnerability lay in the <a href="https://github.com/canonical/apport/blob/44a97a8/data/apport" target="_blank">check_lock</a>,
+function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_lock</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;&#39;&#39;Abort if another instance of apport is already running.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	This avoids bringing down the system to its knees if there is a series of
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	crashes.&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># create lock file directory</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>		os<span style="color:#f92672">.</span>mkdir(<span style="color:#e6db74">&#34;/var/lock/apport&#34;</span>, mode<span style="color:#f92672">=</span><span style="color:#ae81ff">0o744</span>) <span style="color:#f92672">//</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">FileExistsError</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># create a lock file</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>		fd <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;/var/lock/apport/lock&#34;</span>, os<span style="color:#f92672">.</span>O_WRONLY <span style="color:#f92672">|</span> os<span style="color:#f92672">.</span>O_CREAT <span style="color:#f92672">|</span> os<span style="color:#f92672">.</span>O_NOFOLLOW) <span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">OSError</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>		error_log(<span style="color:#e6db74">&#39;cannot create lock file (uid </span><span style="color:#e6db74">%i</span><span style="color:#e6db74">): </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (os<span style="color:#f92672">.</span>getuid(), str(e)))
+</span></span><span style="display:flex;"><span>		sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">error_running</span>(<span style="color:#f92672">*</span>args):
+</span></span><span style="display:flex;"><span>	error_log(<span style="color:#e6db74">&#39;another apport instance is already running, aborting&#39;</span>)
+</span></span><span style="display:flex;"><span>	sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>original_handler <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>signal(signal<span style="color:#f92672">.</span>SIGALRM, error_running)
+</span></span><span style="display:flex;"><span>signal<span style="color:#f92672">.</span>alarm(<span style="color:#ae81ff">30</span>) <span style="color:#75715e"># timeout after that many seconds</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>	fcntl<span style="color:#f92672">.</span>lockf(fd, fcntl<span style="color:#f92672">.</span>LOCK_EX) <span style="color:#f92672">//</span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">IOError</span>:
+</span></span><span style="display:flex;"><span>	error_running()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>	signal<span style="color:#f92672">.</span>alarm(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	signal<span style="color:#f92672">.</span>signal(signal<span style="color:#f92672">.</span>SIGALRM, original_handler)
+</span></span></code></pre></div><ul>
+<li>In <code>check_lock</code> function the lock file in create if doesn&rsquo;t exit (<code>//1</code>).</li>
+<li>After it trying to acquire a lock file using a POSIX compliant API call who allow developers to implement lock files
+in a more standized way. (<code>//3</code>).</li>
+<li><code>O_NOFOLLOW</code> : In <code>man 2 open</code> it describe that &ldquo;If the <strong>trailing component</strong> (i.e., basename) of pathname is  a  <strong>symbolic  link</strong>,
+then  the open fails, with the error <code>ELOOP</code>.  <strong>Symbolic links</strong> in earlier <strong>components of the pathname</strong> will still be <strong>followed</strong>.&rdquo;
+So with the hardcoded path  <code>/var/lock/apport/lock</code> who have <code>lock</code> like <strong>basename</strong>, an <strong>attacker</strong> could use a symlink to redirect the program
+to <strong>read from or write to</strong> a <strong>different destination</strong> that the program has access to.</li>
+</ul>
+<p>This is the problem: if any other component in 	<code>/var/lock/apport/lock</code>
+other than <strong>lock</strong> is a symlink, Apport will still happily follow it. In the case of
+Ubuntu, <code>/var/lock</code> is a symlink to <code>/run/lock</code>, which is <strong>readable and writable</strong> by
+all users. As such, an <strong>attacker</strong> can create a <strong>symlink</strong> at <code>/var/lock/apport</code> pointing
+to any other directory, and if <code>Apport</code> runs afterward, it will create a <strong>lock
+file</strong> in the <strong>attacker-controlled</strong> destination.</p>
+<h3 id="-sockets">&gt; Sockets</h3>
+<p>A <strong>socket</strong> is an <strong>endpoint that allows communication between processes</strong>.
+It a one of the <strong>more common IPC channels</strong> and hence present a rich <strong>source of potential attack vectors</strong>.</p>
+<p><strong>Unix OS</strong> support <strong>Unix domain sockets</strong> (<code>UDS</code>s), a local variant (<code>TCP</code>, <code>UDP</code>, <code>SCTP</code>), but UDS don&rsquo;t take care of protocol layer and run fast.
+The socket respect the &ldquo;<strong>everything is file</strong>&rdquo; Unix philosophy so expose a <code>UDS</code>s in a <strong>filesystem pathname</strong> can lead to <strong>namespaces hijacking</strong>
+or <strong>access control</strong> due to <strong>inappropriate file permissions</strong>.<br>
+Ex : A <code>CVE-2022-21950</code> was a <strong>vulnerability</strong> in <strong>Canna</strong>, a Japanese Kana–Kanji
+server, that arose from the <strong>hardcoded directory</strong> <code>/tmp/.iroha_unix</code> containing
+the <code>UDS</code> used by <strong>Canna</strong> in <code>openSUSE</code> OS.</p>
+<h3 id="-named-pipes">&gt; Named Pipes</h3>
+<p><strong>Named pipes</strong> are another means by which <strong>processes</strong> can <strong>communicate</strong> using a <strong>file-like</strong> paradigm.
+However, on <strong>Windows</strong>, <strong>named pipes</strong> have their own
+<strong>access control model</strong> separate from the <strong>default filesystem</strong>, creating an <strong>additional layer</strong> of potential <strong>authorization</strong> issues.</p>
+<p>Take, for example, a <strong>high-privileged program</strong> that creates a <strong>named pipe</strong>
+server and client for <code>IPC</code>. If a <strong>low-privileged attacker</strong> creates the <strong>named pipe</strong>
+server <strong>before the program does</strong>, it could potentially <strong>intercept messages</strong> from
+the <strong>client</strong>.
+Worse, if the <strong>client</strong> makes use of the server’s responses to <strong>execute
+actions</strong> such as <strong>running commands</strong>, it could lead to <strong>privilege escalation</strong>.</p>
+<p>This was the case for <code>CVE-2022-21893</code>, a <strong>privilege escalation</strong> exploit in <strong>Windows Remote Desktop</strong>
+Mapping <strong>Code to Attack</strong> Surface Services (<code>RDS</code>) that <strong>allowed</strong> an attacker to <strong>intercept the messages</strong> of <code>RDS</code>
+<strong>named pipe</strong> <code>IPC</code>.</p>
+<h3 id="-other-ipc-methods">&gt; Other IPC Methods</h3>
+<p>The number of <code>IPC</code> <strong>methods</strong> is constantly growing as <strong>operating systems</strong> and
+<strong>third-party software</strong> add <strong>features</strong>. The following is a <strong>nonexhaustive</strong> list:</p>
+<ul>
+<li>Shared memory</li>
+<li>System signal</li>
+<li>Message queue</li>
+<li>Memory-mapped file</li>
+<li>Remote procedure call</li>
+<li>Component Object Model (COM, Windows only)</li>
+<li>Dynamic Data Exchange (DDE, Windows only)</li>
+<li>Clipboard</li>
+<li>D-Bus (Linux only)</li>
+<li>MailSlot (Windows only)</li>
+</ul>
+<p>Developers use these <code>APIs</code> in <strong>creative</strong> (and potentially <strong>insecure</strong>) ways.</p>
+<h3 id="file-formats">File Formats</h3>
+<p>Almost all software needs to <strong>handle files</strong>. From newline-delimited configuration files to video clips, we encode data in a variety of formats. Like <strong>protocols</strong>, <strong>file formats</strong> require software to <strong>parse</strong> <strong>data structures</strong> in a standard manner.
+Many <strong>file formats</strong> are <strong>documented</strong> in <code>RFC</code>s, but <strong>proprietary or older
+formats</strong> may require more digging.
+For example, <strong>file formats</strong> are often <strong>roughly divided into three parts</strong>:</p>
+<ul>
+<li><strong>Header:</strong> Appears at the start of the file and usually <strong>begins</strong> with a set of
+<strong>unique bytes</strong> so software can <strong>identify</strong> the file format.</li>
+<li><strong>Body:</strong> Contains the main data associated with the <strong>format</strong>, often grouped
+into <strong>chunks</strong> for software to parse easily.</li>
+<li><strong>Footer:</strong> Contains additional <strong>metadata</strong>, such as <strong>checksums</strong> to ensure
+<strong>data integrity</strong>.</li>
+</ul>
+<p>Other formats <strong>diverge</strong> even further from the <strong>header-body-footer</strong> pattern, such as <strong>directory-based</strong> formats, which <strong>organize data</strong> into multiplefiles within a <strong>directory structure</strong>.</p>
+<p>For example, <strong>Microsoft Office</strong> documents (such as .docx and .pptx files) are essentially <strong>ZIP</strong> containing
+<strong>resource and metadata</strong> files such as <code>XML</code> <strong>documents</strong>, <strong>images</strong>, and so on.</p>
+<h3 id="-typelengthvalue">&gt; Type–Length–Value</h3>
+<p>The <strong>type–length–value</strong> (<code>TLV</code>) pattern <strong>occurs</strong> in both <strong>protocols and file formats</strong>. We use <code>TLV</code> for <strong>chunked data</strong> in the body because its <strong>structure</strong> allows
+a parser to <strong>easily identify</strong> and consume <strong>chunks of variable length</strong>.</p>
+<h3 id="-directory-based">&gt; Directory-Based</h3>
+<p>A significant subset of <strong>file formats</strong> are <strong>directory-based</strong>, meaning the file is actually a <strong>wrapper</strong> around many other files.
+Like <code>ZIP</code>, <code>DEB</code> .
+Typically, <strong>directory-based formats</strong>
+require a <strong>manifest</strong> (<code>manifest.xml</code>) that <strong>contains additional metadata</strong> about the rest of the
+files, including where they’re located. This pattern <strong>tends to expose two types
+of vulnerabilities</strong>, related to <strong>file traversal</strong> and <strong>child format.</strong></p>
+<ul>
+<li><strong>File traversal</strong> occurs if the software <strong>insecurely parses</strong> the directory data.
+A <strong>parser</strong> that <strong>trusts</strong> such a <strong>value</strong> could extract files into <strong>dangerous locations</strong>,
+such as <strong>cron job</strong> folders or <strong>application working directories</strong>.</li>
+<li><strong>Child format</strong>–related <strong>vulnerabilities</strong> occur because <strong>developers</strong> tend to
+<strong>focus on the parent directory–based</strong> format and <strong>delegate</strong> handling <strong>child
+file formats</strong> to external libraries, which may <strong>not parse</strong> securely by default.</li>
+</ul>
+<p>Sometimes, both types of vulnerabilities occur in the same software.
+<a href="https://spaceraccoon.dev/a-tale-of-two-formats-exploiting-insecure-xml-and-zip-file-parsers-to-create-a/" target="_blank">Example of vuln</a></p>
+<h3 id="custom-fields">Custom Fields</h3>
+<p>File formats often include <strong>reserved bytes</strong> or <strong>extendable fields</strong> that allow developers to add <strong>custom functionality</strong>.
+Sometimes, developers jerry-rig custom fields by parsing data differently
+from how a standard defines it.
+Thus, to indicate a stylesheet located at main.css, an HTML document could
+include the following element:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
+</span></span></code></pre></div><p>However, the <strong>WeasyPrint</strong> <code>HTML-to-PDF</code> conversion <strong>engine</strong> extends the function of <code>&lt;link&gt;</code> by supporting a <strong>custom attachment</strong>
+value for <code>rel</code> that doesn’t appear in the <strong>HTML standard</strong>. By using this value,
+a developer can include local files as <strong>attachments</strong> to the output PDF:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file:///etc/passwd&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;attachment&#34;</span>&gt;
+</span></span></code></pre></div><p>This is a <strong>feature</strong>, <strong>not a vulnerability in itself</strong>, but a developer that uses
+<strong>WeasyPrint</strong> without accounting for this behavior could introduce a <strong>vulnerability</strong> in their software.</p>
 
   
   <hr>
@@ -1114,6 +1286,15 @@ These procedures include the expected order and actions taken by clients or serv
       <ul>
         <li><a href="#data-structures">Data Structures</a></li>
         <li><a href="#procedures">Procedures</a></li>
+        <li><a href="#local-attack-surface">Local Attack Surface</a></li>
+        <li><a href="#-files-in-inter-process-communication">&gt; Files in Inter-Process Communication</a></li>
+        <li><a href="#-sockets">&gt; Sockets</a></li>
+        <li><a href="#-named-pipes">&gt; Named Pipes</a></li>
+        <li><a href="#-other-ipc-methods">&gt; Other IPC Methods</a></li>
+        <li><a href="#file-formats">File Formats</a></li>
+        <li><a href="#-typelengthvalue">&gt; Type–Length–Value</a></li>
+        <li><a href="#-directory-based">&gt; Directory-Based</a></li>
+        <li><a href="#custom-fields">Custom Fields</a></li>
       </ul>
     </li>
   </ul>

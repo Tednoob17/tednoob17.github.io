@@ -619,6 +619,249 @@ before using it as **number of bytes** to copy into a fixed buffer of size `4096
 A **network protocol’s** procedures define the rules and conventions of communication.
 These procedures include the expected order and actions taken by clients or servers.
 
+When a `data structures` vulnerability lead to **memory corruption** issues, `procedures` problems do to **higher-level business logic** 
+such as **authentication and authorization**.  
+
+Knowing **what constitutes a security boundary** in a **network protocol** is
+**necessary** to correctly **identify a business logic vulnerability**.
+
+Exemple of procedures :
+- **Handshaking:** *Initially* **exchanging messages** in order to **establish communication**.
+- **Session management:** **Tracking individual sessions** between the two entities.
+- **State management:** **Controlling the state** of an individual session.
+- **Flow control:** Managing the **rate and order of data transmission**.
+- **Error handling:** Performing **recovery or termination** from **invalid data**.
+- **Encryption:** Ensuring the **privacy**, **authenticity**, and **integrity** of communication.
+- **Session termination:** Performing **teardown** and **cleanup** of the **session** in an orderly manner.
+
+YOu can see by example of **procedures** describes in any rfc like `rfc 2741` in section `7` (`Elements of Pro-
+cedure.`)
+
+
+
+### Local Attack Surface
+Network Protocols like (`TCP`, `UDP`, `SCTP`) deal with **communication between different machines** (over the **internet** or **local network**).
+When program or **different part** of the **same program running on your computer** `IPC` is the way these **different programs**  can talk to **each other and share information** 
+on that **one computer**. `IPC`  can happen **between** different **processes** or between **threads** within the same process.
+Network protocols are for computers talking to other computers, while IPC is for programs talking to each other on the same computer.
+
+`AgentX` can operate over the network and via `IPC`.
+**the attacker’s perspective**, **network transport protocols** expose
+a **remote attack vector**, while **local transport protocols** expose a (**surprise!**) **local attack vector**.
+Why ? Because `AgentX` **subagents** to communicate with the **master agent** on the **same host**, `RFC 2741` suggests local mechanisms such as shared memory,
+**named pipes**, and **sockets**. This opens up a whole new attack surface for the
+**same protocol**.
+
+### > Files in Inter-Process Communication
+From sockets to devices, developers can expose many input/output resources
+using files to provide a common set of channels to work with.
+
+When you `IPC` file exchange or file to exchange data between two process, the disk I/O is required for some action.
+
+
+One exemple for this is to use `lock files` who indicates that a **another process** used this file, it can help to 
+prevent that **multiple instance** of the **same file** was running.
+Real exemple is when you use editor like **vim** in two different terminal to modify a file, it show you a **warning**
+showing you that another process already used this file (but here `vim` used `.swap` for temporary save data).
+
+
+- Real life example: Exploiting a Hardcoded Path in Apport
+
+One **implementation** of **lock files** led to an interesting **privilege escalation vulnerability** 
+`(CVE-2020-8831)` in **Ubuntu** via the `Apport` program.
+The code causing this vulnerability lay in the [check_lock](https://github.com/canonical/apport/blob/44a97a8/data/apport),
+function.
+
+```python3
+def check_lock():
+	'''Abort if another instance of apport is already running.
+	This avoids bringing down the system to its knees if there is a series of
+	crashes.'''
+	# create lock file directory
+	try:
+		os.mkdir("/var/lock/apport", mode=0o744) //1
+	except FileExistsError:
+		pass
+	# create a lock file
+	try:
+		fd = os.open("/var/lock/apport/lock", os.O_WRONLY | os.O_CREAT | os.O_NOFOLLOW) //2
+	except OSError as e:
+		error_log('cannot create lock file (uid %i): %s' % (os.getuid(), str(e)))
+		sys.exit(1)
+
+def error_running(*args):
+	error_log('another apport instance is already running, aborting')
+	sys.exit(1)
+
+original_handler = signal.signal(signal.SIGALRM, error_running)
+signal.alarm(30) # timeout after that many seconds
+try:
+	fcntl.lockf(fd, fcntl.LOCK_EX) //3
+except IOError:
+	error_running()
+finally:
+	signal.alarm(0)
+	signal.signal(signal.SIGALRM, original_handler)
+
+```
+
+- In `check_lock` function the lock file in create if doesn't exit (`//1`).
+- After it trying to acquire a lock file using a POSIX compliant API call who allow developers to implement lock files
+in a more standized way. (`//3`).
+- `O_NOFOLLOW` : In `man 2 open` it describe that "If the **trailing component** (i.e., basename) of pathname is  a  **symbolic  link**,
+then  the open fails, with the error `ELOOP`.  **Symbolic links** in earlier **components of the pathname** will still be **followed**." 
+ So with the hardcoded path  `/var/lock/apport/lock` who have `lock` like **basename**, an **attacker** could use a symlink to redirect the program
+ to **read from or write to** a **different destination** that the program has access to.
+
+This is the problem: if any other component in 	`/var/lock/apport/lock`
+other than **lock** is a symlink, Apport will still happily follow it. In the case of
+Ubuntu, `/var/lock` is a symlink to `/run/lock`, which is **readable and writable** by
+all users. As such, an **attacker** can create a **symlink** at `/var/lock/apport` pointing 
+to any other directory, and if `Apport` runs afterward, it will create a **lock
+file** in the **attacker-controlled** destination.
+
+
+### > Sockets  
+ 
+A **socket** is an **endpoint that allows communication between processes**.
+It a one of the **more common IPC channels** and hence present a rich **source of potential attack vectors**.
+
+**Unix OS** support **Unix domain sockets** (`UDS`s), a local variant (`TCP`, `UDP`, `SCTP`), but UDS don't take care of protocol layer and run fast.
+The socket respect the "**everything is file**" Unix philosophy so expose a `UDS`s in a **filesystem pathname** can lead to **namespaces hijacking**
+or **access control** due to **inappropriate file permissions**.  
+Ex : A `CVE-2022-21950` was a **vulnerability** in **Canna**, a Japanese Kana–Kanji
+server, that arose from the **hardcoded directory** `/tmp/.iroha_unix` containing
+the `UDS` used by **Canna** in `openSUSE` OS.
+
+### > Named Pipes
+**Named pipes** are another means by which **processes** can **communicate** using a **file-like** paradigm.
+However, on **Windows**, **named pipes** have their own
+**access control model** separate from the **default filesystem**, creating an **additional layer** of potential **authorization** issues.
+
+Take, for example, a **high-privileged program** that creates a **named pipe**
+server and client for `IPC`. If a **low-privileged attacker** creates the **named pipe**
+server **before the program does**, it could potentially **intercept messages** from
+the **client**.
+Worse, if the **client** makes use of the server’s responses to **execute
+actions** such as **running commands**, it could lead to **privilege escalation**.
+
+
+This was the case for `CVE-2022-21893`, a **privilege escalation** exploit in **Windows Remote Desktop**
+Mapping **Code to Attack** Surface Services (`RDS`) that **allowed** an attacker to **intercept the messages** of `RDS`
+**named pipe** `IPC`.
+
+### > Other IPC Methods
+
+The number of `IPC` **methods** is constantly growing as **operating systems** and
+**third-party software** add **features**. The following is a **nonexhaustive** list:
+- Shared memory
+- System signal
+- Message queue
+- Memory-mapped file
+- Remote procedure call
+- Component Object Model (COM, Windows only)
+- Dynamic Data Exchange (DDE, Windows only)
+- Clipboard
+- D-Bus (Linux only)
+- MailSlot (Windows only)
+
+Developers use these `APIs` in **creative** (and potentially **insecure**) ways.
+
+### File Formats
+Almost all software needs to **handle files**. From newline-delimited configuration files to video clips, we encode data in a variety of formats. Like **protocols**, **file formats** require software to **parse** **data structures** in a standard manner.
+Many **file formats** are **documented** in `RFC`s, but **proprietary or older
+formats** may require more digging.
+For example, **file formats** are often **roughly divided into three parts**:
+
+- **Header:** Appears at the start of the file and usually **begins** with a set of
+**unique bytes** so software can **identify** the file format.
+- **Body:** Contains the main data associated with the **format**, often grouped
+into **chunks** for software to parse easily.
+- **Footer:** Contains additional **metadata**, such as **checksums** to ensure
+**data integrity**.
+
+Other formats **diverge** even further from the **header-body-footer** pattern, such as **directory-based** formats, which **organize data** into multiplefiles within a **directory structure**.
+
+For example, **Microsoft Office** documents (such as .docx and .pptx files) are essentially **ZIP** containing
+**resource and metadata** files such as `XML` **documents**, **images**, and so on.
+
+### > Type–Length–Value
+The **type–length–value** (`TLV`) pattern **occurs** in both **protocols and file formats**. We use `TLV` for **chunked data** in the body because its **structure** allows
+a parser to **easily identify** and consume **chunks of variable length**.
+
+### > Directory-Based
+
+A significant subset of **file formats** are **directory-based**, meaning the file is actually a **wrapper** around many other files.
+Like `ZIP`, `DEB` .
+Typically, **directory-based formats**
+require a **manifest** (`manifest.xml`) that **contains additional metadata** about the rest of the
+files, including where they’re located. This pattern **tends to expose two types
+of vulnerabilities**, related to **file traversal** and **child format.**
+
+- **File traversal** occurs if the software **insecurely parses** the directory data.
+A **parser** that **trusts** such a **value** could extract files into **dangerous locations**,
+such as **cron job** folders or **application working directories**.
+- **Child format**–related **vulnerabilities** occur because **developers** tend to
+**focus on the parent directory–based** format and **delegate** handling **child
+file formats** to external libraries, which may **not parse** securely by default.
+
+Sometimes, both types of vulnerabilities occur in the same software.
+[Example of vuln](https://spaceraccoon.dev/a-tale-of-two-formats-exploiting-insecure-xml-and-zip-file-parsers-to-create-a/)
+
+### Custom Fields
+
+File formats often include **reserved bytes** or **extendable fields** that allow developers to add **custom functionality**.
+Sometimes, developers jerry-rig custom fields by parsing data differently
+from how a standard defines it.
+Thus, to indicate a stylesheet located at main.css, an HTML document could
+include the following element:
+```html
+<link href="main.css" rel="stylesheet">
+```
+However, the **WeasyPrint** `HTML-to-PDF` conversion **engine** extends the function of `<link>` by supporting a **custom attachment**
+value for `rel` that doesn’t appear in the **HTML standard**. By using this value,
+a developer can include local files as **attachments** to the output PDF:
+
+```html
+<link href="file:///etc/passwd" rel="attachment">
+```
+This is a **feature**, **not a vulnerability in itself**, but a developer that uses
+**WeasyPrint** without accounting for this behavior could introduce a **vulnerability** in their software.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
