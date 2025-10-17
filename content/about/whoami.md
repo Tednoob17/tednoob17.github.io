@@ -12,3 +12,5 @@ I strive to provide as much information as i can about what i have learned on my
 
 
 PDF Resume here: [English](/assets/Ted-Regis-Kouhouenou-CV-.pdf)
+
+![Root-me-stats] (https://root-me-diff.vercel.app/rm-gh?nickname=Tedsig42)

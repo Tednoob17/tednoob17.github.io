@@ -4,7 +4,7 @@
     <title>Musics on Ted Regis Site</title>
     <link>http://localhost:1313/musics/</link>
     <description>Recent content in Musics on Ted Regis Site</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 08 Aug 2025 01:20:42 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/musics/index.xml" rel="self" type="application/rss+xml" />
