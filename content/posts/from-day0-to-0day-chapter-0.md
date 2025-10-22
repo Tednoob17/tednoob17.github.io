@@ -1,7 +1,7 @@
 +++
 title = 'From Day 0 to 0day Chapter 0'
 date = 2025-07-15T00:37:02+01:00
-draft = true
+draft = false
 author = 'Tedsig42'
 +++
 

@@ -3,7 +3,7 @@ title = 'From Day 0 to 0day Chapter 1'
 description = 'Summary of Chapter 1'
 date = 2025-08-03T00:10:42+02:00
 author = 'Tedsig42'
-draft = true
+draft = false
 +++
 
 ![alt](/images/stc/chap2-intro.jpeg)

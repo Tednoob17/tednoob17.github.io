@@ -3,7 +3,7 @@ title = 'From Day 0 to 0day Chapter 2'
 description = 'Recap of chap 2'
 date = 2025-08-06T00:22:36+13:00
 author = 'Tedsig42'
-draft = true
+draft = false
 +++
 
 
