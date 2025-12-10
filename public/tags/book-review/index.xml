@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book-Review on Ted Regis Site</title>
+    <link>https://tednoob17.github.io/tags/book-review/</link>
+    <description>Recent content in Book-Review on Ted Regis Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
+    <atom:link href="https://tednoob17.github.io/tags/book-review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sample Book Review</title>
+      <link>https://tednoob17.github.io/book-review/sample-book-review/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>https://tednoob17.github.io/book-review/sample-book-review/</guid>
+      <description>This is a sample book review post. Write your thoughts on books you&amp;rsquo;ve read here.&#xA;Book Title: Example Book&#xA;Author: Example Author&#xA;Rating: ⭐⭐⭐⭐⭐&#xA;Feel free to delete this post and create your own reviews!</description>
+    </item>
+    <item>
+      <title>From Day 0 to 0day Chapter 2</title>
+      <link>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-2/</link>
+      <pubDate>Wed, 06 Aug 2025 00:22:36 +1300</pubDate>
+      <guid>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-2/</guid>
+      <description>MAPPING CODE TO ATTACK SURFACE Once we know where we are, then the world becomes as narrow as a map.&#xA;When we don’t know, the world feels unlimited. Liu Cixin, The Dark Forest&#xA;Introduction Attack surface (the potential entry points to exploit a vulnerability) going often with the growing of complexity of software.&#xA;The vulnerabilities to be introduced, as developers’ capacity to properly secure these feature is limited and mistakes are inevitable when dealing with millions of lines of code.</description>
+    </item>
+    <item>
+      <title>From Day 0 to 0day Chapter 1</title>
+      <link>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-1/</link>
+      <pubDate>Sun, 03 Aug 2025 00:10:42 +0200</pubDate>
+      <guid>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-1/</guid>
+      <description>Introduction Taint Analysis Life is not like water. Things in life don’t necessarily flow over the shortest possible route Haruki Murakami - 1Q84&#xA;Taint analysis (or source and sink analysis ) is the analysis of the flow of input through a program from sources to sinks .&#xA;It relies on a simple idea: a large number of vulnerabilities occur because attacker controlled input (the source) flows to a dangerous function (the sink).</description>
+    </item>
+    <item>
+      <title>From Day 0 to 0day Chapter 0</title>
+      <link>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-0/</link>
+      <pubDate>Tue, 15 Jul 2025 00:37:02 +0100</pubDate>
+      <guid>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-0/</guid>
+      <description>Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book From Day Zerp to Zero Day written by Eugene &amp;ldquo;Spaceraccoon&amp;rdquo; Lim a security researcher and white-hat hacker.&#xA;He learned rapidly because his first training was in how to learn. - Frank Herbert, Dune.&#xA;With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems for new vulnerabilities, has zero to zero assumed a critical role in cybersecurity.</description>
+    </item>
+  </channel>
+</rss>

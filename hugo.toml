@@ -4,6 +4,9 @@ title = 'Ted Regis Site'
 contentdir = 'content'
 theme = 'poison'
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
@@ -16,17 +19,14 @@ theme = 'poison'
 	description = 'Another infosec enthusiast blog'
 	favicon = "/images/gif/main-1.gif"
 	dark_mode = true
-	front_page_content = ["posts", "about"]
+	front_page_content = ["posts", "about", "book-review", "art", "musics"]
 	menu = [
     	    {Name = "About", URL = "/about/", HasChildren = false},
         	{Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = false},
-        	{Name = "Friends", URL = "/friends/", HasChrildren = false},
-        	{Name = "Music", URL = "/music/", HasChildren = false},
-        	{Name = "Arts", URL = "/arts/", HasChildren = false},
-        	{Name = "Book", URL = "/book/", HasChildren = false},
-        	{Name = "Mode", URL = "/mode/", HasChildren = false},
-        	{Name = "Reference", URL = "/reference/", HasChildren = false},
-        	{Name = "Trip", URL = "/trip/", HasChildren = false},
+        	{Name = "Friends", URL = "/friends/", HasChildren = false},
+        	{Name = "Music", URL = "/musics/", HasChildren = false},
+        	{Name = "Art", URL = "/art/", HasChildren = false},
+        	{Name = "Book Reviews", URL = "/book-review/", HasChildren = false},
     ]
 
 	discord_url = "https://discordapp.com/users/851383994317799445"

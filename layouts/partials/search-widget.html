@@ -1,0 +1,47 @@
+<!-- Search Widget -->
+<div class="search-widget">
+    <form action="/search/" method="get" class="search-form">
+        <input type="text" name="q" placeholder="Search..." class="search-input" />
+        <button type="submit" class="search-submit">🔍</button>
+    </form>
+</div>
+
+<style>
+.search-widget {
+    padding: 10px 0;
+}
+
+.search-form {
+    display: flex;
+    max-width: 300px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #515151;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+    background: var(--sidebar-bg-color, #202020);
+    color: var(--sidebar-a-color, #FFF);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #268BD2;
+}
+
+.search-submit {
+    padding: 8px 12px;
+    border: 1px solid #268BD2;
+    background: #268BD2;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-submit:hover {
+    background: #1e7bb8;
+}
+</style>

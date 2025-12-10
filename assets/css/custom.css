@@ -1,0 +1,26 @@
+.tag-pin {
+    display: inline-block;
+    padding: 0.1em 0.6em;
+    margin-left: 0.5em;
+    font-size: 0.6em;
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 1em;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+/* Hover effect for fun */
+.tag-pin:hover {
+    opacity: 0.8;
+    cursor: default;
+}
+
+/* Make default tag links match pin color */
+.tags li a {
+    background-color: #3498db !important;
+    color: #ffffff !important;
+}

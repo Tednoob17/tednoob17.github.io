@@ -1,0 +1,252 @@
+{{ define "main" }}
+<div class="search-container">
+    <h1>Search</h1>
+    
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search posts, pages, and content..." autocomplete="off">
+        <button id="search-button">Search</button>
+    </div>
+    
+    <div id="search-results">
+        <!-- Results will be displayed here -->
+    </div>
+</div>
+
+<style>
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-box {
+    display: flex;
+    margin: 20px 0 30px 0;
+}
+
+#search-input {
+    flex: 1;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #515151;
+    border-radius: 4px 0 0 4px;
+    background: var(--content-bg);
+    color: var(--text-color);
+}
+
+#search-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background: #268BD2;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background: #1e7bb8;
+}
+
+.search-result {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #515151;
+    border-radius: 4px;
+    background: var(--content-bg);
+}
+
+.search-result h3 {
+    margin: 0 0 10px 0;
+}
+
+.search-result h3 a {
+    color: #268BD2;
+    text-decoration: none;
+}
+
+.search-result h3 a:hover {
+    text-decoration: underline;
+}
+
+.search-result-date {
+    color: #909090;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.search-result-excerpt {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.search-result-tags {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.search-result-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-right: 5px;
+    background: #515151;
+    color: white;
+    border-radius: 3px;
+}
+
+#no-results {
+    text-align: center;
+    padding: 40px;
+    color: #909090;
+}
+</style>
+
+<script>
+let searchIndex = [];
+
+// Load the search index
+fetch('/index.json')
+    .then(response => response.json())
+    .then(data => {
+        searchIndex = data;
+    })
+    .catch(error => console.error('Error loading search index:', error));
+
+// Search function
+function performSearch(query) {
+    if (!query || query.trim().length < 2) {
+        return [];
+    }
+    
+    query = query.toLowerCase().trim();
+    const results = [];
+    
+    searchIndex.forEach(item => {
+        let score = 0;
+        const title = item.title.toLowerCase();
+        const contents = item.contents.toLowerCase();
+        
+        // Score based on title match (higher weight)
+        if (title.includes(query)) {
+            score += 10;
+        }
+        
+        // Score based on content match
+        if (contents.includes(query)) {
+            score += 5;
+        }
+        
+        // Score based on tags match
+        if (item.tags) {
+            item.tags.forEach(tag => {
+                if (tag.toLowerCase().includes(query)) {
+                    score += 3;
+                }
+            });
+        }
+        
+        if (score > 0) {
+            results.push({
+                ...item,
+                score: score
+            });
+        }
+    });
+    
+    // Sort by score (highest first)
+    results.sort((a, b) => b.score - a.score);
+    
+    return results;
+}
+
+// Display search results
+function displayResults(results, query) {
+    const resultsContainer = document.getElementById('search-results');
+    
+    if (results.length === 0) {
+        resultsContainer.innerHTML = '<div id="no-results">No results found for "' + query + '"</div>';
+        return;
+    }
+    
+    let html = '<h2>Results (' + results.length + ')</h2>';
+    
+    results.forEach(result => {
+        const date = new Date(result.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        // Create excerpt with highlighted search term
+        let excerpt = result.contents.substring(0, 200);
+        const queryIndex = result.contents.toLowerCase().indexOf(query.toLowerCase());
+        if (queryIndex > 0) {
+            const start = Math.max(0, queryIndex - 100);
+            const end = Math.min(result.contents.length, queryIndex + 100);
+            excerpt = '...' + result.contents.substring(start, end) + '...';
+        }
+        
+        html += '<div class="search-result">';
+        html += '<h3><a href="' + result.permalink + '">' + result.title + '</a></h3>';
+        html += '<div class="search-result-date">' + date + '</div>';
+        html += '<div class="search-result-excerpt">' + excerpt + '</div>';
+        
+        if (result.tags && result.tags.length > 0) {
+            html += '<div class="search-result-tags">';
+            result.tags.forEach(tag => {
+                html += '<span class="search-result-tag">' + tag + '</span>';
+            });
+            html += '</div>';
+        }
+        
+        html += '</div>';
+    });
+    
+    resultsContainer.innerHTML = html;
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    
+    // Get query from URL if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get('q');
+    if (queryParam) {
+        searchInput.value = queryParam;
+        setTimeout(() => {
+            const results = performSearch(queryParam);
+            displayResults(results, queryParam);
+        }, 100);
+    }
+    
+    searchButton.addEventListener('click', () => {
+        const query = searchInput.value;
+        const results = performSearch(query);
+        displayResults(results, query);
+        
+        // Update URL
+        const newUrl = window.location.pathname + '?q=' + encodeURIComponent(query);
+        window.history.pushState({}, '', newUrl);
+    });
+    
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            searchButton.click();
+        }
+    });
+    
+    // Real-time search (optional)
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value;
+        if (query.length >= 2) {
+            const results = performSearch(query);
+            displayResults(results, query);
+        } else {
+            document.getElementById('search-results').innerHTML = '';
+        }
+    });
+});
+</script>
+{{ end }}

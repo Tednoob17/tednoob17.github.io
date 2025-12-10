@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Friends on Ted Regis Site</title>
-    <link>http://localhost:1313/friends/</link>
+    <link>https://tednoob17.github.io/friends/</link>
     <description>Recent content in Friends on Ted Regis Site</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Jul 2025 00:10:53 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/friends/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tednoob17.github.io/friends/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Cool friends</title>
-      <link>http://localhost:1313/friends/friends/</link>
+      <link>https://tednoob17.github.io/friends/friends/</link>
       <pubDate>Tue, 15 Jul 2025 00:10:53 +0100</pubDate>
-      <guid>http://localhost:1313/friends/friends/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Hi everyone, during my little journey in Infosec i meet awesome guys who help me, learn me&#xA;and with i work when we have time.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://rolandhack.github.io/&#34;&gt;Roland Hack&lt;/a&gt; :  A young and incredible Bug Hunter, web lovers, and it&amp;rsquo;s also pop a vuln after a cup of coffee with milk.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://offsecmindset.github.io/&#34;&gt;Top0n3&lt;/a&gt; : Also Bug hunter at Hackerone, pwner and reverser, he break mobile and web application.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://hadrien.cat/&#34;&gt;Hadrien&lt;/a&gt; : A incredible pentester guys, but it&amp;rsquo;s technically impacting, bug hunter coming soon.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://thinkloveshare.com/&#34;&gt;Laluka&lt;/a&gt; : Black Cat ? In-depth knowledge of many topics- man, &lt;a href=&#34;https://github.com/laluka/bypass-url-parser&#34;&gt;bypass-url-parser&lt;/a&gt; and &lt;a href=&#34;https://github.com/laluka/SkillArch&#34;&gt;skillarch&lt;/a&gt; dude, check her &lt;a href=&#34;https://www.youtube.com/@TheLaluka&#34;&gt;youtube channel&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      <guid>https://tednoob17.github.io/friends/friends/</guid>
+      <description>Introduction Hi everyone, during my little journey in Infosec i meet awesome guys who help me, learn me and with i work when we have time.&#xA;Roland Hack : A young and incredible Bug Hunter, web lovers, and it&amp;rsquo;s also pop a vuln after a cup of coffee with milk. Top0n3 : Also Bug hunter at Hackerone, pwner and reverser, he break mobile and web application. Hadrien : A incredible pentester guys, but it&amp;rsquo;s technically impacting, bug hunter coming soon.</description>
     </item>
   </channel>
 </rss>

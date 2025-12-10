@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Art on Ted Regis Site</title>
+    <link>https://tednoob17.github.io/art/</link>
+    <description>Recent content in Art on Ted Regis Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
+    <atom:link href="https://tednoob17.github.io/art/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sample Art Post</title>
+      <link>https://tednoob17.github.io/art/sample-art-post/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>https://tednoob17.github.io/art/sample-art-post/</guid>
+      <description>This is a sample art post. Share your artwork, creative projects, and art-related content here.&#xA;Feel free to delete this post and create your own!</description>
+    </item>
+  </channel>
+</rss>
