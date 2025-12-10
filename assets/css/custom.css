@@ -28,31 +28,105 @@
 }
 
 /* Specific tag colors - Security vulnerabilities and topics */
-.tag-pin.tag-xss { background-color: #e74c3c; } /* Red */
-.tag-pin.tag-cors { background-color: #3498db; } /* Blue */
-.tag-pin.tag-dom-based { background-color: #9b59b6; } /* Purple */
-.tag-pin.tag-prototype-pollution { background-color: #e67e22; } /* Orange */
-.tag-pin.tag-clickjacking { background-color: #1abc9c; } /* Turquoise */
-.tag-pin.tag-websockets { background-color: #34495e; } /* Dark gray */
-.tag-pin.tag-xxe { background-color: #c0392b; } /* Dark red */
-.tag-pin.tag-access-control { background-color: #16a085; } /* Green sea */
-.tag-pin.tag-insecure-deserialization { background-color: #d35400; } /* Pumpkin */
-.tag-pin.tag-file-upload { background-color: #27ae60; } /* Green */
-.tag-pin.tag-http-host-header-attack { background-color: #2980b9; } /* Belize hole */
-.tag-pin.tag-jwt { background-color: #8e44ad; } /* Wisteria */
-.tag-pin.tag-business-logic { background-color: #f39c12; } /* Orange */
-.tag-pin.tag-ssti { background-color: #c0392b; } /* Pomegranate */
-.tag-pin.tag-oauth-authentication { background-color: #2c3e50; } /* Midnight blue */
-.tag-pin.tag-sqli { background-color: #e74c3c; } /* Alizarin */
-.tag-pin.tag-ssrf { background-color: #9b59b6; } /* Amethyst */
-.tag-pin.tag-web-cache-poisoning { background-color: #1abc9c; } /* Turquoise */
-.tag-pin.tag-authentication { background-color: #2ecc71; } /* Emerald */
-.tag-pin.tag-api-testing { background-color: #3498db; } /* Peter river */
-.tag-pin.tag-nosql { background-color: #e67e22; } /* Carrot */
-.tag-pin.tag-graphql { background-color: #95a5a6; } /* Concrete */
-.tag-pin.tag-path-traversal { background-color: #f1c40f; } /* Sun flower */
-.tag-pin.tag-web-cache-deception { background-color: #16a085; } /* Green sea */
-.tag-pin.tag-web-llm-attacks { background-color: #8e44ad; } /* Wisteria */
-.tag-pin.tag-race-condition { background-color: #e74c3c; } /* Alizarin */
-.tag-pin.tag-os-command-injection { background-color: #c0392b; } /* Pomegranate */
-.tag-pin.tag-http-request-smuggling { background-color: #34495e; } /* Wet asphalt */
+/* Tags in list pages (with .tag-pin) */
+.tag-pin.tag-xss { background-color: #e74c3c; }
+.tag-pin.tag-cors { background-color: #3498db; }
+.tag-pin.tag-dom-based { background-color: #9b59b6; }
+.tag-pin.tag-prototype-pollution { background-color: #e67e22; }
+.tag-pin.tag-clickjacking { background-color: #1abc9c; }
+.tag-pin.tag-websockets { background-color: #34495e; }
+.tag-pin.tag-xxe { background-color: #c0392b; }
+.tag-pin.tag-access-control { background-color: #16a085; }
+.tag-pin.tag-insecure-deserialization { background-color: #d35400; }
+.tag-pin.tag-file-upload { background-color: #27ae60; }
+.tag-pin.tag-http-host-header-attack { background-color: #2980b9; }
+.tag-pin.tag-jwt { background-color: #8e44ad; }
+.tag-pin.tag-business-logic { background-color: #f39c12; }
+.tag-pin.tag-ssti { background-color: #c0392b; }
+.tag-pin.tag-oauth-authentication { background-color: #2c3e50; }
+.tag-pin.tag-sqli { background-color: #e74c3c; }
+.tag-pin.tag-ssrf { background-color: #9b59b6; }
+.tag-pin.tag-web-cache-poisoning { background-color: #1abc9c; }
+.tag-pin.tag-authentication { background-color: #2ecc71; }
+.tag-pin.tag-api-testing { background-color: #3498db; }
+.tag-pin.tag-nosql { background-color: #e67e22; }
+.tag-pin.tag-graphql { background-color: #95a5a6; }
+.tag-pin.tag-path-traversal { background-color: #f1c40f; }
+.tag-pin.tag-web-cache-deception { background-color: #16a085; }
+.tag-pin.tag-web-llm-attacks { background-color: #8e44ad; }
+.tag-pin.tag-race-condition { background-color: #e74c3c; }
+.tag-pin.tag-os-command-injection { background-color: #c0392b; }
+.tag-pin.tag-http-request-smuggling { background-color: #34495e; }
+
+/* Tags in single post pages (with <li class="tag-xxx">) */
+.tag-xss a { background-color: #e74c3c !important; }
+.tag-cors a { background-color: #3498db !important; }
+.tag-dom-based a { background-color: #9b59b6 !important; }
+.tag-prototype-pollution a { background-color: #e67e22 !important; }
+.tag-clickjacking a { background-color: #1abc9c !important; }
+.tag-websockets a { background-color: #34495e !important; }
+.tag-xxe a { background-color: #c0392b !important; }
+.tag-access-control a { background-color: #16a085 !important; }
+.tag-insecure-deserialization a { background-color: #d35400 !important; }
+.tag-file-upload a { background-color: #27ae60 !important; }
+.tag-http-host-header-attack a { background-color: #2980b9 !important; }
+.tag-jwt a { background-color: #8e44ad !important; }
+.tag-business-logic a { background-color: #f39c12 !important; }
+.tag-ssti a { background-color: #c0392b !important; }
+.tag-oauth-authentication a { background-color: #2c3e50 !important; }
+.tag-sqli a { background-color: #e74c3c !important; }
+.tag-ssrf a { background-color: #9b59b6 !important; }
+.tag-web-cache-poisoning a { background-color: #1abc9c !important; }
+.tag-authentication a { background-color: #2ecc71 !important; }
+.tag-api-testing a { background-color: #3498db !important; }
+.tag-nosql a { background-color: #e67e22 !important; }
+.tag-graphql a { background-color: #95a5a6 !important; }
+.tag-path-traversal a { background-color: #f1c40f !important; }
+.tag-web-cache-deception a { background-color: #16a085 !important; }
+.tag-web-llm-attacks a { background-color: #8e44ad !important; }
+.tag-race-condition a { background-color: #e74c3c !important; }
+.tag-os-command-injection a { background-color: #c0392b !important; }
+.tag-http-request-smuggling a { background-color: #34495e !important; }
+.tag-websec a { background-color: #3498db !important; }
+
+/* Sidebar Slideshow */
+.sidebar-slideshow-header {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--sidebar-p-color);
+}
+
+.sidebar-slideshow {
+    margin-top: 0;
+    width: 100%;
+    max-width: 200px; /* Constrain width */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    min-height: 200px; /* Prevent collapse */
+    overflow: hidden;
+}
+
+.sidebar-slideshow .slide {
+    width: 100%;
+    height: auto;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sidebar-slideshow .slide.active {
+    display: block;
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0.4}
+  to {opacity: 1}
+}
