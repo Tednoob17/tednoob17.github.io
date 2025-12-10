@@ -30,6 +30,27 @@
       <description>The source code of level2 is here&#xA;&amp;lt;?php ini_set(&amp;#39;display_errors&amp;#39;, &amp;#39;on&amp;#39;); class LevelTwo { public function doQuery($injection) { $pdo = new SQLite3(&amp;#39;leveltwo.db&amp;#39;, SQLITE3_OPEN_READONLY); $searchWords = implode ([&amp;#39;union&amp;#39;, &amp;#39;order&amp;#39;, &amp;#39;select&amp;#39;, &amp;#39;from&amp;#39;, &amp;#39;group&amp;#39;, &amp;#39;by&amp;#39;], &amp;#39;|&amp;#39;); $injection = preg_replace (&amp;#39;/&amp;#39; . $searchWords . &amp;#39;/i&amp;#39;, &amp;#39;&amp;#39;, $injection); $query = &amp;#39;SELECT id,username FROM users WHERE id=&amp;#39; . $injection . &amp;#39; LIMIT 1&amp;#39;; $getUsers = $pdo-&amp;gt;query ($query); $users = $getUsers-&amp;gt;fetchArray (SQLITE3_ASSOC); if ($users) { return $users; } return false; } } if (isset ($_POST[&amp;#39;submit&amp;#39;]) &amp;amp;&amp;amp; isset ($_POST[&amp;#39;user_id&amp;#39;])) { $lt = new LevelTwo (); $userDetails = $lt-&amp;gt;doQuery ($_POST[&amp;#39;user_id&amp;#39;]); } ?</description>
     </item>
     <item>
+      <title>Websec.fr Level 04</title>
+      <link>http://localhost:1313/posts/websec-fr-level4/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Websec.fr Level 08</title>
+      <link>http://localhost:1313/posts/websec-fr-level8/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level8/</guid>
+      <description>The code source of level8 is here.&#xA;&amp;lt;?php $uploadedFile = sprintf(&amp;#39;%1$s/%2$s&amp;#39;, &amp;#39;/uploads&amp;#39;, sha1($_FILES[&amp;#39;fileToUpload&amp;#39;][&amp;#39;name&amp;#39;]) . &amp;#39;.gif&amp;#39;); if (file_exists ($uploadedFile)) { unlink ($uploadedFile); } if ($_FILES[&amp;#39;fileToUpload&amp;#39;][&amp;#39;size&amp;#39;] &amp;lt;= 50000) { if (getimagesize ($_FILES[&amp;#39;fileToUpload&amp;#39;][&amp;#39;tmp_name&amp;#39;]) !== false) { if (exif_imagetype($_FILES[&amp;#39;fileToUpload&amp;#39;][&amp;#39;tmp_name&amp;#39;]) === IMAGETYPE_GIF) { move_uploaded_file ($_FILES[&amp;#39;fileToUpload&amp;#39;][&amp;#39;tmp_name&amp;#39;], $uploadedFile); echo &amp;#39;&amp;lt;p class=&amp;#34;lead&amp;#34;&amp;gt;Dump of &amp;lt;a href=&amp;#34;/level08&amp;#39; . $uploadedFile . &amp;#39;&amp;#34;&amp;gt;&amp;#39;. htmlentities($_FILES[&amp;#39;fileToUpload&amp;#39;][&amp;#39;name&amp;#39;]) . &amp;#39;&amp;lt;/a&amp;gt;:&amp;lt;/p&amp;gt;&amp;#39;; echo &amp;#39;&amp;lt;pre&amp;gt;&amp;#39;; include_once($uploadedFile); echo &amp;#39;&amp;lt;/pre&amp;gt;&amp;#39;; unlink($uploadedFile); } else { echo &amp;#39;&amp;lt;p class=&amp;#34;text-danger&amp;#34;&amp;gt;The file is not a GIF&amp;lt;/p&amp;gt;&amp;#39;; } } else { echo &amp;#39;&amp;lt;p class=&amp;#34;text-danger&amp;#34;&amp;gt;The file is not an image&amp;lt;/p&amp;gt;&amp;#39;; } } else { echo &amp;#39;&amp;lt;p class=&amp;#34;text-danger&amp;#34;&amp;gt;The file is too big&amp;lt;/p&amp;gt;&amp;#39;; } ?</description>
+    </item>
+    <item>
+      <title>Websec.fr Level 17</title>
+      <link>http://localhost:1313/posts/websec-fr-level17/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level17/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Whoami</title>
       <link>http://localhost:1313/about/whoami/</link>
       <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
@@ -63,27 +84,6 @@
       <pubDate>Tue, 15 Jul 2025 00:10:53 +0100</pubDate>
       <guid>http://localhost:1313/friends/friends/</guid>
       <description>Introduction Hi everyone, during my little journey in Infosec i meet awesome guys who help me, learn me and with i work when we have time.&#xA;Roland Hack : A young and incredible Bug Hunter, web lovers, and it&amp;rsquo;s also pop a vuln after a cup of coffee with milk. Top0n3 : Also Bug hunter at Hackerone, pwner and reverser, he break mobile and web application. Hadrien : A incredible pentester guys, but it&amp;rsquo;s technically impacting, bug hunter coming soon.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/websec-fr-level17/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/websec-fr-level17/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/websec-fr-level4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/websec-fr-level4/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/websec-fr-level8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/websec-fr-level8/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>

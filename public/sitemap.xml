@@ -11,6 +11,12 @@
     <loc>http://localhost:1313/book-review/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/file-upload/</loc>
+    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/insecure-deserialization/</loc>
+    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/musics/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
@@ -18,6 +24,9 @@
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/search/</loc>
+    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sqli/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
@@ -33,6 +42,18 @@
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/websec-fr-level2/</loc>
+    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/websec-fr-level4/</loc>
+    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/websec-fr-level8/</loc>
+    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/websec-fr-level17/</loc>
+    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/xss/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/personal/</loc>
@@ -58,12 +79,6 @@
   </url><url>
     <loc>http://localhost:1313/friends/friends/</loc>
     <lastmod>2025-07-15T00:10:53+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/websec-fr-level17/</loc>
-  </url><url>
-    <loc>http://localhost:1313/posts/websec-fr-level4/</loc>
-  </url><url>
-    <loc>http://localhost:1313/posts/websec-fr-level8/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url>

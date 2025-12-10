@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation on Ted Regis Site</title>
+    <link>http://localhost:1313/tags/documentation/</link>
+    <description>Recent content in Documentation on Ted Regis Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Dec 2025 01:00:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Security Tags Guide - Understanding Vulnerability Categories</title>
+      <link>http://localhost:1313/posts/tags-guide/</link>
+      <pubDate>Wed, 10 Dec 2025 01:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/tags-guide/</guid>
+      <description>Security Vulnerability Tags Reference This document provides a comprehensive overview of all available security tags in this blog, explaining what each vulnerability type represents and how the tagging system works.&#xA;How the Tagging System Works Frontend Implementation Tags are rendered using CSS classes defined in /assets/css/custom.css. Each tag has:&#xA;A base class .tag-pin with default styling A specific class .tag-[tagname] for custom colors Automatic page generation by Hugo .tag-pin { display: inline-block; padding: 0.</description>
+    </item>
+  </channel>
+</rss>

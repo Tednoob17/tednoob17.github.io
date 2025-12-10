@@ -9,10 +9,38 @@
     <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>File-Upload</title>
+      <link>http://localhost:1313/tags/file-upload/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/file-upload/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Insecure-Deserialization</title>
+      <link>http://localhost:1313/tags/insecure-deserialization/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/insecure-deserialization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sqli</title>
+      <link>http://localhost:1313/tags/sqli/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/sqli/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Websec</title>
       <link>http://localhost:1313/tags/websec/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:1313/tags/websec/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xss</title>
+      <link>http://localhost:1313/tags/xss/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/xss/</guid>
       <description></description>
     </item>
     <item>

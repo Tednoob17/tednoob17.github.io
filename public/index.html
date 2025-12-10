@@ -20,7 +20,10 @@
 
 
 
-<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.370b3c930026eee66a15d4e1749855e015cae58e802f7dcbddce98992349eba3.js"></script>
 
 
 
@@ -108,7 +111,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.74e5930843ef626ec32719f0944c56febfdb9d5039aaeb1734297915e958db11.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.09fea74f3da3a0044259517fb25285ebd1b7ef1df24d656d00bab0a0627841ba.css">
 
 
     
@@ -234,6 +237,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -268,6 +279,14 @@
                 
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -316,6 +335,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -345,6 +372,14 @@
                 
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -393,6 +428,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -427,6 +470,14 @@
                 
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -543,6 +594,10 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         <a href="http://localhost:1313/tags/websec">websec</a>
       </li>
       
+      <li class="tag-sqli">
+        <a href="http://localhost:1313/tags/sqli">sqli</a>
+      </li>
+      
     </ul>
     
   </div>
@@ -594,6 +649,10 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         <a href="http://localhost:1313/tags/websec">websec</a>
       </li>
       
+      <li class="tag-sqli">
+        <a href="http://localhost:1313/tags/sqli">sqli</a>
+      </li>
+      
     </ul>
     
   </div>
@@ -611,6 +670,165 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         <div class="read-more-link">
             <a href="/posts/websec-fr-level2/">Read More…</a>
         </div>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/websec-fr-level4/">Websec.fr Level 04</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-12-10T00:00:00&#43;0100" class="post-date">
+        December 10, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-websec">
+        <a href="http://localhost:1313/tags/websec">websec</a>
+      </li>
+      
+      <li class="tag-insecure-deserialization">
+        <a href="http://localhost:1313/tags/insecure-deserialization">insecure-deserialization</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/websec-fr-level8/">Websec.fr Level 08</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-12-10T00:00:00&#43;0100" class="post-date">
+        December 10, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>1 min read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-websec">
+        <a href="http://localhost:1313/tags/websec">websec</a>
+      </li>
+      
+      <li class="tag-file-upload">
+        <a href="http://localhost:1313/tags/file-upload">file-upload</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        The code source of level8 is here.
+&lt;?php $uploadedFile = sprintf(&#39;%1$s/%2$s&#39;, &#39;/uploads&#39;, sha1($_FILES[&#39;fileToUpload&#39;][&#39;name&#39;]) . &#39;.gif&#39;); if (file_exists ($uploadedFile)) { unlink ($uploadedFile); } if ($_FILES[&#39;fileToUpload&#39;][&#39;size&#39;] &lt;= 50000) { if (getimagesize ($_FILES[&#39;fileToUpload&#39;][&#39;tmp_name&#39;]) !== false) { if (exif_imagetype($_FILES[&#39;fileToUpload&#39;][&#39;tmp_name&#39;]) === IMAGETYPE_GIF) { move_uploaded_file ($_FILES[&#39;fileToUpload&#39;][&#39;tmp_name&#39;], $uploadedFile); echo &#39;&lt;p class=&#34;lead&#34;&gt;Dump of &lt;a href=&#34;/level08&#39; . $uploadedFile . &#39;&#34;&gt;&#39;. htmlentities($_FILES[&#39;fileToUpload&#39;][&#39;name&#39;]) . &#39;&lt;/a&gt;:&lt;/p&gt;&#39;; echo &#39;&lt;pre&gt;&#39;; include_once($uploadedFile); echo &#39;&lt;/pre&gt;&#39;; unlink($uploadedFile); } else { echo &#39;&lt;p class=&#34;text-danger&#34;&gt;The file is not a GIF&lt;/p&gt;&#39;; } } else { echo &#39;&lt;p class=&#34;text-danger&#34;&gt;The file is not an image&lt;/p&gt;&#39;; } } else { echo &#39;&lt;p class=&#34;text-danger&#34;&gt;The file is too big&lt;/p&gt;&#39;; } ?
+        
+        <div class="read-more-link">
+            <a href="/posts/websec-fr-level8/">Read More…</a>
+        </div>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/websec-fr-level17/">Websec.fr Level 17</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-12-10T00:00:00&#43;0100" class="post-date">
+        December 10, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-websec">
+        <a href="http://localhost:1313/tags/websec">websec</a>
+      </li>
+      
+      <li class="tag-xss">
+        <a href="http://localhost:1313/tags/xss">xss</a>
+      </li>
+      
+      <li class="tag-sqli">
+        <a href="http://localhost:1313/tags/sqli">sqli</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
         
         
     </article>
@@ -832,108 +1050,6 @@ With the number of discovered and exploited zero days constantly growing, vulner
         <div class="read-more-link">
             <a href="/book-review/from-day0-to-0day-chapter-0/">Read More…</a>
         </div>
-        
-        
-    </article>
-    <article class="post">
-        <div class="info">
-  <h1 class="post-title">
-    <a href="http://localhost:1313/posts/websec-fr-level17/"></a>
-  </h1>
-
-  <div class="headline">
-    <div>
-      
-      
-      <span> - </span>
-      <span class="reading-time">
-        
-          
-        
-
-        <span>0 min read</span>
-      </span>
-    </div>
-
-    
-  </div>
-
-  
-  
-
-  
-</div>
-
-        
-        
-        
-        
-    </article>
-    <article class="post">
-        <div class="info">
-  <h1 class="post-title">
-    <a href="http://localhost:1313/posts/websec-fr-level4/"></a>
-  </h1>
-
-  <div class="headline">
-    <div>
-      
-      
-      <span> - </span>
-      <span class="reading-time">
-        
-          
-        
-
-        <span>0 min read</span>
-      </span>
-    </div>
-
-    
-  </div>
-
-  
-  
-
-  
-</div>
-
-        
-        
-        
-        
-    </article>
-    <article class="post">
-        <div class="info">
-  <h1 class="post-title">
-    <a href="http://localhost:1313/posts/websec-fr-level8/"></a>
-  </h1>
-
-  <div class="headline">
-    <div>
-      
-      
-      <span> - </span>
-      <span class="reading-time">
-        
-          
-        
-
-        <span>0 min read</span>
-      </span>
-    </div>
-
-    
-  </div>
-
-  
-  
-
-  
-</div>
-
-        
-        
         
         
     </article>

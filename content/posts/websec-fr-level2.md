@@ -2,7 +2,7 @@
 title = 'Websec.fr Level 02'
 date = 2025-12-10T00:00:00+01:00
 draft = false
-tags = ['websec']
+tags = ['websec', 'sqli']
 +++
 
 The source code of [level2](http://websec.fr/level02/index.php) is [here](http://websec.fr/level02/source.php)

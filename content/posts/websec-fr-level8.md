@@ -2,17 +2,11 @@
 title = 'Websec.fr Level 08'
 date = 2025-12-10T00:00:00+01:00
 draft = false
-tags = ['websec']
+tags = ['websec', 'file-upload']
 +++
 
-The code source of [level8](http://websec.fr/level08/index.php) is [here](http://websec.fr/level08/source.php)
+The code source of [level8](http://websec.fr/level08/index.php) is [here](http://websec.fr/level08/source.php).
 ```php
-<!DOCTYPE html>
-<html>
-<?php 
-if (isset ($_FILES) && !empty ($_FILES)): 
-?>
-<div class="row">
 <?php
 $uploadedFile = sprintf('%1$s/%2$s', '/uploads', sha1($_FILES['fileToUpload']['name']) . '.gif');
     if (file_exists ($uploadedFile)) { unlink ($uploadedFile); }
@@ -29,12 +23,13 @@ $uploadedFile = sprintf('%1$s/%2$s', '/uploads', sha1($_FILES['fileToUpload']['n
     } else { echo '<p class="text-danger">The file is not an image</p>'; }
 } else { echo '<p class="text-danger">The file is too big</p>'; }
 ?>
-</div>
-<?php endif ?>
 ```
 With this code we have 2 problem and that it's important to bypass are:
 - The GIF header 
 - The size of file uploaded
+
+For this type of vulnerability i use my mindmap
+![alt text](/images/stc/file_upload_finish.excalidraw.png)
 
 So we can create a file containing this :
 ```php
