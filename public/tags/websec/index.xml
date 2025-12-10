@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Websec on Ted Regis Site</title>
+    <link>http://localhost:1313/tags/websec/</link>
+    <description>Recent content in Websec on Ted Regis Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/websec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Websec.fr Level 01</title>
+      <link>http://localhost:1313/posts/websec-fr-level1/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level1/</guid>
+      <description>A Websec.fr level 1 level01 - 1 point- 2564 solves We have a source code of level1, i show only a php code because the vulnerability is only in php code.&#xA;&amp;lt;?php session_start (); ini_set(&amp;#39;display_errors&amp;#39;, &amp;#39;on&amp;#39;); ini_set(&amp;#39;error_reporting&amp;#39;, E_ALL); include &amp;#39;anti_csrf.php&amp;#39;; init_token (); class LevelOne { public function doQuery($injection) { $pdo = new SQLite3(&amp;#39;database.db&amp;#39;, SQLITE3_OPEN_READONLY); $query = &amp;#39;SELECT id,username FROM users WHERE id=&amp;#39; . $injection . &amp;#39; LIMIT 1&amp;#39;; $getUsers = $pdo-&amp;gt;query($query); $users = $getUsers-&amp;gt;fetchArray(SQLITE3_ASSOC); if ($users) { return $users; } return false; } } if (isset ($_POST[&amp;#39;submit&amp;#39;]) &amp;amp;&amp;amp; isset ($_POST[&amp;#39;user_id&amp;#39;])) { check_and_refresh_token(); $lo = new LevelOne (); $userDetails = $lo-&amp;gt;doQuery ($_POST[&amp;#39;user_id&amp;#39;]); } ?</description>
+    </item>
+    <item>
+      <title>Websec.fr Level 02</title>
+      <link>http://localhost:1313/posts/websec-fr-level2/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level2/</guid>
+      <description>The source code of level2 is here&#xA;&amp;lt;?php ini_set(&amp;#39;display_errors&amp;#39;, &amp;#39;on&amp;#39;); class LevelTwo { public function doQuery($injection) { $pdo = new SQLite3(&amp;#39;leveltwo.db&amp;#39;, SQLITE3_OPEN_READONLY); $searchWords = implode ([&amp;#39;union&amp;#39;, &amp;#39;order&amp;#39;, &amp;#39;select&amp;#39;, &amp;#39;from&amp;#39;, &amp;#39;group&amp;#39;, &amp;#39;by&amp;#39;], &amp;#39;|&amp;#39;); $injection = preg_replace (&amp;#39;/&amp;#39; . $searchWords . &amp;#39;/i&amp;#39;, &amp;#39;&amp;#39;, $injection); $query = &amp;#39;SELECT id,username FROM users WHERE id=&amp;#39; . $injection . &amp;#39; LIMIT 1&amp;#39;; $getUsers = $pdo-&amp;gt;query ($query); $users = $getUsers-&amp;gt;fetchArray (SQLITE3_ASSOC); if ($users) { return $users; } return false; } } if (isset ($_POST[&amp;#39;submit&amp;#39;]) &amp;amp;&amp;amp; isset ($_POST[&amp;#39;user_id&amp;#39;])) { $lt = new LevelTwo (); $userDetails = $lt-&amp;gt;doQuery ($_POST[&amp;#39;user_id&amp;#39;]); } ?</description>
+    </item>
+  </channel>
+</rss>

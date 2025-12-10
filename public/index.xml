@@ -2,53 +2,88 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ted Regis Site</title>
-    <link>https://tednoob17.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Ted Regis Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
-    <atom:link href="https://tednoob17.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Search</title>
-      <link>https://tednoob17.github.io/search/</link>
+      <link>http://localhost:1313/search/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
-      <guid>https://tednoob17.github.io/search/</guid>
+      <guid>http://localhost:1313/search/</guid>
       <description></description>
     </item>
     <item>
+      <title>Websec.fr Level 01</title>
+      <link>http://localhost:1313/posts/websec-fr-level1/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level1/</guid>
+      <description>A Websec.fr level 1 level01 - 1 point- 2564 solves We have a source code of level1, i show only a php code because the vulnerability is only in php code.&#xA;&amp;lt;?php session_start (); ini_set(&amp;#39;display_errors&amp;#39;, &amp;#39;on&amp;#39;); ini_set(&amp;#39;error_reporting&amp;#39;, E_ALL); include &amp;#39;anti_csrf.php&amp;#39;; init_token (); class LevelOne { public function doQuery($injection) { $pdo = new SQLite3(&amp;#39;database.db&amp;#39;, SQLITE3_OPEN_READONLY); $query = &amp;#39;SELECT id,username FROM users WHERE id=&amp;#39; . $injection . &amp;#39; LIMIT 1&amp;#39;; $getUsers = $pdo-&amp;gt;query($query); $users = $getUsers-&amp;gt;fetchArray(SQLITE3_ASSOC); if ($users) { return $users; } return false; } } if (isset ($_POST[&amp;#39;submit&amp;#39;]) &amp;amp;&amp;amp; isset ($_POST[&amp;#39;user_id&amp;#39;])) { check_and_refresh_token(); $lo = new LevelOne (); $userDetails = $lo-&amp;gt;doQuery ($_POST[&amp;#39;user_id&amp;#39;]); } ?</description>
+    </item>
+    <item>
+      <title>Websec.fr Level 02</title>
+      <link>http://localhost:1313/posts/websec-fr-level2/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level2/</guid>
+      <description>The source code of level2 is here&#xA;&amp;lt;?php ini_set(&amp;#39;display_errors&amp;#39;, &amp;#39;on&amp;#39;); class LevelTwo { public function doQuery($injection) { $pdo = new SQLite3(&amp;#39;leveltwo.db&amp;#39;, SQLITE3_OPEN_READONLY); $searchWords = implode ([&amp;#39;union&amp;#39;, &amp;#39;order&amp;#39;, &amp;#39;select&amp;#39;, &amp;#39;from&amp;#39;, &amp;#39;group&amp;#39;, &amp;#39;by&amp;#39;], &amp;#39;|&amp;#39;); $injection = preg_replace (&amp;#39;/&amp;#39; . $searchWords . &amp;#39;/i&amp;#39;, &amp;#39;&amp;#39;, $injection); $query = &amp;#39;SELECT id,username FROM users WHERE id=&amp;#39; . $injection . &amp;#39; LIMIT 1&amp;#39;; $getUsers = $pdo-&amp;gt;query ($query); $users = $getUsers-&amp;gt;fetchArray (SQLITE3_ASSOC); if ($users) { return $users; } return false; } } if (isset ($_POST[&amp;#39;submit&amp;#39;]) &amp;amp;&amp;amp; isset ($_POST[&amp;#39;user_id&amp;#39;])) { $lt = new LevelTwo (); $userDetails = $lt-&amp;gt;doQuery ($_POST[&amp;#39;user_id&amp;#39;]); } ?</description>
+    </item>
+    <item>
       <title>Whoami</title>
-      <link>https://tednoob17.github.io/about/whoami/</link>
+      <link>http://localhost:1313/about/whoami/</link>
       <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
-      <guid>https://tednoob17.github.io/about/whoami/</guid>
+      <guid>http://localhost:1313/about/whoami/</guid>
       <description>I&amp;rsquo;m Ted &amp;ldquo;Tedsig42&amp;rdquo; Regis Kouhouenou, a young Cybersecurity Enthusiast, CTF player, music lover, drawer. I spend any of my free time on Web Security Reseach . I also make any contributions on Open Source project like Exegol, The Hacker Recipes and Payload all the things.&#xA;I play CTF and collaborate with @TheBugsReapers Vulnerability Researcher / Bug Hunter team .&#xA;I strive to provide as much information as i can about what i have learned on my blog tedsig42.</description>
     </item>
     <item>
       <title>From Day 0 to 0day Chapter 2</title>
-      <link>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-2/</link>
+      <link>http://localhost:1313/book-review/from-day0-to-0day-chapter-2/</link>
       <pubDate>Wed, 06 Aug 2025 00:22:36 +1300</pubDate>
-      <guid>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-2/</guid>
+      <guid>http://localhost:1313/book-review/from-day0-to-0day-chapter-2/</guid>
       <description>MAPPING CODE TO ATTACK SURFACE Once we know where we are, then the world becomes as narrow as a map.&#xA;When we don’t know, the world feels unlimited. Liu Cixin, The Dark Forest&#xA;Introduction Attack surface (the potential entry points to exploit a vulnerability) going often with the growing of complexity of software.&#xA;The vulnerabilities to be introduced, as developers’ capacity to properly secure these feature is limited and mistakes are inevitable when dealing with millions of lines of code.</description>
     </item>
     <item>
       <title>From Day 0 to 0day Chapter 1</title>
-      <link>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-1/</link>
+      <link>http://localhost:1313/book-review/from-day0-to-0day-chapter-1/</link>
       <pubDate>Sun, 03 Aug 2025 00:10:42 +0200</pubDate>
-      <guid>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-1/</guid>
+      <guid>http://localhost:1313/book-review/from-day0-to-0day-chapter-1/</guid>
       <description>Introduction Taint Analysis Life is not like water. Things in life don’t necessarily flow over the shortest possible route Haruki Murakami - 1Q84&#xA;Taint analysis (or source and sink analysis ) is the analysis of the flow of input through a program from sources to sinks .&#xA;It relies on a simple idea: a large number of vulnerabilities occur because attacker controlled input (the source) flows to a dangerous function (the sink).</description>
     </item>
     <item>
       <title>From Day 0 to 0day Chapter 0</title>
-      <link>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-0/</link>
+      <link>http://localhost:1313/book-review/from-day0-to-0day-chapter-0/</link>
       <pubDate>Tue, 15 Jul 2025 00:37:02 +0100</pubDate>
-      <guid>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-0/</guid>
+      <guid>http://localhost:1313/book-review/from-day0-to-0day-chapter-0/</guid>
       <description>Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book From Day Zerp to Zero Day written by Eugene &amp;ldquo;Spaceraccoon&amp;rdquo; Lim a security researcher and white-hat hacker.&#xA;He learned rapidly because his first training was in how to learn. - Frank Herbert, Dune.&#xA;With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems for new vulnerabilities, has zero to zero assumed a critical role in cybersecurity.</description>
     </item>
     <item>
       <title>My Cool friends</title>
-      <link>https://tednoob17.github.io/friends/friends/</link>
+      <link>http://localhost:1313/friends/friends/</link>
       <pubDate>Tue, 15 Jul 2025 00:10:53 +0100</pubDate>
-      <guid>https://tednoob17.github.io/friends/friends/</guid>
+      <guid>http://localhost:1313/friends/friends/</guid>
       <description>Introduction Hi everyone, during my little journey in Infosec i meet awesome guys who help me, learn me and with i work when we have time.&#xA;Roland Hack : A young and incredible Bug Hunter, web lovers, and it&amp;rsquo;s also pop a vuln after a cup of coffee with milk. Top0n3 : Also Bug hunter at Hackerone, pwner and reverser, he break mobile and web application. Hadrien : A incredible pentester guys, but it&amp;rsquo;s technically impacting, bug hunter coming soon.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/websec-fr-level17/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level17/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/websec-fr-level4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/websec-fr-level8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/websec-fr-level8/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

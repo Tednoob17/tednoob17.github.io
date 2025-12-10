@@ -201,6 +201,17 @@
             
                 
                 
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
             
                 
                 
@@ -228,6 +239,12 @@
         
             
 
+            
+                
+                
+            
+                
+                
             
                 
                 
@@ -272,6 +289,9 @@
             
                 
                 
+            
+                
+                
                     <li class="heading">
                         <a href="/friends/">Friends</a>
                     </li>
@@ -281,6 +301,9 @@
                 
                 
             
+                
+                
+            
             
                 
                 
@@ -311,6 +334,12 @@
                 
                 
             
+                
+                
+            
+                
+                
+            
             
                 
                 
@@ -320,19 +349,25 @@
                         
                 
                         
-                            <li class="heading">
-                                <a href="/musics/">Music</a>
-                            </li>
-                            
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/art/">Art</a>
+                    </li>
                     
                 
-                        
-                
-            
-        
-        
-            
-
             
                 
                 
@@ -365,6 +400,17 @@
 
             
                 
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/book-review/">Book Reviews</a>
+                    </li>
+                    
                 
             
                 
@@ -469,7 +515,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     <article class="post">
         <div class="info">
   <h1 class="post-title">
-    <a href="http://localhost:1313/musics/sample-music-post/">Sample Music Post</a>
+    <a href="http://localhost:1313/posts/websec-fr-level1/">Websec.fr Level 01</a>
   </h1>
 
   <div class="headline">
@@ -493,8 +539,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     
     <ul class="tags">
       
-      <li class="tag-music">
-        <a href="http://localhost:1313/tags/music">music</a>
+      <li class="tag-websec">
+        <a href="http://localhost:1313/tags/websec">websec</a>
       </li>
       
     </ul>
@@ -508,8 +554,63 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </div>
 
         
-        This is a sample music post. You can add your music recommendations, reviews, and playlists here.
-Feel free to delete this post and create your own!
+        A Websec.fr level 1 level01 - 1 point- 2564 solves We have a source code of level1, i show only a php code because the vulnerability is only in php code.
+&lt;?php session_start (); ini_set(&#39;display_errors&#39;, &#39;on&#39;); ini_set(&#39;error_reporting&#39;, E_ALL); include &#39;anti_csrf.php&#39;; init_token (); class LevelOne { public function doQuery($injection) { $pdo = new SQLite3(&#39;database.db&#39;, SQLITE3_OPEN_READONLY); $query = &#39;SELECT id,username FROM users WHERE id=&#39; . $injection . &#39; LIMIT 1&#39;; $getUsers = $pdo-&gt;query($query); $users = $getUsers-&gt;fetchArray(SQLITE3_ASSOC); if ($users) { return $users; } return false; } } if (isset ($_POST[&#39;submit&#39;]) &amp;&amp; isset ($_POST[&#39;user_id&#39;])) { check_and_refresh_token(); $lo = new LevelOne (); $userDetails = $lo-&gt;doQuery ($_POST[&#39;user_id&#39;]); } ?
+        
+        <div class="read-more-link">
+            <a href="/posts/websec-fr-level1/">Read More…</a>
+        </div>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/websec-fr-level2/">Websec.fr Level 02</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-12-10T00:00:00&#43;0100" class="post-date">
+        December 10, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>1 min read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-websec">
+        <a href="http://localhost:1313/tags/websec">websec</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        The source code of level2 is here
+&lt;?php ini_set(&#39;display_errors&#39;, &#39;on&#39;); class LevelTwo { public function doQuery($injection) { $pdo = new SQLite3(&#39;leveltwo.db&#39;, SQLITE3_OPEN_READONLY); $searchWords = implode ([&#39;union&#39;, &#39;order&#39;, &#39;select&#39;, &#39;from&#39;, &#39;group&#39;, &#39;by&#39;], &#39;|&#39;); $injection = preg_replace (&#39;/&#39; . $searchWords . &#39;/i&#39;, &#39;&#39;, $injection); $query = &#39;SELECT id,username FROM users WHERE id=&#39; . $injection . &#39; LIMIT 1&#39;; $getUsers = $pdo-&gt;query ($query); $users = $getUsers-&gt;fetchArray (SQLITE3_ASSOC); if ($users) { return $users; } return false; } } if (isset ($_POST[&#39;submit&#39;]) &amp;&amp; isset ($_POST[&#39;user_id&#39;])) { $lt = new LevelTwo (); $userDetails = $lt-&gt;doQuery ($_POST[&#39;user_id&#39;]); } ?
+        
+        <div class="read-more-link">
+            <a href="/posts/websec-fr-level2/">Read More…</a>
+        </div>
         
         
     </article>
@@ -731,6 +832,108 @@ With the number of discovered and exploited zero days constantly growing, vulner
         <div class="read-more-link">
             <a href="/book-review/from-day0-to-0day-chapter-0/">Read More…</a>
         </div>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/websec-fr-level17/"></a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/websec-fr-level4/"></a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/websec-fr-level8/"></a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
         
         
     </article>

