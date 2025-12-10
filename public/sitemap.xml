@@ -2,40 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tednoob17.github.io/tags/art/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/art/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
     <loc>https://tednoob17.github.io/book-review/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/book-review/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/tags/music/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/musics/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/tags/review/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/art/sample-art-post/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/book-review/sample-book-review/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/musics/sample-music-post/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
     <loc>https://tednoob17.github.io/search/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://tednoob17.github.io/tags/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://tednoob17.github.io/</loc>
@@ -44,8 +14,17 @@
     <loc>https://tednoob17.github.io/about/</loc>
     <lastmod>2025-08-08T01:19:25+02:00</lastmod>
   </url><url>
+    <loc>https://tednoob17.github.io/tags/personal/</loc>
+    <lastmod>2025-08-08T01:19:25+02:00</lastmod>
+  </url><url>
+    <loc>https://tednoob17.github.io/tags/</loc>
+    <lastmod>2025-08-08T01:19:25+02:00</lastmod>
+  </url><url>
     <loc>https://tednoob17.github.io/about/whoami/</loc>
     <lastmod>2025-08-08T01:19:25+02:00</lastmod>
+  </url><url>
+    <loc>https://tednoob17.github.io/tags/book-review/</loc>
+    <lastmod>2025-08-06T00:22:36+13:00</lastmod>
   </url><url>
     <loc>https://tednoob17.github.io/book-review/from-day0-to-0day-chapter-2/</loc>
     <lastmod>2025-08-06T00:22:36+13:00</lastmod>

@@ -2,6 +2,7 @@
 title = 'Whoami'
 date = 2025-08-08T01:19:25+02:00
 draft = false
+tags = ['personal']
 +++
 
 I'm Ted **"Tedsig42"** Regis Kouhouenou, a young **Cybersecurity Enthusiast**,  CTF player, music lover, drawer.    
