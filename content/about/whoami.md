@@ -12,6 +12,6 @@ I play CTF and collaborate with [@TheBugsReapers](https://thebugsreapers.com) **
 I strive to provide as much information as i can about what i have learned on my blog [tedsig42.re](https://tednoob17.github.io/), which encompasses CTF writeups, **research projects**, and more.   
 
 
-PDF Resume here: [English](/assets/Ted-Regis-Kouhouenou-CV-.pdf)
+PDF Resume here: [English](/assets/Ted-Regis-KOUHOUENOU.pdf)
 ## My Root-me Stats Here.  
 ![Root-me-stats](https://root-me-diff.vercel.app/rm-gh?nickname=Tedsig42&style=midnight)
