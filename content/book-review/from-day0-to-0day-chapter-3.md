@@ -205,6 +205,24 @@ This web API has a single `/ping` endpoint that causes the **server** to `ping` 
 Just with the previous description sentences it sure that a developper has inadvertently introduced a remote code
 execution via command injection vulnerability.
 
+Before using **CodeQL** we need to use **CodeQL CLI first.** on [codeql-bundle](https://github.com/github/codeql-action/releases)
+After extraction in 
+
+```bash
+tedsig@42~:$ tar -xzvf codeql-bundle-linux64.tar.gz
+tedsig@42~:$ echo "export PATH=\$PATH:$(pwd)/codeql" >> ~/.zshrc
+tedsig@42~:$ source ~/.zshrc
+tedsig@42~:$ codeql version
+tedsig@42~:$ mkdir -p ~/codeql-workspace/project
+```
+
+```md
+~/codeql-workspace/project
+├── index.js
+└── utils.js
+```
+
+
 - *index.js*
 
 ```js
@@ -287,10 +305,55 @@ select sink.getNode(), source, sink,
 - `//1` : `RemoteFlowSource` is a **sources** of taint tracking configuration.
 - `//2` : `SystemCommandExecution` is a **sink** as a command argument instance.
 
+
+
+```
+tedsig@42~:$ export CODEQL_ALLOW_INSTALLATION_ANYWHERE=true #To use when your installation folder is on the root, downloads or desktop directory.
+tedsig@42~:$ mkdir -p ~/codeql-workspace/queries
+tedsig@42~:$ cd ~/codeql-workspace
+tedsig@42~/codeql-workspace:$ codeql database create ~/codeql-workspace/my-db --language=javascript-typescript --overwrite
+```
+
+- *qlpack.yml*
+
+```yml
+name: my-custom-queries
+version: 1.0.0
+dependencies:
+  codeql/javascript-all: "*"
+```
+
+- Here is how my codeql folder workspace is organized
+
+```md
+~/codeql-workspace/
+├── my-db/              <-- A created database
+|── project				<-- A project folder
+├── queries/            <-- Create this folder
+│   ├── qlpack.yml         <-- Metadata & dependencies
+│   └── RemoteCommandInjection.ql
+└── results.csv          <-- The final output will appear here
+
+```
+
 With this we can track the flow of attacker-controllable data to a vulnerable function.
 The query written check if we have a flow path from **sources to sinks**. It output the result in a structure
 that **CodeQL** can parse.
 
+- **SARIF** (Static Analysis Results Interchange Format) **output**.
+
+```bash
+tedsig@42~/codeql-workspace:$ codeql database analyze my-db queries/RemoteCommandInjection.ql \
+   --format=sarif-latest --output=results.sarif
+Running queries.
+[1/1] No need to rerun /home/kenshin/codeql-workspace/queries/RemoteCommandInjection.ql.
+Shutting down query evaluator.
+Interpreting results.
+
+
+tedsig@42~/codeql-workspace:$ cat results.sarif|jq .
+```
+- *Output*
 
 ```codeQL
 "results" : [ {
@@ -361,11 +424,20 @@ that **CodeQL** can parse.
 	} ]
 ```
 
-**CodeQL** accurately tracks the **tainted data** from the `req.query.ip` request query parameter value `//1`
-to the **ip variable** `//2` and finally to the template string passed to `execSync` in `utils.js` `//3`
+**CodeQL** accurately tracks the **tainted data** from the `req.query.ip` request query parameter value (`//1`)
+to the **ip variable** (`//2`) and finally to the template string passed to `execSync` in `utils.js` (`//3`)
 
+- **CSV Output**
+
+```bash
+tedsig@42~/codeql-workspace:$ codeql database analyze ~/codeql-workspace/my-db queries/RemoteCommandInjection.ql \
+	--format=csv --output=./final_results.csv
+
+```
 For using **CodeQL** effectively, we need to essentially learn a new programming language and familiarize yourself with the **CodeQL** standard libraries.
 
+
+### **Semgrep**
 
 
 
