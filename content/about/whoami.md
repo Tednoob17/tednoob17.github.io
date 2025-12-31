@@ -11,7 +11,7 @@ I also make any **contributions** on **Open Source** project like [Exegol](https
 I play CTF and collaborate with [@TheBugsReapers](https://thebugsreapers.com) **Vulnerability Researcher** / **Bug Hunter** team .  
 I strive to provide as much information as i can about what i have learned on my blog [tedsig42.re](https://tednoob17.github.io/), which encompasses CTF writeups, **research projects**, and more.   
 
-Actually self employed, but ready for possible mission.
+**Actually self employed, but ready for possible mission.**
 
 PDF Resume here: [English](/assets/Ted-Regis-KOUHOUENOU.pdf)
 ## My Root-me Stats Here.  

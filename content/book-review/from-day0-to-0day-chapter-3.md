@@ -1,5 +1,5 @@
 +++
-title = 'From Day0 to 0day Chapter 3'
+title = 'From Day 0 to 0day Chapter 3'
 date = 2025-09-10T23:28:38+02:00
 draft = false
 tags = ['book-review']
@@ -164,5 +164,220 @@ of data (including **variables and expressions**).
 
 
 ## Static Code Analysis Tools
+
+Here we will explain a differences between abstractions and querying methods with **CodeQL and Semgrep**
+
+### CodeQL
+
+**CodeQL** is focused on query relational database,  it's means that it needs to build a database
+of code before performing any queries. The code treatments depend on if it's a compiled or non-compiled 
+languages.  
+It used a **programming language's build system** like **make** for `C/C++` and for **non-compiled** languages
+like `Python` it uses extractors to parse the code and after store it in database.   
+
+A **CodeQL** query languages it similar to database query language like **SQL**.  
+
+Example of COdeQl query to found all `print` function calls.  
+
+```python3
+import python // because a code base containing a "print" is in python (cf a previous code)
+
+from Call call, Name name
+where call.getFunc() = name and name.getId() = "print"
+select call, "call to 'print'."
+```
+
+- `Call` and `Name` **classes** share the same name as a **types** in `ast` **Python** module.
+It's because **CodeQL** `Python` extractor uses `ast` as well as it own extended `semmle.python.ast`
+class to parse python codebases.
+By example,  **CodeQL Go** extractor also uses the `Go` standard library `go/ast` package.
+Thus for each language **CodeQL** a extraction approch is customized  allowing to **build a comprehensive databases**
+of data and **control flow relationships**.
+
+It possible with **CodeQL** to create a global **taint tracking queries** to find **source-to-sink**, you 
+can also reuse a components .
+
+#### Multifile Taint Tracking Example
+
+For this example Consider a `Node.js` web **API server** built on the `Express framework` that consists of two files, `index.js` and `utils.js`.  
+This web API has a single `/ping` endpoint that causes the **server** to `ping` any **IP address** in the ip query parameter.
+
+Just with the previous description sentences it sure that a developper has inadvertently introduced a remote code
+execution via command injection vulnerability.
+
+- *index.js*
+
+```js
+const express = require("express");
+const { ping } = require("./utils.js"); //1
+
+const app = express();
+
+app.get("/ping", (req, res) => {
+    const ip = req.query.ip; //2
+    res.send(`Result: \n${ping(ip)}`);
+})
+
+app.listen(3000);
+```
+
+-> `//2` : A `req.query.ip` is user-controlled data.
+
+-> `//1` : The `utils.js` is imported in *index.js* with `ping` function.
+
+- *utils.js*
+
+```js
+
+const { execSync } = require("child_process");
+
+	exports.ping = (ip) => {
+		try {
+ 			return execSync(`ping -c 5 ${ip}`); //1
+		} catch (error) {
+			return error.message;
+	}
+};
+
+```
+
+-> `//1` Here a `ping` passes `ip` value to `execSync` function which executes a **shell command**
+using it like first argument , but any attacker can combine a another command like this `;whoami`
+
+**CodeQL** provides convenient classes for common **sources and sinks**, including
+remote user input and command execution functions.
+
+- *RemoteCommandInjection.ql*
+
+```CodeQL
+/**
+ * @id remote-command-injection
+ * @name Remote Command Injection
+ * @description Passing user-controlled remote data to a command injection.
+ * @kind path-problem
+ * @severity error
+ */
+
+import javascript
+
+
+module RemoteCommandInjectionConfig implements DataFlow::ConfigSig {
+	predicate isSource(DataFlow::Node source) {
+ 		source instanceof RemoteFlowSource //1
+    }
+
+    predicate isSink(DataFlow::Node sink) {
+        sink = any(SystemCommandExecution sys).getACommandArgument() //2
+    }
+}
+
+module RemoteCommandInjectionFlow =
+	TaintTracking::Global<RemoteCommandInjectionConfig>;
+
+
+import RemoteCommandInjectionFlow::PathGraph
+
+from RemoteCommandInjectionFlow::PathNode source,
+	RemoteCommandInjectionFlow::PathNode sink
+where RemoteCommandInjectionFlow::flowPath(source, sink)
+select sink.getNode(), source, sink,
+	"taint from $@ to $@.", source.getNode(), "source", sink, "sink"
+```
+
+- `//1` : `RemoteFlowSource` is a **sources** of taint tracking configuration.
+- `//2` : `SystemCommandExecution` is a **sink** as a command argument instance.
+
+With this we can track the flow of attacker-controllable data to a vulnerable function.
+The query written check if we have a flow path from **sources to sinks**. It output the result in a structure
+that **CodeQL** can parse.
+
+
+```codeQL
+"results" : [ {
+--snip--
+	"codeFlows" : [ {
+		"threadFlows" : [ {
+			"locations" : [ {
+				"location" : {
+					"physicalLocation" : {
+						"artifactLocation" : {
+							"uri" : "index.js",
+							"uriBaseId" : "%SRCROOT%",
+							"index" : 1
+						 },
+						 "region" : {
+							"startLine" : 7,
+							"startColumn" : 16,
+							"endColumn" : 28
+						  }
+						 },
+						 "message" : {
+							 "text" : "req.query.ip" //1
+						  }
+				 }
+			 },
+			 --snip--
+			 {
+				"location" : {
+					"physicalLocation" : {
+						"artifactLocation" : {
+							"uri" : "index.js",
+							"uriBaseId" : "%SRCROOT%",
+							"index" : 1
+						},
+						"region" : {
+							"startLine" : 8,
+							"startColumn" : 32,
+							"endColumn" : 34
+						 }
+				     },
+				  "message" : {
+  					 "text" : "ip" //2
+				   }
+				}
+			},
+			--snip--
+			{
+				"location" : {
+					"physicalLocation" : {
+						"artifactLocation" : {
+							"uri" : "utils.js",
+							"uriBaseId" : "%SRCROOT%",
+							"index" : 0
+						 },
+						 "region" : {
+						 	"startLine" : 5,
+							"startColumn" : 21,
+							"endColumn" : 38
+						  }
+					},
+
+					"message" : {
+ 						"text" : "`ping -c 5 ${ip}`" //3
+					}
+				}
+			} ]
+		} ]
+	} ]
+```
+
+**CodeQL** accurately tracks the **tainted data** from the `req.query.ip` request query parameter value `//1`
+to the **ip variable** `//2` and finally to the template string passed to `execSync` in `utils.js` `//3`
+
+For using **CodeQL** effectively, we need to essentially learn a new programming language and familiarize yourself with the **CodeQL** standard libraries.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
