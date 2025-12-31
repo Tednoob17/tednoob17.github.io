@@ -167,7 +167,7 @@ of data (including **variables and expressions**).
 
 Here we will explain a differences between abstractions and querying methods with **CodeQL and Semgrep**
 
-### CodeQL
+### **CodeQL**
 
 **CodeQL** is focused on query relational database,  it's means that it needs to build a database
 of code before performing any queries. The code treatments depend on if it's a compiled or non-compiled 
@@ -439,9 +439,44 @@ For using **CodeQL** effectively, we need to essentially learn a new programming
 
 ### **Semgrep**
 
+Semantic grep aka **Semgrep** is another popular code analysis tool that uses a **pattern-oriented**
+rule syntax, in contrast to **CodeQL**’s **query-oriented** syntax.
+
+This following rule file (`express-injection.yml`) that identifies the same command injection vulnerability as the 
+`RemoteCommandInjection.ql` **CodeQL**
+
+```md
+
+rules:
+  - id: express-injection
+	mode: taint //1
+	pattern-sources:
+	   - pattern: req.query.$PARAMETER //2
+	pattern-sinks:
+	  - pattern: execSync(...) //3
+	message: Passing user-controlled Express query parameter to a command injection.
+	languages:
+	  - javascript
+	severity: ERROR
+	metadata:
+		interfile: true
+```
 
 
+- (`//1`) : **Semgrep** support a `mode` field features including **taint, join, extract**
+- (`//2`) : A another feature commonly used is **metavariables** who is like a shell environment variables,
+it prefixed with dollar sign (**$**), only in uppercase letter and can contains underscore (**_**)
 
+Ex : 
+```md
+patterns:
+   - pattern: var $VARIABLE_NAME = "..."
+   - metavariable-regex:
+		metavariable: $VARIABLE_NAME
+		regex: SECRET_.*
+```
+
+- (`//3`) : A sequence like this (`...`) match that between the brackets we can have one or more items.
 
 
 
