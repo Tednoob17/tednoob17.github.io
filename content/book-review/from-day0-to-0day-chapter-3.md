@@ -317,7 +317,7 @@ tedsig@42~/codeql-workspace:$ codeql database create ~/codeql-workspace/my-db --
 - *qlpack.yml*
 
 ```yml
-name: my-custom-queries
+name: my-queries
 version: 1.0.0
 dependencies:
   codeql/javascript-all: "*"
