@@ -2,3 +2,4 @@ public/
 resources/
 .hugo_build.lock
 /commit
+.git/.cache_state
