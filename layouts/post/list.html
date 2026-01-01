@@ -4,40 +4,25 @@
     {{ .Content }}
   </header>
 
-  <div class="posts-cards">
-    {{ range $index, $page := .Pages.ByDate.Reverse }}
-      {{ $image := $page.Params.banner | default $page.Params.image | default $page.Params.cover }}
-      {{ $summary := $page.Params.summary | default $page.Params.description | default ($page.Summary | plainify) }}
-      <div class="post-card {{ if modBool $index 2 }}post-card--reverse{{ end }}">
-        <a class="post-card__link" href="{{ $page.RelPermalink }}">
-          <div class="post-card__frame">
-            {{ if $image }}
-              <div class="post-card__media">
-                <img src="{{ $image | absURL }}" alt="{{ $page.Title | plainify }} cover" loading="lazy" />
-              </div>
-            {{ end }}
-            <div class="post-card__body">
-              <div class="post-card__title">{{ $page.Title | markdownify }}</div>
-              {{ if $summary }}
-                <div class="post-card__excerpt">{{ $summary }}</div>
-              {{ end }}
-              <div class="post-card__meta">
-                {{ with $page.Date }}
-                  <span class="post-card__tag post-card__date">{{ .Format "Jan 2006" }}</span>
+  <div class="posts-archive">
+    {{ range (.Pages.ByDate.Reverse.GroupByDate "January 2006") }}
+      <section class="archive-group">
+        <h2 class="archive-group__title">{{ .Key }}</h2>
+        <ul class="archive-group__list">
+          {{ range .Pages }}
+            {{ $summary := .Params.summary | default .Params.description | default (.Summary | plainify) }}
+            <li class="archive-item">
+              <a class="archive-item__link" href="{{ .RelPermalink }}">
+                <span class="archive-item__date">{{ .Date.Format "02 Jan" }}</span>
+                <span class="archive-item__title">{{ .Title | markdownify }}</span>
+                {{ with $summary }}
+                  <span class="archive-item__summary">{{ . }}</span>
                 {{ end }}
-                {{ with $page.Params.tags }}
-                  <div class="post-card__tags">
-                    {{ range . }}
-                      {{ $tagUrl := printf "/tags/%s/" (urlize .) }}
-                      <a class="post-card__tag" href="{{ $tagUrl | relURL }}">{{ . }}</a>
-                    {{ end }}
-                  </div>
-                {{ end }}
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
     {{ end }}
   </div>
 {{ end }}
