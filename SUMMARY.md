@@ -1,4 +1,2 @@
-
-
 ## Executive Summary
 
