@@ -15,6 +15,20 @@
         <i class="fas fa-search"></i>
       </a>
     </li>
+    <li class="main-nav__item lang-selector">
+      <div class="lang-dropdown">
+        <button class="lang-toggle" title="Select Language">
+          <i class="fas fa-globe"></i> {{ .Site.Language.LanguageName }}
+        </button>
+        <div class="lang-menu">
+          {{ range .Site.Languages }}
+            <a href="{{ .BaseURL }}" class="lang-option{{ if eq . $.Site.Language }} active{{ end }}" title="{{ .LanguageName }}">
+              {{ .LanguageName }}
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </li>
     </ul>
 </nav>
 
