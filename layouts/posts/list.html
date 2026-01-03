@@ -1,0 +1,32 @@
+{{ define "main" }}
+  <header class="content__header posts-header">
+    <h1 class="posts-title">{{ .Title | markdownify }}</h1>
+    {{ .Content }}
+  </header>
+
+  <div class="posts-archive">
+    {{ range (.Pages.ByDate.Reverse.GroupByDate "January 2006") }}
+      <section class="archive-group">
+        <h2 class="archive-group__title">{{ .Key }}</h2>
+        <ul class="archive-group__list">
+          {{ range .Pages }}
+            {{ $summary := .Params.summary | default .Params.description | default (.Summary | plainify) }}
+            <li class="archive-item">
+              <a class="archive-item__link" href="{{ .RelPermalink }}">
+                <span class="archive-item__date">{{ .Date.Format "02 Jan" }}</span>
+                <span class="archive-item__title">{{ .Title | markdownify }}</span>
+                {{ with $summary }}
+                  <span class="archive-item__summary">{{ . }}</span>
+                {{ end }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ define "aside" }}
+  {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+{{ end }}
