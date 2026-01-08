@@ -54,7 +54,8 @@
 
 .archive-group__title {
     margin: 0 0 1rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
