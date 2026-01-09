@@ -56,8 +56,15 @@
     margin: 0 0 1rem;
     font-size: 0.85rem;
     font-weight: 400;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 0.08em;
+}
+
+.archive-group__title::first-letter {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 500;
+    margin-right: 0.12rem;
 }
 
 .archive-group__list {
