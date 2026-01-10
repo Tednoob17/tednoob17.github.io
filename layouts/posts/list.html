@@ -7,7 +7,7 @@
   <div class="posts-archive">
     {{ range (.Pages.ByDate.Reverse.GroupByDate "January 2006") }}
       <section class="archive-group">
-        <h2 class="archive-group__title">{{ .Key }}</h2>
+        <h2 class="archive-group__title">{{ .Key | lower | title }}</h2>
         <ul class="archive-group__list">
           {{ range .Pages }}
             <li class="archive-item">
