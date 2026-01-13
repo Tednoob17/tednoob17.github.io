@@ -398,3 +398,10 @@ article img {
 .lightbox-overlay.active img {
     transform: scale(1);
 }
+
+/* Make bold text green */
+strong,
+b {
+    color: #03fc77;
+    font-weight: 600;
+}
