@@ -402,6 +402,14 @@ article img {
 /* Make bold text green */
 strong,
 b {
-    color: #03fc77;
+    color: #29ba6d !important;
     font-weight: 600;
+}
+
+/* Ensure bold text in content is green */
+.content__body strong,
+.content__body b,
+article strong,
+article b {
+    color: #29ba6d !important;
 }
