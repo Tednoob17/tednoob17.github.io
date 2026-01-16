@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <header class="content__header posts-header">
+    <h1 class="posts-title">{{ .Title | markdownify }}</h1>
+    {{ .Content }}
+  </header>
+
+  {{ $pages := where .Site.RegularPages.ByDate.Reverse "Section" "posts" }}
+  <div class="posts-archive">
+    <section class="archive-group">
+      <h2 class="archive-group__title">Latest posts</h2>
+      <ul class="archive-group__list">
+        {{ range first 10 $pages }}
+          <li class="archive-item">
+            <a class="archive-item__link" href="{{ .RelPermalink }}">
+              <span class="archive-item__date">{{ .Date.Format "02 Jan" }}</span>
+              <span class="archive-item__title">{{ .Title | markdownify }}</span>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+  </div>
+{{ end }}
+
+{{ define "aside" }}
+  {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+{{ end }}
