@@ -413,3 +413,23 @@ article strong,
 article b {
     color: #29ba6d !important;
 }
+
+/* Inline markdown code */
+.content__body code,
+article code {
+    color: #b55307;
+    background: rgba(181, 83, 7, 0.12);
+    padding: 0.12em 0.35em;
+    border-radius: 0.25rem;
+    font-size: 0.95em;
+}
+
+.content__body pre code,
+article pre code,
+.highlight pre code {
+    color: inherit;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+}
