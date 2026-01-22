@@ -6,21 +6,21 @@
     <description>Recent content in Book-Reviews on Tedsig42</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 17 Apr 2026 00:00:00 +0100</lastBuildDate>
     <atom:link href="https://tednoob17.github.io/book-reviews/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Why Book Review ?</title>
-      <link>https://tednoob17.github.io/book-reviews/why-book-review/</link>
-      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
-      <guid>https://tednoob17.github.io/book-reviews/why-book-review/</guid>
-      <description>&lt;p&gt;In this section, I share reviews of books I use to learn and improve in infosec.&lt;/p&gt;&#xA;&lt;p&gt;There will be two review formats:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Some books will be covered through multiple chapters/posts to go deeper step by step.&lt;/li&gt;&#xA;&lt;li&gt;Others will be treated in a single post with a fast global summary.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Most of the books come from publishers like &lt;strong&gt;No Starch Press&lt;/strong&gt;, &lt;strong&gt;O&amp;rsquo;Reilly&lt;/strong&gt;, or &lt;strong&gt;Packt Publishing&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I personally started infosec by reading &lt;a href=&#34;https://phrack.org&#34;&gt;Phrack&lt;/a&gt; and solving &lt;a href=&#34;https://www.root-me.org/&#34;&gt;Root-Me&lt;/a&gt; challenges, and I believe books are still one of the best ways to build strong fundamentals.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>x86-64 Assembly Language Programming with Ubuntu written by Ed Jorgensen</title>
       <link>https://tednoob17.github.io/book-reviews/x86-64-assembly-language-programming-with-ubuntu/</link>
-      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 +0100</pubDate>
       <guid>https://tednoob17.github.io/book-reviews/x86-64-assembly-language-programming-with-ubuntu/</guid>
       <description>&lt;p&gt;I am starting with the book &lt;code&gt;x86-64 Assembly Language Programming with Ubuntu&lt;/code&gt; , written by &lt;a href=&#34;https://www.legacy.com/us/obituaries/name/edward-jorgensen-obituary?id=59464082&#34;&gt;Dr. Ed Jorgensen&lt;/a&gt;.&lt;br&gt;&#xA;I use &lt;code&gt;mdBook&lt;/code&gt; to take notes and make diagrams, often with &lt;a href=&#34;https://excalidraw.com/&#34;&gt;Excalidraw&lt;/a&gt;. &lt;br&gt;&#xA;Why? Because I want to learn it, and it can be useful in the future.&lt;/p&gt;&#xA;&lt;p&gt;The book is published under a &lt;strong&gt;Creative Commons&lt;/strong&gt; license, so you can get it &lt;a href=&#34;https://www.cl72.org/120introAssem/assembly-language64-ubuntu.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;My work can be found &lt;a href=&#34;https://tednoob17.github.io/x86-64-assembly-language/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why Book Review ?</title>
+      <link>https://tednoob17.github.io/book-reviews/why-book-review/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0100</pubDate>
+      <guid>https://tednoob17.github.io/book-reviews/why-book-review/</guid>
+      <description>&lt;p&gt;In this section, I share reviews of books I use to learn and improve in infosec.&lt;/p&gt;&#xA;&lt;p&gt;There will be two review formats:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Some books will be covered through multiple chapters/posts to go deeper step by step.&lt;/li&gt;&#xA;&lt;li&gt;Others will be treated in a single post with a fast global summary.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Most of the books come from publishers like &lt;strong&gt;No Starch Press&lt;/strong&gt;, &lt;strong&gt;O&amp;rsquo;Reilly&lt;/strong&gt;, or &lt;strong&gt;Packt Publishing&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I personally started infosec by reading &lt;a href=&#34;https://phrack.org&#34;&gt;Phrack&lt;/a&gt; and solving &lt;a href=&#34;https://www.root-me.org/&#34;&gt;Root-Me&lt;/a&gt; challenges, and I believe books are still one of the best ways to build strong fundamentals.&lt;/p&gt;</description>
     </item>
     <item>
       <title>From Day 0 to 0day Chapter 2</title>
