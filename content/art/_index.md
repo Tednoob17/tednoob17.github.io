@@ -11,24 +11,25 @@ Cette page sert de carnet visuel: d'un côté les photos prises avec un appareil
 		<p>Un espace pour les clichés plus documentaires, les ambiances de rue, les textures et les scènes que je capture sur le vif.</p>
 	</div>
 
-	<div class="art-grid">
-		<figure class="art-tile art-tile--empty">
-			<span>Photo 01</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-		<figure class="art-tile art-tile--empty">
-			<span>Photo 02</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-		<figure class="art-tile art-tile--empty">
-			<span>Photo 03</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-		<figure class="art-tile art-tile--empty">
-			<span>Photo 04</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-	</div>
+
+<div class="art-grid">
+  <figure class="art-tile art-tile--empty">
+    <span>Photo 01</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+  <figure class="art-tile art-tile--empty">
+    <span>Photo 02</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+  <figure class="art-tile art-tile--empty">
+    <span>Photo 03</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+  <figure class="art-tile art-tile--empty">
+    <span>Photo 04</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+</div>
 </section>
 
 ## Galerie dessin
@@ -39,24 +40,25 @@ Cette page sert de carnet visuel: d'un côté les photos prises avec un appareil
 		<p>Un espace plus libre pour les croquis, le line art, les expérimentations de couleurs et tout ce qui sort du carnet.</p>
 	</div>
 
-	<div class="art-grid">
-		<figure class="art-tile art-tile--empty">
-			<span>Dessin 01</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-		<figure class="art-tile art-tile--empty">
-			<span>Dessin 02</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-		<figure class="art-tile art-tile--empty">
-			<span>Dessin 03</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-		<figure class="art-tile art-tile--empty">
-			<span>Dessin 04</span>
-			<figcaption>À remplir</figcaption>
-		</figure>
-	</div>
+
+<div class="art-grid">
+  <figure class="art-tile art-tile--empty">
+    <span>Dessin 01</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+  <figure class="art-tile art-tile--empty">
+    <span>Dessin 02</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+  <figure class="art-tile art-tile--empty">
+    <span>Dessin 03</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+  <figure class="art-tile art-tile--empty">
+    <span>Dessin 04</span>
+    <figcaption>À remplir</figcaption>
+  </figure>
+</div>
 </section>
 
 ## Artists I follow
