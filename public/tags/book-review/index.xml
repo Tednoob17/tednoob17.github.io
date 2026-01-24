@@ -6,8 +6,15 @@
     <description>Recent content in Book-Review on Tedsig42</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Aug 2025 00:22:36 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 10 Sep 2025 23:28:38 +0200</lastBuildDate>
     <atom:link href="https://tednoob17.github.io/tags/book-review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Day 0 to 0day Chapter 3</title>
+      <link>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-3/</link>
+      <pubDate>Wed, 10 Sep 2025 23:28:38 +0200</pubDate>
+      <guid>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-3/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tednoob17.github.io/images/stc/chap3.jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;automated-variant-analysis&#34;&gt;AUTOMATED VARIANT ANALYSIS&lt;/h1&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Now that we know what &lt;strong&gt;source and sink analysis&lt;/strong&gt; is, we will learn how to automate code analysis (Note that automating the process can depend on your codebase).&lt;br&gt;&#xA;We shall use two popular open source static code analysis  tools &lt;strong&gt;CodeQL and Semgrep&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;abstract-syntax-trees&#34;&gt;Abstract Syntax Trees&lt;/h2&gt;&#xA;&lt;p&gt;Modern static code analysis tools for better and deep comprehension of code base need to understand multiple aspects of the code / programming language used like difference between &lt;strong&gt;function and a variable&lt;/strong&gt;, &lt;strong&gt;usage of statement&lt;/strong&gt;, &lt;strong&gt;class inheritance for object-oriented languages&lt;/strong&gt;, &lt;strong&gt;the exact placement of parenthesis or semicolons&lt;/strong&gt; and so on.&#xA;&lt;strong&gt;AST&lt;/strong&gt; is a data-structure. It’s a tree that models the syntax of a programming language.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>From Day 0 to 0day Chapter 2</title>
       <link>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-2/</link>
