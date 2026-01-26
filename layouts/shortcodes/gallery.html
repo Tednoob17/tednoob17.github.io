@@ -1,0 +1,13 @@
+{{- $folder := .Get 0 -}}
+{{- $path := printf "static/images/art/%s" $folder -}}
+{{- $files := readDir $path -}}
+
+<div class="art-grid">
+    {{- range $files -}}
+        {{- if not .IsDir -}}
+            <div class="art-tile">
+                <img src="{{ printf "images/art/%s/%s" $folder .Name | absURL }}" alt="{{ .Name }}" loading="lazy">
+            </div>
+        {{- end -}}
+    {{- end -}}
+</div>
