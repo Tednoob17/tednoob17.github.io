@@ -13,23 +13,7 @@ Cette page sert de carnet visuel: d'un côté les photos prises avec un appareil
 
 
 <div class="art-grid">
-  <figure class="art-tile art-tile--empty">
-    <span>Photo 01</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-  <figure class="art-tile art-tile--empty">
-    <span>Photo 02</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-  <figure class="art-tile art-tile--empty">
-    <span>Photo 03</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-  <figure class="art-tile art-tile--empty">
-    <span>Photo 04</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-</div>
+  {{< gallery "photography" >}}
 </section>
 
 ## Galerie dessin
@@ -42,23 +26,7 @@ Cette page sert de carnet visuel: d'un côté les photos prises avec un appareil
 
 
 <div class="art-grid">
-  <figure class="art-tile art-tile--empty">
-    <span>Dessin 01</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-  <figure class="art-tile art-tile--empty">
-    <span>Dessin 02</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-  <figure class="art-tile art-tile--empty">
-    <span>Dessin 03</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-  <figure class="art-tile art-tile--empty">
-    <span>Dessin 04</span>
-    <figcaption>À remplir</figcaption>
-  </figure>
-</div>
+  {{< gallery "drawing" >}}
 </section>
 
 ## Artists I follow
