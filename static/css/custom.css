@@ -529,3 +529,33 @@ article pre code,
     border-radius: 0;
     font-size: inherit;
 }
+
+/* Social links: ensure icons and handles display inline and are visible */
+.aside__social-links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0;
+    margin: 0.5rem 0;
+    list-style: none;
+}
+
+.aside__social-links li {
+    display: inline-flex;
+    align-items: center;
+}
+
+.aside__social-links i,
+.aside__social-links svg {
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    color: var(--fg);
+}
+
+.aside__social-links .twitter-handle {
+    margin-left: 0.4rem;
+    font-weight: 600;
+    color: var(--fg);
+}
