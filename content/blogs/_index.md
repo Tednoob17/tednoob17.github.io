@@ -1,0 +1,34 @@
+
+Other blogs I read
+==================
+
+*   [Martijn Braam](https://blog.brixit.nl/)
+*   [Vincent Bernat](https://vincent.bernat.ch/)
+*   [Dhakal Ananda](https://dhakal-ananda.com.np)
+*   [Joshua Roger's](https://joshua.hu/)
+*	[Kyle Kingsbury](https://aphyr.com/)
+*   [Natalie Silvanovich](https://natashenka.ca/about/)
+*   [Bryan Cantrill](https://bcantrill.dtrace.org/)
+*   [Doyensec](https://blog.doyensec.com/)
+*   [Synactiv](https://www.synacktiv.com/publications)
+*   [Quarkslab](https://blog.quarkslab.com/)
+*   [Trails Of Bite](https://blog.trailofbits.com/)
+*   [Detectify](https://labs.detectify.com/)
+*   [Fuzzinglabs](https://fuzzinglabs.com/security-blog/)
+*   [Rachid Allam - zhero](https://zhero-web-sec.github.io/research-and-things/)
+*   [Phrack](https://phrack.org/)
+*   [Julien Voisin](http://dustri.org/)
+*   [Laluka](https://thinkloveshare.com/hacking/)
+*   [Dana Epp's](https://danaepp.com/blog)
+*   [Securitybreached](https://blog.securitybreached.org/)
+*   [Aretekzs](https://aretekzs.com/)
+
+Blogposts
+=========
+
+> Have a comment on one of my posts? Start a discussion by sending an email to [ted.sig \[at\] tutamail \[dot\] com](mailto:ted.sig@tutamail.com)
+
+  
+
+> No copyright - ted.sig at tutamail dot com  
+> Any and all opinions listed here are my own and not representative of my employers; future, past and present.

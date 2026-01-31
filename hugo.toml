@@ -29,7 +29,10 @@ theme = 'risotto'
     name = "Book Reviews"
     url = "/book-review/"
     weight = 6
-
+  [[menu.main]]
+    name = "Blogs"
+    url = "/blogs/"
+    weight = 6
 [params]
   noindex = false
   description = "Another infosec enthusiast blog"
@@ -46,3 +49,8 @@ theme = 'risotto'
 [taxonomies]
   category = "categories"
   tag = "tags"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

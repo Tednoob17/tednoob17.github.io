@@ -4,8 +4,16 @@
     <title>Tags on Tedsig42</title>
     <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Tedsig42</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 08 Aug 2025 01:19:25 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Personal</title>
+      <link>http://localhost:1313/tags/personal/</link>
+      <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
+      <guid>http://localhost:1313/tags/personal/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
