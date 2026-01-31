@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>From Day 0 to 0day Chapter 0 &ndash; Tedsig42</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css">
+<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="From Day 0 to 0day Chapter 0 &ndash; Tedsig42" />
+<meta property="og:url" content="http://localhost:1313/book-reviews/from-day0-to-0day-chapter-0/" />
+
+  
+
+<meta property="og:locale" content="en-us" />
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/musics/" title="">Music</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-review/" title="">Book Reviews</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>From Day 0 to 0day Chapter 0</h1>
+    </header>
+    <div class="content__body">
+        <p><img src="/images/stc/fd0t0d.png" alt="alt">
+Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book <strong><a href="https://nostarch.com/zero-day">From Day Zerp to Zero Day</a></strong>
+written by Eugene &ldquo;<a href="https://x.com/spaceraccoonsec">Spaceraccoon</a>&rdquo; Lim a security researcher and white-hat hacker.</p>
+<p><strong>He learned rapidly because his first training was in how to learn.</strong> - <code>Frank Herbert, Dune</code>.</p>
+<p>With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems
+for new vulnerabilities, has zero to zero  assumed a critical role in cybersecurity.</p>
+<p>Most write-ups on zero-day findings describe what the vulnerability is, but not how it was discovered.
+The methodologies for finding particular vulnerabilities can vary greatly.
+You’ll learn about the basics of reporting vulnerabilities, what vulnerability research is (and isn’t), and its three main disciplines: <strong>code review, reverse engineering, and fuzzing</strong>.</p>
+<h2 id="what-is-a-vulnerability">What Is a Vulnerability?</h2>
+<p>Weakness in an information system, system security procedures,
+internal controls, or implementation that could be exploited or
+triggered by a threat source.<br>
+Source : <a href="https://csrc.nist.gov/glossary/term/vulnerability">NIST</a></p>
+<p>First, a vulnerability must be a flaw in the design or implementation of
+a system. This means that if exploited, the vulnerability causes the system to act in an insecure manner that wasn’t intended by the developers.</p>
+<p>The Common Vulnerability Scoring System (<strong>CVSS</strong>) industry standard uses the <strong>Confidentiality</strong>, <strong>Integrity</strong>, and <strong>Availability</strong> a (<strong>CIA</strong>) triad to evaluate the impact of vulnerabilities:</p>
+<ul>
+<li><strong>Confidentiality</strong> :An attacker can access data they’re not authorized to access.</li>
+<li><strong>Integrity</strong> : An attacker can modify data they’re not authorized to modify.</li>
+<li><strong>Availability</strong> : An attacker can disrupt access to the system itself.</li>
+</ul>
+<p>These components describe how a successfully exploited vulnerability
+can impact a system and provide a useful lens to characterize a vulnerability.<br>
+For example, a <strong>vulnerability</strong> that allows an attacker to write arbitrary files
+in a system affects the integrity of the system but doesn’t necessarily impact confidentiality.<br>
+While this won’t be at the top of your mind when looking for vulnerabilities, it’s helpful when communicating your findings to others, such as when you’re writing a vulnerability disclosure report.</p>
+<h2 id="common-vulnerabilities-and-exposures-records">Common Vulnerabilities and Exposures Records</h2>
+<p>A Common Vulnerabilities and Exposures (<code>CVE</code>) identifier, such as <code>CVE-2020-19909</code> or <code>CVE-2020-21469</code>, is a unique reference assigned to a publicly disclosed vulnerability.</p>
+<p>The <strong>MITRE</strong> Corporation manages the system that
+publishes these identifiers, which have gradually become a global standard for referencing known vulnerabilities.<br>
+However, although many consider a CVE Record to be an “<strong>official</strong>” vulnerability, this isn’t the case; it’s nice to get a CVE assigned for a vulnerability you discovered, but not all vulnerabilities have <strong>CVEs</strong>, nor are all <strong>CVEs</strong> actual <strong>vulnerabilities</strong>.</p>
+<p>The <strong>CVE Program</strong> has grown organically into a de facto industry <strong>reference</strong>, rather than being established as a formal <strong>international standard</strong>.<br>
+It’s actually a federated system of <strong>CVE</strong> Numbering Authorities (CNAs) that can assign CVE identifiers to vulnerabilities that fall within their <strong>scope</strong>.<br>
+For example, a <strong>vendor</strong> <strong>CNA</strong> has the authority to assign <strong>CVE IDs</strong> to <strong>vulnerabilities</strong> affecting their own <strong>products</strong>, allowing them to control the <strong>CVE</strong> publication process.<br>
+While there are common <strong>CVE</strong> assignment rules and a central <strong>CVE</strong> request form that goes to the root <strong>CNA</strong> (<strong>MITRE</strong>), the assignment of <strong>CVE IDs</strong> is still fairly decentralized and left to the discretion of <strong>CNAs</strong>, which can lead to erroneous <strong>CVEs</strong> being published.</p>
+<h3 id="incorrect-reporting-of-vulnerabilities">Incorrect Reporting of Vulnerabilities</h3>
+<p>The frequent conflation of bugs and vulnerabilities is a common cause of erroneous reporting.<br>
+For example, the curl and Postgres projects have both rejected vulnerability disclosures that could be considered bugs but weren’t vulnerabilities.</p>
+<ul>
+<li>
+<p><code>CVE-2020-19909</code> vulnerability record for curl:
+Integer overflow vulnerability in <code>tool_operate.c</code> in <code>curl 7.65.2</code> via a large value as the retry delay. This exploit scenario doesn’t cross a security boundary during normal usage of curl by a local user either, since they’d already be able to control <code>--retry-delay directly</code> .
+This is not especially plausible because the overflow only happens if the user was trying to specify that curl should wait weeks (or
+longer) before trying to recover from a transient error.<br>
+Source: <a href="https://daniel.haxx.se/blog/2023/08/26/cve-2020-19909-is-everything-that-is-wrong-with-cves/">Daniel haxx</a></p>
+</li>
+<li>
+<p><code>CVE-2020-21469</code> the disputed vulnerability record for Postgres, which states:
+An issue was discovered in <strong>PostgreSQL</strong> <code>12.2</code> allows attackers to cause a denial of service via repeatedly sending <code>SIGHUP</code> signals. In order to exploit this vulnerability, the attacker needs to already have access to an account with elevated privileges, such as:</p>
+<ul>
+<li>A <code>PostgreSQL</code> superuser (<code>postgres</code>) .</li>
+<li>A user that was granted permission to execute <code>pg_reload_conf</code> by a <code>Postsgres</code> superuser</li>
+<li>A privileged operating system user .<br>
+Source: <a href="https://www.postgresql.org/about/news/cve-2020-21469-is-not-a-security-vulnerability-2701">Postgres</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="what-is-zero-day-vulnerability-research">What Is Zero-Day Vulnerability Research?</h2>
+<p><strong>Zero-day vulnerability research</strong> is the systematic process of analyzing software and hardware targets to discover security vulnerabilities.<br>
+This covers most technology, from desktop applications to IoT devices to operating system kernels.<br>
+<strong>Vulnerability research</strong> focuses on <strong>individual components</strong>, such as a particular driver in an operating system or a network service in an IoT device.<br>
+By <strong>isolating particular components</strong> we can generalize techniques that are applicable across components, such as <strong>reverse engineering shared libraries or fuzzing network protocols.</strong></p>
+<h3 id="vulnerability-research-vs-penetration-testing-">Vulnerability Research vs. Penetration Testing .</h3>
+<p><strong>Vulnerability research</strong> and <strong>penetration testing</strong> share common techniques and tools, but they differ in their goals.</p>
+<p><strong>Penetration testing</strong> aims to find and exploit vulnerabilities in a particular system, whether it’s a web application or a network. These vulnerabilities aren’t necessarily new.</p>
+<p><strong>Vulnerability research</strong> aims to <strong>discover vulnerabilities</strong> in <strong>software or hardware targets</strong>.   If you discover a new vulnerability in a router, all networks that use this router are theoretically at risk. It not limited to one enterprise but all enterprise using it.</p>
+<p>If you <strong>discover</strong> a buffer overflow that overwrites return address pointers on the stack in a program, a simple proof of concept (<strong>PoC</strong>) that triggers this is sufficient for vulnerability research.</p>
+<p>Developing a full blown <strong>exploit</strong> that executes arbitrary shellcode falls under exploit development the process of creating tools or code that exploits vulnerabilities—and is a necessary step in a penetration test.</p>
+<p>Another major feature of <strong>vulnerability research</strong> is the use of static and
+dynamic analysis, including reverse engineering, to analyze a target.<br>
+<strong>Penetration tests</strong> often attempt to assess the real-world security posture of a target and may be confined to <strong>black-box</strong> (with no knowledge of the internal implementation of the target) techniques on external attack surfaces, such as testing the <strong>requests</strong> made to a web application.<br>
+<strong>Vulnerability research</strong>, on the other hand, focuses on <strong>white-box</strong> (with knowledge of the internals, such as source code) and <strong>gray-box</strong> (with only partial knowledge of the internals) analysis, finding <strong>weaknesses</strong> through an &ldquo;inside out&rdquo; perspective by using code review and reverse engineering techniques.<br>
+Thus, <strong>vulnerability research</strong> is more effective at discovering deeper <strong>vulnerabilities</strong>.</p>
+<h3 id="disciplines-and-techniques">Disciplines and Techniques</h3>
+<p>As mentione earlier, vulnerability research comprises three main disciplines: <strong>code review</strong>, <strong>reverse engineering</strong>, and <strong>fuzzing</strong>.</p>
+<p><strong>Code Review</strong> : is the process of analyzing the source code of a system to identify vulnerabilities.
+Code review often appears easier than reverse engineering or fuzzing,
+but the difficulty of discovering a vulnerability doesn’t correlate with its criticality, it begins with the fundamental skill of manual source-to-sink tracing before diving into automated code analysis tools.</p>
+<p><strong>Reverse Engineering</strong> :<br>
+Reverse engineering involves taking apart software, such as <strong>binary executable</strong>
+files compiled from <strong>source code</strong>, to reveal and analyze its inner workings.<br>
+Although this may appear more daunting than analyzing <strong>human-readable</strong>
+code, it’s an exciting opportunity because many targets rely on <strong>security by obscurity</strong> to hide blatant <strong>weaknesses</strong>.<br>
+While code review is similar to reading a complicated map to find your way from point <code>A</code> to point <code>B</code>, reverse engineering is like exploring a dark tunnel that may reveal unexpected treasures at the next turn.<br>
+Reverse engineering doesn’t focus only on <strong>lower-level</strong> assembly code, as
+we can compile <strong>binaries</strong> into intermediate languages like <strong>Java bytecode</strong> or
+even include <strong>embedded interpreters</strong> for scripting languages like <strong>JavaScript</strong>.</p>
+<p><strong>Fuzzing</strong> :<br>
+Finally, <strong>fuzzing</strong> provides a highly automated means of finding <strong>vulnerabilities</strong> by hammering a target with various <strong>invalid or unexpected</strong> inputs.<br>
+You’ll learn to optimize your fuzzing by writing <strong>fuzzing</strong> harnesses that
+fuzz interesting or neglected parts of a target. Writing an optimal <strong>fuzzing</strong>
+harness draws on many <strong>code review</strong> and <strong>reverse engineering</strong> concepts.<br>
+Modern coverage-guided <strong>fuzzing</strong> uses more advanced and effective means of <strong>enumerating</strong> a target.</p>
+<h2 id="selecting-a-vulnerability-research-target">Selecting a Vulnerability Research Target</h2>
+<p>Practicing target selection greatly increases your chances of finding a vulnerability.
+As you’ll see, picking a good target for research can be challenging
+because a target isn’t guaranteed to be vulnerable.</p>
+<p>We can use a rule of three similar to the <strong>CIA</strong> triad to choose a target:
+<strong>familiarity</strong>, <strong>availability</strong>, and <strong>impact</strong>.</p>
+<p><strong>Familiarity</strong> :
+Familiarity is how much is known about the target. <br>
+You should pick a target
+that’s written in a <strong>programming language or framework</strong> you’re <strong>comfortable</strong> with.<br>
+You don’t need to be an <strong>expert</strong> in exploiting language-specific <strong>vulnerabilities</strong> so long as you can follow the code.<br>
+In some cases, the target may have been researched before or is well documented.<br>
+<strong>Conference talks, whitepapers, and vulnerability</strong> <strong>write-ups</strong> provide valuable information that can speed up your <strong>familiarization</strong> process.<br>
+While you may want to avoid a <strong>hardened</strong> target that has been thoroughly
+<strong>researched</strong> before by others, I’ve found that popular <strong>targets</strong> are constantly
+changing and adding new <strong>features</strong>.<br>
+Don’t give up on them before even trying! Consider the platform the code targets as well, as this factor affects the
+<strong>types of vulnerabilities</strong> you can <strong>exploit</strong> and your ability to discover them.
+Is it a <strong>web application</strong> or a native <strong>shared library</strong> ?<br>
+Does it call <strong>Windows APIs</strong> ? Will it run on the <strong>client or server</strong> ? Also consider whether the <strong>target</strong> uses
+well-known <strong>protocols</strong> and standards; having documentation allows you to
+recognize common <strong>functions</strong> and routines that are part of these standards
+and save time in identifying them.</p>
+<p><strong>Availability</strong> :<br>
+Unlike in the <strong>CIA</strong> triad, <strong>availability</strong> in the context of <strong>vulnerability research</strong> means how easy it is to <strong>access and analyze</strong> the target.<br>
+Is it on <strong>SourceForge</strong> (you’d be surprised how many older projects live there) or GitHub ? Also consider how difficult it’ll be to set up a testing environment for
+your <strong>target</strong>.<br>
+Test potential <strong>vulnerabilities</strong> while reviewing the code to validate your assumptions about how it works.<br>
+One final consideration is the accessibility of the project owners.<br>
+If you find a <strong>vulnerability</strong>, someone should be <strong>available</strong> to acknowledge and <strong>patch the bug</strong> (like a  <a href="mailto:security@apache.org">security@apache.org</a> email of <strong>Apache Software Foundation</strong>) .<br>
+Keep in mind that some project owners might <strong>not welcome</strong> or be able to <strong>respond to vulnerability</strong> reports.</p>
+<p><strong>Impact</strong> :<br>
+The <strong>Impact</strong> is the importance of the target.<br>
+While <strong>farming  vulnerabilities</strong> in a
+dead, decades-old project might be <strong>educational</strong>, it’s not impactful if no one
+uses it. <br>
+At the same time, dead projects could be far more important than
+they appear; for example, a dead project could be the only known parsing
+<strong>library</strong> for a legacy <strong>file format</strong> some major software uses to <strong>maintain</strong> backward compatibility.<br>
+There are plenty of metrics to gauge a project’s impact, such as <strong>GitHub stars</strong> ⭐  or <strong>forks</strong>, <strong>download counts</strong>, and usage in other <strong>projects</strong>.</p>
+<h3 id="where-to-explore-projects">Where to Explore Projects</h3>
+<p>With these considerations in mind, picking a suitable target from the millions of available codebases can be challenging.<br>
+I recommend exploring <strong>GitHub projects</strong> by topic at <a href="https://github.com/topics">https://github.com/topics</a> , then filtering by <strong>programming language</strong> and sorting by <strong>stars</strong>, <strong>forks</strong>, or <strong>last update</strong> time.<br>
+Additionally, you can explore up-and-coming projects that may not have experienced much scrutiny by other vulnerability researchers on GitHub’s Trending page :  <a href="https://github.com/trending">https://github.com/trending</a> .<br>
+Another option is to browse project directories like the Apache Software Foundation’s (<a href="https://projects.apache.org">https://projects.apache.org</a>).<br>
+The directory allows sorting by name, committee, category, programming language, and <strong>number of committers</strong>.<br>
+However, avoid focusing on finding bugs in “in the attic” (end-of-life) projects, as you’re unlikely to get a response to <strong>security reports</strong> about these.</p>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    
+    
+        <p>
+            By Tedsig42, 
+            2025-07-15
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

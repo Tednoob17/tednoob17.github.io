@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>From Day 0 to 0day Chapter 2 &ndash; Tedsig42</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css">
+<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="From Day 0 to 0day Chapter 2 &ndash; Tedsig42" />
+<meta property="og:url" content="http://localhost:1313/book-reviews/from-day0-to-0day-chapter-2/" />
+
+  <meta property="og:description" content="Recap of chap 2 &ndash; "/> 
+
+<meta property="og:locale" content="en-us" />
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/musics/" title="">Music</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-review/" title="">Book Reviews</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>From Day 0 to 0day Chapter 2</h1>
+    </header>
+    <div class="content__body">
+        <p><img src="/images/stc/chap2.jpeg" alt="alt"></p>
+<h1 id="mapping-code-to-attack-surface">MAPPING CODE TO ATTACK SURFACE</h1>
+<p>Once we know where we are, then the world becomes as narrow as a map.<br>
+When we don’t know, the world feels unlimited.
+<code>Liu Cixin, The Dark Forest</code></p>
+<h2 id="introduction">Introduction</h2>
+<p><strong>Attack surface</strong> (the potential entry points to exploit a vulnerability) going often with the growing
+of <strong>complexity</strong> of software.<br>
+The <strong>vulnerabilities</strong> to be introduced, as developers’ capacity to <strong>properly secure</strong> these feature is
+limited and mistakes are <strong>inevitable</strong> when dealing with millions of lines of code.<br>
+Minor issues can be <strong>chained</strong> together into far more serious <strong>vulnerabilities</strong>.</p>
+<p>For example :</p>
+<ul>
+<li>Microsoft Excel handles not only Excel workbook file format (<code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xls</code>) but also Symbolic Link (<code>.slk</code>), dBase (<code>.dbf</code>), Data Interchange
+Format (<code>.dif</code>), and more.
+And these are just <strong>file input vectors</strong>; you also have
+to worry about <strong><a href="https://www.geeksforgeeks.org/operating-systems/inter-process-communication-ipc/">inter-process</a></strong> communication and other network vectors (Inter-Process Communication or IPC is a mechanism that allows processes to <strong>communicate</strong>. It helps processes <strong>synchronize their activities</strong>, <strong>share information</strong>, and <strong>avoid conflicts</strong> while accessing <strong>shared resources</strong>.). <br>
+For example, another process may control Excel via <strong><a href="https://learn.microsoft.com/en-us/windows/win32/com/component-object-model--com--portal">Component Object Model</a></strong>
+(COM) interfaces  (These objects can be within a single process, in other <strong>processes</strong>, even on <strong>remote computers</strong>.), or it may fetch data from the <strong>internet</strong> via external data
+connections.<br>
+These are all potential <strong>sources for exploitable vulnerabilities</strong> .</li>
+</ul>
+<h2 id="the-internet">The Internet</h2>
+<p>In the past, native and web applications lived in separate worlds:</p>
+<ul>
+<li>Native <strong>applications</strong> were <strong>compiled</strong> into machine <strong>code binaries</strong> that ran on specific devices and platforms.</li>
+<li>Web applications were mostly written in <strong>web development languages</strong> .
+They had vastly different <strong>attack surfaces</strong> and <strong>exploit vectors</strong>.</li>
+</ul>
+<h2 id="web-client-vulnerabilities">Web Client Vulnerabilities</h2>
+<p><strong>Client-side vulnerabilities</strong> are especially for software running on <strong>native devices</strong>, such as <strong>desktop or mobile applications</strong></p>
+<h3 id="attack-vectors">Attack Vectors</h3>
+<p>The possible <strong>attack vectors</strong> vary depending on how the software <strong>parses the data</strong>.<br>
+The <strong>attack surface</strong> also depends on whether and to what extent an attacker <strong>controls the destination</strong> the <strong>software</strong> is connecting to.<br>
+These factors will affect the scope of your source code analysis
+and the types of potential vulnerabilities you should look out for.</p>
+<p>A man-in-the-middle (<strong>MITM</strong>) is often required for exploiting  any vulnerability when software is running on a hardcoded <strong>URL</strong>
+This assumes some level of control over the network or device
+that the software is running on.</p>
+<p>Exemple :</p>
+<ul>
+<li>Nintendo Switch - WebKit Code Execution:<br>
+CVE-2016-4657 <strong>web-kit vulnerability</strong> for ios 9.3, <strong>nintendo switch browser</strong> vulnerability
+( i know whats running in your mind nintendo switch has no no <strong>browser</strong>, but when you need to use a wifi which needs to be conformed by logging in to the browser)
+a <strong>memory corruption</strong> in webkit .<br>
+To <strong>hijack</strong> this flow, an attacker
+could modify the <strong>Domain Name System</strong> (DNS) settings of the <strong>Switch</strong> (or the
+<strong>router</strong> it’s connected to), rerouting it to an <strong>attacker-controlled</strong> web server
+hosting a <strong>payload</strong> designed to <strong>exploit CVE-2016-4657</strong>.</li>
+</ul>
+<p>Sources : <a href="https://web.archive.org/web/20161213143412/http://www.phrack.org/papers/attacking_javascript_engines.html">Saelo , Phrack - Attacking Javascript Engines</a> , <a href="https://www.exploit-db.com/exploits/44213">ExploitDB PoC</a>, <a href="https://youtu.be/xkdPjbaLngE">Liveoverflow</a></p>
+<ul>
+<li>Reverse Engineering to Facebook Gameroom :<br>
+The <strong>Facebook Gameroom</strong> desktop <strong>application</strong> use the custom uniform resource identifier (<strong>URI</strong>) scheme <code>fbgame://gameid/</code>
+it registered could be <strong>manipulated</strong> to cause the application to <strong>navigate</strong> to different pages on <code>https://apps.facebook.com</code> in its embedded Chromium-based browser.<br>
+By exploiting a few <strong>redirection gadgets</strong> on that domain, It was able to redirect back
+to the own <strong>attacker-controlled payload</strong> on a <strong>different domain</strong> that triggered a
+<strong>memory corruption</strong> vulnerability (<strong>CVE-2018-6056</strong>) on the <strong>outdated</strong> version off Chromium.<br>
+The <strong>combination</strong> of a local <strong>input vector</strong> (in this case, the <strong>custom URI
+scheme</strong>) and a <strong>web-based gadget</strong> chain (redirections in <code>apps.facebook.com</code>) is
+an increasingly common exploit pattern due to the growing prevalence of
+(often outdated) <strong>embedded browsers</strong> in desktop applications.<br>
+Source: <a href="https://spaceraccoon.dev/applying-offensive-reverse-engineering-to-facebook-gameroom/">Spaceracoon facebook gameroom RE</a></li>
+</ul>
+<h3 id="identification-and-classification">Identification and Classification</h3>
+<p>You can <strong>identify</strong> and <strong>classify</strong> web client <strong>functionality</strong> in code by searching for
+<strong>web-related</strong> application programming interfaces (<strong>APIs</strong>) and <strong>library</strong> function
+calls in the source code.<br>
+Developers often use <strong>libraries</strong> to simplify common
+tasks like making <strong>web requests</strong> and <strong>parsing</strong> their responses.</p>
+<p>For example, in previous exemple (about <strong>Facebook Gameroom</strong>) the <strong>researcher (<a href="https://spaceraccoon.dev/">Eugene Lim</a>)</strong> determined that Facebook Gameroom included an
+embedded browser because it imported <code>CefSharp.dll</code>, a <code>.NET</code>  <strong>wrapper</strong> for
+the <strong>Chromium</strong> Embedded Framework.<br>
+By <strong>tracing</strong> the <strong>usage</strong> of <code>CefSharp</code>
+<strong>APIs</strong> in the <strong>decompiled</strong> <code>C#</code> code, he identified the most <strong>pertinent</strong> sections
+that make up the <strong>web client attack surface</strong> of the application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> example code to load and render a web page offscreen with CefSharp.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> CefSharp;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> CefSharp.OffScreen;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span>	(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> testUrl = <span style="color:#e6db74">&#34;https://www.google.com/&#34;</span>;
+</span></span><span style="display:flex;"><span>		Cef.Initialize(<span style="color:#66d9ef">new</span> CefSettings());
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> browser = <span style="color:#66d9ef">new</span> ChromiumWebBrowser();
+</span></span><span style="display:flex;"><span>		browser.Load(testUrl); <span style="color:#75715e">// 1</span>
+</span></span><span style="display:flex;"><span>		Console.ReadKey();
+</span></span><span style="display:flex;"><span>		Cef.Shutdown();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> A simple CefSharp offscreen client
+</span></span></code></pre></div><p>After any research we found that : <code>ChromiumWebBrowser()</code> refers to a <strong>class constructor</strong> used in <strong>CefSharp</strong>, an open-source framework that allows <strong>embedding a full-featured web browser</strong> into <code>.NET</code> applications (<code>C#</code> or <code>VB.NET</code>).
+This is API call (<code>//1</code>) is a possible attack vector via a attacker-controlled url.
+But it&rsquo;s important to highlight an important point: <strong>When identifying the attack surface of software at
+the macro level, the distinction between sources and sinks becomes blurred.</strong><br>
+The key idea is that some <strong>functions</strong>, while <strong>not directly receiving data from a user</strong> (a source), use that <strong>data to perform an action</strong> (a sink).</p>
+<p>Simple Example:<br>
+Imagine a program that takes a <strong>URL</strong> as <strong>input</strong> and <strong>displays</strong> the webpage.</p>
+<blockquote>
+<ul>
+<li>A user <strong>enters a URL</strong> like <a href="https://www.google.com/">https://www.google.com/</a>.</li>
+<li>The <strong>program uses a function</strong> like <code>browser.Load(user_input_url)</code>  .</li>
+<li>An <strong>attacker</strong> could <strong>enter a malicious URL</strong> like <a href="https://malicious-site.com/">https://malicious-site.com/</a>  which could <strong>lead to a server-side request forgery (SSRF)</strong> vulnerability or other attacks, where the server is tricked into making a request it shouldn&rsquo;t.</li>
+</ul>
+</blockquote>
+<p>The &ldquo;<strong>blur</strong>&rdquo; happens because a function can act as both.</p>
+<h3 id="web-server-vulnerabilities">Web Server Vulnerabilities</h3>
+<p>Web server or client containing a lot of vulnerabilities, and all of devices when it use it also, like <strong>Iot</strong> devices.</p>
+<h3 id="--web-frameworks">&gt;  Web Frameworks</h3>
+<p>Web application framework (WAF) is a software framework that is designed to support the development of web applications including web services, web resources, and web APIs.<br>
+Many web frameworks provide libraries for database access, templating frameworks, and session management, and they often promote code reuse.</p>
+<p>Source : <a href="https://en.wikipedia.org/wiki/Web_framework">Web Framework</a></p>
+<p>Consider this piece of code, which is a <code>Node.js</code> web server that exposes a few <strong>routes</strong> using the standard <strong>http library</strong>.</p>
+<blockquote>
+<p><code>httpserver.js</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>((<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>;
+</span></span><span style="display:flex;"><span> 	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">method</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;GET&#39;</span>) { <span style="color:#75715e">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;index&#39;</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/items&#39;</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;read all items&#39;</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#39;/items/&#39;</span>)) { <span style="color:#75715e">//2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;/&#39;</span>)[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">`read item </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">method</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;POST&#39;</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/items&#39;</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;create an item&#39;</span>);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">404</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">8080</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Server running at http://localhost:8080/&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><blockquote>
+<p>A vanilla Node.js web server</p>
+</blockquote>
+<ul>
+<li>It&rsquo;s difficulties of maintaining the code of large web applications without a web framework</li>
+<li>Distinguishing between <code>GET</code> and <code>POST</code> <strong>routes</strong> relies on clumsy nested conditional statements (<code>//1</code>), while fragile string
+operations are used to <strong>extract path parameters</strong> like <code>userId</code> (<code>//2</code>).</li>
+</ul>
+<p>Now compare it to another Framework (<code>Express</code>)</p>
+<blockquote>
+<p><code>expressserver.js</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">itemsRouter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">Router</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">itemsRouter</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; { <span style="color:#75715e">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;read all items&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">itemsRouter</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;create an item&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">itemsRouter</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/:id&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">id</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">params</span>; <span style="color:#75715e">//2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">`read item </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;index&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#39;/items&#39;</span>, <span style="color:#a6e22e">itemsRouter</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">8080</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Server running at http://localhost:8080/&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><blockquote>
+<p>A web server built on the Express framework</p>
+</blockquote>
+<p>Not only does <strong>Express</strong> do the same thing with <strong>less code</strong>, it also abstracts
+away common tasks like <strong>checking the request method</strong> (<code>//1</code>), <strong>extracting path
+parameters</strong> (<code>//2</code>), and <strong>handling nonexistent routes</strong>.</p>
+<p><strong>Web frameworks</strong> create opportunities to <strong>refactor code</strong>, such as <strong>moving
+nested routes</strong> under <code>/items</code> to another file. This makes the code <strong>easier to
+read</strong> both for developers and for you, the aspiring <strong>vulnerability researcher</strong>.</p>
+<h3 id="--the-modelviewcontroller-architecture">&gt;  The Model–View–Controller Architecture</h3>
+<p>One common pattern among <strong>web frameworks</strong> is the <strong>Model–View–Controller</strong>
+(<code>MVC</code>) architecture, which separates the code into <strong>three main groups</strong>.</p>
+<p>Familiarity with this <strong>pattern</strong> will help you quickly <strong>analyze frameworks</strong>, understand
+the <strong>flow of data</strong> through <strong>sources and sinks</strong>, and <strong>focus</strong> on the <strong>critical business logic</strong> that is most likely to <strong>contain vulnerabilities</strong> instead of getting caught up
+in <strong>irrelevant code</strong>.<br>
+The <strong>MVC architecture</strong> comprises three parts:</p>
+<ul>
+<li><strong>Model</strong> Handles the &ldquo;business logic&rdquo;, such as <strong>data structures</strong>.</li>
+<li><strong>View</strong> Handles the <strong>user interface</strong>, such as <strong>layouts and templates</strong>.</li>
+<li><strong>Controller</strong> Handles the <strong>control flow</strong> from <strong>requests</strong> to relevant <strong>model</strong>
+and <strong>view</strong> components.</li>
+</ul>
+<p><strong>Spring</strong> MVC (a <strong>Java</strong> web framework) in were we converted a previous node app.</p>
+<blockquote>
+<p><code>ItemController.java</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Controller</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/items&#34;</span>) <span style="color:#75715e">//1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ItemController</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ItemService itemService;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">@Autowired</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ItemController</span>(ItemService itemService) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">itemService</span> <span style="color:#f92672">=</span> itemService;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">@RequestMapping</span>(method <span style="color:#f92672">=</span> RequestMethod.<span style="color:#a6e22e">GET</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String, Item<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">readAllItems</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> itemService.<span style="color:#a6e22e">getAllItems</span>();
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">@RequestMapping</span>(method <span style="color:#f92672">=</span> RequestMethod.<span style="color:#a6e22e">POST</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">createItem</span>(ItemForm item) { <span style="color:#75715e">//2</span>
+</span></span><span style="display:flex;"><span>			itemService.<span style="color:#a6e22e">createItem</span>(item);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;redirect:/items&#34;</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">@RequestMapping</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/{id}&#34;</span>, method <span style="color:#f92672">=</span> RequestMethod.<span style="color:#a6e22e">GET</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String, Item<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">readItemForId</span>( <span style="color:#a6e22e">@PathVariable</span> Int id, Model model) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> itemService.<span style="color:#a6e22e">getItemById</span>(id);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><blockquote>
+<p>A partial controller code snippet for Spring MVC</p>
+</blockquote>
+<p>When you read the code it difficult to understand her
+<strong>functions</strong> unless you’re <strong>familiar</strong> with the <strong>framework’s conventions</strong>.</p>
+<ul>
+<li>
+<p>Like <code>@Autowired</code> for know her role it&rsquo;s important to read the <strong>springs boot documentation</strong>, and after reading we read that
+it&rsquo;s used to <strong>enables automatic dependency injection</strong>.<br>
+This annotation can be placed on a <strong>constructor</strong>, a <strong>method</strong> or <strong>directly</strong> on an <strong>attribute</strong>.<br>
+The <strong>Spring Framework</strong> will search for the <strong>bean</strong> in the <strong>application context</strong> whose type is applicable to each <strong>constructor parameter</strong>, <strong>method parameter</strong> or <strong>attribute</strong>.</p>
+</li>
+<li>
+<p>In (<code>//2</code>), note the function <code>createItem</code> <strong>returns</strong> <code>redirect:/items</code> . The <strong>redirect:</strong> prefix <strong>indicates</strong> that the <strong>route</strong> should <strong>redirect</strong> to the
+<strong>URL</strong> that comes <strong>after it</strong>, which in this case is <code>/items</code>.</p>
+</li>
+<li>
+<p>But  any <strong>function or line</strong> are simple.<br>
+By exemple it’s still <strong>fairly obvious</strong> that the <code>@RequestMapping</code> annotation
+maps a handler <strong>method</strong> to a particular  <strong>request</strong> route (<code>GET</code>, <code>POST</code>) . (<code>//1</code>)</p>
+</li>
+</ul>
+<p>Specially for <strong>object-oriented programming</strong> languages, you can encounter a <strong>controller</strong> who can <strong>inherits</strong>
+of <strong>methods and route</strong> of another <strong>controller</strong> (who often is declared in another file).</p>
+<blockquote>
+<p><code>ThingController.java</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">Controller</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">RequestMapping</span>(<span style="color:#e6db74">&#34;/things&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThingController</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">ItemController</span> { <span style="color:#75715e">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">RequestMapping</span>(<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/price&#34;</span>, <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">RequestMethod</span>.<span style="color:#a6e22e">GET</span>) <span style="color:#75715e">//2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ModelAndView</span> <span style="color:#a6e22e">getPrice</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Controller code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>An extended controller class
+<code>/things/price</code>  <strong>route handler</strong> (<code>//2</code>), this <strong>controller inherits</strong> the previous <strong>routes and methods</strong> from
+<code>ItemController</code></p>
+</blockquote>
+<h3 id="-unknown-or-unfamiliar-frameworks">&gt; Unknown or Unfamiliar Frameworks</h3>
+<p>To effectively <strong>analyze web server</strong>
+<strong>code regardless</strong> of the <strong>framework used</strong>, focus on common <strong>routing</strong> and <strong>controller logic</strong>
+that all <strong>web applications</strong> must implement.</p>
+<ul>
+<li>First, identify how the code <strong>handles the basic</strong> building blocks of an <strong>HTTP request.</strong></li>
+</ul>
+<p>Here’s a simple example of what such a <strong>request</strong> might look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#a6e22e">POST</span> /items <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+</span></span><span style="display:flex;"><span>Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Apple&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The application needs to <strong>parse</strong> the following <strong>components</strong>:</p>
+<ul>
+<li>
+<p><strong>Request method</strong> : <code>GET</code> or <code>POST</code> <strong>request</strong> ? <strong>Grepping</strong> for <code>GET</code> or <code>POST</code> might yield insights or a simple string comparison or more
+complex decorators like <code>@GetMapping</code>.</p>
+</li>
+<li>
+<p><strong>URI</strong> : To <strong>locate</strong> <strong>routes</strong> quickly in a <strong>web application codebase</strong>, look for
+<strong>URI-like</strong> strings. If you have a <strong>working instance</strong> of the <strong>application</strong>, try
+<strong>matching</strong> the behavior you <strong>observe</strong> at a particular <strong>route</strong> with the <strong>code</strong>
+that handles that <strong>route</strong> .<br>
+Applications <strong>often handle <a href="https://autoroute.vercel.app/advanced/declarative_routing">routes declaratively</a></strong>,
+such as <code>app.get('/items')</code>  <strong>instead</strong> of <code>if (req.url === '/items')</code>.<br>
+Understanding the <strong>declarative convention</strong> is <em>key</em>. Some <strong>frameworks</strong>, like <strong>Ruby on Rails</strong>, even <strong>centralize the routing logic</strong> in <strong>specific files</strong>, such as
+<code>config/routes.rb</code>.</p>
+</li>
+<li>
+<p><strong>Headers</strong> : Does the application check <strong>specific headers</strong>? Search for common headers like <code>Origin</code> or <code>Content-Type</code>, Check all things about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS">CORS</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">SOP</a> .</p>
+</li>
+<li>
+<p><strong>Parameters</strong> : How does the code <strong>extract parameters</strong> from a <strong>request</strong>?
+Other than the <strong>request URI</strong>, this is one of the most <strong>common sources</strong> of
+<strong>external input</strong>. Parameters can come from the <strong>HTTP request body</strong> (like
+the <code>JSON</code> content in the example request), the <strong>query string</strong>, or <strong>within</strong> the path.</p>
+</li>
+</ul>
+<p>Next, identify how the code handles sending HTTP responses.</p>
+<p>For example, after creating the <strong>item</strong> specified in the example <strong>request</strong> and <strong>adding</strong> it
+to the <strong>database</strong>, the <strong>web application</strong> could send:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">201</span> <span style="color:#a6e22e">Created</span>
+</span></span><span style="display:flex;"><span>Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json</span>
+</span></span><span style="display:flex;"><span>Cache-Control<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;id&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">1337</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;name&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;price&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p><strong>Focus on the building blocks</strong> of the <strong>HTTP response</strong> and map each of them to the code that appears to handle them.
+With this <strong>approach</strong>, you can intuitively <strong>work out the patterns</strong> of any <strong>framework</strong> to sufficiently <strong>map out</strong> the <strong>web attack surface</strong> based on reachable
+<strong>routes</strong>.
+You can also <strong>save a lot of time and effort</strong> by reading the <strong>documentation</strong>, if any is <strong>available</strong>, of the <strong>particular framework</strong> the application uses.</p>
+<h3 id="--nontraditional-web-attack-surfaces">&gt;  Nontraditional Web Attack Surfaces</h3>
+<p><code>HTTP</code> <strong>endpoints</strong> is <strong>not</strong> the <strong>only attack surface</strong>  that can be <strong>used</strong> in <strong>software application</strong> context.</p>
+<p>It may use <strong>protocols</strong> or <strong>formats</strong> like <strong>Web Distributed Authoring and
+Versioning</strong> (<code>WebDAV</code>) or <strong>Really Simple Syndication</strong> (<code>RSS</code>) that build upon
+or <strong>extend</strong> <code>HTTP</code> or other <strong>web-related protocols</strong>, such as <code>WebSocket</code>, <strong>Web
+Real-Time Communication</strong> (<code>WebRTC</code>), and many more.</p>
+<p>This <strong>means</strong> you should <strong>think beyond</strong> traditional <strong>web attack vectors</strong>.</p>
+<p><strong>Additionally</strong>, a <strong>web attack surface</strong> doesn’t mean you should look only
+for <strong>web vulnerabilities</strong> like <strong>SQL injection</strong>.</p>
+<p>For example, at <code>Pwn2Own</code> <strong>Tokyo 2019</strong>, the <strong>security researcher</strong> known as &ldquo;d4rkn3ss&rdquo; <strong>exploited</strong> a
+classic <strong>heap overflow vulnerability</strong> in the <strong>httpd</strong> web service of the 	<code>NETGEAR Nighthawk R6700v3</code> <strong><a href="https://www.zerodayinitiative.com/blog/2020/6/24/zdi-20-709-heap-overflow-in-the-netgear-nighthawk-r6700-router">router</a></strong></p>
+<p>Due to the <strong>limited compute and storage</strong> available on <strong>smart devices</strong>, it’s
+actually <strong>quite rare</strong> to find fully fledged <strong>web frameworks</strong> running on these
+devices.</p>
+<p>Instead, you’re more likely to find <strong>compiled binaries</strong> that include
+both the <strong>web server</strong> and <strong>application logic</strong>.</p>
+<p>This increases the <strong>possibility</strong> of
+<strong>discovering classic</strong> <strong>non-web vulnerabilities</strong> like <strong>memory corruption</strong> even in
+the <strong>web components</strong>.<br>
+It also means that your <strong>approach</strong> toward <strong>analyzing</strong> the
+<strong>web attack surface</strong> of <strong>firmware</strong> will involve <strong>binary analysis</strong> techniques like
+<strong>reverse engineering</strong> rather than <strong>source code</strong> analysis.</p>
+<p><strong>Some applications</strong> may spin up <strong>temporary web servers</strong> for <strong>inter-process</strong>
+communication. <strong>Software</strong> sometimes <strong>requires</strong> users to <strong>sign in via the browser</strong>
+as part of an <strong>OAuth flow</strong>.
+Exemple :</p>
+<p>The <strong>GitHub command line interface</strong> (<code>CLI</code>) tool can <strong>trigger a web app OAuth</strong>
+login flow via the <code>github.com/cli/oauth</code> package, which starts a <strong>local <code>HTTP</code>
+server</strong> before opening a <strong>web browser</strong> to the initial <strong>OAuth web URL</strong>.</p>
+<blockquote>
+<p>oauth_webapp.go</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2024 GitHub, Inc.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">oauth</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/cli/browser&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/cli/oauth/api&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/cli/oauth/webapp&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// WebAppFlow starts a local HTTP server, opens the web browser to initiate the OAuth Web application</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// flow, blocks until the user completes authorization and is redirected back, and returns the access token.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">oa</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Flow</span>) <span style="color:#a6e22e">WebAppFlow</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">AccessToken</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">host</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">Host</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">host</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">parsedHost</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewGitHubHost</span>(<span style="color:#e6db74">&#34;https://&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">Hostname</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;error parsing the hostname &#39;%s&#39;: %w&#34;</span>, <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">Hostname</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">host</span> = <span style="color:#a6e22e">parsedHost</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">flow</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">webapp</span>.<span style="color:#a6e22e">InitFlow</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">params</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">webapp</span>.<span style="color:#a6e22e">BrowserParams</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ClientID</span>:    <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">ClientID</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">RedirectURI</span>: <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">CallbackURI</span>, <span style="color:#75715e">//1</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Scopes</span>:      <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">Scopes</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Audience</span>:    <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">Audience</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">AllowSignup</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">browserURL</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">flow</span>.<span style="color:#a6e22e">BrowserURL</span>(<span style="color:#a6e22e">host</span>.<span style="color:#a6e22e">AuthorizeURL</span>, <span style="color:#a6e22e">params</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">flow</span>.<span style="color:#a6e22e">StartServer</span>(<span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">WriteSuccessHTML</span>)
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">browseURL</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">BrowseURL</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">browseURL</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">browseURL</span> = <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">OpenURL</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">browseURL</span>(<span style="color:#a6e22e">browserURL</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;error opening the web browser: %w&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">httpClient</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">HTTPClient</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">httpClient</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">httpClient</span> = <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">DefaultClient</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">flow</span>.<span style="color:#a6e22e">Wait</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TODO</span>(), <span style="color:#a6e22e">httpClient</span>, <span style="color:#a6e22e">host</span>.<span style="color:#a6e22e">TokenURL</span>, <span style="color:#a6e22e">webapp</span>.<span style="color:#a6e22e">WaitOptions</span>{ <span style="color:#75715e">//2</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ClientSecret</span>: <span style="color:#a6e22e">oa</span>.<span style="color:#a6e22e">ClientSecret</span>,
+</span></span><span style="display:flex;"><span>	})
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>After the user has successfully <strong>authenticated</strong> in the <strong>browser</strong>, the flow
+<strong>redirects</strong> to the <code>callback URL</code> (<code>//1</code>) at the local <strong>HTTP server</strong> with the temporary authorization code and state.
+The program then uses an <strong>HTTP client</strong> (<code>//2</code>) to make a <code>POST</code> <strong>request</strong> to the <strong>GitHub OAuth</strong> service’s <strong>token endpoint</strong> and
+exchanges the <strong>authorization code</strong> for an <strong>access token</strong>.</p>
+<p>In summary, the <strong>web attack surface</strong> covers a large variety of functionality, from <strong>clients to servers</strong>.</p>
+<h2 id="network-protocols">Network Protocols</h2>
+<p><strong>Software</strong> can use many other <strong>network protocols</strong> than <strong>HTTP</strong> to <strong>communicate over networks</strong>.</p>
+<p>The <strong><a href="https://www.rfc-editor.org/rfc/rfc793.html">Transmission Control Protocol/Internet Protocol</a></strong> (<code>TCP/IP</code>) model <strong>organizes the communication protocols</strong> between <strong>systems in four layers</strong>:</p>
+<p><strong>Application</strong> Handles communication between applications (for example, <code>HTTP</code>, <code>DNS</code>, and <code>FTP</code>)
+<strong>Transport</strong> Handles communication between hosts (<code>TCP</code> and <code>UDP</code>)
+<strong>Internet</strong> Handles communication between networks (<code>IP</code> and <code>ICMP</code>)
+<strong>Link</strong> Handles communication between physical devices (<code>MAC</code>)</p>
+<p>Most <strong>software</strong>
+defers the handling of <strong>data</strong> at the <strong>lower layers</strong> to operating system <strong>APIs</strong> or
+<strong>standard libraries</strong>; discovering a <strong>vulnerability</strong> at these levels will create an
+<strong>extensive impact</strong>.</p>
+<p>The <strong>majority of code</strong> you will encounter deals with the <strong>application layer</strong>,
+such as the <code>dhcp6relay</code> server in <strong>SONiC</strong> (see <a href="https://tednoob17.github.io/posts/from-day0-to-0day-chapter-1/">Chapter 1</a>). Since <code>SONiC</code> is built
+to <strong>run</strong> on <strong>networking devices</strong> like <strong>switches</strong>, it’s a useful <strong>reference</strong> for <strong>mapping</strong> a <strong>software’s network protocol attack surface</strong>.
+To <strong>identify potential</strong> <strong>network protocol attack vectors</strong>, start with the most
+<strong>basic API calls</strong>: opening a <strong>network socket</strong>, <strong>listening to it</strong>, and <strong>receiving data</strong>.</p>
+<p>Exemple :</p>
+<blockquote>
+<p>&ldquo;The Inter-Chassis Communication Protocol (<a href="https://github.com/sonic-net/sonic-buildimage/blob/ba30775d65e95376d17a4a9ed696c12b6de69dc5/src/iccpd/src/scheduler.c">ICCP</a>) server initialization code&rdquo;</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* Server socket initialization */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">scheduler_server_sock_init</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> optval <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> System<span style="color:#f92672">*</span> sys <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> sockaddr_in src_addr;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ((sys <span style="color:#f92672">=</span> <span style="color:#a6e22e">system_get_instance</span>()) <span style="color:#f92672">==</span> NULL)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>sys<span style="color:#f92672">-&gt;</span>server_fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">socket</span>(PF_INET, SOCK_STREAM, <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">bzero</span>(<span style="color:#f92672">&amp;</span>(src_addr), <span style="color:#66d9ef">sizeof</span>(src_addr));
+</span></span><span style="display:flex;"><span>src_addr.sin_family <span style="color:#f92672">=</span> PF_INET;
+</span></span><span style="display:flex;"><span>src_addr.sin_port <span style="color:#f92672">=</span> <span style="color:#a6e22e">htons</span>(ICCP_TCP_PORT); <span style="color:#75715e">//2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>src_addr.sin_addr.s_addr <span style="color:#f92672">=</span> INADDR_ANY; <span style="color:#75715e">//3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span>snip<span style="color:#f92672">--</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">bind</span>(sys<span style="color:#f92672">-&gt;</span>server_fd, (<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>(src_addr), <span style="color:#66d9ef">sizeof</span>(src_addr)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ICCPD_LOG_INFO</span>(__FUNCTION__, <span style="color:#e6db74">&#34;Bind socket failed. Error&#34;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>The <code>[iccpd]</code> server initialization code</p>
+</blockquote>
+<ul>
+<li>(<code>//1</code>) : <code>PF_INET</code> refer to <strong>IPV4</strong> internet protocol, the next argument, <code>SOCK_STREAM</code> define the socket type (in this case is TCP)</li>
+<li>(<code>//2</code>) : The next line specify that socket use open port <code>ICCP_TCP_PORT</code> (<code>8888</code>) who is defined in <a href="https://github.com/sonic-net/sonic-buildimage/blob/ba30775d65e95376d17a4a9ed696c12b6de69dc5/src/iccpd/include/iccp_csm.h">iccp_github_code</a></li>
+<li>(<code>//3</code>) : YOu can see that port is opened on <code>INADDR_ANY</code>, means that <strong>IP addresses</strong>  associated with the system running the program.</li>
+</ul>
+<p>The <a href="https://www.rfc-editor.org/rfc-index.html">RFC</a> (Request for Comments) <strong>documented</strong> any of <strong>standart protocol</strong> like <code>tcp/ip</code>, <code>iccpd</code>, etc&hellip;,
+they are published by <a href="https://www.ietf.org">IETF</a> (Internet Engineering Task Force). Their <strong>role</strong> is to  <strong>describes</strong> the <strong>design and implementation</strong> of the <strong>protocol</strong>.</p>
+<p>Read <strong>RFC</strong> can be a starting point when you <strong>targeting</strong> a <strong>software</strong> who <strong>implement the specific protocols</strong></p>
+<p>Often when the <strong>protocol</strong> is <strong>proprietary</strong>  niche enough to require a tailor-made approch, the <strong>developpers</strong> can write her own <strong>custom implementation</strong> , who will surely <strong>less tested</strong> than <strong>open source protocols</strong>.</p>
+<p>When reviewing <strong>code for a protocol</strong>, focus on <strong>two main features</strong>: the
+<strong>data structures</strong> and the <strong>procedures</strong>.</p>
+<h3 id="data-structures">Data Structures</h3>
+<p>The <strong>data structures</strong> define how <strong>data</strong> is <strong>formatted and parsed in a network</strong> protocol.</p>
+<ul>
+<li>Exemple:<br>
+When you check  <code>AgentX</code>(Agent Extensibility Protocol) who is <strong>a networking protocol that enables a single SNMP master agent to manage multiple subagents</strong></li>
+</ul>
+<p>It was inplemented on <a href="https://github.com/sonic-net/sonic-snmpagent/blob/4622b8df01e6cfa818568b5a78a1a56ab555097d/src/ax_interface/pdu.py">sonic-snmpagent</a>  and documented in <a href="https://www.ietf.org/rfc/rfc2741.txt">RFC 2741</a>
+The &ldquo;<strong>Protocol Definition</strong>&rdquo; section defines the <code>AgentX</code> <strong>protocol data unit</strong> (PDU) header.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">6.</span> Protocol Definitions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>6.1. AgentX PDU Header
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   The AgentX PDU header is a fixed-format, 20-octet structure:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |   h.version   |    h.type     |    h.flags    |  &lt;reserved&gt;   |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                          h.sessionID                          |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                        h.transactionID                        |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                          h.packetID                           |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>   |                        h.payload_length                       |
+</span></span><span style="display:flex;"><span>   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   An AgentX PDU header contains the following fields
+</span></span></code></pre></div><p>The maintainer define a <code>PDUHeaderTags class</code> with a <code>from_bytes</code> :</p>
+<blockquote>
+<p><code>sonic-snmpagent/src/ax_interface/pdu.py</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PDUHeaderTags</span>(namedtuple(<span style="color:#e6db74">&#39;_PDUHeaderTags&#39;</span>, (<span style="color:#e6db74">&#39;version&#39;</span>, <span style="color:#e6db74">&#39;type_&#39;</span>, 
+</span></span><span style="display:flex;"><span>							<span style="color:#e6db74">&#39;flags&#39;</span>, <span style="color:#e6db74">&#39;reserved&#39;</span>))):
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">--</span>snip<span style="color:#f92672">--</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@classmethod</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_bytes</span>(cls, byte_string):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> cls(
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">*</span>struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;!BBBB&#39;</span>, byte_string[:<span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>		)
+</span></span></code></pre></div><p>Here is use <code>!BBBB</code> , mean that the <strong>bytes or octet</strong> should be interpreted in <strong>network byte order</strong> (<strong><a href="https://en.wikipedia.org/wiki/Endianness">big-endian</a></strong>) as four <strong>1-byte unsigned chars</strong>.
+The <code>PDUHeaderTags</code> instance respect the descriptions in the <strong>RFC</strong>, if the differences between the implementation and
+of <strong>data stuctures</strong> (in the <code>code</code>) and the <strong>expected format</strong> required the <strong>vulnerabilities can occurs</strong>.</p>
+<p><img src="/images/stc/endianess-1.png" alt="alt"></p>
+<p>Ex :
+In <code>dhcpv6relay</code> protocol implentation the <code>option-&gt;option_length</code> variable is parsed like a <strong>unsigned 16 bit integer</strong> (<code>short</code> type) who normaly have <code>65635</code> for maximum value.
+before using it as <strong>number of bytes</strong> to copy into a fixed buffer of size <code>4096</code>.</p>
+<h3 id="procedures">Procedures</h3>
+<p>A <strong>network protocol’s</strong> procedures define the rules and conventions of communication.
+These procedures include the expected order and actions taken by clients or servers.</p>
+<p>When a <code>data structures</code> vulnerability lead to <strong>memory corruption</strong> issues, <code>procedures</code> problems do to <strong>higher-level business logic</strong>
+such as <strong>authentication and authorization</strong>.</p>
+<p>Knowing <strong>what constitutes a security boundary</strong> in a <strong>network protocol</strong> is
+<strong>necessary</strong> to correctly <strong>identify a business logic vulnerability</strong>.</p>
+<p>Exemple of procedures :</p>
+<ul>
+<li><strong>Handshaking:</strong> <em>Initially</em> <strong>exchanging messages</strong> in order to <strong>establish communication</strong>.</li>
+<li><strong>Session management:</strong> <strong>Tracking individual sessions</strong> between the two entities.</li>
+<li><strong>State management:</strong> <strong>Controlling the state</strong> of an individual session.</li>
+<li><strong>Flow control:</strong> Managing the <strong>rate and order of data transmission</strong>.</li>
+<li><strong>Error handling:</strong> Performing <strong>recovery or termination</strong> from <strong>invalid data</strong>.</li>
+<li><strong>Encryption:</strong> Ensuring the <strong>privacy</strong>, <strong>authenticity</strong>, and <strong>integrity</strong> of communication.</li>
+<li><strong>Session termination:</strong> Performing <strong>teardown</strong> and <strong>cleanup</strong> of the <strong>session</strong> in an orderly manner.</li>
+</ul>
+<p>YOu can see by example of <strong>procedures</strong> describes in any rfc like <code>rfc 2741</code> in section <code>7</code> (<code>Elements of Pro- cedure.</code>)</p>
+<h3 id="local-attack-surface">Local Attack Surface</h3>
+<p>Network Protocols like (<code>TCP</code>, <code>UDP</code>, <code>SCTP</code>) deal with <strong>communication between different machines</strong> (over the <strong>internet</strong> or <strong>local network</strong>).
+When program or <strong>different part</strong> of the <strong>same program running on your computer</strong> <code>IPC</code> is the way these <strong>different programs</strong>  can talk to <strong>each other and share information</strong>
+on that <strong>one computer</strong>. <code>IPC</code>  can happen <strong>between</strong> different <strong>processes</strong> or between <strong>threads</strong> within the same process.
+Network protocols are for computers talking to other computers, while IPC is for programs talking to each other on the same computer.</p>
+<p><code>AgentX</code> can operate over the network and via <code>IPC</code>.
+<strong>the attacker’s perspective</strong>, <strong>network transport protocols</strong> expose
+a <strong>remote attack vector</strong>, while <strong>local transport protocols</strong> expose a (<strong>surprise!</strong>) <strong>local attack vector</strong>.
+Why ? Because <code>AgentX</code> <strong>subagents</strong> to communicate with the <strong>master agent</strong> on the <strong>same host</strong>, <code>RFC 2741</code> suggests local mechanisms such as shared memory,
+<strong>named pipes</strong>, and <strong>sockets</strong>. This opens up a whole new attack surface for the
+<strong>same protocol</strong>.</p>
+<h3 id="-files-in-inter-process-communication">&gt; Files in Inter-Process Communication</h3>
+<p>From sockets to devices, developers can expose many input/output resources
+using files to provide a common set of channels to work with.</p>
+<p>When you <code>IPC</code> file exchange or file to exchange data between two process, the disk I/O is required for some action.</p>
+<p>One exemple for this is to use <code>lock files</code> who indicates that a <strong>another process</strong> used this file, it can help to
+prevent that <strong>multiple instance</strong> of the <strong>same file</strong> was running.
+Real exemple is when you use editor like <strong>vim</strong> in two different terminal to modify a file, it show you a <strong>warning</strong>
+showing you that another process already used this file (but here <code>vim</code> used <code>.swap</code> for temporary save data).</p>
+<ul>
+<li>Real life example: Exploiting a Hardcoded Path in Apport</li>
+</ul>
+<p>One <strong>implementation</strong> of <strong>lock files</strong> led to an interesting <strong>privilege escalation vulnerability</strong>
+<code>(CVE-2020-8831)</code> in <strong>Ubuntu</strong> via the <code>Apport</code> program.
+The code causing this vulnerability lay in the <a href="https://github.com/canonical/apport/blob/44a97a8/data/apport">check_lock</a>,
+function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_lock</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;&#39;&#39;Abort if another instance of apport is already running.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	This avoids bringing down the system to its knees if there is a series of
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	crashes.&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># create lock file directory</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>		os<span style="color:#f92672">.</span>mkdir(<span style="color:#e6db74">&#34;/var/lock/apport&#34;</span>, mode<span style="color:#f92672">=</span><span style="color:#ae81ff">0o744</span>) <span style="color:#f92672">//</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">FileExistsError</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># create a lock file</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>		fd <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;/var/lock/apport/lock&#34;</span>, os<span style="color:#f92672">.</span>O_WRONLY <span style="color:#f92672">|</span> os<span style="color:#f92672">.</span>O_CREAT <span style="color:#f92672">|</span> os<span style="color:#f92672">.</span>O_NOFOLLOW) <span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">OSError</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>		error_log(<span style="color:#e6db74">&#39;cannot create lock file (uid </span><span style="color:#e6db74">%i</span><span style="color:#e6db74">): </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (os<span style="color:#f92672">.</span>getuid(), str(e)))
+</span></span><span style="display:flex;"><span>		sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">error_running</span>(<span style="color:#f92672">*</span>args):
+</span></span><span style="display:flex;"><span>	error_log(<span style="color:#e6db74">&#39;another apport instance is already running, aborting&#39;</span>)
+</span></span><span style="display:flex;"><span>	sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>original_handler <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>signal(signal<span style="color:#f92672">.</span>SIGALRM, error_running)
+</span></span><span style="display:flex;"><span>signal<span style="color:#f92672">.</span>alarm(<span style="color:#ae81ff">30</span>) <span style="color:#75715e"># timeout after that many seconds</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>	fcntl<span style="color:#f92672">.</span>lockf(fd, fcntl<span style="color:#f92672">.</span>LOCK_EX) <span style="color:#f92672">//</span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">IOError</span>:
+</span></span><span style="display:flex;"><span>	error_running()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>	signal<span style="color:#f92672">.</span>alarm(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	signal<span style="color:#f92672">.</span>signal(signal<span style="color:#f92672">.</span>SIGALRM, original_handler)
+</span></span></code></pre></div><ul>
+<li>In <code>check_lock</code> function the lock file in create if doesn&rsquo;t exit (<code>//1</code>).</li>
+<li>After it trying to acquire a lock file using a POSIX compliant API call who allow developers to implement lock files
+in a more standized way. (<code>//3</code>).</li>
+<li><code>O_NOFOLLOW</code> : In <code>man 2 open</code> it describe that &ldquo;If the <strong>trailing component</strong> (i.e., basename) of pathname is  a  <strong>symbolic  link</strong>,
+then  the open fails, with the error <code>ELOOP</code>.  <strong>Symbolic links</strong> in earlier <strong>components of the pathname</strong> will still be <strong>followed</strong>.&rdquo;
+So with the hardcoded path  <code>/var/lock/apport/lock</code> who have <code>lock</code> like <strong>basename</strong>, an <strong>attacker</strong> could use a symlink to redirect the program
+to <strong>read from or write to</strong> a <strong>different destination</strong> that the program has access to.</li>
+</ul>
+<p>This is the problem: if any other component in 	<code>/var/lock/apport/lock</code>
+other than <strong>lock</strong> is a symlink, Apport will still happily follow it. In the case of
+Ubuntu, <code>/var/lock</code> is a symlink to <code>/run/lock</code>, which is <strong>readable and writable</strong> by
+all users. As such, an <strong>attacker</strong> can create a <strong>symlink</strong> at <code>/var/lock/apport</code> pointing
+to any other directory, and if <code>Apport</code> runs afterward, it will create a <strong>lock
+file</strong> in the <strong>attacker-controlled</strong> destination.</p>
+<h3 id="-sockets">&gt; Sockets</h3>
+<p>A <strong>socket</strong> is an <strong>endpoint that allows communication between processes</strong>.
+It a one of the <strong>more common IPC channels</strong> and hence present a rich <strong>source of potential attack vectors</strong>.</p>
+<p><strong>Unix OS</strong> support <strong>Unix domain sockets</strong> (<code>UDS</code>s), a local variant (<code>TCP</code>, <code>UDP</code>, <code>SCTP</code>), but UDS don&rsquo;t take care of protocol layer and run fast.
+The socket respect the &ldquo;<strong>everything is file</strong>&rdquo; Unix philosophy so expose a <code>UDS</code>s in a <strong>filesystem pathname</strong> can lead to <strong>namespaces hijacking</strong>
+or <strong>access control</strong> due to <strong>inappropriate file permissions</strong>.<br>
+Ex : A <code>CVE-2022-21950</code> was a <strong>vulnerability</strong> in <strong>Canna</strong>, a Japanese Kana–Kanji
+server, that arose from the <strong>hardcoded directory</strong> <code>/tmp/.iroha_unix</code> containing
+the <code>UDS</code> used by <strong>Canna</strong> in <code>openSUSE</code> OS.</p>
+<h3 id="-named-pipes">&gt; Named Pipes</h3>
+<p><strong>Named pipes</strong> are another means by which <strong>processes</strong> can <strong>communicate</strong> using a <strong>file-like</strong> paradigm.
+However, on <strong>Windows</strong>, <strong>named pipes</strong> have their own
+<strong>access control model</strong> separate from the <strong>default filesystem</strong>, creating an <strong>additional layer</strong> of potential <strong>authorization</strong> issues.</p>
+<p>Take, for example, a <strong>high-privileged program</strong> that creates a <strong>named pipe</strong>
+server and client for <code>IPC</code>. If a <strong>low-privileged attacker</strong> creates the <strong>named pipe</strong>
+server <strong>before the program does</strong>, it could potentially <strong>intercept messages</strong> from
+the <strong>client</strong>.
+Worse, if the <strong>client</strong> makes use of the server’s responses to <strong>execute
+actions</strong> such as <strong>running commands</strong>, it could lead to <strong>privilege escalation</strong>.</p>
+<p>This was the case for <code>CVE-2022-21893</code>, a <strong>privilege escalation</strong> exploit in <strong>Windows Remote Desktop</strong>
+Mapping <strong>Code to Attack</strong> Surface Services (<code>RDS</code>) that <strong>allowed</strong> an attacker to <strong>intercept the messages</strong> of <code>RDS</code>
+<strong>named pipe</strong> <code>IPC</code>.</p>
+<h3 id="-other-ipc-methods">&gt; Other IPC Methods</h3>
+<p>The number of <code>IPC</code> <strong>methods</strong> is constantly growing as <strong>operating systems</strong> and
+<strong>third-party software</strong> add <strong>features</strong>. The following is a <strong>nonexhaustive</strong> list:</p>
+<ul>
+<li>Shared memory</li>
+<li>System signal</li>
+<li>Message queue</li>
+<li>Memory-mapped file</li>
+<li>Remote procedure call</li>
+<li>Component Object Model (COM, Windows only)</li>
+<li>Dynamic Data Exchange (DDE, Windows only)</li>
+<li>Clipboard</li>
+<li>D-Bus (Linux only)</li>
+<li>MailSlot (Windows only)</li>
+</ul>
+<p>Developers use these <code>APIs</code> in <strong>creative</strong> (and potentially <strong>insecure</strong>) ways.</p>
+<h3 id="file-formats">File Formats</h3>
+<p>Almost all software needs to <strong>handle files</strong>. From newline-delimited configuration files to video clips, we encode data in a variety of formats. Like <strong>protocols</strong>, <strong>file formats</strong> require software to <strong>parse</strong> <strong>data structures</strong> in a standard manner.
+Many <strong>file formats</strong> are <strong>documented</strong> in <code>RFC</code>s, but <strong>proprietary or older
+formats</strong> may require more digging.
+For example, <strong>file formats</strong> are often <strong>roughly divided into three parts</strong>:</p>
+<ul>
+<li><strong>Header:</strong> Appears at the start of the file and usually <strong>begins</strong> with a set of
+<strong>unique bytes</strong> so software can <strong>identify</strong> the file format.</li>
+<li><strong>Body:</strong> Contains the main data associated with the <strong>format</strong>, often grouped
+into <strong>chunks</strong> for software to parse easily.</li>
+<li><strong>Footer:</strong> Contains additional <strong>metadata</strong>, such as <strong>checksums</strong> to ensure
+<strong>data integrity</strong>.</li>
+</ul>
+<p>Other formats <strong>diverge</strong> even further from the <strong>header-body-footer</strong> pattern, such as <strong>directory-based</strong> formats, which <strong>organize data</strong> into multiplefiles within a <strong>directory structure</strong>.</p>
+<p>For example, <strong>Microsoft Office</strong> documents (such as .docx and .pptx files) are essentially <strong>ZIP</strong> containing
+<strong>resource and metadata</strong> files such as <code>XML</code> <strong>documents</strong>, <strong>images</strong>, and so on.</p>
+<h3 id="-typelengthvalue">&gt; Type–Length–Value</h3>
+<p>The <strong>type–length–value</strong> (<code>TLV</code>) pattern <strong>occurs</strong> in both <strong>protocols and file formats</strong>. We use <code>TLV</code> for <strong>chunked data</strong> in the body because its <strong>structure</strong> allows
+a parser to <strong>easily identify</strong> and consume <strong>chunks of variable length</strong>.</p>
+<h3 id="-directory-based">&gt; Directory-Based</h3>
+<p>A significant subset of <strong>file formats</strong> are <strong>directory-based</strong>, meaning the file is actually a <strong>wrapper</strong> around many other files.
+Like <code>ZIP</code>, <code>DEB</code> .
+Typically, <strong>directory-based formats</strong>
+require a <strong>manifest</strong> (<code>manifest.xml</code>) that <strong>contains additional metadata</strong> about the rest of the
+files, including where they’re located. This pattern <strong>tends to expose two types
+of vulnerabilities</strong>, related to <strong>file traversal</strong> and <strong>child format.</strong></p>
+<ul>
+<li><strong>File traversal</strong> occurs if the software <strong>insecurely parses</strong> the directory data.
+A <strong>parser</strong> that <strong>trusts</strong> such a <strong>value</strong> could extract files into <strong>dangerous locations</strong>,
+such as <strong>cron job</strong> folders or <strong>application working directories</strong>.</li>
+<li><strong>Child format</strong>–related <strong>vulnerabilities</strong> occur because <strong>developers</strong> tend to
+<strong>focus on the parent directory–based</strong> format and <strong>delegate</strong> handling <strong>child
+file formats</strong> to external libraries, which may <strong>not parse</strong> securely by default.</li>
+</ul>
+<p>Sometimes, both types of vulnerabilities occur in the same software.
+<a href="https://spaceraccoon.dev/a-tale-of-two-formats-exploiting-insecure-xml-and-zip-file-parsers-to-create-a/">Example of vuln</a></p>
+<h3 id="custom-fields">Custom Fields</h3>
+<p>File formats often include <strong>reserved bytes</strong> or <strong>extendable fields</strong> that allow developers to add <strong>custom functionality</strong>.
+Sometimes, developers jerry-rig custom fields by parsing data differently
+from how a standard defines it.
+Thus, to indicate a stylesheet located at main.css, an HTML document could
+include the following element:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
+</span></span></code></pre></div><p>However, the <strong>WeasyPrint</strong> <code>HTML-to-PDF</code> conversion <strong>engine</strong> extends the function of <code>&lt;link&gt;</code> by supporting a <strong>custom attachment</strong>
+value for <code>rel</code> that doesn’t appear in the <strong>HTML standard</strong>. By using this value,
+a developer can include local files as <strong>attachments</strong> to the output PDF:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file:///etc/passwd&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;attachment&#34;</span>&gt;
+</span></span></code></pre></div><p>This is a <strong>feature</strong>, <strong>not a vulnerability in itself</strong>, but a developer that uses
+<strong>WeasyPrint</strong> without accounting for this behavior could introduce a <strong>vulnerability</strong> in their software.</p>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Recap of chap 2</p>
+    
+        <p>
+            By Tedsig42, 
+            2025-08-06
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

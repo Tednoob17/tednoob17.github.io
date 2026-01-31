@@ -28,7 +28,6 @@ Blogposts
 
 > Have a comment on one of my posts? Start a discussion by sending an email to [ted.sig \[at\] tutamail \[dot\] com](mailto:ted.sig@tutamail.com)
 
-  
 
 > No copyright - ted.sig at tutamail dot com  
 > Any and all opinions listed here are my own and not representative of my employers; future, past and present.

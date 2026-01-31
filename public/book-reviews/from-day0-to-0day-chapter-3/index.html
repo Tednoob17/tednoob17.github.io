@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>From Day 0 to 0day Chapter 3 &ndash; Tedsig42</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css">
+<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="From Day 0 to 0day Chapter 3 &ndash; Tedsig42" />
+<meta property="og:url" content="http://localhost:1313/book-reviews/from-day0-to-0day-chapter-3/" />
+
+  
+
+<meta property="og:locale" content="en-us" />
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/musics/" title="">Music</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-review/" title="">Book Reviews</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>From Day 0 to 0day Chapter 3</h1>
+    </header>
+    <div class="content__body">
+        <p><img src="/images/stc/chap3.jpeg" alt="alt"></p>
+<h1 id="automated-variant-analysis">AUTOMATED VARIANT ANALYSIS</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Now that we know what is <strong>source and sink analysis</strong>, we will learn how to automate code analysis (Know that automated the process can depends until your code base).<br>
+We shall used two popular open source static code analysis  tools <strong>CodeQL and Semgrep</strong>.</p>
+<h2 id="abstract-syntax-trees">Abstract Syntax Trees</h2>
+<p>Modern static code analysis tools for better and deeply comprehension of code base need to understanding of multiple aspect of the code / programming language used like difference between <strong>function and a variable</strong>, <strong>usage of statement</strong>, <strong>class inheritance for object-oriented languages</strong>, <strong>the exact placement of parenthesis or semicolons</strong> and so on.
+<strong>AST</strong> is a data-structure. It’s a tree that models the syntax of a programming language.<br>
+<strong>AST</strong> serve to represent a syntactic structure of a proram, it&rsquo;s used in a many anothers things, by example a <strong>compilers</strong> use <strong>AST</strong> like <strong>Clang for C/C++</strong>, <strong>Babel for Javascript</strong>, <strong>ast built-in module for Python</strong>.
+In talking about <code>ast</code> module we can use it to watch what it seem like.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/python3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> ast
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Python source code to convert to AST</span>
+</span></span><span style="display:flex;"><span>code <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">name = &#39;World&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(&#39;Hello,&#39; + name)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tree <span style="color:#f92672">=</span> ast<span style="color:#f92672">.</span>parse(code)
+</span></span><span style="display:flex;"><span>print(ast<span style="color:#f92672">.</span>dump(tree, indent<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>))
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tedsig@42:~$ python3 ast_ex1.py
+</span></span><span style="display:flex;"><span>Module<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    body<span style="color:#f92672">=[</span>
+</span></span><span style="display:flex;"><span>        Assign<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            targets<span style="color:#f92672">=[</span>
+</span></span><span style="display:flex;"><span>                Name<span style="color:#f92672">(</span>id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;name&#39;</span>, ctx<span style="color:#f92672">=</span>Store<span style="color:#f92672">())]</span>,
+</span></span><span style="display:flex;"><span>            value<span style="color:#f92672">=</span>Constant<span style="color:#f92672">(</span>value<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;World&#39;</span><span style="color:#f92672">))</span>,
+</span></span><span style="display:flex;"><span>        Expr<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            value<span style="color:#f92672">=</span>Call<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                func<span style="color:#f92672">=</span>Name<span style="color:#f92672">(</span>id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;print&#39;</span>, ctx<span style="color:#f92672">=</span>Load<span style="color:#f92672">())</span>,
+</span></span><span style="display:flex;"><span>                args<span style="color:#f92672">=[</span>
+</span></span><span style="display:flex;"><span>                    BinOp<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                        left<span style="color:#f92672">=</span>Constant<span style="color:#f92672">(</span>value<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Hello,&#39;</span><span style="color:#f92672">)</span>,
+</span></span><span style="display:flex;"><span>                        op<span style="color:#f92672">=</span>Add<span style="color:#f92672">()</span>,
+</span></span><span style="display:flex;"><span>                        right<span style="color:#f92672">=</span>Name<span style="color:#f92672">(</span>id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;name&#39;</span>, ctx<span style="color:#f92672">=</span>Load<span style="color:#f92672">()))]</span>,
+</span></span><span style="display:flex;"><span>                keywords<span style="color:#f92672">=[]))]</span>,
+</span></span><span style="display:flex;"><span>    type_ignores<span style="color:#f92672">=[])</span>
+</span></span></code></pre></div><p>This <strong>tree</strong> consists of <strong>nodes</strong>, where each <strong>node</strong> is a <strong>data object</strong> that represents a syntactic construct in the language. The output is <strong>organized</strong> in a <strong>tree structure</strong>, with <code>Module</code> as the <strong>root node</strong> branching off into <strong>child nodes</strong> like <code>Assign</code>, <code>Expr</code>, and <code>Call</code>.</p>
+<ul>
+<li>Exemple of pratical usage
+Suppose here that <code>print</code> is a <strong>sink function</strong>, and you search to know if the last line <strong>call</strong> <code>print</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">old_greet</span>(name):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;Hello, &#39;</span> <span style="color:#f92672">+</span> name) <span style="color:#f92672">//</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>yell <span style="color:#f92672">=</span> print
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>yell(<span style="color:#e6db74">&#39;HELLO, WORLD&#39;</span>) <span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>Firstly searching this pattern in code can be conduct to use a regex like this : <code>/print\([^)]*\)/g</code> or <code>/print\(([^)]*)\)/g</code>  (<strong>PCRE</strong> (<strong>Perl Compatible Regular Expressions</strong>)). <br>
+The first regex capture all <code>print</code> <strong>function call</strong> and her content, the second do same things but capture all argument send to function even if it&rsquo;s another <strong>function</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>Ex : print(calcul(5))
+</span></span><span style="display:flex;"><span># Recursive regex (not supported in Javascript)
+</span></span></code></pre></div><p>The problem with this approch is a false positive like (<code>//1</code>) and a false negative (<code>//2</code>)</p>
+<p>(<code>//1</code>) - The <code>old_greet</code> function call <code>print</code> but this function is never used in code.</p>
+<p>(<code>//2</code>) - <code>yell</code> use <code>print</code> but it <strong>never catch</strong> because of reassigment .</p>
+<p>So it&rsquo;s difficult to use this approach because a regex who can catch all possible edges cases would be incredibly complex. With <strong>AST</strong> you can just identity all the <strong>call nodes</strong>
+in function of their <strong>parents nodes</strong>.</p>
+<p><strong>Example 2:</strong> Create a  file <code>sample_code.py</code> containing a previous code who will translated in <strong>AST</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tedsig@42:~$ cat ast_ex2.py 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>import ast
+</span></span><span style="display:flex;"><span>import os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cur_dir <span style="color:#f92672">=</span> os.path.dirname<span style="color:#f92672">(</span>os.path.abspath<span style="color:#f92672">(</span>__file__<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>with open<span style="color:#f92672">(</span>os.path.join<span style="color:#f92672">(</span>cur_dir, <span style="color:#e6db74">&#39;sample_code.py&#39;</span><span style="color:#f92672">))</span> as f:
+</span></span><span style="display:flex;"><span>    tree <span style="color:#f92672">=</span> ast.parse<span style="color:#f92672">(</span>f.read<span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span>    print<span style="color:#f92672">(</span>ast.dump<span style="color:#f92672">(</span>tree, indent<span style="color:#f92672">=</span>4<span style="color:#f92672">))</span>
+</span></span></code></pre></div><p>After execution</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>tedsig<span style="color:#f92672">@</span><span style="color:#ae81ff">42</span>:<span style="color:#f92672">~</span><span style="color:#960050;background-color:#1e0010">$</span> python3 ast_ex2<span style="color:#f92672">.</span>py
+</span></span><span style="display:flex;"><span>Module(
+</span></span><span style="display:flex;"><span>    body<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>        FunctionDef(
+</span></span><span style="display:flex;"><span>            name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;old_greet&#39;</span>,
+</span></span><span style="display:flex;"><span>            args<span style="color:#f92672">=</span>arguments(
+</span></span><span style="display:flex;"><span>                posonlyargs<span style="color:#f92672">=</span>[],
+</span></span><span style="display:flex;"><span>                args<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>                    arg(arg<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;name&#39;</span>)],
+</span></span><span style="display:flex;"><span>                kwonlyargs<span style="color:#f92672">=</span>[],
+</span></span><span style="display:flex;"><span>                kw_defaults<span style="color:#f92672">=</span>[],
+</span></span><span style="display:flex;"><span>                defaults<span style="color:#f92672">=</span>[]),
+</span></span><span style="display:flex;"><span>            body<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>                Expr(
+</span></span><span style="display:flex;"><span>                    value<span style="color:#f92672">=</span>Call(
+</span></span><span style="display:flex;"><span>                        func<span style="color:#f92672">=</span>Name(id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;print&#39;</span>, ctx<span style="color:#f92672">=</span>Load()),
+</span></span><span style="display:flex;"><span>                        args<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>                            BinOp(
+</span></span><span style="display:flex;"><span>                                left<span style="color:#f92672">=</span>Constant(value<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Hello, &#39;</span>),
+</span></span><span style="display:flex;"><span>                                op<span style="color:#f92672">=</span>Add(),
+</span></span><span style="display:flex;"><span>                                right<span style="color:#f92672">=</span>Name(id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;name&#39;</span>, ctx<span style="color:#f92672">=</span>Load()))],
+</span></span><span style="display:flex;"><span>                        keywords<span style="color:#f92672">=</span>[]))],
+</span></span><span style="display:flex;"><span>            decorator_list<span style="color:#f92672">=</span>[]),
+</span></span><span style="display:flex;"><span>        Assign(
+</span></span><span style="display:flex;"><span>            targets<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>                Name(id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yell&#39;</span>, ctx<span style="color:#f92672">=</span>Store())],
+</span></span><span style="display:flex;"><span>            value<span style="color:#f92672">=</span>Name(id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;print&#39;</span>, ctx<span style="color:#f92672">=</span>Load())),
+</span></span><span style="display:flex;"><span>        Expr(
+</span></span><span style="display:flex;"><span>            value<span style="color:#f92672">=</span>Call(
+</span></span><span style="display:flex;"><span>                func<span style="color:#f92672">=</span>Name(id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yell&#39;</span>, ctx<span style="color:#f92672">=</span>Load()),
+</span></span><span style="display:flex;"><span>                args<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>                    Constant(value<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HELLO, WORLD&#39;</span>)],
+</span></span><span style="display:flex;"><span>                keywords<span style="color:#f92672">=</span>[]))],
+</span></span><span style="display:flex;"><span>    type_ignores<span style="color:#f92672">=</span>[])
+</span></span></code></pre></div><p>Knowing what each node does, we can just follow a essentials <strong>node</strong> like <code>Expr</code>, <code>Assign</code>
+ignoring a <code>FunctionDef</code> and <strong>node</strong> who is like it, only if a <strong>defined function</strong> is <strong>not called</strong> after.</p>
+<p>And when you follow a variables affected by <code>Assign</code> you&rsquo;ll see a correct path to identify<br>
+a <code>Call</code> <strong>node</strong> where a <code>func</code> attribute value is a <code>print</code> function.</p>
+<pre tabindex="0"><code class="language-ast" data-lang="ast">Expr(
+    value=Call(
+        func=Name(id=&#39;print&#39;, ctx=Load()),
+</code></pre><p>We have another way to representing the code <strong>Control Flow Graph</strong> (CFG) that model
+a potential paths through a program during execution, it concrned with the order of execution
+program (such as <code>if-else</code> statements and <strong>loops</strong>). This allow to determines which parts of code can actually be reached during execution ( <strong>reachability analysis</strong> ).</p>
+<p>Another type of representation is a <strong>Data Flow Graph</strong> (DFG), it focus on the <strong>propagation and transformation</strong>
+of data (including <strong>variables and expressions</strong>).</p>
+<h2 id="static-code-analysis-tools">Static Code Analysis Tools</h2>
+<p>Here we will explain a differences between abstractions and querying methods with <strong>CodeQL and Semgrep</strong></p>
+<h3 id="codeql"><strong>CodeQL</strong></h3>
+<p><strong>CodeQL</strong> is focused on query relational database,  it&rsquo;s means that it needs to build a database
+of code before performing any queries. The code treatments depend on if it&rsquo;s a compiled or non-compiled
+languages.<br>
+It used a <strong>programming language&rsquo;s build system</strong> like <strong>make</strong> for <code>C/C++</code> and for <strong>non-compiled</strong> languages
+like <code>Python</code> it uses extractors to parse the code and after store it in database.</p>
+<p>A <strong>CodeQL</strong> query languages it similar to database query language like <strong>SQL</strong>.</p>
+<p>Example of COdeQl query to found all <code>print</code> function calls.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> python <span style="color:#f92672">//</span> because a code base containing a <span style="color:#e6db74">&#34;print&#34;</span> <span style="color:#f92672">is</span> <span style="color:#f92672">in</span> python (cf a previous code)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Call call, Name name
+</span></span><span style="display:flex;"><span>where call<span style="color:#f92672">.</span>getFunc() <span style="color:#f92672">=</span> name <span style="color:#f92672">and</span> name<span style="color:#f92672">.</span>getId() <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;print&#34;</span>
+</span></span><span style="display:flex;"><span>select call, <span style="color:#e6db74">&#34;call to &#39;print&#39;.&#34;</span>
+</span></span></code></pre></div><ul>
+<li><code>Call</code> and <code>Name</code> <strong>classes</strong> share the same name as a <strong>types</strong> in <code>ast</code> <strong>Python</strong> module.
+It&rsquo;s because <strong>CodeQL</strong> <code>Python</code> extractor uses <code>ast</code> as well as it own extended <code>semmle.python.ast</code>
+class to parse python codebases.
+By example,  <strong>CodeQL Go</strong> extractor also uses the <code>Go</code> standard library <code>go/ast</code> package.
+Thus for each language <strong>CodeQL</strong> a extraction approch is customized  allowing to <strong>build a comprehensive databases</strong>
+of data and <strong>control flow relationships</strong>.</li>
+</ul>
+<p>It possible with <strong>CodeQL</strong> to create a global <strong>taint tracking queries</strong> to find <strong>source-to-sink</strong>, you
+can also reuse a components .</p>
+<h4 id="multifile-taint-tracking-example">Multifile Taint Tracking Example</h4>
+<p>For this example Consider a <code>Node.js</code> web <strong>API server</strong> built on the <code>Express framework</code> that consists of two files, <code>index.js</code> and <code>utils.js</code>.<br>
+This web API has a single <code>/ping</code> endpoint that causes the <strong>server</strong> to <code>ping</code> any <strong>IP address</strong> in the ip query parameter.</p>
+<p>Just with the previous description sentences it sure that a developper has inadvertently introduced a remote code
+execution via command injection vulnerability.</p>
+<p>Before using <strong>CodeQL</strong> we need to use <strong>CodeQL CLI first.</strong> on <a href="https://github.com/github/codeql-action/releases">codeql-bundle</a>
+After extraction in</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tedsig@42~:$ tar -xzvf codeql-bundle-linux64.tar.gz
+</span></span><span style="display:flex;"><span>tedsig@42~:$ echo <span style="color:#e6db74">&#34;export PATH=\$PATH:</span><span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span><span style="color:#e6db74">/codeql&#34;</span> &gt;&gt; ~/.zshrc
+</span></span><span style="display:flex;"><span>tedsig@42~:$ source ~/.zshrc
+</span></span><span style="display:flex;"><span>tedsig@42~:$ codeql version
+</span></span><span style="display:flex;"><span>tedsig@42~:$ mkdir -p ~/codeql-workspace/project
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>~/codeql-workspace/project
+</span></span><span style="display:flex;"><span>├── index.js
+</span></span><span style="display:flex;"><span>└── utils.js
+</span></span></code></pre></div><ul>
+<li><em>index.js</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;express&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">ping</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;./utils.js&#34;</span>); <span style="color:#75715e">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/ping&#34;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ip</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">ip</span>; <span style="color:#75715e">//2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">`Result: \n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ping</span>(<span style="color:#a6e22e">ip</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><p>-&gt; <code>//2</code> : A <code>req.query.ip</code> is user-controlled data.</p>
+<p>-&gt; <code>//1</code> : The <code>utils.js</code> is imported in <em>index.js</em> with <code>ping</code> function.</p>
+<ul>
+<li><em>utils.js</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">execSync</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;child_process&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">exports</span>.<span style="color:#a6e22e">ping</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">ip</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span> 			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">execSync</span>(<span style="color:#e6db74">`ping -c 5 </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ip</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>); <span style="color:#75715e">//1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>-&gt; <code>//1</code> Here a <code>ping</code> passes <code>ip</code> value to <code>execSync</code> function which executes a <strong>shell command</strong>
+using it like first argument , but any attacker can combine a another command like this <code>;whoami</code></p>
+<p><strong>CodeQL</strong> provides convenient classes for common <strong>sources and sinks</strong>, including
+remote user input and command execution functions.</p>
+<ul>
+<li><em>RemoteCommandInjection.ql</em></li>
+</ul>
+<pre tabindex="0"><code class="language-CodeQL" data-lang="CodeQL">/**
+ * @id remote-command-injection
+ * @name Remote Command Injection
+ * @description Passing user-controlled remote data to a command injection.
+ * @kind path-problem
+ * @severity error
+ */
+
+import javascript
+
+
+module RemoteCommandInjectionConfig implements DataFlow::ConfigSig {
+	predicate isSource(DataFlow::Node source) {
+ 		source instanceof RemoteFlowSource //1
+    }
+
+    predicate isSink(DataFlow::Node sink) {
+        sink = any(SystemCommandExecution sys).getACommandArgument() //2
+    }
+}
+
+module RemoteCommandInjectionFlow =
+	TaintTracking::Global&lt;RemoteCommandInjectionConfig&gt;;
+
+
+import RemoteCommandInjectionFlow::PathGraph
+
+from RemoteCommandInjectionFlow::PathNode source,
+	RemoteCommandInjectionFlow::PathNode sink
+where RemoteCommandInjectionFlow::flowPath(source, sink)
+select sink.getNode(), source, sink,
+	&#34;taint from $@ to $@.&#34;, source.getNode(), &#34;source&#34;, sink, &#34;sink&#34;
+</code></pre><ul>
+<li><code>//1</code> : <code>RemoteFlowSource</code> is a <strong>sources</strong> of taint tracking configuration.</li>
+<li><code>//2</code> : <code>SystemCommandExecution</code> is a <strong>sink</strong> as a command argument instance.</li>
+</ul>
+<pre tabindex="0"><code>tedsig@42~:$ export CODEQL_ALLOW_INSTALLATION_ANYWHERE=true #To use when your installation folder is on the root, downloads or desktop directory.
+tedsig@42~:$ mkdir -p ~/codeql-workspace/queries
+tedsig@42~:$ cd ~/codeql-workspace
+tedsig@42~/codeql-workspace:$ codeql database create ~/codeql-workspace/my-db --language=javascript-typescript --overwrite
+</code></pre><ul>
+<li><em>qlpack.yml</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-queries</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">1.0.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">codeql/javascript-all</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span></code></pre></div><ul>
+<li>Here is how my codeql folder workspace is organized</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>~/codeql-workspace/
+</span></span><span style="display:flex;"><span>├── my-db/              &lt;-- A created database
+</span></span><span style="display:flex;"><span>|── project				&lt;-- A project folder
+</span></span><span style="display:flex;"><span>├── queries/            &lt;-- Create this folder
+</span></span><span style="display:flex;"><span>│   ├── qlpack.yml         &lt;-- Metadata &amp; dependencies
+</span></span><span style="display:flex;"><span>│   └── RemoteCommandInjection.ql
+</span></span><span style="display:flex;"><span>└── results.csv          &lt;-- The final output will appear here
+</span></span></code></pre></div><p>With this we can track the flow of attacker-controllable data to a vulnerable function.
+The query written check if we have a flow path from <strong>sources to sinks</strong>. It output the result in a structure
+that <strong>CodeQL</strong> can parse.</p>
+<ul>
+<li><strong>SARIF</strong> (Static Analysis Results Interchange Format) <strong>output</strong>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tedsig@42~/codeql-workspace:$ codeql database analyze my-db queries/RemoteCommandInjection.ql <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --format<span style="color:#f92672">=</span>sarif-latest --output<span style="color:#f92672">=</span>results.sarif
+</span></span><span style="display:flex;"><span>Running queries.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>1/1<span style="color:#f92672">]</span> No need to rerun /home/kenshin/codeql-workspace/queries/RemoteCommandInjection.ql.
+</span></span><span style="display:flex;"><span>Shutting down query evaluator.
+</span></span><span style="display:flex;"><span>Interpreting results.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tedsig@42~/codeql-workspace:$ cat results.sarif|jq .
+</span></span></code></pre></div><ul>
+<li><em>Output</em></li>
+</ul>
+<pre tabindex="0"><code class="language-codeQL" data-lang="codeQL">&#34;results&#34; : [ {
+--snip--
+	&#34;codeFlows&#34; : [ {
+		&#34;threadFlows&#34; : [ {
+			&#34;locations&#34; : [ {
+				&#34;location&#34; : {
+					&#34;physicalLocation&#34; : {
+						&#34;artifactLocation&#34; : {
+							&#34;uri&#34; : &#34;index.js&#34;,
+							&#34;uriBaseId&#34; : &#34;%SRCROOT%&#34;,
+							&#34;index&#34; : 1
+						 },
+						 &#34;region&#34; : {
+							&#34;startLine&#34; : 7,
+							&#34;startColumn&#34; : 16,
+							&#34;endColumn&#34; : 28
+						  }
+						 },
+						 &#34;message&#34; : {
+							 &#34;text&#34; : &#34;req.query.ip&#34; //1
+						  }
+				 }
+			 },
+			 --snip--
+			 {
+				&#34;location&#34; : {
+					&#34;physicalLocation&#34; : {
+						&#34;artifactLocation&#34; : {
+							&#34;uri&#34; : &#34;index.js&#34;,
+							&#34;uriBaseId&#34; : &#34;%SRCROOT%&#34;,
+							&#34;index&#34; : 1
+						},
+						&#34;region&#34; : {
+							&#34;startLine&#34; : 8,
+							&#34;startColumn&#34; : 32,
+							&#34;endColumn&#34; : 34
+						 }
+				     },
+				  &#34;message&#34; : {
+  					 &#34;text&#34; : &#34;ip&#34; //2
+				   }
+				}
+			},
+			--snip--
+			{
+				&#34;location&#34; : {
+					&#34;physicalLocation&#34; : {
+						&#34;artifactLocation&#34; : {
+							&#34;uri&#34; : &#34;utils.js&#34;,
+							&#34;uriBaseId&#34; : &#34;%SRCROOT%&#34;,
+							&#34;index&#34; : 0
+						 },
+						 &#34;region&#34; : {
+						 	&#34;startLine&#34; : 5,
+							&#34;startColumn&#34; : 21,
+							&#34;endColumn&#34; : 38
+						  }
+					},
+
+					&#34;message&#34; : {
+ 						&#34;text&#34; : &#34;`ping -c 5 ${ip}`&#34; //3
+					}
+				}
+			} ]
+		} ]
+	} ]
+</code></pre><p><strong>CodeQL</strong> accurately tracks the <strong>tainted data</strong> from the <code>req.query.ip</code> request query parameter value (<code>//1</code>)
+to the <strong>ip variable</strong> (<code>//2</code>) and finally to the template string passed to <code>execSync</code> in <code>utils.js</code> (<code>//3</code>)</p>
+<ul>
+<li><strong>CSV Output</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tedsig@42~/codeql-workspace:$ codeql database analyze ~/codeql-workspace/my-db queries/RemoteCommandInjection.ql <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--format<span style="color:#f92672">=</span>csv --output<span style="color:#f92672">=</span>./final_results.csv
+</span></span></code></pre></div><p>For using <strong>CodeQL</strong> effectively, we need to essentially learn a new programming language and familiarize yourself with the <strong>CodeQL</strong> standard libraries.</p>
+<h3 id="semgrep"><strong>Semgrep</strong></h3>
+<p>Semantic grep aka <strong>Semgrep</strong> is another popular code analysis tool that uses a <strong>pattern-oriented</strong>
+rule syntax, in contrast to <strong>CodeQL</strong>’s <strong>query-oriented</strong> syntax.</p>
+<p>This following rule file (<code>express-injection.yml</code>) that identifies the same command injection vulnerability as the
+<code>RemoteCommandInjection.ql</code> <strong>CodeQL</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rules:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> id: express-injection
+</span></span><span style="display:flex;"><span>	mode: taint //1
+</span></span><span style="display:flex;"><span>	pattern-sources:
+</span></span><span style="display:flex;"><span>	   <span style="color:#66d9ef">-</span> pattern: req.query.$PARAMETER //2
+</span></span><span style="display:flex;"><span>	pattern-sinks:
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">-</span> pattern: execSync(...) //3
+</span></span><span style="display:flex;"><span>	message: Passing user-controlled Express query parameter to a command injection.
+</span></span><span style="display:flex;"><span>	languages:
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">-</span> javascript
+</span></span><span style="display:flex;"><span>	severity: ERROR
+</span></span><span style="display:flex;"><span>	metadata:
+</span></span><span style="display:flex;"><span>		interfile: true
+</span></span></code></pre></div><ul>
+<li>(<code>//1</code>) : <strong>Semgrep</strong> support a <code>mode</code> field features including <strong>taint, join, extract</strong></li>
+<li>(<code>//2</code>) : A another feature commonly used is <strong>metavariables</strong> who is like a shell environment variables,
+it prefixed with dollar sign (<strong>$</strong>), only in uppercase letter and can contains underscore (<strong>_</strong>)</li>
+</ul>
+<p>Ex :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>patterns:
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> pattern: var $VARIABLE_NAME = &#34;...&#34;
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> metavariable-regex:
+</span></span><span style="display:flex;"><span>		metavariable: $VARIABLE_NAME
+</span></span><span style="display:flex;"><span>		regex: SECRET_.*
+</span></span></code></pre></div><ul>
+<li>(<code>//3</code>) : A sequence like this (<code>...</code>) match that between the brackets we can have one or more items.</li>
+</ul>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+
+<ul class="aside__social-links">
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    
+    
+        <p>
+            
+            2025-09-10
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright"></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book-Review on Tedsig42</title>
+    <link>http://localhost:1313/tags/book-review/</link>
+    <description>Recent content in Book-Review on Tedsig42</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Jul 2025 00:37:02 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/book-review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Day 0 to 0day Chapter 0</title>
+      <link>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-0/</link>
+      <pubDate>Tue, 15 Jul 2025 00:37:02 +0100</pubDate>
+      <guid>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-0/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/stc/fd0t0d.png&#34; alt=&#34;alt&#34;&gt;&#xA;Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book &lt;strong&gt;&lt;a href=&#34;https://nostarch.com/zero-day&#34;&gt;From Day Zerp to Zero Day&lt;/a&gt;&lt;/strong&gt;&#xA;written by Eugene &amp;ldquo;&lt;a href=&#34;https://x.com/spaceraccoonsec&#34;&gt;Spaceraccoon&lt;/a&gt;&amp;rdquo; Lim a security researcher and white-hat hacker.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;He learned rapidly because his first training was in how to learn.&lt;/strong&gt; - &lt;code&gt;Frank Herbert, Dune&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems&#xA;for new vulnerabilities, has zero to zero  assumed a critical role in cybersecurity.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
