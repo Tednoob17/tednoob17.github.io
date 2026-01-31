@@ -33,6 +33,10 @@ theme = 'risotto'
     name = "Blogs"
     url = "/blogs/"
     weight = 6
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 6    
 [params]
   noindex = false
   favicon = "https://0xswitch.fr//static/img/gif/main-5.gif"
