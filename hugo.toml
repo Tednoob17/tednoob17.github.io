@@ -1,0 +1,48 @@
+baseURL = 'https://tednoob17.github.io/'
+languageCode = 'en-us'
+title = 'Tedsig42'
+theme = 'risotto'
+
+# Main menu
+[menu]
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 1
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "Friends"
+    url = "/friends/"
+    weight = 3
+  [[menu.main]]
+    name = "Music"
+    url = "/musics/"
+    weight = 4
+  [[menu.main]]
+    name = "Art"
+    url = "/art/"
+    weight = 5
+  [[menu.main]]
+    name = "Book Reviews"
+    url = "/book-review/"
+    weight = 6
+
+[params]
+  noindex = false
+  description = "Another infosec enthusiast blog"
+  
+  [params.theme]
+    palette = "base16-dark"
+  
+  [params.social]
+    github = "Tednoob17"
+    twitter = "Tedsig42"
+    instagram = "tedsig_art"
+    linkedin = "ted-kouhouenou"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
