@@ -35,7 +35,7 @@ theme = 'risotto'
   description = "Another infosec enthusiast blog"
   
   [params.theme]
-    palette = "base16-dark"
+    palette = "tokyo-night-dark"
   
   [params.social]
     github = "Tednoob17"
