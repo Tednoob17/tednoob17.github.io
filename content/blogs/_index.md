@@ -27,13 +27,13 @@ Other blogs I read
 *   [Vitor Falcao](https://vitorfalcao.com/)
 *   [Tom (Aethlios) Chambaretaud](https://www.aeth.cc/)
 *   [Nicolas Gregoire](https://www.agarri.fr/fr/)
-*   
+ 
 
 Blogposts
 =========
 
-> Have a comment on one of my posts? Start a discussion by sending an email to [ted.sig \[at\] tutamail \[dot\] com](mailto:ted.sig@tutamail.com)
+> Have a comment on one of my posts? Start a discussion by sending an email to [ted.sig42 \[at\] tutamail \[dot\] com](mailto:ted.sig42@tutamail.com)
 
 
-> No copyright - ted.sig at tutamail dot com  
+> No copyright - ted.sig42 at tutamail dot com  
 > Any and all opinions listed here are my own and not representative of my employers; future, past and present.

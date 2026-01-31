@@ -35,7 +35,7 @@ Final-HackerLab2023
         </tr>
     </table>
     <blockquote>
-        No copyright - ted dot sig at tutamail dot com<br />
+        No copyright - ted dot sig42 at tutamail dot com<br />
         Any and all opinions listed here are my own and not representative of my employers; future, past and present.
     </blockquote>
 </body>
