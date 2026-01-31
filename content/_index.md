@@ -10,7 +10,7 @@
     <table>
         <tr>
             <td class='left'>
-                <img src="https://ne02ptzero.me/single_penguin.png" alt="Logo" />
+                <img src="https://0xswitch.fr//static/img/gif/main-1.gif" alt="Logo" />
             </td>
             <td class='right'>
                 <h1>Ted Kouhouenou</h1>
@@ -29,7 +29,7 @@
                     <li><a href="https://github.com/Tednoob17/Final-HackerLab2023">
 Final-HackerLab2023
 </a> - A writeup for Hackerlab 2023</li>
-                    I can't list all my interesting project here, check my <a href="https://github.com/Tednoob17/">Github</a>
+                    I can't show all my interesting projects here because there are too many of them. Take a look at my  <a href="https://github.com/Tednoob17/">Github</a>
                 </ul>
             </td>
         </tr>

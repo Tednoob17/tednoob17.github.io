@@ -22,6 +22,12 @@ Other blogs I read
 *   [Dana Epp's](https://danaepp.com/blog)
 *   [Securitybreached](https://blog.securitybreached.org/)
 *   [Aretekzs](https://aretekzs.com/)
+*   [Oxide COmputer](https://oxide.computer/blog)
+*   [Quentin JOLY](https://une-tasse-de.cafe/)
+*   [Vitor Falcao](https://vitorfalcao.com/)
+*   [Tom (Aethlios) Chambaretaud](https://www.aeth.cc/)
+*   [Nicolas Gregoire](https://www.agarri.fr/fr/)
+*   
 
 Blogposts
 =========

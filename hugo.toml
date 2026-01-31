@@ -35,16 +35,34 @@ theme = 'risotto'
     weight = 6
 [params]
   noindex = false
-  description = "Another infosec enthusiast blog"
-  
+  favicon = "https://0xswitch.fr//static/img/gif/main-5.gif"
+  [params.about]
+    title = "Tedsig42"
+    description = "Another infosec enthusiast blog"
+    logo_image = "https://0xswitch.fr//static/img/gif/main-1.gif"
+
   [params.theme]
     palette = "tokyo-night-dark"
-  
-  [params.social]
-    github = "Tednoob17"
-    twitter = "Tedsig42"
-    instagram = "tedsig_art"
-    linkedin = "ted-kouhouenou"
+
+  [[params.socialLinks]]
+    title = "GitHub"
+    url = "https://github.com/Tednoob17"
+    icon = "fab fa-github"
+
+  [[params.socialLinks]]
+    title = "Twitter"
+    url = "https://twitter.com/Tedsig42"
+    icon = "fab fa-twitter"
+
+  [[params.socialLinks]]
+    title = "Instagram"
+    url = "https://instagram.com/tedsig_art"
+    icon = "fab fa-instagram"
+    
+  [[params.socialLinks]]
+    title = "LinkedIn"
+    url = "https://linkedin.com/in/ted-kouhouenou"
+    icon = "fab fa-linkedin"
 
 [taxonomies]
   category = "categories"
