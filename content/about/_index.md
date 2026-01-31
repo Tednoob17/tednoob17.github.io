@@ -11,7 +11,7 @@ I spend any of my free time on **Web Security Reseach**, and begin **Bug bounty*
 I also make any **contributions** on **Open Source** project like [Exegol](https://exegol.com/), [The Hacker Recipes](https://www.thehacker.recipes/) and [Payload all the things](https://swisskyrepo.github.io/PayloadsAllTheThings/).   
 I play CTF and collaborate with [@TheBugsReapers](https://thebugsreapers.com) **Vulnerability Researcher** / **Bug Hunter** team .  
 I strive to provide as much information as i can about what i have learned on my blog [tedsig42.re](https://tednoob17.github.io/), which encompasses CTF writeups, **research projects**, and more.   
-
+My [Youtube Channel](https://www.youtube.com/@Tedsig42)   
 **Actually self employed, but ready for possible mission.**
 
 PDF Resume here: [English](/assets/Ted-Regis-KOUHOUENOU.pdf)

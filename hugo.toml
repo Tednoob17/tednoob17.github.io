@@ -19,15 +19,15 @@ theme = 'risotto'
     weight = 3
   [[menu.main]]
     name = "Music"
-    url = "/musics/"
+    url = "/music/"
     weight = 4
   [[menu.main]]
     name = "Art"
     url = "/art/"
     weight = 5
   [[menu.main]]
-    name = "Book Reviews"
-    url = "/book-review/"
+    name = "Book Review"
+    url = "/book-reviews/"
     weight = 6
   [[menu.main]]
     name = "Blogs"
