@@ -22,10 +22,14 @@
         {{ $files := readDir $path }}
         {{ range $files }}
             {{ if findRE `(?i)\.(jpg|jpeg|png|webp|avif)$` .Name }}
-            <img src="{{ printf "images/Zushiboyz Merch/%s" .Name | relURL }}" 
-                 class="carousel-image" 
-                 alt="{{ .Name }}" 
-                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;">
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="{{ printf "images/Zushiboyz Merch/%s" .Name | relURL }}" 
+                     alt="{{ .Name }}" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    {{ replaceRE "\\.[^.]+$" "" .Name }}
+                </div>
+            </div>
             {{ end }}
         {{ end }}
     </div>
@@ -33,18 +37,18 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const images = document.querySelectorAll('.carousel-image');
+        const items = document.querySelectorAll('.carousel-item');
         let currentIndex = 0;
         
-        if (images.length > 0) {
+        if (items.length > 0) {
             // Randomly select start index
-            currentIndex = Math.floor(Math.random() * images.length);
-            images[currentIndex].style.opacity = '1';
+            currentIndex = Math.floor(Math.random() * items.length);
+            items[currentIndex].style.opacity = '1';
             
             setInterval(() => {
-                images[currentIndex].style.opacity = '0';
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].style.opacity = '1';
+                items[currentIndex].style.opacity = '0';
+                currentIndex = (currentIndex + 1) % items.length;
+                items[currentIndex].style.opacity = '1';
             }, 3000);
         }
     });

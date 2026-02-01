@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal on Tedsig42</title>
-    <link>https://tednoob17.github.io/tags/personal/</link>
+    <link>http://localhost:1313/tags/personal/</link>
     <description>Recent content in Personal on Tedsig42</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 08 Aug 2025 01:19:25 +0200</lastBuildDate>
-    <atom:link href="https://tednoob17.github.io/tags/personal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/personal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Whoami</title>
-      <link>https://tednoob17.github.io/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
-      <guid>https://tednoob17.github.io/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m Ted &lt;strong&gt;&amp;ldquo;Tedsig42&amp;rdquo;&lt;/strong&gt; Regis Kouhouenou, a young &lt;strong&gt;Cybersecurity Enthusiast&lt;/strong&gt;,  CTF player, music lover, drawer, 22 yo. &lt;br&gt;&#xA;I spend many of my time at School like &lt;strong&gt;42 School&lt;/strong&gt;, &lt;strong&gt;Epitech&lt;/strong&gt;, &lt;strong&gt;Holberton School&lt;/strong&gt;.&#xA;I spend any of my free time on &lt;strong&gt;Web Security Reseach&lt;/strong&gt;, and begin &lt;strong&gt;Bug bounty&lt;/strong&gt; recently.&lt;br&gt;&#xA;I also make any &lt;strong&gt;contributions&lt;/strong&gt; on &lt;strong&gt;Open Source&lt;/strong&gt; project like &lt;a href=&#34;https://exegol.com/&#34;&gt;Exegol&lt;/a&gt;, &lt;a href=&#34;https://www.thehacker.recipes/&#34;&gt;The Hacker Recipes&lt;/a&gt; and &lt;a href=&#34;https://swisskyrepo.github.io/PayloadsAllTheThings/&#34;&gt;Payload all the things&lt;/a&gt;.&lt;br&gt;&#xA;I play CTF and collaborate with &lt;a href=&#34;https://thebugsreapers.com&#34;&gt;@TheBugsReapers&lt;/a&gt; &lt;strong&gt;Vulnerability Researcher&lt;/strong&gt; / &lt;strong&gt;Bug Hunter&lt;/strong&gt; team .&lt;br&gt;&#xA;I strive to provide as much information as i can about what i have learned on my blog &lt;a href=&#34;https://tednoob17.github.io/&#34;&gt;tedsig42.re&lt;/a&gt;, which encompasses CTF writeups, &lt;strong&gt;research projects&lt;/strong&gt;, and more.&lt;br&gt;&#xA;My &lt;a href=&#34;https://www.youtube.com/@Tedsig42&#34;&gt;Youtube Channel&lt;/a&gt;&lt;br&gt;&#xA;&lt;strong&gt;Actually self employed, but ready for possible mission.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
