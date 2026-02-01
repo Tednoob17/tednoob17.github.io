@@ -559,3 +559,19 @@ article pre code,
     font-weight: 600;
     color: var(--fg);
 }
+
+.social-handle-block {
+    margin-top: 0.25rem;
+}
+
+.social-handle {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.social-handle.github-handle {
+    margin-left: 0;
+}
