@@ -14,4 +14,7 @@ Artists I follow
 *   [Beth Mitchell Fine Art](https://bethmitchellfineart.com.au/) - Award winning Australian Fine Art Photographer who specialises in Underwater Photography.
 *   [Jessie Bearden](https://www.jessiebearden.com/) - Multidisciplinary artist and creative director living in Los Angeles.
 *   [Steven Kozar](https://stevenkozar.com/) - American Hyper-Realist Artist.
-*   [Redd Walitzki](https://www.reddwalitzki.com/)
+*   [Redd Walitzki](https://www.reddwalitzki.com/) - A leading New-Contemporary artist whose ethereal oil paintings explore the ephemeral beauty of nature and humanity.
+*   [Nada Frikha ](https://graphiste.com/nada_frikha) - Freelance graphic designer and illustrator specializing in clean, modern visual identities and branding.
+*   [Gawx Film](https://www.gawxfilm.com/) - Cinematography and filmmaking portfolio showcasing high-energy visual storytelling and creative video production.
+*   [Gawx World](https://gawxworld.com/) - Creative hub and lifestyle brand featuring vibrant "doodle" art style, merchandise, and multi-disciplinary projects.
