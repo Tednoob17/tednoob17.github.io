@@ -1,0 +1,30 @@
+<nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="{{ .Site.BaseURL }}" class="page__logo-inner">{{ .Site.Title }}</a></h1></li>
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+    <li class="main-nav__item"><a class="nav-main-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) (eq ($currentPage.Permalink) (.URL | absLangURL)) }} active{{end}}" href="{{ .URL | absLangURL }}" title="{{ .Title }}">{{ .Name }}</a></li>
+    {{ end }}
+    <li class="main-nav__item">
+      <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
+        <i class="fas fa-adjust"></i>
+      </a>
+    </li>
+    <li class="main-nav__item">
+      <a class="nav-main-item" href="#" id="search-trigger" title="Search">
+        <i class="fas fa-search"></i>
+      </a>
+    </li>
+    </ul>
+</nav>
+
+<div id="search-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; padding: 50px; overflow-y: auto;">
+  <div style="max-width: 600px; margin: 0 auto; color: white;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2>Search</h2>
+      <button id="search-close" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">&times;</button>
+    </div>
+    <input type="text" id="search-input" placeholder="Type to search..." style="width: 100%; padding: 10px; font-size: 18px; margin-bottom: 20px; color: black;">
+    <div id="search-results"></div>
+  </div>
+</div>

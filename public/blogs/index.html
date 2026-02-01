@@ -15,9 +15,96 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css">
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css" id="theme-css">
 <link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
 <link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeCss = document.getElementById('theme-css');
+  const darkTheme = "tokyo-night-dark";
+  const lightTheme = "tokyo-night-light";
+
+  
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+     themeCss.href = themeCss.href.replace(/(.*css\/palettes\/)(.*)(\.css)/, '$1' + savedTheme + '$3');
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      const currentHref = themeCss.href;
+      const isDark = currentHref.includes(darkTheme) || currentHref.includes('dark');
+      const newTheme = isDark ? lightTheme : darkTheme;
+
+      themeCss.href = themeCss.href.replace(/(.*css\/palettes\/)(.*)(\.css)/, '$1' + newTheme + '$3');
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+
+  
+  const searchTrigger = document.getElementById('search-trigger');
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  let searchIndex = null;
+
+  if (searchTrigger) {
+    searchTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchOverlay.style.display = 'block';
+        searchInput.focus();
+
+        if (!searchIndex) {
+            fetch('http:\/\/localhost:1313\/index.json')
+                .then(response => response.json())
+                .then(data => {
+                    searchIndex = data;
+                });
+        }
+    });
+  }
+
+  if (searchClose) {
+    searchClose.addEventListener('click', function() {
+        searchOverlay.style.display = 'none';
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        if (query.length < 2) {
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        if (searchIndex) {
+          const results = searchIndex.filter(item => {
+              return item.title.toLowerCase().includes(query) || item.content.toLowerCase().includes(query);
+          });
+
+          let html = '';
+          if (results.length > 0) {
+              html = '<ul style="list-style: none; padding: 0;">';
+              results.slice(0, 10).forEach(result => {
+                  html += `<li style="margin-bottom: 10px;"><a href="${result.permalink}" style="color: white; font-size: 1.2em; text-decoration: none; border-bottom: 1px solid #555; display: block; padding: 5px;">${result.title}</a></li>`;
+              });
+              html += '</ul>';
+          } else {
+              html = '<p>No results found.</p>';
+          }
+          searchResults.innerHTML = html;
+        }
+    });
+  }
+});
+</script>
 
 
 
@@ -49,9 +136,29 @@
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
     
+    <li class="main-nav__item">
+      <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
+        <i class="fas fa-adjust"></i>
+      </a>
+    </li>
+    <li class="main-nav__item">
+      <a class="nav-main-item" href="#" id="search-trigger" title="Search">
+        <i class="fas fa-search"></i>
+      </a>
+    </li>
     </ul>
 </nav>
 
+<div id="search-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; padding: 50px; overflow-y: auto;">
+  <div style="max-width: 600px; margin: 0 auto; color: white;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2>Search</h2>
+      <button id="search-close" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">&times;</button>
+    </div>
+    <input type="text" id="search-input" placeholder="Type to search..." style="width: 100%; padding: 10px; font-size: 18px; margin-bottom: 20px; color: black;">
+    <div id="search-results"></div>
+  </div>
+</div>
 </header>
 
             <section class="page__body">
@@ -84,6 +191,7 @@
 <li><a href="https://vitorfalcao.com/">Vitor Falcao</a></li>
 <li><a href="https://www.aeth.cc/">Tom (Aethlios) Chambaretaud</a></li>
 <li><a href="https://www.agarri.fr/fr/">Nicolas Gregoire</a></li>
+<li><a href="https://lab.ctbb.show/research/all/">Ctbbp</a></li>
 </ul>
 <h1 id="blogposts">Blogposts</h1>
 <blockquote>

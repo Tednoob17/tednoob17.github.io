@@ -12,9 +12,96 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- risotto theme -->
-<link rel="stylesheet" href="{{ printf "css/palettes/%s.css" (.Site.Params.theme.palette | default "base16-dark") | absURL }}">
+<link rel="stylesheet" href="{{ printf "css/palettes/%s.css" (.Site.Params.theme.palette | default "base16-dark") | absURL }}" id="theme-css">
 <link rel="stylesheet" href="{{ "css/risotto.css" | absURL }}">
 <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeCss = document.getElementById('theme-css');
+  const darkTheme = "tokyo-night-dark";
+  const lightTheme = "tokyo-night-light";
+
+  // Check storage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+     themeCss.href = themeCss.href.replace(/(.*css\/palettes\/)(.*)(\.css)/, '$1' + savedTheme + '$3');
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      const currentHref = themeCss.href;
+      const isDark = currentHref.includes(darkTheme) || currentHref.includes('dark');
+      const newTheme = isDark ? lightTheme : darkTheme;
+
+      themeCss.href = themeCss.href.replace(/(.*css\/palettes\/)(.*)(\.css)/, '$1' + newTheme + '$3');
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+
+  // Search
+  const searchTrigger = document.getElementById('search-trigger');
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  let searchIndex = null;
+
+  if (searchTrigger) {
+    searchTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchOverlay.style.display = 'block';
+        searchInput.focus();
+
+        if (!searchIndex) {
+            fetch('{{ "index.json" | absURL }}')
+                .then(response => response.json())
+                .then(data => {
+                    searchIndex = data;
+                });
+        }
+    });
+  }
+
+  if (searchClose) {
+    searchClose.addEventListener('click', function() {
+        searchOverlay.style.display = 'none';
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        if (query.length < 2) {
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        if (searchIndex) {
+          const results = searchIndex.filter(item => {
+              return item.title.toLowerCase().includes(query) || item.content.toLowerCase().includes(query);
+          });
+
+          let html = '';
+          if (results.length > 0) {
+              html = '<ul style="list-style: none; padding: 0;">';
+              results.slice(0, 10).forEach(result => {
+                  html += `<li style="margin-bottom: 10px;"><a href="${result.permalink}" style="color: white; font-size: 1.2em; text-decoration: none; border-bottom: 1px solid #555; display: block; padding: 5px;">${result.title}</a></li>`;
+              });
+              html += '</ul>';
+          } else {
+              html = '<p>No results found.</p>';
+          }
+          searchResults.innerHTML = html;
+        }
+    });
+  }
+});
+</script>
 
 <!-- favicon -->
 {{ if .Site.Params.favicon }}
