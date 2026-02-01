@@ -28,6 +28,7 @@ Other blogs I read
 *   [Tom (Aethlios) Chambaretaud](https://www.aeth.cc/)
 *   [Nicolas Gregoire](https://www.agarri.fr/fr/)
 *   [Ctbbp](https://lab.ctbb.show/research/all/) 
+*   [0xpatrik](https://0xpatrik.com/)
 
 Blogposts
 =========
