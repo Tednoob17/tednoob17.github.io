@@ -10,9 +10,9 @@ Other blogs I read
 *   [Natalie Silvanovich](https://natashenka.ca/about/)
 *   [Bryan Cantrill](https://bcantrill.dtrace.org/)
 *   [Doyensec](https://blog.doyensec.com/)
-*   [Synactiv](https://www.synacktiv.com/publications)
+*   [Synacktiv](https://www.synacktiv.com/publications)
 *   [Quarkslab](https://blog.quarkslab.com/)
-*   [Trails Of Bite](https://blog.trailofbits.com/)
+*   [Trail Of Bits](https://blog.trailofbits.com/)
 *   [Detectify](https://labs.detectify.com/)
 *   [Fuzzinglabs](https://fuzzinglabs.com/security-blog/)
 *   [Rachid Allam - zhero](https://zhero-web-sec.github.io/research-and-things/)
@@ -33,7 +33,7 @@ Other blogs I read
 Blogposts
 =========
 
-> Have a comment on one of my posts? Start a discussion by sending an email to [ted.sig42 \[at\] tutamail \[dot\] com](mailto:ted.sig42@tutamail.com)
+> Have a comment on one of my posts? Start a discussion  by sending an email to [ted.sig42 \[at\] tutamail \>[dot\] com](mailto:ted.sig42@tutamail.com)
 
 
 > No copyright - ted.sig42 at tutamail dot com  
