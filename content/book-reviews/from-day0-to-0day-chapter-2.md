@@ -16,8 +16,8 @@ When we don’t know, the world feels unlimited.
 `Liu Cixin, The Dark Forest`
 
 ## Introduction
-**Attack surface** (the potential entry points to exploit a vulnerability) going often with the growing
-of **complexity** of software.  
+**Attack surface** (the potential entry points to exploit a vulnerability) often increases with the growing
+**complexity** of software.  
 The **vulnerabilities** to be introduced, as developers’ capacity to **properly secure** these feature is
 limited and mistakes are **inevitable** when dealing with millions of lines of code.  
 Minor issues can be **chained** together into far more serious **vulnerabilities**.  

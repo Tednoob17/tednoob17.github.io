@@ -14,11 +14,11 @@
             </td>
             <td class='right'>
                 <h1>Ted Kouhouenou</h1>
-                <h4>Low-Level developer, Cybersecurity Enthusiast 
+                <h4>Low-Level developer, Cybersecurity Enthusiast</h4>
                 <h5>Skills</h5>
                 <ul style='padding-left: 0'>
                     <li>C, C++, Rust, Python and other languages</li>
-                    <li>Open Source Contributions on <b>Exegol, Payloads all the things, Caido, Dom-Explorer, The Hackers Recipes</b> </li>
+                    <li>Open Source Contributions to <b>Exegol, Payloads all the things, Caido, Dom-Explorer, The Hackers Recipes</b> </li>
                     <li>Web Security</li>
                     <li>DevOps</li>
                 </ul>
@@ -29,7 +29,7 @@
                     <li><a href="https://github.com/Tednoob17/Final-HackerLab2023">
 Final-HackerLab2023
 </a> - A writeup for Hackerlab 2023</li>
-                    I can't show all my interesting projects here because there are too many of them. Take a look at my  <a href="https://github.com/Tednoob17/">Github</a>
+                    I can't list all my interesting projects here because there are too many. Take a look at my  <a href="https://github.com/Tednoob17/">Github</a>
                 </ul>
             </td>
         </tr>

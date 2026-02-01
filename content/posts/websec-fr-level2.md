@@ -43,8 +43,8 @@ if (isset ($_POST['submit']) && isset ($_POST['user_id'])) {
 ....
 </html>
 ```
-We can see that these to line was problematic, all  **words** in this **dictionnary** are removed
-from payload.
+We can see that these two lines were problematic, all  **words** in this **dictionary** are removed
+from the payload.
 
 ```php
 $searchWords = implode (['union', 'order', 'select', 'from', 'group','by'],'|');

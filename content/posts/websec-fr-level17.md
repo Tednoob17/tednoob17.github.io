@@ -46,18 +46,18 @@ function sleep_rand() { /* I wish php5 had random_int() */
 </html>
 ```
 
-After reading the code we can directly avoid a first part of php code because it's impossible to break this function.  
-But in second part the only things who can conduct to a vulnerability is `strcasecmp`, so this function check if the `string` given in field is same that a **flag**.  
-Reading [strcasecmp php documentation](https://www.php.net/manual/fr/function.strcasecmp.php) we can read that : 
+After reading the code, we can ignore the first part of the PHP code because it's impossible to break this function.  
+But in the second part, the only thing that can lead to a vulnerability is `strcasecmp`. This function checks if the input matches the **flag**.  
+Reading [strcasecmp php documentation](https://www.php.net/manual/fr/function.strcasecmp.php) we can see that : 
 
 ```md
 Returns a value less than 0 if string1 is less than string2; a value greater than 0 if string1 is greater than string2, and 0 if they are equal. 
 ```
-So this vulnerability look like type jungling, we just have to help the strcasecmp to return `0` or `true` for exfiltrate the **flag**.  
-After any research i read this [article](https://marcosvalle.github.io/ctf/php/2016/05/12/php-comparison-vlun.html) who explain exactly what i want , if we compare a strings with another type of value like **array** `strcasecmp` return `0`.
+So this vulnerability looks like type juggling, we just have to make `strcasecmp` return `0` or `true` to exfiltrate the **flag**.  
+After some research I read this [article](https://marcosvalle.github.io/ctf/php/2016/05/12/php-comparison-vlun.html) which explains exactly what I want, if we compare a string with another type of value like **array** `strcasecmp` returns `0`.
 
 
-Using devtools in `network section` i send a `POST` request and **copy value as** `Curl` and modify it.
+Using DevTools in `network section` I sent a `POST` request and **copy as** `Curl` and modify it.
 
 
 ```bash

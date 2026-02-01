@@ -5,9 +5,9 @@ draft = false
 tags = ['websec', 'insecure-deserialization']
 +++
 ![alt text](</images/stc/websec-level4.png>)
-For LevelFour challenge we have two sources [here](http://websec.fr/level04/source1.php) and [here](http://websec.fr/level04/source2.php)
+For the Level Four challenge we have two sources [here](http://websec.fr/level04/source1.php) and [here](http://websec.fr/level04/source2.php)
 
-Only php code was displayed here because  `html` is not important.
+Only the PHP code is shown here because the HTML is not important.
 
 **source1.php**
 
@@ -86,17 +86,17 @@ class SQL {
 
 ```
 
-The `source2.php` help to connect to to database (`database.db`) and contains all functions who execute, recept query,
-and the `source1.php` file contains a part who receive user input and send request using a function in `source2.php`.  
-The function who take our attention is `__destruct()` function who is know to be a special magic function who is called when an object is  destroyed.  
-It also know to conduct to insecure deserialization.
+The `source2.php` helps to connect to the database (`database.db`) and contains all functions that execute and receive queries,
+and the `source1.php` file contains a part that receives user input and sends a request using a function in `source2.php`.  
+The function that takes our attention is the `__destruct()` function which is known to be a special magic function called when an object is destroyed.  
+It is also known to lead to insecure deserialization.
 
-So firstly it's important to know in the code what is doing , how it work.
+So first, it's important to understand what the code is doing and how it works.
 
 ![alt text](/images/stc/enter-level4.png)
 
-- It check if input is a integer firstly and display after the username associate at this `id`
-- When we connected on websec.fr a cookie was created, her name is `leet_hax0r` and your ip address is checked before  left you to use the app.
+- It checks if the input is an integer first and displays the username associated with this `id`
+- When we connect to websec.fr a cookie is created, its name is `leet_hax0r` and your IP address is checked before allowing you to use the app.
 
 ```bash
 $ curl -c - http://websec.fr/level04/index.php

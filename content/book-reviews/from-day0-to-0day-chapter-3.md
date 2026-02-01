@@ -11,12 +11,12 @@ tags = ['book-review']
 # AUTOMATED VARIANT ANALYSIS
 
 ## Introduction
-Now that we know what is **source and sink analysis**, we will learn how to automate code analysis (Know that automated the process can depends until your code base).  
-We shall used two popular open source static code analysis  tools **CodeQL and Semgrep**.  
+Now that we know what **source and sink analysis** is, we will learn how to automate code analysis (Note that automating the process can depend on your codebase).  
+We shall use two popular open source static code analysis  tools **CodeQL and Semgrep**.  
 
 ## Abstract Syntax Trees
 
-Modern static code analysis tools for better and deeply comprehension of code base need to understanding of multiple aspect of the code / programming language used like difference between **function and a variable**, **usage of statement**, **class inheritance for object-oriented languages**, **the exact placement of parenthesis or semicolons** and so on.
+Modern static code analysis tools for better and deep comprehension of code base need to understand multiple aspects of the code / programming language used like difference between **function and a variable**, **usage of statement**, **class inheritance for object-oriented languages**, **the exact placement of parenthesis or semicolons** and so on.
 **AST** is a data-structure. It’s a tree that models the syntax of a programming language.   
 **AST** serve to represent a syntactic structure of a proram, it's used in a many anothers things, by example a **compilers** use **AST** like **Clang for C/C++**, **Babel for Javascript**, **ast built-in module for Python**.
 In talking about `ast` module we can use it to watch what it seem like.  
