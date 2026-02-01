@@ -33,7 +33,7 @@ Other blogs I read
 Blogposts
 =========
 
-> Have a comment on one of my posts? Start a discussion  by sending an email to [ted.sig42 \[at\] tutamail \>[dot\] com](mailto:ted.sig42@tutamail.com)
+> Have a comment on one of my posts? Start a discussion  by sending an email to [ted.sig42 \[at\] tutamail \[dot\] com](mailto:ted.sig42@tutamail.com)
 
 
 > No copyright - ted.sig42 at tutamail dot com  
