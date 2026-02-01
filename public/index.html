@@ -54,6 +54,53 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchResults = document.getElementById('search-results');
 
   let searchIndex = null;
+  let isLoading = false;
+
+  const performSearch = (query) => {
+    if (!searchIndex || query.length < 2) {
+        searchResults.innerHTML = '';
+        return;
+    }
+
+    const results = searchIndex.filter(item => {
+        const title = item.title ? item.title.toLowerCase() : '';
+        const content = item.content ? item.content.toLowerCase() : '';
+        return title.includes(query) || content.includes(query);
+    });
+
+    let html = '';
+    if (results.length > 0) {
+        html = '<ul style="list-style: none; padding: 0;">';
+        results.slice(0, 10).forEach(result => {
+             
+             let snippet = "";
+             if (result.content) {
+                 const lowerContent = result.content.toLowerCase();
+                 const idx = lowerContent.indexOf(query);
+                 if (idx !== -1) {
+                     const start = Math.max(0, idx - 40);
+                     const end = Math.min(result.content.length, idx + query.length + 40);
+                     snippet = result.content.substring(start, end);
+                     
+                     const re = new RegExp(query, 'gi');
+                     snippet = snippet.replace(re, match => `<mark style="background-color: #0f0; color: #000;">${match}</mark>`);
+                     snippet = "..." + snippet + "...";
+                 } else {
+                     snippet = result.content.substring(0, 100) + "...";
+                 }
+             }
+
+            html += `<li style="margin-bottom: 15px;">
+                <a href="${result.permalink}" style="color: #61bfff; font-size: 1.2em; text-decoration: none; font-weight: bold; display: block;">${result.title}</a>
+                <div style="color: #ccc; font-size: 0.9em; margin-top: 5px;">${snippet}</div>
+            </li>`;
+        });
+        html += '</ul>';
+    } else {
+        html = '<p>No results found.</p>';
+    }
+    searchResults.innerHTML = html;
+  };
 
   if (searchTrigger) {
     searchTrigger.addEventListener('click', function(e) {
@@ -61,11 +108,30 @@ document.addEventListener('DOMContentLoaded', function() {
         searchOverlay.style.display = 'block';
         searchInput.focus();
 
-        if (!searchIndex) {
-            fetch('http:\/\/localhost:1313\/index.json')
-                .then(response => response.json())
+        if (!searchIndex && !isLoading) {
+            isLoading = true;
+            searchResults.innerHTML = '<p style="color: #888;">Loading search index...</p>';
+            
+            
+            fetch('\/index.json')
+                .then(response => {
+                    if (!response.ok) {
+                         throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     searchIndex = data;
+                    isLoading = false;
+                    searchResults.innerHTML = '';
+                    if (searchInput.value.length >= 2) {
+                        performSearch(searchInput.value.toLowerCase());
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching search index:', error);
+                    isLoading = false;
+                    searchResults.innerHTML = '<p style="color: red;">Error loading search index. Check console.</p>';
                 });
         }
     });
@@ -76,32 +142,18 @@ document.addEventListener('DOMContentLoaded', function() {
         searchOverlay.style.display = 'none';
     });
   }
+  
+  
+  document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape" && searchOverlay.style.display === 'block') {
+          searchOverlay.style.display = 'none';
+      }
+  });
 
   if (searchInput) {
     searchInput.addEventListener('input', function() {
         const query = this.value.toLowerCase();
-        if (query.length < 2) {
-            searchResults.innerHTML = '';
-            return;
-        }
-
-        if (searchIndex) {
-          const results = searchIndex.filter(item => {
-              return item.title.toLowerCase().includes(query) || item.content.toLowerCase().includes(query);
-          });
-
-          let html = '';
-          if (results.length > 0) {
-              html = '<ul style="list-style: none; padding: 0;">';
-              results.slice(0, 10).forEach(result => {
-                  html += `<li style="margin-bottom: 10px;"><a href="${result.permalink}" style="color: white; font-size: 1.2em; text-decoration: none; border-bottom: 1px solid #555; display: block; padding: 5px;">${result.title}</a></li>`;
-              });
-              html += '</ul>';
-          } else {
-              html = '<p>No results found.</p>';
-          }
-          searchResults.innerHTML = html;
-        }
+        performSearch(query);
     });
   }
 });
