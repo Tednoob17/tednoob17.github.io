@@ -38,7 +38,7 @@ Other blogs I read
 *   [ISEC](https://blog.isec.pl/)
 *   [Matt Keeter](https://www.mattkeeter.com/blog/)
 *   [Cliff L. Biffle](https://cliffle.com/)
-*   [Breakpoint Purrfect](https://breakpoint.purrfect.fr/)
+*   [Cédric Picard](https://breakpoint.purrfect.fr/)
 *   [Michal Zalewski](https://lcamtuf.coredump.cx/)
 *   [Jean-Philippe Aumasson](https://www.aumasson.jp/papers.html)
 
