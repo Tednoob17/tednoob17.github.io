@@ -29,6 +29,15 @@ Other blogs I read
 *   [Nicolas Gregoire](https://www.agarri.fr/fr/)
 *   [Ctbbp](https://lab.ctbb.show/research/all/) 
 *   [0xpatrik](https://0xpatrik.com/)
+*   [YouGina](https://yougina.eu/)
+*   [Kuromatae's Blog](https://blog.hks.ec/)
+*   [Koalasec](https://blog.koalasec.co/)
+*   [Kevin Mizu](https://mizu.re/)
+*   [Assetnote](https://www.assetnote.io/resources/research)
+*   [Google Project Zero](https://projectzero.google/)
+*   [ISEC](https://blog.isec.pl/)
+*   [Matt Keeter](https://www.mattkeeter.com/blog/)
+*   [Cliff L. Biffle](https://cliffle.com/)
 
 Blogposts
 =========
