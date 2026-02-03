@@ -1,14 +1,14 @@
 Art
 ===
 
-This page serves as a visual notebook: on one side, photographs taken with a camera; on the other, drawings. The goal is a simple, readable structure that's easy to add to over time.
+Cette page sert de carnet visuel: d'un côté les photos prises avec un appareil, de l'autre les dessins. L'idée est d'avoir une structure simple, lisible, et facile à remplir au fil du temps.
 
-## Photography Gallery
+## Galerie photo
 
 <section class="art-section art-section--photo">
 	<div class="art-section__intro">
-		<h2 class="art-section__title">Photography</h2>
-		<p>A place for documentary-style shots, street atmospheres, textures, and moments I capture on the fly.</p>
+		<h2 class="art-section__title">Appareil photo</h2>
+		<p>Un espace pour les clichés plus documentaires, les ambiances de rue, les textures et les scènes que je capture sur le vif.</p>
 	</div>
 Art
 ===

@@ -94,6 +94,7 @@
   width: 100%;
   height: auto;
   display: block;
+}
 
 .art-tile--empty {
     display: flex;
