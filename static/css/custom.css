@@ -561,6 +561,12 @@ article pre code,
     color: var(--fg);
 }
 
+.aside__social-links .github-handle {
+    margin-left: 0.4rem;
+    font-weight: 600;
+    color: var(--fg);
+}
+
 .social-handle-block {
     margin-top: 0.25rem;
 }
