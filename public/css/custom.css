@@ -539,6 +539,7 @@ article pre code,
     padding: 0;
     margin: 0.5rem 0;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 .aside__social-links li {
@@ -546,8 +547,16 @@ article pre code,
     align-items: center;
 }
 
-.aside__social-links i,
-.aside__social-links svg {
+.aside__social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--fg);
+}
+
+.aside__social-links svg,
+.aside__social-links i {
     vertical-align: middle;
     width: 1em;
     height: 1em;
@@ -555,16 +564,10 @@ article pre code,
     color: var(--fg);
 }
 
-.aside__social-links .twitter-handle {
-    margin-left: 0.4rem;
+.aside__social-links .handle {
     font-weight: 600;
     color: var(--fg);
-}
-
-.aside__social-links .github-handle {
-    margin-left: 0.4rem;
-    font-weight: 600;
-    color: var(--fg);
+    font-size: 0.95rem;
 }
 
 .social-handle-block {
@@ -577,8 +580,4 @@ article pre code,
     color: var(--fg);
     text-decoration: none;
     font-weight: 600;
-}
-
-.social-handle.github-handle {
-    margin-left: 0;
 }
