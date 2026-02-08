@@ -1,7 +1,7 @@
 +++
 title = 'From Day 0 to 0day Chapter 3'
 date = '2025-09-10T23:28:38+02:00'
-draft = false
+draft = true
 tags = ['book-review']
 +++
 
@@ -445,7 +445,7 @@ rule syntax, in contrast to **CodeQL**’s **query-oriented** syntax.
 This following rule file (`express-injection.yml`) that identifies the same command injection vulnerability as the 
 `RemoteCommandInjection.ql` **CodeQL**
 
-```md
+```yml
 
 rules:
   - id: express-injection
@@ -468,7 +468,7 @@ rules:
 it prefixed with dollar sign (**$**), only in uppercase letter and can contains underscore (**_**)
 
 Ex : 
-```md
+```yml
 patterns:
    - pattern: var $VARIABLE_NAME = "..."
    - metavariable-regex:
