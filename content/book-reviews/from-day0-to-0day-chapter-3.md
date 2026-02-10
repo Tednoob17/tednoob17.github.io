@@ -468,6 +468,7 @@ rules:
 it prefixed with dollar sign (**$**), only in uppercase letter and can contains underscore (**_**)
 
 Ex : 
+
 ```yml
 patterns:
    - pattern: var $VARIABLE_NAME = "..."
