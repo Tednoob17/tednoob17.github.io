@@ -2,7 +2,7 @@
 +++
 title = 'Google VRP: To Be a Comment, or Not to Be ?'
 date = '2026-02-12T00:00:00+01:00'
-draft = false
+draft = true
 tags = ['Google', 'zx', 'RCE']
 +++
 
