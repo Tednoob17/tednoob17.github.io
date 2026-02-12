@@ -29,3 +29,20 @@ The most magical part of zx and where our tragedy begins is its ability to execu
 
 
 ## The problem
+
+The `transformMarkdown` function in `src/md.ts` is responsible for parsing Markdown files and converting them into executable JavaScript scripts.   
+It iterates through the file content by splitting it using the regex `/\r?\n/` (matching **LF** or **CRLF**). However, this regex does not match a standalone **Carriage Return** (`\r`) character.  
+
+In JavaScript, a single-line comment started with `//` is terminated by any Line Terminator sequence, which includes **LF** (`\n`), **CR**   
+(`\r`), **LS** (`\u2028`), and **PS**  (`\u2029`).  
+
+If a **Markdown file** contains a line with an embedded **CR** character (e.g., `Safe Text\rMaliciousCode`), `transformMarkdown` treats   
+the entire sequence as a single line of text (non-code block). It then prefixes the line with `//` to comment it out. The resulting JavaScript
+code becomes `// Safe Text\rMaliciousCode`.
+
+When **Node.js** executes this transformed code, the comment `// Safe Text` is terminated by the `\r`, and the subsequent 
+`MaliciousCode` is executed as valid JavaScript. This allows an attacker to hide arbitrary code execution within the text sections of a Markdown file, which a user might inspect and believe to be safe documentation or comments. 
+
+This is particularly dangerous as some text editors or viewers may render **CR** simply as a newline or hide it entirely, masking the malicious code.
+
+## POC
