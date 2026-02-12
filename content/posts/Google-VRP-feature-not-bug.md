@@ -165,6 +165,9 @@ What "Not Severe Enough" Means
 
 
 ## End
+At end i receive this:
+![alt text](/images/stc/FInal_message_google.png)
+So thanks to help me with a tweet.
 After open a [Github Issues](https://github.com/google/zx/issues/1403)  and a [Pull Request](https://github.com/google/zx/pull/1404)
 I request a **Github Security Advisories** and a **CVE**
 
