@@ -219,8 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </header>
     <div class="content__body">
         <p><img src="/images/stc/websec-level4.png" alt="alt text">
-For LevelFour challenge we have two sources <a href="http://websec.fr/level04/source1.php">here</a> and <a href="http://websec.fr/level04/source2.php">here</a></p>
-<p>Only php code was displayed here because  <code>html</code> is not important.</p>
+For the Level Four challenge we have two sources <a href="http://websec.fr/level04/source1.php">here</a> and <a href="http://websec.fr/level04/source2.php">here</a></p>
+<p>Only the PHP code is shown here because the HTML is not important.</p>
 <p><strong>source1.php</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#39;connect.php&#39;</span>;
@@ -288,15 +288,15 @@ For LevelFour challenge we have two sources <a href="http://websec.fr/level04/so
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>The <code>source2.php</code> help to connect to to database (<code>database.db</code>) and contains all functions who execute, recept query,
-and the <code>source1.php</code> file contains a part who receive user input and send request using a function in <code>source2.php</code>.<br>
-The function who take our attention is <code>__destruct()</code> function who is know to be a special magic function who is called when an object is  destroyed.<br>
-It also know to conduct to insecure deserialization.</p>
-<p>So firstly it&rsquo;s important to know in the code what is doing , how it work.</p>
+</span></span></span></code></pre></div><p>The <code>source2.php</code> helps to connect to the database (<code>database.db</code>) and contains all functions that execute and receive queries,
+and the <code>source1.php</code> file contains a part that receives user input and sends a request using a function in <code>source2.php</code>.<br>
+The function that takes our attention is the <code>__destruct()</code> function which is known to be a special magic function called when an object is destroyed.<br>
+It is also known to lead to insecure deserialization.</p>
+<p>So first, it&rsquo;s important to understand what the code is doing and how it works.</p>
 <p><img src="/images/stc/enter-level4.png" alt="alt text"></p>
 <ul>
-<li>It check if input is a integer firstly and display after the username associate at this <code>id</code></li>
-<li>When we connected on websec.fr a cookie was created, her name is <code>leet_hax0r</code> and your ip address is checked before  left you to use the app.</li>
+<li>It checks if the input is an integer first and displays the username associated with this <code>id</code></li>
+<li>When we connect to websec.fr a cookie is created, its name is <code>leet_hax0r</code> and your IP address is checked before allowing you to use the app.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -c - http://websec.fr/level04/index.php
 </span></span><span style="display:flex;"><span>	.....
@@ -648,11 +648,11 @@ because by setting it have a <code>NULL</code> value .</li>
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20OG%20SAN%20Vol.1.jpg" 
-                     alt="Deen Burbigo - OG SAN Vol.1.jpg" 
+                <img src="/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20OG%20SAN%201.jpg" 
+                     alt="Deen Burbigo - OG SAN 1.jpg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    Deen Burbigo - OG SAN Vol.1
+                    Deen Burbigo - OG SAN 1
                 </div>
             </div>
             
@@ -725,11 +725,11 @@ because by setting it have a <code>NULL</code> value .</li>
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/HJeunecrack%20-%201ermouvement.jpg" 
-                     alt="HJeunecrack - 1ermouvement.jpg" 
+                <img src="/images/Zushiboyz%20Merch/HJeunecrack%20-%201er%20Mouvement.jpg" 
+                     alt="HJeunecrack - 1er Mouvement.jpg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    HJeunecrack - 1ermouvement
+                    HJeunecrack - 1er Mouvement
                 </div>
             </div>
             
@@ -769,22 +769,22 @@ because by setting it have a <code>NULL</code> value .</li>
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/Huntrill%20-%20Replica%202.jpeg" 
-                     alt="Huntrill - Replica 2.jpeg" 
+                <img src="/images/Zushiboyz%20Merch/Huntrill%20-%20LE%20BRUIT%20DE%20LA%20MACHINE%20A%20BILLETS%20.jpg" 
+                     alt="Huntrill - LE BRUIT DE LA MACHINE A BILLETS .jpg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    Huntrill - Replica 2
+                    Huntrill - LE BRUIT DE LA MACHINE A BILLETS 
                 </div>
             </div>
             
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/Huntrilll%20-%20LE%20BRUIT%20DE%20LA%20MACHINE%20A%20BILLETS%20.jpg" 
-                     alt="Huntrilll - LE BRUIT DE LA MACHINE A BILLETS .jpg" 
+                <img src="/images/Zushiboyz%20Merch/Huntrill%20-%20Replica%202.jpeg" 
+                     alt="Huntrill - Replica 2.jpeg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    Huntrilll - LE BRUIT DE LA MACHINE A BILLETS 
+                    Huntrill - Replica 2
                 </div>
             </div>
             

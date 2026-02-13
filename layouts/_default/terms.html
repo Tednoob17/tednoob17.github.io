@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <header class="content__header">
+    <h1>{{ .Title | markdownify }}</h1>
+    {{ .Content }}
+  </header>
+
+  <div class="terms-grid">
+    {{ range .Data.Terms.Alphabetical }}
+      <a class="term-pill" href="{{ .Page.RelPermalink }}">
+        <span class="term-pill__name">{{ .Page.Title }}</span>
+        <span class="term-pill__count">{{ .Count }}</span>
+      </a>
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ define "aside" }}
+  {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+{{ end }}

