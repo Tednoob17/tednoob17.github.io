@@ -4,10 +4,31 @@
     <title>Tags on Tedsig42</title>
     <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Tedsig42</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Feb 2026 00:00:00 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google</title>
+      <link>http://localhost:1313/tags/google/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/google/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RCE</title>
+      <link>http://localhost:1313/tags/rce/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/rce/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zx</title>
+      <link>http://localhost:1313/tags/zx/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/zx/</guid>
+      <description></description>
+    </item>
     <item>
       <title>File-Upload</title>
       <link>http://localhost:1313/tags/file-upload/</link>
@@ -37,17 +58,17 @@
       <description></description>
     </item>
     <item>
-      <title>Book-Review</title>
-      <link>http://localhost:1313/tags/book-review/</link>
-      <pubDate>Wed, 10 Sep 2025 23:28:38 +0200</pubDate>
-      <guid>http://localhost:1313/tags/book-review/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Personal</title>
       <link>http://localhost:1313/tags/personal/</link>
       <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
       <guid>http://localhost:1313/tags/personal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Book-Review</title>
+      <link>http://localhost:1313/tags/book-review/</link>
+      <pubDate>Wed, 06 Aug 2025 00:22:36 +1300</pubDate>
+      <guid>http://localhost:1313/tags/book-review/</guid>
       <description></description>
     </item>
   </channel>

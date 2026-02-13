@@ -4,7 +4,11 @@
     <title>My Cool Friends on Tedsig42</title>
     <link>http://localhost:1313/friends/</link>
     <description>Recent content in My Cool Friends on Tedsig42</description>
+<<<<<<< HEAD
     <generator>Hugo</generator>
+=======
+    <generator>Hugo -- gohugo.io</generator>
+>>>>>>> refs/remotes/origin/main
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>
     <atom:link href="http://localhost:1313/friends/index.xml" rel="self" type="application/rss+xml" />

@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-12T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/google/</loc>
+    <lastmod>2026-02-12T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/google-vrp-feature-not-bug/</loc>
+    <lastmod>2026-02-12T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-02-12T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/rce/</loc>
+    <lastmod>2026-02-12T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-02-12T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/zx/</loc>
+    <lastmod>2026-02-12T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/contact/</loc>
     <lastmod>2026-01-31T00:00:00+00:00</lastmod>
@@ -20,13 +38,7 @@
     <loc>http://localhost:1313/tags/insecure-deserialization/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/sqli/</loc>
-    <lastmod>2025-12-10T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/websec/</loc>
@@ -47,17 +59,14 @@
     <loc>http://localhost:1313/posts/websec-fr-level17/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/book-review/</loc>
-    <lastmod>2025-09-10T23:28:38+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-3/</loc>
-    <lastmod>2025-09-10T23:28:38+02:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/personal/</loc>
     <lastmod>2025-08-08T01:19:25+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-08-08T01:19:25+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/book-review/</loc>
+    <lastmod>2025-08-06T00:22:36+13:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-2/</loc>
     <lastmod>2025-08-06T00:22:36+13:00</lastmod>
