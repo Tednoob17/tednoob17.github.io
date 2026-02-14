@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>Websec.fr Level 02 &ndash; Tedsig42</title>
+    <head><title>Websec.fr Level 02 &ndash; Tedsig42</title>
 <meta name="description" content="Another infosec enthusiast blog">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +15,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css" id="theme-css">
-<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
-<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+<link rel="stylesheet" href="https://tednoob17.github.io/css/palettes/tokyo-night-dark.css" id="theme-css">
+<link rel="stylesheet" href="https://tednoob17.github.io/css/risotto.css">
+<link rel="stylesheet" href="https://tednoob17.github.io/css/custom.css">
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -159,6 +159,37 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  const lbImg = document.createElement('img');
+  overlay.appendChild(lbImg);
+  document.body.appendChild(overlay);
+
+  
+  overlay.addEventListener('click', function () {
+    overlay.classList.remove('active');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') overlay.classList.remove('active');
+  });
+
+  
+  document.querySelectorAll('.content__body img, article img').forEach(function (img) {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function (e) {
+      e.stopPropagation();
+      lbImg.src = this.src;
+      lbImg.alt = this.alt || '';
+      overlay.classList.add('active');
+    });
+  });
+});
+</script>
+
+
 
 <link rel="icon" href="https://0xswitch.fr//static/img/gif/main-5.gif">
 
@@ -169,24 +200,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <header class="page__header"><nav class="page__nav main-nav">
     <ul>
-      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
+      <li class="nomarker"><h1 class="page__logo"><a href="https://tednoob17.github.io/" class="page__logo-inner">Tedsig42</a></h1></li>
     
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/about/" title="">About</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/posts/" title="">Posts</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/friends/" title="">Friends</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/music/" title="">Music</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/music/" title="">Music</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/art/" title="">Art</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/blogs/" title="">Blogs</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-reviews/" title="">Book Review</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/book-reviews/" title="">Book Review</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/contact/" title="">Contact</a></li>
     
     <li class="main-nav__item">
       <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
@@ -214,11 +245,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </header>
 
             <section class="page__body">
-    <header class="content__header">
-        <h1>Websec.fr Level 02</h1>
-    </header>
-    <div class="content__body">
-        <p>The source code of <a href="http://websec.fr/level02/index.php">level2</a> is <a href="http://websec.fr/level02/source.php">here</a></p>
+  <header class="content__header">
+    <h1>Websec.fr Level 02</h1>
+  </header>
+  <div class="content__body">
+    <p>The source code of <a href="http://websec.fr/level02/index.php">level2</a> is <a href="http://websec.fr/level02/source.php">here</a></p>
 <p><img src="/images/stc/level2-intro.png" alt="alt text"></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ini_set</span>(<span style="color:#e6db74">&#39;display_errors&#39;</span>, <span style="color:#e6db74">&#39;on&#39;</span>);
@@ -267,8 +298,20 @@ and it&rsquo;s work!</p>
 <p><img src="/images/stc/level02-flag.png" alt="alt text"></p>
 <p><strong>Flag</strong>: <code>WEBSEC{BecauseBlacklistsAreOftenAgoodIdea}</code></p>
 
-    </div>
-    <footer class="content__footer"></footer>
+  </div>
+  <footer class="content__footer">
+    
+      <div class="tag-list">
+        
+          
+          <a class="tag" href="/tags/websec/">websec</a>
+        
+          
+          <a class="tag" href="/tags/sqli/">sqli</a>
+        
+      </div>
+    
+  </footer>
 
             </section>
 
@@ -1469,15 +1512,15 @@ and it&rsquo;s work!</p>
 </div>
                 <hr>
                 <div class="aside__content">
-    
-    
-        <p>
-            
-            2025-12-10
-        </p>
-    
+  
+  
+    <p>
+      
+      2025-12-10
+    </p>
+  
 
-    
+  
 
                 </div>
             </section>

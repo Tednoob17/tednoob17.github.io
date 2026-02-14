@@ -122,11 +122,80 @@
 }
 
 .post-card__tag {
+    display: inline-flex;
+    align-items: center;
     padding: 0.25rem 0.5rem;
     border: 2px solid var(--fg);
     color: var(--fg);
     background: var(--bg);
     box-shadow: 1px 1px 0 var(--fg), 2px 2px 0 var(--fg), 3px 3px 0 var(--fg);
+    text-decoration: none;
+}
+
+.post-card__tag:hover {
+    color: var(--bg);
+    background: var(--fg);
+}
+
+/* Tag lists on single pages */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border: 2px solid var(--fg);
+    color: var(--fg);
+    background: var(--bg);
+    box-shadow: 1px 1px 0 var(--fg), 2px 2px 0 var(--fg);
+    text-decoration: none;
+    font-size: 0.75rem;
+}
+
+.tag:hover {
+    color: var(--bg);
+    background: var(--fg);
+}
+
+/* Tags index page */
+.terms-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.term-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.6rem;
+    border: 2px solid var(--fg);
+    color: var(--fg);
+    background: var(--bg);
+    text-decoration: none;
+    box-shadow: 1px 1px 0 var(--fg), 2px 2px 0 var(--fg);
+    font-size: 0.8rem;
+}
+
+.term-pill__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25rem;
+    padding: 0.1rem 0.35rem;
+    border: 1px solid var(--fg);
+    font-size: 0.7rem;
+}
+
+.term-pill:hover {
+    color: var(--bg);
+    background: var(--fg);
 }
 
 @media (min-width: 48rem) {
@@ -147,4 +216,44 @@
     .post-card__body {
         width: 50%;
     }
+}
+
+/* ── Lightbox / Click-to-zoom ── */
+.content__body img,
+.post-card__media img,
+article img {
+    cursor: zoom-in;
+}
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    cursor: zoom-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-overlay img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: 6px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    transform: scale(0.95);
+    transition: transform 0.25s ease;
+    cursor: zoom-out;
+}
+
+.lightbox-overlay.active img {
+    transform: scale(1);
 }

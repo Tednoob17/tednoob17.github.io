@@ -2,73 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Tedsig42</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://tednoob17.github.io/tags/</link>
     <description>Recent content in Tags on Tedsig42</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Feb 2026 00:00:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Google</title>
-      <link>http://localhost:1313/tags/google/</link>
-      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/google/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>RCE</title>
-      <link>http://localhost:1313/tags/rce/</link>
-      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/rce/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Zx</title>
-      <link>http://localhost:1313/tags/zx/</link>
-      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/zx/</guid>
-      <description></description>
-    </item>
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
+    <atom:link href="https://tednoob17.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>File-Upload</title>
-      <link>http://localhost:1313/tags/file-upload/</link>
+      <link>https://tednoob17.github.io/tags/file-upload/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/file-upload/</guid>
+      <guid>https://tednoob17.github.io/tags/file-upload/</guid>
       <description></description>
     </item>
     <item>
       <title>Insecure-Deserialization</title>
-      <link>http://localhost:1313/tags/insecure-deserialization/</link>
+      <link>https://tednoob17.github.io/tags/insecure-deserialization/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/insecure-deserialization/</guid>
+      <guid>https://tednoob17.github.io/tags/insecure-deserialization/</guid>
       <description></description>
     </item>
     <item>
       <title>Sqli</title>
-      <link>http://localhost:1313/tags/sqli/</link>
+      <link>https://tednoob17.github.io/tags/sqli/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/sqli/</guid>
+      <guid>https://tednoob17.github.io/tags/sqli/</guid>
       <description></description>
     </item>
     <item>
       <title>Websec</title>
-      <link>http://localhost:1313/tags/websec/</link>
+      <link>https://tednoob17.github.io/tags/websec/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/websec/</guid>
+      <guid>https://tednoob17.github.io/tags/websec/</guid>
       <description></description>
     </item>
     <item>
       <title>Personal</title>
-      <link>http://localhost:1313/tags/personal/</link>
+      <link>https://tednoob17.github.io/tags/personal/</link>
       <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
-      <guid>http://localhost:1313/tags/personal/</guid>
+      <guid>https://tednoob17.github.io/tags/personal/</guid>
       <description></description>
     </item>
     <item>
       <title>Book-Review</title>
-      <link>http://localhost:1313/tags/book-review/</link>
+      <link>https://tednoob17.github.io/tags/book-review/</link>
       <pubDate>Wed, 06 Aug 2025 00:22:36 +1300</pubDate>
-      <guid>http://localhost:1313/tags/book-review/</guid>
+      <guid>https://tednoob17.github.io/tags/book-review/</guid>
       <description></description>
     </item>
   </channel>
