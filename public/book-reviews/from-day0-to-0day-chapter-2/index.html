@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head><title>From Day 0 to 0day Chapter 2 &ndash; Tedsig42</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>From Day 0 to 0day Chapter 2 &ndash; Tedsig42</title>
 <meta name="description" content="Another infosec enthusiast blog">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +15,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<link rel="stylesheet" href="https://tednoob17.github.io/css/palettes/tokyo-night-dark.css" id="theme-css">
-<link rel="stylesheet" href="https://tednoob17.github.io/css/risotto.css">
-<link rel="stylesheet" href="https://tednoob17.github.io/css/custom.css">
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css" id="theme-css">
+<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -200,24 +200,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <header class="page__header"><nav class="page__nav main-nav">
     <ul>
-      <li class="nomarker"><h1 class="page__logo"><a href="https://tednoob17.github.io/" class="page__logo-inner">Tedsig42</a></h1></li>
+      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
     
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/about/" title="">About</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/posts/" title="">Posts</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/friends/" title="">Friends</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/music/" title="">Music</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/music/" title="">Music</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/art/" title="">Art</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/blogs/" title="">Blogs</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/book-reviews/" title="">Book Review</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-reviews/" title="">Book Review</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/contact/" title="">Contact</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
     
     <li class="main-nav__item">
       <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
@@ -249,6 +249,44 @@ document.addEventListener('DOMContentLoaded', function () {
     <h1>From Day 0 to 0day Chapter 2</h1>
   </header>
   <div class="content__body">
+    
+      <div id="toc">
+        <nav id="TableOfContents">
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#the-internet">The Internet</a></li>
+    <li><a href="#web-client-vulnerabilities">Web Client Vulnerabilities</a>
+      <ul>
+        <li><a href="#attack-vectors">Attack Vectors</a></li>
+        <li><a href="#identification-and-classification">Identification and Classification</a></li>
+        <li><a href="#web-server-vulnerabilities">Web Server Vulnerabilities</a></li>
+        <li><a href="#--web-frameworks">&gt;  Web Frameworks</a></li>
+        <li><a href="#--the-modelviewcontroller-architecture">&gt;  The Model–View–Controller Architecture</a></li>
+        <li><a href="#-unknown-or-unfamiliar-frameworks">&gt; Unknown or Unfamiliar Frameworks</a></li>
+        <li><a href="#--nontraditional-web-attack-surfaces">&gt;  Nontraditional Web Attack Surfaces</a></li>
+      </ul>
+    </li>
+    <li><a href="#network-protocols">Network Protocols</a>
+      <ul>
+        <li><a href="#data-structures">Data Structures</a></li>
+        <li><a href="#procedures">Procedures</a></li>
+        <li><a href="#local-attack-surface">Local Attack Surface</a></li>
+        <li><a href="#-files-in-inter-process-communication">&gt; Files in Inter-Process Communication</a></li>
+        <li><a href="#-sockets">&gt; Sockets</a></li>
+        <li><a href="#-named-pipes">&gt; Named Pipes</a></li>
+        <li><a href="#-other-ipc-methods">&gt; Other IPC Methods</a></li>
+        <li><a href="#file-formats">File Formats</a></li>
+        <li><a href="#-typelengthvalue">&gt; Type–Length–Value</a></li>
+        <li><a href="#-directory-based">&gt; Directory-Based</a></li>
+        <li><a href="#custom-fields">Custom Fields</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </nav>
+      </div>
+    
     <p><img src="/images/stc/chap2.jpeg" alt="alt"></p>
 <h1 id="mapping-code-to-attack-surface">MAPPING CODE TO ATTACK SURFACE</h1>
 <p>Once we know where we are, then the world becomes as narrow as a map.<br>

@@ -2,78 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tednoob17.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2026-02-12T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2026-02-12T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/contact/</loc>
+    <loc>http://localhost:1313/contact/</loc>
     <lastmod>2026-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/book-reviews/tmp/</loc>
+    <loc>http://localhost:1313/book-reviews/tmp/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/book-reviews/</loc>
+    <loc>http://localhost:1313/book-reviews/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/file-upload/</loc>
+    <loc>http://localhost:1313/tags/file-upload/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/insecure-deserialization/</loc>
+    <loc>http://localhost:1313/tags/insecure-deserialization/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/sqli/</loc>
+    <loc>http://localhost:1313/tags/sqli/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/websec/</loc>
+    <loc>http://localhost:1313/tags/websec/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/posts/websec-fr-level1/</loc>
+    <loc>http://localhost:1313/posts/websec-fr-level1/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/posts/websec-fr-level2/</loc>
+    <loc>http://localhost:1313/posts/websec-fr-level2/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/posts/websec-fr-level4/</loc>
+    <loc>http://localhost:1313/posts/websec-fr-level4/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/posts/websec-fr-level8/</loc>
+    <loc>http://localhost:1313/posts/websec-fr-level8/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/posts/websec-fr-level17/</loc>
+    <loc>http://localhost:1313/posts/websec-fr-level17/</loc>
     <lastmod>2025-12-10T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/personal/</loc>
+    <loc>http://localhost:1313/tags/personal/</loc>
     <lastmod>2025-08-08T01:19:25+02:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-08-08T01:19:25+02:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/tags/book-review/</loc>
+    <loc>http://localhost:1313/tags/book-review/</loc>
     <lastmod>2025-08-06T00:22:36+13:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-2/</loc>
+    <loc>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-2/</loc>
     <lastmod>2025-08-06T00:22:36+13:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-1/</loc>
+    <loc>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-1/</loc>
     <lastmod>2025-08-03T00:10:42+02:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-0/</loc>
+    <loc>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-0/</loc>
     <lastmod>2025-07-15T00:37:02+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/friends/</loc>
+    <loc>http://localhost:1313/friends/</loc>
     <lastmod>2025-07-15T00:10:53+01:00</lastmod>
   </url><url>
-    <loc>https://tednoob17.github.io/art/</loc>
+    <loc>http://localhost:1313/art/</loc>
   </url><url>
-    <loc>https://tednoob17.github.io/blogs/</loc>
+    <loc>http://localhost:1313/blogs/</loc>
   </url><url>
-    <loc>https://tednoob17.github.io/music/</loc>
+    <loc>http://localhost:1313/music/</loc>
   </url><url>
-    <loc>https://tednoob17.github.io/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url>
 </urlset>

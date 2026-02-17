@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Book-Reviews on Tedsig42</title>
-    <link>https://tednoob17.github.io/book-reviews/</link>
+    <link>http://localhost:1313/book-reviews/</link>
     <description>Recent content in Book-Reviews on Tedsig42</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
-    <atom:link href="https://tednoob17.github.io/book-reviews/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/book-reviews/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Book Review</title>
-      <link>https://tednoob17.github.io/book-reviews/tmp/</link>
+      <link>http://localhost:1313/book-reviews/tmp/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
-      <guid>https://tednoob17.github.io/book-reviews/tmp/</guid>
-      <description>&lt;p&gt;Welcome to the book reviews section! Here you&amp;rsquo;ll find my thoughts on books I&amp;rsquo;ve read, ranging from technical books to fiction.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/book-reviews/tmp/</guid>
+      <description>&lt;p&gt;Welcome to the book reviews section! Here you&amp;rsquo;ll find my thoughts on books I&amp;rsquo;ve read, ranging from technical works to fiction.&lt;/p&gt;</description>
     </item>
     <item>
       <title>From Day 0 to 0day Chapter 2</title>
-      <link>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-2/</link>
+      <link>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-2/</link>
       <pubDate>Wed, 06 Aug 2025 00:22:36 +1300</pubDate>
-      <guid>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-2/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tednoob17.github.io/images/stc/chap2.jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;mapping-code-to-attack-surface&#34;&gt;MAPPING CODE TO ATTACK SURFACE&lt;/h1&gt;&#xA;&lt;p&gt;Once we know where we are, then the world becomes as narrow as a map.&lt;br&gt;&#xA;When we don’t know, the world feels unlimited.&#xA;&lt;code&gt;Liu Cixin, The Dark Forest&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Attack surface&lt;/strong&gt; (the potential entry points to exploit a vulnerability) often increases with the growing&#xA;&lt;strong&gt;complexity&lt;/strong&gt; of software.&lt;br&gt;&#xA;The &lt;strong&gt;vulnerabilities&lt;/strong&gt; to be introduced, as developers’ capacity to &lt;strong&gt;properly secure&lt;/strong&gt; these feature is&#xA;limited and mistakes are &lt;strong&gt;inevitable&lt;/strong&gt; when dealing with millions of lines of code.&lt;br&gt;&#xA;Minor issues can be &lt;strong&gt;chained&lt;/strong&gt; together into far more serious &lt;strong&gt;vulnerabilities&lt;/strong&gt;.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-2/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/stc/chap2.jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;mapping-code-to-attack-surface&#34;&gt;MAPPING CODE TO ATTACK SURFACE&lt;/h1&gt;&#xA;&lt;p&gt;Once we know where we are, then the world becomes as narrow as a map.&lt;br&gt;&#xA;When we don’t know, the world feels unlimited.&#xA;&lt;code&gt;Liu Cixin, The Dark Forest&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Attack surface&lt;/strong&gt; (the potential entry points to exploit a vulnerability) often increases with the growing&#xA;&lt;strong&gt;complexity&lt;/strong&gt; of software.&lt;br&gt;&#xA;The &lt;strong&gt;vulnerabilities&lt;/strong&gt; to be introduced, as developers’ capacity to &lt;strong&gt;properly secure&lt;/strong&gt; these feature is&#xA;limited and mistakes are &lt;strong&gt;inevitable&lt;/strong&gt; when dealing with millions of lines of code.&lt;br&gt;&#xA;Minor issues can be &lt;strong&gt;chained&lt;/strong&gt; together into far more serious &lt;strong&gt;vulnerabilities&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>From Day 0 to 0day Chapter 1</title>
-      <link>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-1/</link>
+      <link>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-1/</link>
       <pubDate>Sun, 03 Aug 2025 00:10:42 +0200</pubDate>
-      <guid>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-1/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tednoob17.github.io/images/stc/chap2-intro.jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;h2 id=&#34;taint-analysis&#34;&gt;Taint Analysis&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Life is not like water. Things in life don’t necessarily flow over the shortest possible route&lt;/strong&gt; &lt;code&gt;Haruki Murakami - 1Q84&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Taint analysis&lt;/strong&gt;  (or &lt;strong&gt;source and sink analysis&lt;/strong&gt; ) is the analysis of the flow of &lt;strong&gt;input&lt;/strong&gt;  through a &lt;strong&gt;program&lt;/strong&gt;  from &lt;strong&gt;sources to sinks&lt;/strong&gt; .&lt;/p&gt;&#xA;&lt;p&gt;It relies on a simple idea: a large number of vulnerabilities occur because attacker &lt;strong&gt;controlled input&lt;/strong&gt; (the &lt;strong&gt;source&lt;/strong&gt;) flows to a dangerous &lt;strong&gt;function&lt;/strong&gt;  (the &lt;strong&gt;sink&lt;/strong&gt;).&#xA;If the input modifies other variables along the way, these&#xA;variables become &amp;ldquo;&lt;strong&gt;tainted&lt;/strong&gt;&amp;rdquo; and are included in the analysis.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-1/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/stc/chap2-intro.jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;h2 id=&#34;taint-analysis&#34;&gt;Taint Analysis&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Life is not like water. Things in life don’t necessarily flow over the shortest possible route&lt;/strong&gt; - &lt;code&gt;Haruki Murakami - 1Q84&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Taint analysis&lt;/strong&gt;  (or &lt;strong&gt;source and sink analysis&lt;/strong&gt; ) is the analysis of the flow of &lt;strong&gt;input&lt;/strong&gt;  through a &lt;strong&gt;program&lt;/strong&gt;  from &lt;strong&gt;sources to sinks&lt;/strong&gt; .&lt;/p&gt;&#xA;&lt;p&gt;It relies on a simple idea: a large number of vulnerabilities occur because attacker &lt;strong&gt;controlled input&lt;/strong&gt; (the &lt;strong&gt;source&lt;/strong&gt;) flows to a dangerous &lt;strong&gt;function&lt;/strong&gt;  (the &lt;strong&gt;sink&lt;/strong&gt;).&#xA;If the input modifies other variables along the way, these&#xA;variables become &amp;ldquo;&lt;strong&gt;tainted&lt;/strong&gt;&amp;rdquo; and are included in the analysis.&lt;/p&gt;</description>
     </item>
     <item>
       <title>From Day 0 to 0day Chapter 0</title>
-      <link>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-0/</link>
+      <link>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-0/</link>
       <pubDate>Tue, 15 Jul 2025 00:37:02 +0100</pubDate>
-      <guid>https://tednoob17.github.io/book-reviews/from-day0-to-0day-chapter-0/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tednoob17.github.io/images/stc/fd0t0d.png&#34; alt=&#34;alt&#34;&gt;&#xA;Hi everyone this is the first series of my notes and my recap of the awesome/incredible book &lt;strong&gt;&lt;a href=&#34;https://nostarch.com/zero-day&#34;&gt;From Day Zero to Zero Day&lt;/a&gt;&lt;/strong&gt;&#xA;written by Eugene &amp;ldquo;&lt;a href=&#34;https://x.com/spaceraccoonsec&#34;&gt;Spaceraccoon&lt;/a&gt;&amp;rdquo; Lim a security researcher and white-hat hacker.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;He learned rapidly because his first training was in how to learn.&lt;/strong&gt; - &lt;code&gt;Frank Herbert, Dune&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems&#xA;for new vulnerabilities, has assumed a critical role in cybersecurity.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/book-reviews/from-day0-to-0day-chapter-0/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/stc/fd0t0d.png&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;This is my summary and review of the book &lt;strong&gt;&lt;a href=&#34;https://nostarch.com/zero-day&#34;&gt;From Day Zero to Zero Day&lt;/a&gt;&lt;/strong&gt; by Eugene &amp;ldquo;&lt;a href=&#34;https://x.com/spaceraccoonsec&#34;&gt;Spaceraccoon&lt;/a&gt;&amp;rdquo; Lim, a security researcher and white-hat hacker.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;He learned rapidly because his first training was in how to learn.&lt;/strong&gt; - &lt;code&gt;Frank Herbert, Dune&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;With the number of discovered and exploited zero days constantly growing, vulnerability research, or the process of analyzing systems&#xA;for new vulnerabilities, has assumed a critical role in cybersecurity.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

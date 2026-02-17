@@ -3,6 +3,13 @@
     <h1>{{ .Title | markdownify }}</h1>
   </header>
   <div class="content__body">
+    {{ if .TableOfContents }}
+      <div id="toc">
+        <nav id="TableOfContents">
+          {{ .TableOfContents }}
+        </nav>
+      </div>
+    {{ end }}
     {{ .Content }}
   </div>
   <footer class="content__footer">

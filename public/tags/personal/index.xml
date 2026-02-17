@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal on Tedsig42</title>
-    <link>https://tednoob17.github.io/tags/personal/</link>
+    <link>http://localhost:1313/tags/personal/</link>
     <description>Recent content in Personal on Tedsig42</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 08 Aug 2025 01:19:25 +0200</lastBuildDate>
-    <atom:link href="https://tednoob17.github.io/tags/personal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/personal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Whoami</title>
-      <link>https://tednoob17.github.io/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
-      <guid>https://tednoob17.github.io/about/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m Ted &lt;strong&gt;&amp;ldquo;Tedsig42&amp;rdquo;&lt;/strong&gt; Regis Kouhouenou, a young &lt;strong&gt;Cybersecurity Enthusiast&lt;/strong&gt;,  CTF player, music lover, artist, 22 yo. &lt;br&gt;&#xA;I spend much of my time at schools like &lt;strong&gt;42 School&lt;/strong&gt;, &lt;strong&gt;Epitech&lt;/strong&gt;, &lt;strong&gt;Holberton School&lt;/strong&gt;.&#xA;I spend my free time on &lt;strong&gt;Web Security Research&lt;/strong&gt;, and recently started &lt;strong&gt;Bug Bounty&lt;/strong&gt;.&lt;br&gt;&#xA;From time to time, I &lt;strong&gt;contribute&lt;/strong&gt; to certain &lt;strong&gt;open source&lt;/strong&gt; projects such as  &lt;a href=&#34;https://exegol.com/&#34;&gt;Exegol&lt;/a&gt;, &lt;a href=&#34;https://www.thehacker.recipes/&#34;&gt;The Hacker Recipes&lt;/a&gt; and &lt;a href=&#34;https://swisskyrepo.github.io/PayloadsAllTheThings/&#34;&gt;Payload all the things&lt;/a&gt;.&lt;br&gt;&#xA;I play CTF and collaborate with the &lt;a href=&#34;https://thebugsreapers.com&#34;&gt;@TheBugsReapers&lt;/a&gt; &lt;strong&gt;Vulnerability Researcher&lt;/strong&gt; / &lt;strong&gt;Bug Hunter&lt;/strong&gt; team.&lt;br&gt;&#xA;I strive to provide as much information as I can about what I have learned on my blog &lt;a href=&#34;https://tednoob17.github.io/&#34;&gt;tedsig42.re&lt;/a&gt;, which encompasses CTF writeups, &lt;strong&gt;research projects&lt;/strong&gt;, and more.&lt;br&gt;&#xA;My &lt;a href=&#34;https://www.youtube.com/@Tedsig42&#34;&gt;Youtube Channel&lt;/a&gt;&lt;br&gt;&#xA;&lt;strong&gt;Currently self-employed, but open to new opportunities.&lt;/strong&gt;&lt;/p&gt;</description>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m Ted &lt;strong&gt;&amp;ldquo;Tedsig42&amp;rdquo;&lt;/strong&gt; Regis Kouhouenou, a 22-year-old cybersecurity enthusiast, CTF player, music lover, and artist. &lt;br&gt;&#xA;I have spent much of my time at schools such as &lt;strong&gt;42 School&lt;/strong&gt;, &lt;strong&gt;Epitech&lt;/strong&gt;, and &lt;strong&gt;Holberton School&lt;/strong&gt;. &lt;br&gt;&#xA;I spend my &lt;strong&gt;free time&lt;/strong&gt; on &lt;strong&gt;web security research&lt;/strong&gt; and recently started &lt;strong&gt;bug bounty hunting&lt;/strong&gt;. &lt;br&gt;&#xA;From time to time, I contribute to &lt;strong&gt;open source&lt;/strong&gt; projects such as &lt;a href=&#34;https://exegol.com/&#34;&gt;Exegol&lt;/a&gt;, &lt;a href=&#34;https://www.thehacker.recipes/&#34;&gt;The Hacker Recipes&lt;/a&gt;, &lt;a href=&#34;https://swisskyrepo.github.io/PayloadsAllTheThings/&#34;&gt;Payload All The Things&lt;/a&gt;, and other open source projects, especially when I &lt;strong&gt;submit patches for vulnerabilities I discover&lt;/strong&gt;*. &lt;br&gt;&#xA;I play CTF and collaborate with the &lt;a href=&#34;https://thebugsreapers.com&#34;&gt;@TheBugsReapers&lt;/a&gt; &lt;strong&gt;vulnerability researcher/bug hunter team&lt;/strong&gt;.  &lt;br&gt;&#xA;I strive to share what I have learned on my blog &lt;a href=&#34;https://tednoob17.github.io/&#34;&gt;tedsig42.re&lt;/a&gt;, which includes CTF writeups, research projects, and more.  &lt;br&gt;&#xA;My &lt;a href=&#34;https://www.youtube.com/@Tedsig42&#34;&gt;YouTube Channel&lt;/a&gt; &lt;br&gt;&#xA;&lt;strong&gt;Currently self-employed, but open to new opportunities.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

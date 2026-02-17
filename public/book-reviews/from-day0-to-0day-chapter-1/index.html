@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head><title>From Day 0 to 0day Chapter 1 &ndash; Tedsig42</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>From Day 0 to 0day Chapter 1 &ndash; Tedsig42</title>
 <meta name="description" content="Another infosec enthusiast blog">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +15,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<link rel="stylesheet" href="https://tednoob17.github.io/css/palettes/tokyo-night-dark.css" id="theme-css">
-<link rel="stylesheet" href="https://tednoob17.github.io/css/risotto.css">
-<link rel="stylesheet" href="https://tednoob17.github.io/css/custom.css">
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/tokyo-night-dark.css" id="theme-css">
+<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -200,24 +200,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <header class="page__header"><nav class="page__nav main-nav">
     <ul>
-      <li class="nomarker"><h1 class="page__logo"><a href="https://tednoob17.github.io/" class="page__logo-inner">Tedsig42</a></h1></li>
+      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
     
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/about/" title="">About</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/posts/" title="">Posts</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/friends/" title="">Friends</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/music/" title="">Music</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/music/" title="">Music</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/art/" title="">Art</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/blogs/" title="">Blogs</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/book-reviews/" title="">Book Review</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-reviews/" title="">Book Review</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="https://tednoob17.github.io/contact/" title="">Contact</a></li>
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
     
     <li class="main-nav__item">
       <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
@@ -249,10 +249,46 @@ document.addEventListener('DOMContentLoaded', function () {
     <h1>From Day 0 to 0day Chapter 1</h1>
   </header>
   <div class="content__body">
+    
+      <div id="toc">
+        <nav id="TableOfContents">
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#taint-analysis">Taint Analysis</a>
+      <ul>
+        <li><a href="#buffer-overflow">Buffer Overflow</a></li>
+        <li><a href="#applying-taint-analysis">Applying Taint Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#sink-to-source-analysis">Sink-to-Source Analysis</a>
+      <ul>
+        <li><a href="#summary-0">Summary 0</a></li>
+        <li><a href="#choosing-the-right-sinks">Choosing the Right Sinks</a></li>
+        <li><a href="#filtering-for-exploitable-scenarios">Filtering for Exploitable Scenarios</a></li>
+        <li><a href="#confirming-exploitability">Confirming Exploitability</a></li>
+        <li><a href="#identifying-an-attacker-controlled-source">Identifying an Attacker-Controlled Source</a></li>
+      </ul>
+    </li>
+    <li><a href="#confirming-a-reachable-attack-surface">Confirming a Reachable Attack Surface</a></li>
+    <li><a href="#testing-the-exploit">Testing the Exploit</a>
+      <ul>
+        <li><a href="#first-problem">First problem</a></li>
+        <li><a href="#second-problem">Second Problem</a></li>
+        <li><a href="#third-problem">Third Problem</a></li>
+        <li><a href="#setup-">Setup ?</a></li>
+      </ul>
+    </li>
+    <li><a href="#building-the-proof-of-concept">Building the Proof of Concept</a></li>
+  </ul>
+</nav>
+        </nav>
+      </div>
+    
     <p><img src="/images/stc/chap2-intro.jpeg" alt="alt"></p>
 <h2 id="introduction">Introduction</h2>
 <h2 id="taint-analysis">Taint Analysis</h2>
-<p><strong>Life is not like water. Things in life don’t necessarily flow over the shortest possible route</strong> <code>Haruki Murakami - 1Q84</code></p>
+<p><strong>Life is not like water. Things in life don’t necessarily flow over the shortest possible route</strong> - <code>Haruki Murakami - 1Q84</code></p>
 <p><strong>Taint analysis</strong>  (or <strong>source and sink analysis</strong> ) is the analysis of the flow of <strong>input</strong>  through a <strong>program</strong>  from <strong>sources to sinks</strong> .</p>
 <p>It relies on a simple idea: a large number of vulnerabilities occur because attacker <strong>controlled input</strong> (the <strong>source</strong>) flows to a dangerous <strong>function</strong>  (the <strong>sink</strong>).
 If the input modifies other variables along the way, these
