@@ -17,7 +17,8 @@ My [YouTube Channel](https://www.youtube.com/@Tedsig42)
 
 PDF Resume here: [English](/assets/Ted-Regis-KOUHOUENOU.pdf)     
 ## My Root-me Stats Here.  
-![Root-me-stats](https://root-me-diff.vercel.app/rm-gh?nickname=Tedsig42&style=midnight)
+![Root-me-stats](https://root-me-diff.vercel.app/rm-gh?nickname=Tedsig42&style=midnight)    
 
-## My Deepreview rank Here.
-![Deepreview](/static/images/stc/dp-rv.png)
+## My Deepreview rank Here.    
+
+![Deepreview](/images/stc/dp-rv.png)
