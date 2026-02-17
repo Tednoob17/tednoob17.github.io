@@ -5,7 +5,8 @@ draft = false
 tags = ['websec', 'insecure-deserialization']
 +++
 ![alt text](</images/stc/websec-level4.png>)
-For the Level Four challenge we have two sources [here](http://websec.fr/level04/source1.php) and [here](http://websec.fr/level04/source2.php)
+
+For the Level Four challenge, there are two sources: [here](http://websec.fr/level04/source1.php) and [here](http://websec.fr/level04/source2.php).
 
 Only the PHP code is shown here because the HTML is not important.
 

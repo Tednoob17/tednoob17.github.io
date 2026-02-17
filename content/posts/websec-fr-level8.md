@@ -31,11 +31,12 @@ With this code we have 2 problems to bypass:
 For this type of vulnerability I use my mindmap
 ![alt text](/images/stc/file_upload_finish.excalidraw.png)
 
-So we can create a file containing this :
+
+So we can create a file containing this:
 ```php
 GIF89a<?php var_dump(scandir('./')); ?>;
 ```
-With `GIF89a` which is the header of a **GIF** file
+Here, `GIF89a` is the header of a **GIF** file.
 
 ```md
 Dump of file.php:

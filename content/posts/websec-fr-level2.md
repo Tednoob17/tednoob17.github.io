@@ -5,7 +5,8 @@ draft = false
 tags = ['websec', 'sqli']
 +++
 
-The source code of [level2](http://websec.fr/level02/index.php) is [here](http://websec.fr/level02/source.php)
+
+The source code for [level2](http://websec.fr/level02/index.php) is [here](http://websec.fr/level02/source.php).
 
 ![alt text](/images/stc/level2-intro.png)
 

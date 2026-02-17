@@ -18,8 +18,9 @@ We shall use two popular open source static code analysis  tools **CodeQL and Se
 
 Modern static code analysis tools for better and deep comprehension of code base need to understand multiple aspects of the code / programming language used like difference between **function and a variable**, **usage of statement**, **class inheritance for object-oriented languages**, **the exact placement of parenthesis or semicolons** and so on.
 **AST** is a data-structure. It’s a tree that models the syntax of a programming language.   
-**AST** serve to represent a syntactic structure of a proram, it's used in a many anothers things, by example a **compilers** use **AST** like **Clang for C/C++**, **Babel for Javascript**, **ast built-in module for Python**.
-In talking about `ast` module we can use it to watch what it seem like.  
+
+**ASTs** serve to represent the syntactic structure of a program. They're used in many things; for example, compilers use ASTs (like Clang for C/C++), Babel for JavaScript, and the built-in `ast` module for Python.
+Speaking of the `ast` module, we can use it to see what an AST looks like.
 
 ```python3
 #!/usr/bin/python3

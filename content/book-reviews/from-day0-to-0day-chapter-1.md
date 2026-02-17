@@ -13,7 +13,7 @@ tags = ['book-review']
 ## Introduction
 ##  Taint Analysis
 
-**Life is not like water. Things in life don’t necessarily flow over the shortest possible route** `Haruki Murakami - 1Q84`
+**Life is not like water. Things in life don’t necessarily flow over the shortest possible route** - `Haruki Murakami - 1Q84`
 
 **Taint analysis**  (or **source and sink analysis** ) is the analysis of the flow of **input**  through a **program**  from **sources to sinks** .
 

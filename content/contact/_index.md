@@ -12,7 +12,7 @@ ted dot sig42 at tutamail dot com
 
 ### GPG
 
-My primary GPG fingerprint is `FA81 3F0E 44D1 DF79`. If you get an email that appears to be from me and the signature does not match that fingerprint, it is not from me. You may download a copy of my public key [here](/public.key).
+My primary GPG fingerprint is `FA81 3F0E 44D1 DF79`. If you receive an email that appears to be from me but the signature does not match this fingerprint, it is not from me. You may download a copy of my public key [here](/public.key).
 
 # Social Media
 
@@ -34,5 +34,5 @@ sub   rsa4096/5D5FB703579E2B76 2026-01-31 [E]
 ---
 <p style="font-size: 0.9em; opacity: 0.8;">
     No copyright - ted dot sig42 at tutamail dot com<br>
-    Any and all opinions listed here are my own and not representative of my employers; future, past and present.
+    All opinions listed here are my own and do not represent those of my employers, past, present, or future.
 </p>

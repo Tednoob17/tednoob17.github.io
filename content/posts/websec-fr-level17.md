@@ -8,7 +8,8 @@ tags = ['websec']
 
 ![alt text](</images/stc/Level Seventeen.png>)
 
-The code of [level17](http://websec.fr/level17/index.php) is [here](http://websec.fr/level17/source.php).
+
+The code for [level17](http://websec.fr/level17/index.php) is [here](http://websec.fr/level17/source.php).
 
 ```php
  <?php

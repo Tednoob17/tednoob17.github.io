@@ -6,9 +6,10 @@ author = 'Tedsig42'
 tags = ['book-review']
 +++
 
+
 ![alt](/images/stc/fd0t0d.png)
-Hi everyone this is the first series of my notes and my recap of the awesome/incredible book **[From Day Zero to Zero Day](https://nostarch.com/zero-day)**
-written by Eugene "[Spaceraccoon](https://x.com/spaceraccoonsec)" Lim a security researcher and white-hat hacker.
+
+This is my summary and review of the book **[From Day Zero to Zero Day](https://nostarch.com/zero-day)** by Eugene "[Spaceraccoon](https://x.com/spaceraccoonsec)" Lim, a security researcher and white-hat hacker.
 
 **He learned rapidly because his first training was in how to learn.** - `Frank Herbert, Dune`.
 

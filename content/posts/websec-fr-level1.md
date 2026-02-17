@@ -5,12 +5,12 @@ draft = false
 tags = ['websec', 'sqli']
 +++
 
-A Websec.fr level 1
-`level01` - **1 point- 2564 solves**
+
+Websec.fr Level 1
+`level01` - **1 point - 2564 solves**
 ![alt](/images/stc/websec-level1.png)
 
-We have a source code of [level1](http://websec.fr/level01/source.php), i show only a php code because the 
-vulnerability is only in php code.
+The source code for [level1](http://websec.fr/level01/source.php) is shown here. Only the PHP code is included because the vulnerability is only in the PHP code.
 
 ```php
  <?php
