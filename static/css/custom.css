@@ -1,9 +1,3 @@
-/* Fixe la largeur du contenu principal comme la démo risotto */
-.page__body {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
 /* Site overrides and custom components */
 
 :root {
