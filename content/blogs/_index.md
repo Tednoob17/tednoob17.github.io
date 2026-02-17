@@ -41,7 +41,12 @@ Other blogs I read
 *   [Cédric Picard](https://breakpoint.purrfect.fr/)
 *   [Michal Zalewski](https://lcamtuf.coredump.cx/)
 *   [Jean-Philippe Aumasson](https://www.aumasson.jp/papers.html)
-
+*   [Michał Bentkowski](https://www.bentkowski.info/)
+*   [huli](https://blog.huli.tw/en/)
+*   [Masato Kinugawa](https://mksben.l0.cm/)
+*   [Cure53](https://cure53.de/)
+*   [s1r1us](https://s1r1us.ninja)
+*   [InsertScript](https://insert-script.blogspot.com/)
 
 
 Blogposts
