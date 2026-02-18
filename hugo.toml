@@ -18,10 +18,6 @@ theme = 'risotto'
     url = "/friends/"
     weight = 3
   [[menu.main]]
-    name = "Music"
-    url = "/music/"
-    weight = 4
-  [[menu.main]]
     name = "Art"
     url = "/art/"
     weight = 5
