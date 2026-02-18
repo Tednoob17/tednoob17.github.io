@@ -3,12 +3,6 @@ title: "Achievements"
 date: 2026-02-18
 ---
 
-
----
-title: "Achievements"
-date: 2026-02-18
----
-
 # Awards
 
 - **08/2023** — [Hackerlab 2023 and Best Final Writeups](https://github.com/Tednoob17/Final-HackerLab2023): 9th/20 teams and 1st for writeups (ASIN)
