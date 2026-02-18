@@ -9,7 +9,7 @@ date: 2026-02-18
 - **08/2023** — [Hackerlab 2023 and Best Final Writeups](https://github.com/Tednoob17/Final-HackerLab2023): 9th/20 teams and 1st for writeups (ASIN)
 
 - **11/2025** — [Deepreview: Vulnerability Code Review, 1st of Platform](https://deepreview.app/leaderboard/)   
-- - **Hackerlab 2025 (Qualifs):** [2nd - The Bugs Reapers (Team)](https://asin.bj/article/48/les-finalistes-hackerlab-2025/)
+- **Hackerlab 2025 (Qualifs):** [2nd - The Bugs Reapers (Team)](https://asin.bj/article/48/les-finalistes-hackerlab-2025/)
 
 - **PicoCTF 2025:** [3rd on Scoreboard - The Bugs Reapers (Team)](https://play.picoctf.org/events/74/scoreboards#4880)
 
@@ -18,7 +18,7 @@ date: 2026-02-18
 
 
 
-- **NoLimitSecu** : **Visual Threat Intelligence** (book) price after **challenges**.
+- **NoLimitSecu** : **Visual Threat Intelligence** (book) price after a **challenges**.
 
 <!-- Mention honorable par NoLimitSecu pour participation au concours "Visual Threat Intelligence" (prix attribué à un autre participant, mention spéciale pour moi) -->
 <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Félicitations à <a href="https://twitter.com/adruet?ref_src=twsrc%5Etfw">@adruet</a> qui gagne un exemplaire de l'ouvrage &quot;Visual Threat Intelligence&quot; par <a href="https://twitter.com/fr0gger_?ref_src=twsrc%5Etfw">@fr0gger_</a> <br><br>Mention honorable à <a href="https://twitter.com/etienneakopcan?ref_src=twsrc%5Etfw">@etienneakopcan</a> et <a href="https://twitter.com/Tedsig42?ref_src=twsrc%5Etfw">@Tedsig42</a>, merci d'avoir participé !</p>&mdash; NoLimitSecu (@nolimitsecu) <a href="https://twitter.com/nolimitsecu/status/1732404499585618167?ref_src=twsrc%5Etfw">December 6, 2023</a></blockquote>
@@ -29,7 +29,7 @@ date: 2026-02-18
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉 Congratulations to <a href="https://twitter.com/Tedsig42?ref_src=twsrc%5Etfw">@Tedsig42</a> for being the first to provide the best-written solution for the fourth snippet! 🏆<br><br>Check out the full writeup here: <a href="https://t.co/xrjQKGz7Bg">https://t.co/xrjQKGz7Bg</a><br><br>Thanks to <a href="https://twitter.com/pwn2baguette?ref_src=twsrc%5Etfw">@pwn2baguette</a> for creating the snippet and the writeup !<br><br>Stay tuned for the next snippet… <a href="https://t.co/CJJBsHijoD">https://t.co/CJJBsHijoD</a></p>&mdash; Root-Me (@rootme_org) <a href="https://twitter.com/rootme_org/status/1875170096790003945?ref_src=twsrc%5Etfw">January 3, 2025</a></blockquote>
 
 
--  **Root-me Christmass swag**
+-  **Root-me Christmas swag**
 
 <!-- Remerciement de Root-Me pour la participation et la solution écrite -->
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Congratulation <a href="https://twitter.com/Tedsig42?ref_src=twsrc%5Etfw">@Tedsig42</a> and <a href="https://twitter.com/AzazheI?ref_src=twsrc%5Etfw">@AzazheI</a> for winning these two swag pack !! 🥳 🎁 <a href="https://t.co/x6p5h26Jyf">https://t.co/x6p5h26Jyf</a></p>&mdash; Root-Me (@rootme_org) <a href="https://twitter.com/rootme_org/status/1740418615848169822?ref_src=twsrc%5Etfw">December 28, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
