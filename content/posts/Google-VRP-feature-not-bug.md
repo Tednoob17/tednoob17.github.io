@@ -190,9 +190,9 @@ So thanks to help me with a tweet.
 After open a [Github Issues](https://github.com/google/zx/issues/1403)  and a [Pull Request](https://github.com/google/zx/pull/1404)
 I request a **Github Security Advisories** and a **CVE**
 
+![google_vro_bug1](/images/stc/g-bug-1.png)  
 
 - **Feb 10, 2026** : Initial report to Google VRP.
 
-- **Feb 11, 2026** : Google VRP confirms the bug and authorizes disclosure.
+- **Feb 11, 2026** : Google VRP confirms the  bug  but close the report and authorizes disclosure.
 
-- **Planned Date** : Public GitHub Issue/PR and CVE request.
