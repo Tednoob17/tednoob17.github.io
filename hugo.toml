@@ -37,6 +37,10 @@ theme = 'risotto'
     name = "Contact"
     url = "/contact/"
     weight = 6    
+    [[menu.main]]
+      name = "Achievements"
+      url = "/achievements/"
+      weight = 10
 [params]
   noindex = false
   favicon = "https://0xswitch.fr//static/img/gif/main-5.gif"
