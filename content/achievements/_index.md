@@ -8,7 +8,8 @@ date: 2026-02-18
 
 - **08/2023** — [Hackerlab 2023 and Best Final Writeups](https://github.com/Tednoob17/Final-HackerLab2023): 9th/20 teams and 1st for writeups (ASIN)
 
-- **11/2025** — [Deepreview: Vulnerability Code Review, 1st of Platform](https://deepreview.app/leaderboard/)   
+- **11/2025** — [Deepreview: Vulnerability Code Review, 1st of Platform](https://deepreview.app/leaderboard/)  
+
 - **Hackerlab 2025 (Qualifs):** [2nd - The Bugs Reapers (Team)](https://asin.bj/article/48/les-finalistes-hackerlab-2025/)
 
 - **PicoCTF 2025:** [3rd on Scoreboard - The Bugs Reapers (Team)](https://play.picoctf.org/events/74/scoreboards#4880)
