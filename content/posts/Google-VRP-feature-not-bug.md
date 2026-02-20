@@ -8,11 +8,8 @@ tags = ['Google', 'zx', 'RCE']
 
 ## The Hook (The "What")
 
-![alt text](/images/stc/what-meme.gif)
-
-
-
-Can a single invisible character bypass a security sandbox?
+Can a single invisible character bypass a security sandbox ?    
+![alt text](/images/stc/what-meme.gif)     
 I discovered a vulnerability in `google/zx` where a Carriage Return (`\r`) allows arbitrary code execution in Markdown files—right under the nose of code reviewers.
 
 
