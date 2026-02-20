@@ -22,7 +22,7 @@ In the world of DevOps, we often struggle with **Bash** (which is powerful but m
 
 
 It allows you to write scripts in **JavaScript**, but with the ease of a shell. 
-You can write commands like `await $`ls` `  directly inside your code.
+You can write commands like ```await $`ls`  ``` directly inside your code.
 
 ### The Markdown Script Feature
 
