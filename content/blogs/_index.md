@@ -8,6 +8,7 @@ Other blogs I read
 *   [Joshua Roger's](https://joshua.hu/)
 *	[Kyle Kingsbury](https://aphyr.com/)
 *   [Natalie Silvanovich](https://natashenka.ca/about/)
+*   [Jessie Frazelle](https://blog.jessfraz.com/)
 *   [Bryan Cantrill](https://bcantrill.dtrace.org/)
 *   [Doyensec](https://blog.doyensec.com/)
 *   [Synacktiv](https://www.synacktiv.com/publications)
