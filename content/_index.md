@@ -16,7 +16,7 @@
                 <h4>Low-Level developer, Cybersecurity Enthusiast</h4>
                 <h5>Skills</h5>
                 <ul style='padding-left: 0'>
-                    <li>C, C++, Rust, Python and other languages</li>
+                    <li>C, C++, Rust, Python, Javascript, and other languages</li>
                     <li>Open Source Contributions to <b>Exegol, Payloads all the things, Caido, Dom-Explorer, The Hackers Recipes</b> </li>
                     <li>Web Security</li>
                     <li>DevOps</li>
