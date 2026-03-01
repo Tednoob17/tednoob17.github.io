@@ -209,8 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/music/" title="">Music</a></li>
-    
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
@@ -218,6 +216,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-reviews/" title="">Book Review</a></li>
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/achievements/" title="">Achievements</a></li>
     
     <li class="main-nav__item">
       <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="post-card__body">
               <div class="post-card__title">Whoami</div>
               
-                <div class="post-card__excerpt">I&rsquo;m Ted &ldquo;Tedsig42&rdquo; Regis Kouhouenou, a 22-year-old cybersecurity enthusiast, CTF player, music lover, and artist. I have spent much of my time at schools such as 42 School, Epitech, and Holberton School. I spend my free time on web security research and recently started bug bounty hunting. From time to time, I contribute to open source projects such as Exegol, The Hacker Recipes, Payload All The Things, and other open source projects, especially when I submit patches for vulnerabilities I discover*. I play CTF and collaborate with the @TheBugsReapers vulnerability researcher/bug hunter team. I strive to share what I have learned on my blog tedsig42.re, which includes CTF writeups, research projects, and more. My YouTube Channel Currently self-employed, but open to new opportunities.
+                <div class="post-card__excerpt">I&rsquo;m Ted &ldquo;Tedsig42&rdquo; Regis Kouhouenou, a 22-year-old cybersecurity enthusiast, CTF player, music lover, and artist. I have spent much of my time at schools such as 42 School, Epitech, and Holberton School. I spend my free time on web security research and recently started bug bounty hunting. From time to time, I contribute to open source projects such as Exegol, The Hacker Recipes, Payload All The Things, and other open source projects, especially when I submit patches for vulnerabilities I discover. I play CTF and collaborate with the @TheBugsReapers vulnerability researcher/bug hunter team. I strive to share what I have learned on my blog tedsig42.re, which includes CTF writeups, research projects, and more. My YouTube Channel Currently self-employed, but open to new opportunities.
 </div>
               
               
@@ -1486,6 +1486,30 @@ document.addEventListener('DOMContentLoaded', function () {
             <footer class="page__footer">
 <p class="copyright"></p>
 <p class="advertisement">Easy peasy ⚡<br>by Tedsig42</p>
+
+
+
+<p class="visitor-counter">Visits: <span id="visitor-count">...</span></p>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const counter = document.getElementById('visitor-count');
+	if (!counter) return;
+
+	fetch('https://api.countapi.xyz/hit/tednoob17-github-io/site-visits')
+		.then(function (response) {
+			if (!response.ok) throw new Error('Unable to load count');
+			return response.json();
+		})
+		.then(function (data) {
+			counter.textContent = (data && typeof data.value === 'number') ? data.value.toLocaleString() : 'N/A';
+		})
+		.catch(function () {
+			counter.textContent = 'N/A';
+		});
+});
+</script>
+
+
 </footer>
 
         </div>

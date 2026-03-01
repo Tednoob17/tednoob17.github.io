@@ -209,8 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/music/" title="">Music</a></li>
-    
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
@@ -218,6 +216,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-reviews/" title="">Book Review</a></li>
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/achievements/" title="">Achievements</a></li>
     
     <li class="main-nav__item">
       <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
@@ -1493,6 +1493,30 @@ source1.php
             <footer class="page__footer">
 <p class="copyright"></p>
 <p class="advertisement">Easy peasy ⚡<br>by Tedsig42</p>
+
+
+
+<p class="visitor-counter">Visits: <span id="visitor-count">...</span></p>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const counter = document.getElementById('visitor-count');
+	if (!counter) return;
+
+	fetch('https://api.countapi.xyz/hit/tednoob17-github-io/site-visits')
+		.then(function (response) {
+			if (!response.ok) throw new Error('Unable to load count');
+			return response.json();
+		})
+		.then(function (data) {
+			counter.textContent = (data && typeof data.value === 'number') ? data.value.toLocaleString() : 'N/A';
+		})
+		.catch(function () {
+			counter.textContent = 'N/A';
+		});
+});
+</script>
+
+
 </footer>
 
         </div>

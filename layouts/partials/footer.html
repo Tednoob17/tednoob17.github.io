@@ -1,3 +1,27 @@
 
 <p class="copyright">{{ .Site.Copyright | markdownify }}</p>
 <p class="advertisement">Easy peasy ⚡<br>by Tedsig42</p>
+
+{{ with .Site.Params.visitorCounter }}
+{{ if .enabled }}
+<p class="visitor-counter">Visits: <span id="visitor-count">...</span></p>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const counter = document.getElementById('visitor-count');
+	if (!counter) return;
+
+	fetch('https://api.countapi.xyz/hit/{{ .namespace }}/{{ .key }}')
+		.then(function (response) {
+			if (!response.ok) throw new Error('Unable to load count');
+			return response.json();
+		})
+		.then(function (data) {
+			counter.textContent = (data && typeof data.value === 'number') ? data.value.toLocaleString() : 'N/A';
+		})
+		.catch(function () {
+			counter.textContent = 'N/A';
+		});
+});
+</script>
+{{ end }}
+{{ end }}

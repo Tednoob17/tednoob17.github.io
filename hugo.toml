@@ -40,6 +40,12 @@ theme = 'risotto'
 [params]
   noindex = false
   favicon = "https://0xswitch.fr//static/img/gif/main-5.gif"
+
+  [params.visitorCounter]
+    enabled = true
+    namespace = "tednoob17-github-io"
+    key = "site-visits"
+
   [params.about]
     title = "Tedsig42"
     description = "Another infosec enthusiast blog"

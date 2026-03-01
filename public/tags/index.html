@@ -209,8 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
     
-    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/music/" title="">Music</a></li>
-    
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
@@ -218,6 +216,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-reviews/" title="">Book Review</a></li>
     
     <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/achievements/" title="">Achievements</a></li>
     
     <li class="main-nav__item">
       <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
@@ -262,6 +262,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="term-pill__count">1</span>
       </a>
     
+      <a class="term-pill" href="/tags/google/">
+        <span class="term-pill__name">Google</span>
+        <span class="term-pill__count">1</span>
+      </a>
+    
       <a class="term-pill" href="/tags/insecure-deserialization/">
         <span class="term-pill__name">Insecure-Deserialization</span>
         <span class="term-pill__count">1</span>
@@ -269,6 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
     
       <a class="term-pill" href="/tags/personal/">
         <span class="term-pill__name">Personal</span>
+        <span class="term-pill__count">1</span>
+      </a>
+    
+      <a class="term-pill" href="/tags/rce/">
+        <span class="term-pill__name">RCE</span>
         <span class="term-pill__count">1</span>
       </a>
     
@@ -280,6 +290,11 @@ document.addEventListener('DOMContentLoaded', function () {
       <a class="term-pill" href="/tags/websec/">
         <span class="term-pill__name">Websec</span>
         <span class="term-pill__count">5</span>
+      </a>
+    
+      <a class="term-pill" href="/tags/zx/">
+        <span class="term-pill__name">Zx</span>
+        <span class="term-pill__count">1</span>
       </a>
     
   </div>
@@ -1491,6 +1506,30 @@ document.addEventListener('DOMContentLoaded', function () {
             <footer class="page__footer">
 <p class="copyright"></p>
 <p class="advertisement">Easy peasy ⚡<br>by Tedsig42</p>
+
+
+
+<p class="visitor-counter">Visits: <span id="visitor-count">...</span></p>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const counter = document.getElementById('visitor-count');
+	if (!counter) return;
+
+	fetch('https://api.countapi.xyz/hit/tednoob17-github-io/site-visits')
+		.then(function (response) {
+			if (!response.ok) throw new Error('Unable to load count');
+			return response.json();
+		})
+		.then(function (data) {
+			counter.textContent = (data && typeof data.value === 'number') ? data.value.toLocaleString() : 'N/A';
+		})
+		.catch(function () {
+			counter.textContent = 'N/A';
+		});
+});
+</script>
+
+
 </footer>
 
         </div>

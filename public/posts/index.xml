@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Tedsig42</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Feb 2026 00:00:00 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google VRP: To Be a Comment, or Not to Be ?</title>
+      <link>http://localhost:1313/posts/google-vrp-feature-not-bug/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/google-vrp-feature-not-bug/</guid>
+      <description>&lt;h2 id=&#34;the-hook-the-what&#34;&gt;The Hook (The &amp;ldquo;What&amp;rdquo;)&lt;/h2&gt;&#xA;&lt;p&gt;Can a single invisible character bypass a security sandbox ? &lt;br&gt;&#xA;&lt;img src=&#34;http://localhost:1313/images/stc/what-meme.gif&#34; alt=&#34;alt text&#34;&gt;  &lt;br&gt;&#xA;I discovered a vulnerability in &lt;code&gt;google/zx&lt;/code&gt; where a Carriage Return (&lt;code&gt;\r&lt;/code&gt;) allows arbitrary code execution in Markdown files—right under the nose of code reviewers.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-zx-&#34;&gt;What is zx ?&lt;/h2&gt;&#xA;&lt;p&gt;In the world of DevOps, we often struggle with &lt;strong&gt;Bash&lt;/strong&gt; (which is powerful but messy) and &lt;strong&gt;Node.js&lt;/strong&gt; (which is clean but wordy).&lt;br&gt;&#xA;&lt;strong&gt;zx&lt;/strong&gt; is a tool created by &lt;strong&gt;Google&lt;/strong&gt; that marries the two.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Websec.fr Level 01</title>
       <link>http://localhost:1313/posts/websec-fr-level1/</link>
