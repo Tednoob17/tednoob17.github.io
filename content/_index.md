@@ -9,7 +9,7 @@
     <table>
         <tr>
             <td class='left'>
-                <img src="../static/images/gif/main-1.gif" alt="Logo" />
+                <img src="/images/gif/main-1.gif" alt="Logo" />
             </td>
             <td class='right'>
                 <h1>Ted Kouhouenou</h1>
