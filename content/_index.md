@@ -28,6 +28,7 @@
                     <li><a href="https://github.com/Tednoob17/Final-HackerLab2023">
 Final-HackerLab2023
 </a> - A writeup for Hackerlab 2023</li>
+                    <li><a href="/42">42</a> - Programming projects completed at 42 School</li>
                     I can't list all my interesting projects here because there are too many. Take a look at my  <a href="https://github.com/Tednoob17/">Github</a>
                 </ul>
             </td>
