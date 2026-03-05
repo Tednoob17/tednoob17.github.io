@@ -39,7 +39,7 @@ theme = 'risotto'
       weight = 10
 [params]
   noindex = false
-  favicon = "https://0xswitch.fr//static/img/gif/main-5.gif"
+  favicon = "/images/gif/jinji.gif"
   [params.about]
     title = "Tedsig42"
     description = "Another infosec enthusiast blog"
