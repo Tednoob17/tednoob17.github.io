@@ -9,16 +9,21 @@ title: "42"
   }
   #readme-content table th,
   #readme-content table td {
-    border: 1px solid #ddd;
+    border: 1px solid #333;
     padding: 8px 12px;
     text-align: left;
+    color: #000;
   }
   #readme-content table th {
-    background-color: #f5f5f5;
+    background-color: #ddd;
     font-weight: bold;
+    color: #000;
   }
   #readme-content table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #fff;
+  }
+  #readme-content table tr:nth-child(odd) {
+    background-color: #f0f0f0;
   }
 </style>
 
