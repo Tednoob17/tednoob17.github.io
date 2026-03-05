@@ -43,7 +43,7 @@ theme = 'risotto'
   [params.about]
     title = "Tedsig42"
     description = "Another infosec enthusiast blog"
-    logo_image = "/images/gif/main-1.gif"
+    logo_image = "/images/gif/ed.gif"
 
   [params.theme]
     palette = "tender"

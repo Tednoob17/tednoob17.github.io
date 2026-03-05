@@ -9,7 +9,7 @@
     <table>
         <tr>
             <td class='left'>
-                <img class="logo" src="/images/gif/ed.gif" alt="Logo">
+                <img class="logo" src="/images/stc/goku.jpg" alt="Logo">
             </td>
             <td class='right'>
                 <h1>Ted Kouhouenou</h1>
