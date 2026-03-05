@@ -1,6 +1,27 @@
 ---
 title: "42"
 ---
+<style>
+  #readme-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+  }
+  #readme-content table th,
+  #readme-content table td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  #readme-content table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  #readme-content table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+</style>
+
 <div id="readme-content">Loading...</div>
 
 <script>
