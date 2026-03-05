@@ -46,7 +46,7 @@ theme = 'risotto'
     logo_image = "/images/gif/ed.gif"
 
   [params.theme]
-    palette = "tender"
+    palette = "material"
 
   [[params.socialLinks]]
     title = "GitHub"
