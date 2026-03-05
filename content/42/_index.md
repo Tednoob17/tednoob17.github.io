@@ -9,6 +9,9 @@ title: "42"
   })
   .then(r => r.text())
   .then(html => {
+    // Convertir les images relatives en URLs absolutes GitHub
+    html = html.replace(/src="\.\/([^"]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
+    html = html.replace(/src="([^"\/][^":]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
     document.getElementById("readme-content").innerHTML = html;
   })
   .catch(() => {
