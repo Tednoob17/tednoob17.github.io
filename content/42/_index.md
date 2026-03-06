@@ -112,9 +112,9 @@ title: "42"
     html = html.replace(/src="\.\/([^"]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
     html = html.replace(/src="([^"\/][^":]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
     
-    // Convertir les liens relatifs en URLs absolutes GitHub (pour téléchargement des fichiers)
-    html = html.replace(/href="\.\/([^"]+)"/g, 'href="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
-    html = html.replace(/href="([^"\/][^":]+)"/g, 'href="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
+    // Convertir les liens relatifs en URLs absolues GitHub avec media.githubusercontent.com pour supporter LFS
+    html = html.replace(/href="\.\/([^"]+)"/g, 'href="https://media.githubusercontent.com/media/Tednoob17/42/main/$1"');
+    html = html.replace(/href="([^"\/][^":]+)"/g, 'href="https://media.githubusercontent.com/media/Tednoob17/42/main/$1"');
     
     document.getElementById("readme-content").innerHTML = html;
 
