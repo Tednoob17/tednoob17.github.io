@@ -118,6 +118,13 @@ title: "42"
     
     document.getElementById("readme-content").innerHTML = html;
 
+    // Ouvrir tous les liens de fichiers dans un nouvel onglet
+    const links = document.querySelectorAll('#readme-content a[href]');
+    links.forEach(link => {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+
     // Ajouter le listener aux images pour la lightbox
     const images = document.querySelectorAll('#readme-content img');
     images.forEach(img => {
