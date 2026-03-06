@@ -178,6 +178,7 @@ title: "42"
   async function resolveDownloadLink(linkEl, repoPath) {
     const rawUrl = buildRawUrl(repoPath);
     const mediaUrl = buildMediaUrl(repoPath);
+    const fileName = repoPath.split('/').pop();
 
     // Check if raw exists and if it's an LFS pointer
     const rawCheck = await isLfsPointer(rawUrl);
@@ -187,11 +188,13 @@ title: "42"
         // It's an LFS pointer, use media URL
         if (await urlExists(mediaUrl)) {
           linkEl.href = mediaUrl;
+          linkEl.setAttribute('download', fileName);
           return;
         }
       } else {
         // It's a real file on raw
         linkEl.href = rawUrl;
+        linkEl.setAttribute('download', fileName);
         return;
       }
     }
@@ -199,6 +202,7 @@ title: "42"
     // Try media directly if raw failed
     if (await urlExists(mediaUrl)) {
       linkEl.href = mediaUrl;
+      linkEl.setAttribute('download', fileName);
       return;
     }
 
