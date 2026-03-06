@@ -144,21 +144,32 @@ title: "42"
     return /\.(pdf|iso|img|bin|zip|7z|rar|tar|gz|tgz|bz2|xz|zst|deb|rpm|apk|dmg|pkg|exe|msi)$/i.test(path);
   }
 
-  async function urlExists(url) {
+  async function isLfsPointer(url) {
     try {
-      const headResponse = await fetch(url, { method: 'HEAD', cache: 'no-store' });
-      if (headResponse.ok) return true;
-    } catch {
-      // Ignore and fallback to a small range GET request.
-    }
-
-    try {
-      const getResponse = await fetch(url, {
+      const response = await fetch(url, {
         method: 'GET',
-        headers: { Range: 'bytes=0-32' },
+        headers: { Range: 'bytes=0-200' },
         cache: 'no-store'
       });
-      return getResponse.ok;
+      
+      if (!response.ok) return null;
+      
+      const text = await response.text();
+      const isLfs = text.startsWith('version https://git-lfs.github.com/spec/v1');
+      
+      return { ok: true, isLfs };
+    } catch {
+      return null;
+    }
+  }
+
+  async function urlExists(url) {
+    try {
+      const response = await fetch(url, { 
+        method: 'HEAD', 
+        cache: 'no-store' 
+      });
+      return response.ok;
     } catch {
       return false;
     }
@@ -168,17 +179,30 @@ title: "42"
     const rawUrl = buildRawUrl(repoPath);
     const mediaUrl = buildMediaUrl(repoPath);
 
-    if (await urlExists(rawUrl)) {
-      linkEl.href = rawUrl;
-      return;
+    // Check if raw exists and if it's an LFS pointer
+    const rawCheck = await isLfsPointer(rawUrl);
+    
+    if (rawCheck && rawCheck.ok) {
+      if (rawCheck.isLfs) {
+        // It's an LFS pointer, use media URL
+        if (await urlExists(mediaUrl)) {
+          linkEl.href = mediaUrl;
+          return;
+        }
+      } else {
+        // It's a real file on raw
+        linkEl.href = rawUrl;
+        return;
+      }
     }
 
+    // Try media directly if raw failed
     if (await urlExists(mediaUrl)) {
       linkEl.href = mediaUrl;
       return;
     }
 
-    // Fallback to GitHub UI instead of leaving a broken 404 link.
+    // Fallback to GitHub UI
     linkEl.href = buildBlobUrl(repoPath);
   }
 
