@@ -108,11 +108,20 @@ title: "42"
   }
 
   function normalizeRepoPath(path) {
-    return path.replace(/^\.\//, '').replace(/^\//, '');
+    return path.replace(/^\.\//, '').replace(/^\//, '').split('#')[0].split('?')[0];
   }
 
   function encodeRepoPath(path) {
-    return path.split('/').map(encodeURIComponent).join('/');
+    return path
+      .split('/')
+      .map(function(segment) {
+        try {
+          return encodeURIComponent(decodeURIComponent(segment));
+        } catch {
+          return encodeURIComponent(segment);
+        }
+      })
+      .join('/');
   }
 
   function buildRawUrl(path) {
@@ -135,16 +144,21 @@ title: "42"
     return /\.(pdf|iso|img|bin|zip|7z|rar|tar|gz|tgz|bz2|xz|zst|deb|rpm|apk|dmg|pkg|exe|msi)$/i.test(path);
   }
 
-  async function isLfsPointer(rawUrl) {
+  async function urlExists(url) {
     try {
-      const response = await fetch(rawUrl, {
-        headers: { Range: 'bytes=0-512' },
+      const headResponse = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+      if (headResponse.ok) return true;
+    } catch {
+      // Ignore and fallback to a small range GET request.
+    }
+
+    try {
+      const getResponse = await fetch(url, {
+        method: 'GET',
+        headers: { Range: 'bytes=0-32' },
         cache: 'no-store'
       });
-
-      if (!response.ok) return false;
-      const text = await response.text();
-      return text.startsWith('version https://git-lfs.github.com/spec/v1');
+      return getResponse.ok;
     } catch {
       return false;
     }
@@ -152,19 +166,27 @@ title: "42"
 
   async function resolveDownloadLink(linkEl, repoPath) {
     const rawUrl = buildRawUrl(repoPath);
-    linkEl.href = rawUrl;
+    const mediaUrl = buildMediaUrl(repoPath);
 
-    const lfs = await isLfsPointer(rawUrl);
-    if (lfs) {
-      linkEl.href = buildMediaUrl(repoPath);
+    if (await urlExists(rawUrl)) {
+      linkEl.href = rawUrl;
+      return;
     }
+
+    if (await urlExists(mediaUrl)) {
+      linkEl.href = mediaUrl;
+      return;
+    }
+
+    // Fallback to GitHub UI instead of leaving a broken 404 link.
+    linkEl.href = buildBlobUrl(repoPath);
   }
 
   fetch("https://api.github.com/repos/Tednoob17/42/readme", {
     headers: { Accept: "application/vnd.github.html+json" }
   })
   .then(r => r.text())
-  .then(html => {
+  .then(async html => {
     const container = document.getElementById("readme-content");
     container.innerHTML = html;
 
@@ -182,8 +204,10 @@ title: "42"
       });
     });
 
-    // Liens: raw par defaut, media uniquement si fichier LFS
+    // Liens: raw si possible, sinon media pour LFS, puis fallback blob
     const links = container.querySelectorAll('a[href]');
+    const pendingResolutions = [];
+
     links.forEach(link => {
       const href = link.getAttribute('href');
       if (!isRelativeLink(href)) {
@@ -194,7 +218,7 @@ title: "42"
 
       const repoPath = normalizeRepoPath(href);
       if (isDownloadablePath(repoPath)) {
-        resolveDownloadLink(link, repoPath);
+        pendingResolutions.push(resolveDownloadLink(link, repoPath));
       } else if (repoPath.endsWith('/')) {
         link.href = buildTreeUrl(repoPath);
       } else {
@@ -204,6 +228,8 @@ title: "42"
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
     });
+
+    await Promise.all(pendingResolutions);
   })
   .catch(() => {
     document.getElementById("readme-content").innerHTML = "<p>Could not load README.</p>";
