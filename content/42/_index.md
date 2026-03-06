@@ -103,35 +103,106 @@ title: "42"
     if (e.key === 'Escape') closeLightbox();
   });
 
+  function isRelativeLink(link) {
+    return !!link && !/^(?:[a-z]+:|\/\/|#|\/)/i.test(link);
+  }
+
+  function normalizeRepoPath(path) {
+    return path.replace(/^\.\//, '').replace(/^\//, '');
+  }
+
+  function encodeRepoPath(path) {
+    return path.split('/').map(encodeURIComponent).join('/');
+  }
+
+  function buildRawUrl(path) {
+    return `https://raw.githubusercontent.com/Tednoob17/42/main/${encodeRepoPath(path)}`;
+  }
+
+  function buildMediaUrl(path) {
+    return `https://media.githubusercontent.com/media/Tednoob17/42/main/${encodeRepoPath(path)}`;
+  }
+
+  function buildBlobUrl(path) {
+    return `https://github.com/Tednoob17/42/blob/main/${encodeRepoPath(path)}`;
+  }
+
+  function buildTreeUrl(path) {
+    return `https://github.com/Tednoob17/42/tree/main/${encodeRepoPath(path)}`;
+  }
+
+  function isDownloadablePath(path) {
+    return /\.(pdf|iso|img|bin|zip|7z|rar|tar|gz|tgz|bz2|xz|zst|deb|rpm|apk|dmg|pkg|exe|msi)$/i.test(path);
+  }
+
+  async function isLfsPointer(rawUrl) {
+    try {
+      const response = await fetch(rawUrl, {
+        headers: { Range: 'bytes=0-512' },
+        cache: 'no-store'
+      });
+
+      if (!response.ok) return false;
+      const text = await response.text();
+      return text.startsWith('version https://git-lfs.github.com/spec/v1');
+    } catch {
+      return false;
+    }
+  }
+
+  async function resolveDownloadLink(linkEl, repoPath) {
+    const rawUrl = buildRawUrl(repoPath);
+    linkEl.href = rawUrl;
+
+    const lfs = await isLfsPointer(rawUrl);
+    if (lfs) {
+      linkEl.href = buildMediaUrl(repoPath);
+    }
+  }
+
   fetch("https://api.github.com/repos/Tednoob17/42/readme", {
     headers: { Accept: "application/vnd.github.html+json" }
   })
   .then(r => r.text())
   .then(html => {
-    // Convertir les images relatives en URLs absolutes GitHub
-    html = html.replace(/src="\.\/([^"]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
-    html = html.replace(/src="([^"\/][^":]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
-    
-    // Convertir les liens relatifs en URLs absolues GitHub avec media.githubusercontent.com pour supporter LFS
-    html = html.replace(/href="\.\/([^"]+)"/g, 'href="https://media.githubusercontent.com/media/Tednoob17/42/main/$1"');
-    html = html.replace(/href="([^"\/][^":]+)"/g, 'href="https://media.githubusercontent.com/media/Tednoob17/42/main/$1"');
-    
-    document.getElementById("readme-content").innerHTML = html;
+    const container = document.getElementById("readme-content");
+    container.innerHTML = html;
 
-    // Ouvrir tous les liens de fichiers dans un nouvel onglet
-    const links = document.querySelectorAll('#readme-content a[href]');
-    links.forEach(link => {
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
-    });
-
-    // Ajouter le listener aux images pour la lightbox
-    const images = document.querySelectorAll('#readme-content img');
+    // Convertir les images relatives en URLs absolues raw GitHub
+    const images = container.querySelectorAll('img[src]');
     images.forEach(img => {
+      const src = img.getAttribute('src');
+      if (isRelativeLink(src)) {
+        img.src = buildRawUrl(normalizeRepoPath(src));
+      }
+
       img.style.cursor = 'pointer';
       img.addEventListener('click', function() {
         openLightbox(this.src);
       });
+    });
+
+    // Liens: raw par defaut, media uniquement si fichier LFS
+    const links = container.querySelectorAll('a[href]');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!isRelativeLink(href)) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+        return;
+      }
+
+      const repoPath = normalizeRepoPath(href);
+      if (isDownloadablePath(repoPath)) {
+        resolveDownloadLink(link, repoPath);
+      } else if (repoPath.endsWith('/')) {
+        link.href = buildTreeUrl(repoPath);
+      } else {
+        link.href = buildBlobUrl(repoPath);
+      }
+
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
     });
   })
   .catch(() => {
