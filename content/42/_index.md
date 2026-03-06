@@ -111,6 +111,11 @@ title: "42"
     // Convertir les images relatives en URLs absolutes GitHub
     html = html.replace(/src="\.\/([^"]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
     html = html.replace(/src="([^"\/][^":]+)"/g, 'src="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
+    
+    // Convertir les liens relatifs en URLs absolutes GitHub (pour téléchargement des fichiers)
+    html = html.replace(/href="\.\/([^"]+)"/g, 'href="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
+    html = html.replace(/href="([^"\/][^":]+)"/g, 'href="https://raw.githubusercontent.com/Tednoob17/42/main/$1"');
+    
     document.getElementById("readme-content").innerHTML = html;
 
     // Ajouter le listener aux images pour la lightbox
@@ -126,9 +131,3 @@ title: "42"
     document.getElementById("readme-content").innerHTML = "<p>Could not load README.</p>";
   });
 </script>
-
----
-
-## Quick Links
-
-- [Rainfall Subject (PDF)](https://raw.githubusercontent.com/Tednoob17/42/main/Specialization/Cybersecurity/rainfall/en.subject.pdf)
