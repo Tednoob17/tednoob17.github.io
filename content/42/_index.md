@@ -126,3 +126,9 @@ title: "42"
     document.getElementById("readme-content").innerHTML = "<p>Could not load README.</p>";
   });
 </script>
+
+---
+
+## Quick Links
+
+- [Rainfall Subject (PDF)](https://raw.githubusercontent.com/Tednoob17/42/main/Specialization/Cybersecurity/rainfall/en.subject.pdf)
