@@ -23,7 +23,8 @@
                 </ul>
                 <h5>Some Projects</h5>
                 <ul style='padding-left: 0'>
-                    <li><a href="https://github.com/Tednoob17/Zappy42/tree/master">Faasp</a> - FaaS Platform - Function as a Service</li>
+                    <li><a href="https://zone-01.vercel.app/">Zone01</a> - Interactive curriculum map for Zone01 learning paths with Piscine and another project </li>
+                    <li><a href="https://github.com/Tednoob17/FaaS">Faasp</a> - FaaS Platform - Function as a Service</li>
                     <li><a href="https://github.com/Tednoob17/firefox-wayback-url-finder">firefox-wayback-url-finder</a> - Wayback URL Finder</li>
                     <li><a href="https://github.com/Tednoob17/Final-HackerLab2023">
 Final-HackerLab2023
