@@ -188,6 +188,5 @@ I also open a [Github Issues](https://github.com/google/zx/issues/1403)  and a [
 ![google_vro_bug1](/images/stc/g-bug-1.png)  
 
 - **Feb 10, 2026** : Initial report to Google VRP.
-
-- **Feb 11, 2026** : Google VRP confirms the  bug  but close the report and authorizes disclosure.
-
+- **Feb 11, 2026** : Google VRP confirms the  bug  but close the report and authorizes disclosure. Issues and Pull request opened also on `google/zx`
+- **Feb 21 2026** : Fix Merged
