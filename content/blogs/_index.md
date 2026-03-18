@@ -2,52 +2,54 @@
 Other blogs I read
 ==================
 
-*   [Martijn Braam](https://blog.brixit.nl/)
-*   [Vincent Bernat](https://vincent.bernat.ch/)
-*   [Dhakal Ananda](https://dhakal-ananda.com.np)
-*   [Joshua Roger's](https://joshua.hu/)
-*	[Kyle Kingsbury](https://aphyr.com/)
-*   [Natalie Silvanovich](https://natashenka.ca/about/)
-*   [Jessie Frazelle](https://blog.jessfraz.com/)
-*   [Bryan Cantrill](https://bcantrill.dtrace.org/)
-*   [Doyensec](https://blog.doyensec.com/)
-*   [Synacktiv](https://www.synacktiv.com/publications)
-*   [Quarkslab](https://blog.quarkslab.com/)
-*   [Trail Of Bits](https://blog.trailofbits.com/)
-*   [Detectify](https://labs.detectify.com/)
-*   [Fuzzinglabs](https://fuzzinglabs.com/security-blog/)
-*   [Rachid Allam - zhero](https://zhero-web-sec.github.io/research-and-things/)
-*   [Phrack](https://phrack.org/)
-*   [Julien Voisin](http://dustri.org/)
-*   [Laluka](https://thinkloveshare.com/hacking/)
-*   [Dana Epp's](https://danaepp.com/blog)
-*   [Securitybreached](https://blog.securitybreached.org/)
-*   [Aretekzs](https://aretekzs.com/)
-*   [Oxide COmputer](https://oxide.computer/blog)
-*   [Quentin JOLY](https://une-tasse-de.cafe/)
-*   [Vitor Falcao](https://vitorfalcao.com/)
-*   [Tom (Aethlios) Chambaretaud](https://www.aeth.cc/)
-*   [Nicolas Gregoire](https://www.agarri.fr/fr/)
-*   [Ctbbp](https://lab.ctbb.show/research/all/) 
-*   [0xpatrik](https://0xpatrik.com/)
-*   [YouGina](https://yougina.eu/)
-*   [Kuromatae's Blog](https://blog.hks.ec/)
-*   [Koalasec](https://blog.koalasec.co/)
-*   [Kevin Mizu](https://mizu.re/)
-*   [Assetnote](https://www.assetnote.io/resources/research)
-*   [Google Project Zero](https://projectzero.google/)
-*   [ISEC](https://blog.isec.pl/)
-*   [Matt Keeter](https://www.mattkeeter.com/blog/)
-*   [Cliff L. Biffle](https://cliffle.com/)
-*   [Cédric Picard](https://breakpoint.purrfect.fr/)
-*   [Michal Zalewski](https://lcamtuf.coredump.cx/)
-*   [Jean-Philippe Aumasson](https://www.aumasson.jp/papers.html)
-*   [Michał Bentkowski](https://www.bentkowski.info/)
-*   [huli](https://blog.huli.tw/en/)
-*   [Masato Kinugawa](https://mksben.l0.cm/)
-*   [Cure53](https://cure53.de/)
-*   [s1r1us](https://s1r1us.ninja)
-*   [InsertScript](https://insert-script.blogspot.com/)
+<ul class="blogs-links">
+	<li><a href="https://blog.brixit.nl/">Martijn Braam</a></li>
+	<li><a href="https://vincent.bernat.ch/">Vincent Bernat</a></li>
+	<li><a href="https://dhakal-ananda.com.np">Dhakal Ananda</a></li>
+	<li><a href="https://joshua.hu/">Joshua Roger's</a></li>
+	<li><a href="https://aphyr.com/">Kyle Kingsbury</a></li>
+	<li><a href="https://natashenka.ca/about/">Natalie Silvanovich</a></li>
+	<li><a href="https://blog.jessfraz.com/">Jessie Frazelle</a></li>
+	<li><a href="https://bcantrill.dtrace.org/">Bryan Cantrill</a></li>
+	<li><a href="https://blog.doyensec.com/">Doyensec</a></li>
+	<li><a href="https://www.synacktiv.com/publications">Synacktiv</a></li>
+	<li><a href="https://blog.quarkslab.com/">Quarkslab</a></li>
+	<li><a href="https://blog.trailofbits.com/">Trail Of Bits</a></li>
+	<li><a href="https://labs.detectify.com/">Detectify</a></li>
+	<li><a href="https://fuzzinglabs.com/security-blog/">Fuzzinglabs</a></li>
+	<li><a href="https://zhero-web-sec.github.io/research-and-things/">Rachid Allam - zhero</a></li>
+	<li><a href="https://phrack.org/">Phrack</a></li>
+	<li><a href="http://dustri.org/">Julien Voisin</a></li>
+	<li><a href="https://thinkloveshare.com/hacking/">Laluka</a></li>
+	<li><a href="https://danaepp.com/blog">Dana Epp's</a></li>
+	<li><a href="https://blog.securitybreached.org/">Securitybreached</a></li>
+	<li><a href="https://aretekzs.com/">Aretekzs</a></li>
+	<li><a href="https://oxide.computer/blog">Oxide COmputer</a></li>
+	<li><a href="https://une-tasse-de.cafe/">Quentin JOLY</a></li>
+	<li><a href="https://vitorfalcao.com/">Vitor Falcao</a></li>
+	<li><a href="https://www.aeth.cc/">Tom (Aethlios) Chambaretaud</a></li>
+	<li><a href="https://www.agarri.fr/fr/">Nicolas Gregoire</a></li>
+	<li><a href="https://lab.ctbb.show/research/all/">Ctbbp</a></li>
+	<li><a href="https://0xpatrik.com/">0xpatrik</a></li>
+	<li><a href="https://yougina.eu/">YouGina</a></li>
+	<li><a href="https://blog.hks.ec/">Kuromatae's Blog</a></li>
+	<li><a href="https://blog.koalasec.co/">Koalasec</a></li>
+	<li><a href="https://mizu.re/">Kevin Mizu</a></li>
+	<li><a href="https://www.assetnote.io/resources/research">Assetnote</a></li>
+	<li><a href="https://projectzero.google/">Google Project Zero</a></li>
+	<li><a href="https://blog.isec.pl/">ISEC</a></li>
+	<li><a href="https://www.mattkeeter.com/blog/">Matt Keeter</a></li>
+	<li><a href="https://cliffle.com/">Cliff L. Biffle</a></li>
+	<li><a href="https://breakpoint.purrfect.fr/">Cédric Picard</a></li>
+	<li><a href="https://lcamtuf.coredump.cx/">Michal Zalewski</a></li>
+	<li><a href="https://www.aumasson.jp/papers.html">Jean-Philippe Aumasson</a></li>
+	<li><a href="https://www.bentkowski.info/">Michał Bentkowski</a></li>
+	<li><a href="https://blog.huli.tw/en/">huli</a></li>
+	<li><a href="https://mksben.l0.cm/">Masato Kinugawa</a></li>
+	<li><a href="https://cure53.de/">Cure53</a></li>
+	<li><a href="https://s1r1us.ninja">s1r1us</a></li>
+	<li><a href="https://insert-script.blogspot.com/">InsertScript</a></li>
+</ul>
 
 
 Blogposts

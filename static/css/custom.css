@@ -126,14 +126,28 @@
     margin-top: 1rem;
 }
 
+.blogs-links {
+    columns: 1;
+    column-gap: 1.5rem;
+    margin-top: 1rem;
+}
+
 .art-links p,
 .art-links ul,
 .art-links ol {
     break-inside: avoid;
 }
 
+.blogs-links li {
+    break-inside: avoid;
+}
+
 @media (min-width: 48rem) {
     .art-links {
+        columns: 2;
+    }
+
+    .blogs-links {
         columns: 2;
     }
 }
