@@ -127,8 +127,10 @@
 }
 
 .blogs-links {
-    columns: 1;
-    column-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1.5rem;
+    padding-left: 1.25rem;
     margin-top: 1rem;
 }
 
@@ -138,17 +140,15 @@
     break-inside: avoid;
 }
 
-.blogs-links li {
-    break-inside: avoid;
-}
-
 @media (min-width: 48rem) {
     .art-links {
         columns: 2;
     }
+}
 
+@media (max-width: 47.999rem) {
     .blogs-links {
-        columns: 2;
+        grid-template-columns: 1fr;
     }
 }
 
