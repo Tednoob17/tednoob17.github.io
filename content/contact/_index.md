@@ -25,10 +25,10 @@ My primary GPG fingerprint is `FA81 3F0E 44D1 DF79`. If you receive an email tha
 # Full GPG information
 
 ```text
-pub   rsa4096/FA813F0E44D1DF79 2026-01-31 [SC]
-      4E76B1FEBBF08743F013966FFA813F0E44D1DF79
-uid                 [ultimate] Ted Kouhouenou (Tedsig42) <ted.sig42@tutamail.com>
-sub   rsa4096/5D5FB703579E2B76 2026-01-31 [E]
+pub   rsa4096 2026-03-30 [SC]
+      8323F8E47F3190D663EF768A395A1B32E61DB49A
+uid                      Ted Kouhouenou (42 is answer of everything) <ted.sig42@tutamail.com>
+sub   rsa4096 2026-03-30 [E]
 ```
 
 ---
