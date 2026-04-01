@@ -5,8 +5,8 @@
 <meta charset="UTF-8"/>
 {{ if .Site.Params.noindex }}<meta name="robots" content="noindex" /> {{ end }}
 
-<!-- FontAwesome <https://fontawesome.com/> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- FontAwesome <https://fontawesome.com/> - v6.7.0 Security Update -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaelZ+aIm2c0EjH2LmJ0pSHN+b9f2cR3zd1PCmzC8hX5V4cW2r5c9c8p9kw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- Academicons <https://jpswalsh.github.io/academicons/> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,16 +18,54 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Theme Toggle
+  // Theme Toggle - with whitelist validation for security
   const themeToggle = document.getElementById('theme-toggle');
   const themeCss = document.getElementById('theme-css');
   const darkTheme = "tokyo-night-dark";
   const lightTheme = "tokyo-night-light";
+  
+  // Whitelist of allowed themes - validation against XSS
+  const ALLOWED_THEMES = [
+    "base16-dark",
+    "base16-light",
+    "tokyo-night-dark",
+    "tokyo-night-light",
+    "material",
+    "apprentice",
+    "atelier-cave-dark",
+    "atelier-cave-light",
+    "atelier-dune-dark",
+    "atelier-dune-light",
+    "atelier-estuary-dark",
+    "atelier-estuary-light",
+    "atelier-forest-dark",
+    "atelier-forest-light",
+    "atelier-heath-dark",
+    "atelier-heath-light",
+    "atelier-lakeside-dark",
+    "atelier-lakeside-light",
+    "atelier-plateau-dark",
+    "atelier-plateau-light",
+    "atelier-savanna-dark",
+    "atelier-savanna-light",
+    "atelier-seaside-dark",
+    "atelier-seaside-light",
+    "atom-one-dark",
+    "atom-one-light",
+    "gruvbox-dark",
+    "gruvbox-light"
+  ];
+  
+  // Validate theme against whitelist - prevents XSS through localStorage
+  const isValidTheme = (theme) => {
+    return ALLOWED_THEMES.includes(theme);
+  };
 
-  // Check storage
+  // Check storage with validation
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-     themeCss.href = themeCss.href.replace(/(.*css\/palettes\/)(.*)(\.css)/, '$1' + savedTheme + '$3');
+  if (savedTheme && isValidTheme(savedTheme)) {
+    const baseUrl = themeCss.href.substring(0, themeCss.href.lastIndexOf('/'));
+    themeCss.href = baseUrl + '/' + savedTheme + '.css';
   }
 
   if (themeToggle) {
@@ -37,12 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const isDark = currentHref.includes(darkTheme) || currentHref.includes('dark');
       const newTheme = isDark ? lightTheme : darkTheme;
 
-      themeCss.href = themeCss.href.replace(/(.*css\/palettes\/)(.*)(\.css)/, '$1' + newTheme + '$3');
+      const baseUrl = themeCss.href.substring(0, themeCss.href.lastIndexOf('/'));
+      themeCss.href = baseUrl + '/' + newTheme + '.css';
       localStorage.setItem('theme', newTheme);
     });
   }
 
-  // Search
+  // Search - Safe DOM manipulation to prevent XSS
   const searchTrigger = document.getElementById('search-trigger');
   const searchOverlay = document.getElementById('search-overlay');
   const searchClose = document.getElementById('search-close');
@@ -51,6 +90,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let searchIndex = null;
   let isLoading = false;
+
+  // Create safe search result element without innerHTML
+  const createSafeSearchResult = (result, query) => {
+    const li = document.createElement('li');
+    li.style.marginBottom = '15px';
+    
+    // Create title link - using textContent for safety
+    const titleLink = document.createElement('a');
+    titleLink.href = result.permalink;
+    titleLink.style.color = '#61bfff';
+    titleLink.style.fontSize = '1.2em';
+    titleLink.style.textDecoration = 'none';
+    titleLink.style.fontWeight = 'bold';
+    titleLink.style.display = 'block';
+    titleLink.textContent = result.title;
+    
+    // Create snippet div
+    const snippetDiv = document.createElement('div');
+    snippetDiv.style.color = '#ccc';
+    snippetDiv.style.fontSize = '0.9em';
+    snippetDiv.style.marginTop = '5px';
+    
+    // Create safe snippet with proper escaping
+    if (result.content && query.length >= 2) {
+      const lowerContent = result.content.toLowerCase();
+      const queryLower = query.toLowerCase();
+      const idx = lowerContent.indexOf(queryLower);
+      
+      if (idx !== -1) {
+        const start = Math.max(0, idx - 40);
+        const end = Math.min(result.content.length, idx + query.length + 40);
+        
+        snippetDiv.appendChild(document.createTextNode('...'));
+        
+        if (start > 0) {
+          snippetDiv.appendChild(document.createTextNode(result.content.substring(start, idx)));
+        }
+        
+        const mark = document.createElement('mark');
+        mark.style.backgroundColor = '#0f0';
+        mark.style.color = '#000';
+        mark.textContent = result.content.substring(idx, idx + query.length);
+        snippetDiv.appendChild(mark);
+        
+        snippetDiv.appendChild(document.createTextNode(result.content.substring(idx + query.length, end)));
+        snippetDiv.appendChild(document.createTextNode('...'));
+      } else {
+        snippetDiv.textContent = result.content.substring(0, 100);
+      }
+    }
+    
+    li.appendChild(titleLink);
+    li.appendChild(snippetDiv);
+    
+    return li;
+  };
 
   const performSearch = (query) => {
     if (!searchIndex || query.length < 2) {
@@ -64,38 +159,25 @@ document.addEventListener('DOMContentLoaded', function() {
         return title.includes(query) || content.includes(query);
     });
 
-    let html = '';
+    // Clear results safely without innerHTML
+    searchResults.innerHTML = '';
+    
     if (results.length > 0) {
-        html = '<ul style="list-style: none; padding: 0;">';
+        const ul = document.createElement('ul');
+        ul.style.listStyle = 'none';
+        ul.style.padding = '0';
+        
         results.slice(0, 10).forEach(result => {
-             // Create snippet
-             let snippet = "";
-             if (result.content) {
-                 const lowerContent = result.content.toLowerCase();
-                 const idx = lowerContent.indexOf(query);
-                 if (idx !== -1) {
-                     const start = Math.max(0, idx - 40);
-                     const end = Math.min(result.content.length, idx + query.length + 40);
-                     snippet = result.content.substring(start, end);
-                     // Simple highlight
-                     const re = new RegExp(query, 'gi');
-                     snippet = snippet.replace(re, match => `<mark style="background-color: #0f0; color: #000;">${match}</mark>`);
-                     snippet = "..." + snippet + "...";
-                 } else {
-                     snippet = result.content.substring(0, 100) + "...";
-                 }
-             }
-
-            html += `<li style="margin-bottom: 15px;">
-                <a href="${result.permalink}" style="color: #61bfff; font-size: 1.2em; text-decoration: none; font-weight: bold; display: block;">${result.title}</a>
-                <div style="color: #ccc; font-size: 0.9em; margin-top: 5px;">${snippet}</div>
-            </li>`;
+            const li = createSafeSearchResult(result, query);
+            ul.appendChild(li);
         });
-        html += '</ul>';
+        
+        searchResults.appendChild(ul);
     } else {
-        html = '<p>No results found.</p>';
+        const noResults = document.createElement('p');
+        noResults.textContent = 'No results found.';
+        searchResults.appendChild(noResults);
     }
-    searchResults.innerHTML = html;
   };
 
   if (searchTrigger) {
@@ -106,7 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!searchIndex && !isLoading) {
             isLoading = true;
-            searchResults.innerHTML = '<p style="color: #888;">Loading search index...</p>';
+            searchResults.innerHTML = '';
+            const loadingMsg = document.createElement('p');
+            loadingMsg.style.color = '#888';
+            loadingMsg.textContent = 'Loading search index...';
+            searchResults.appendChild(loadingMsg);
             
             // Use relURL to ensure it works on localhost and subpaths
             fetch('{{ "index.json" | relURL }}')
@@ -127,7 +213,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 .catch(error => {
                     console.error('Error fetching search index:', error);
                     isLoading = false;
-                    searchResults.innerHTML = '<p style="color: red;">Error loading search index. Check console.</p>';
+                    searchResults.innerHTML = '';
+                    const errorMsg = document.createElement('p');
+                    errorMsg.style.color = 'red';
+                    errorMsg.textContent = 'Error loading search index. Check console.';
+                    searchResults.appendChild(errorMsg);
                 });
         }
     });
