@@ -59,7 +59,7 @@ title: Innocent Title
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = false  # ✅ FIXED
+      unsafe = true  # Restored: this site relies on raw HTML in content
 ```
 
 **Breaking Changes:** None if all markdown content follows safe practices. Any existing raw HTML in markdown files will need to be converted to proper markdown syntax or sandboxed alternatives.
@@ -491,7 +491,7 @@ npx sri-hash https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.m
 ### Files to Modify
 
 1. **hugo.toml**
-   - Change: `unsafe = true` → `unsafe = false`
+  - Change: `unsafe = false` was tested, then reverted because content relies on raw HTML
    - Risk: Low (depends on markdown content quality)
    - Testing: Full site rebuild
 
