@@ -83,6 +83,12 @@ theme = 'risotto'
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    style = "monokai"
+    tabWidth = 4
 
 summaryLength = 30
 
