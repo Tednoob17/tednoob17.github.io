@@ -7,7 +7,7 @@
   <div class="posts-cards">
     {{ range $index, $page := .Pages.ByDate.Reverse }}
       {{ $image := $page.Params.banner | default $page.Params.image | default $page.Params.cover }}
-      {{ $summary := $page.Params.description | default ($page.Summary | plainify) }}
+      {{ $summary := $page.Params.summary | default $page.Params.description | default ($page.Summary | plainify) }}
       <div class="post-card {{ if modBool $index 2 }}post-card--reverse{{ end }}">
         <a class="post-card__link" href="{{ $page.RelPermalink }}">
           <div class="post-card__frame">

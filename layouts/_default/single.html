@@ -3,13 +3,6 @@
     <h1>{{ .Title | markdownify }}</h1>
   </header>
   <div class="content__body">
-    {{ if .TableOfContents }}
-      <div id="toc">
-        <nav id="TableOfContents">
-          {{ .TableOfContents }}
-        </nav>
-      </div>
-    {{ end }}
     {{ .Content }}
   </div>
   <footer class="content__footer">
@@ -25,17 +18,23 @@
 {{ end }}
 
 {{ define "aside" }}
-  {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+  {{ $metaSummary := .Params.summary | default .Params.description }}
+  {{ if $metaSummary }}<p>{{ $metaSummary }}</p>{{ end }}
+
+  {{ $showToc := and (eq .Section "posts") (.TableOfContents) (ne .Params.toc false) }}
+  {{ if $showToc }}
+    <div class="toc-card">
+      <h2 class="toc-card__title">On this page</h2>
+      <nav class="toc-card__nav" aria-label="Table of contents">
+        {{ .TableOfContents }}
+      </nav>
+    </div>
+  {{ end }}
+
   {{ if or (.Params.author) (.Params.date) }}
     <p>
       {{ if .Params.author }}By {{ .Params.author }}{{ if .Date }}, {{ end }}{{ end }}
       {{ if .Date }}{{ .Date.Format "2006-01-02" }}{{ end }}
     </p>
-  {{ end }}
-
-  {{ if and (.Params.toc) (.TableOfContents) }}
-    <hr>
-    On this page:
-    {{ .TableOfContents }}
   {{ end }}
 {{ end }}
