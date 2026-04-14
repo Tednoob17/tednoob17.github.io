@@ -12,7 +12,7 @@ ted dot sig42 at tutamail dot com
 
 ### GPG
 
-My primary GPG fingerprint is `FA81 3F0E 44D1 DF79`. If you receive an email that appears to be from me but the signature does not match this fingerprint, it is not from me. You may download a copy of my public key [here](/public.key).
+My primary GPG fingerprint is `8E00 82D2 0CD9 F1B0 2D5A  4EFF 7668 B092 32AC 9021`. If you receive an email that appears to be from me but the signature does not match this fingerprint, it is not from me. You may download a copy of my public key [here](/public.key).
 
 # Social Media
 
@@ -25,10 +25,10 @@ My primary GPG fingerprint is `FA81 3F0E 44D1 DF79`. If you receive an email tha
 # Full GPG information
 
 ```text
-pub   rsa4096 2026-03-30 [SC]
-      8323F8E47F3190D663EF768A395A1B32E61DB49A
-uid   Ted Kouhouenou (42 is answer of everything) <ted.sig42@tutamail.com>
-sub   rsa4096 2026-03-30 [E]
+pub   rsa4096 2026-04-12 [SC]
+      8E00 82D2 0CD9 F1B0 2D5A  4EFF 7668 B092 32AC 9021
+uid           [ultimate] Ted Kouhouenou (Hii) <ted.sig42@tutamail.com>
+sub   rsa4096 2026-04-12 [E]
 ```
 ---
 <p style="font-size: 0.9em; opacity: 0.8;">
