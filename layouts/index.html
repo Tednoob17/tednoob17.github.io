@@ -9,7 +9,7 @@
     <section class="archive-group">
       <h2 class="archive-group__title">Latest posts</h2>
       <ul class="archive-group__list">
-        {{ range first 10 $pages }}
+        {{ range first 1 $pages }}
           <li class="archive-item">
             <a class="archive-item__link" href="{{ .RelPermalink }}">
               <span class="archive-item__date">{{ .Date.Format "02 Jan" }}</span>
