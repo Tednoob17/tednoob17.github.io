@@ -14,6 +14,11 @@
         {{ end }}
       </div>
     {{ end }}
+    {{ if not .Params.tags }}
+      <div class="tag-list">
+        <a class="tag" href="/tags/uncategorized/">Uncategorized</a>
+      </div>
+    {{ end }}
   </footer>
 {{ end }}
 

@@ -384,8 +384,15 @@ For what is see here the user not directly controls input, but we have to functi
 Next, identify the sink, a dangerous function that could cause negative
 outcomes like memory corruption if an attacker controls its inputs
 This is line <strong>20</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memcpy</span>(finalBuffer <span style="color:#f92672">+</span> offset, buffer, bytesRead);
-</span></span></code></pre></div><p><img src="/images/stc/ch1-code_1.png" alt="alt">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memcpy</span>(finalBuffer <span style="color:#f92672">+</span> offset, buffer, bytesRead);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/stc/ch1-code_1.png" alt="alt">
 1 - Is the variables who is incremented and increase the  memory allocated.<br>
 2 - It the line who create a buffer overflow due to the memory copy done here.<br>
 3 - It&rsquo;s the  where the problem born with the limited buffer size.</p>
@@ -398,23 +405,50 @@ This is line <strong>20</strong></p>
 3 - The connection is create here and is listen in (<strong>4</strong>)<br>
 4 - The connection is listen here , the value is send to connection waiting like <strong>input</strong> , and the value is send to <code>handleClient</code> .</p>
 <p>So the exploit code is here :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
 </span></span><span style="display:flex;"><span>host <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>gethostname()
 </span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234</span>
 </span></span><span style="display:flex;"><span>s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
 </span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>connect((host, port))
 </span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>sendall(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>)
 </span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>close()
-</span></span></code></pre></div><p><strong>Result:</strong><br>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Result:</strong><br>
 <img src="/images/stc/ch1-code_3.png" alt="alt"></p>
 <h3 id="applying-taint-analysis">Applying Taint Analysis</h3>
 <p>First, identify the <strong>source</strong>. This should be the output of a function that
 retrieves and stores attacker-controlled input.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>bytesRead <span style="color:#f92672">=</span> <span style="color:#a6e22e">recv</span>(clientSocket, buffer, MAX_BUFFER_SIZE, <span style="color:#ae81ff">0</span>)
-</span></span></code></pre></div><p>Next, identify the <strong>sink</strong>, a dangerous function that could cause negative
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>bytesRead <span style="color:#f92672">=</span> <span style="color:#a6e22e">recv</span>(clientSocket, buffer, MAX_BUFFER_SIZE, <span style="color:#ae81ff">0</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Next, identify the <strong>sink</strong>, a dangerous function that could cause negative
 outcomes like memory corruption if an attacker controls its inputs.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memcpy</span>(finalBuffer <span style="color:#f92672">+</span> offset, buffer, bytesRead);
-</span></span></code></pre></div><p>We must trace the flow of tainted variables from the first to the last.<br>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memcpy</span>(finalBuffer <span style="color:#f92672">+</span> offset, buffer, bytesRead);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We must trace the flow of tainted variables from the first to the last.<br>
 Any others variables who is affected by a tainted variable is also <strong>tainted</strong> . This can conduct to <strong>path explosion</strong> .<br>
 Path explosion refers to the fact that the number of <a href="https://en.wikipedia.org/wiki/Control_flow" title="Control flow">control-flow</a> paths in a program <a href="https://en.wikipedia.org/wiki/Exponential_growth" title="Exponential growth">grows exponentially</a> (&ldquo;explodes&rdquo;) with an increase in program size and can even be infinite in the case of programs with unbounded loop iterations (<a href="https://en.wikipedia.org/wiki/Path_explosion">Source Wikipedia</a>).<br>
 This makes it impossible, or at least extremely time-consuming, to apply taint analysis to all possible paths in a complex target.</p>
@@ -462,7 +496,25 @@ Think of it like this:</p>
 </ul>
 <hr>
 <p><strong>Ex</strong> :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_simple_wrapper</span>(func):
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_simple_wrapper</span>(func):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner_function</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
 </span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Calling function: </span><span style="color:#e6db74">{</span>func<span style="color:#f92672">.</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
@@ -476,11 +528,22 @@ Think of it like this:</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Manually wrapping the function</span>
 </span></span><span style="display:flex;"><span>wrapped_greet <span style="color:#f92672">=</span> my_simple_wrapper(greet)
 </span></span><span style="display:flex;"><span>print(wrapped_greet(<span style="color:#e6db74">&#34;Alice&#34;</span>))
-</span></span></code></pre></div><p><strong>Output</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Calling <span style="color:#66d9ef">function</span>: greet
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Output</strong>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Calling <span style="color:#66d9ef">function</span>: greet
 </span></span><span style="display:flex;"><span>Finished calling <span style="color:#66d9ef">function</span>: greet
 </span></span><span style="display:flex;"><span>Hello, Alice!
-</span></span></code></pre></div><p>Another factor in deciding which wrapper functions to include in your
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Another factor in deciding which wrapper functions to include in your
 analysis is how many times the functions are used. If they include too much
 custom logic that applies only to rare cases, they cease to be useful.<br>
 By Example if a wrapper function is used (is call) only once in all codebase it not important. As a general rule, consider wrapper functions as sinks when they’re reused extensively relative to the total size of the codebase.</p>
@@ -501,14 +564,29 @@ On <code>platform/centec-arm64/tsingma-bsp/src/ctcmac/ctcmac.c</code> (on local)
 <ul>
 <li>5 : Starting from the first argument, <code>tx_buff-&gt;vaddr + offset</code> (5) , which corresponds to the destination buffer for <code>memcpy</code> function .</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">memcpy</span>(<span style="color:#66d9ef">void</span> dest[<span style="color:#66d9ef">restrict</span> .n], <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span> src[<span style="color:#66d9ef">restrict</span> .n], <span style="color:#66d9ef">size_t</span> n);
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">memcpy</span>(<span style="color:#66d9ef">void</span> dest[<span style="color:#66d9ef">restrict</span> .n], <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span> src[<span style="color:#66d9ef">restrict</span> .n], <span style="color:#66d9ef">size_t</span> n);
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># on man memcpy
-</span></span></span></code></pre></div><ul>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>2 : Work backward to where <code>tx_buff-&gt;vaddr</code> is first assigned the return value of <code>kmalloc(alloc_size, GFP_KERNEL)</code> (2)
 This warrants greater attention because <a href="https://litux.nl/mirror/kerneldevelopment/0672327201/ch11lev1sec4.html">kmalloc</a>  allocates <strong>kernel memory</strong>, corruption of which could be devastating.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">kmalloc</span>(<span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">int</span> flags)
-</span></span></code></pre></div><p><img src="/images/stc/ch1-code_6.png" alt="alt"></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">kmalloc</span>(<span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">int</span> flags)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/stc/ch1-code_6.png" alt="alt"></p>
 <ul>
 <li>
 <p>1 : The <strong>size</strong> of the <strong>buffer allocated</strong> to <code>tx_buff-&gt;vaddr</code> is<code> alloc_size</code>, set by the cryptic macro <code>ALIGN(skb-&gt;len, BUF_ALIGNMENT)</code> (1) .</p>
@@ -522,8 +600,15 @@ The next if conditional block 1 moves this range down to 0 to <code>BUF_ALIGNMEN
 In short, the destination address for <code>memcpy</code> ranges from</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>tx_buff<span style="color:#f92672">-&gt;</span>vaddr to tx_buff<span style="color:#f92672">-&gt;</span>vaddr <span style="color:#f92672">+</span> (BUF_ALIGNMENT <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>).
-</span></span></code></pre></div><p>in (5) .</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>tx_buff<span style="color:#f92672">-&gt;</span>vaddr to tx_buff<span style="color:#f92672">-&gt;</span>vaddr <span style="color:#f92672">+</span> (BUF_ALIGNMENT <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>).
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>in (5) .</p>
 <p>Additionally, because the buffer at <code>tx_buff-&gt;vaddr</code> is of <strong>size</strong>
 <code>ALIGN(skb-&gt;len, BUF_ALIGNMENT)</code> on (2), or at least <code>BUF_ALIGNMENT</code> bytes, it isn’t possible for <code>tx_buff-&gt;vaddr + offset</code> to exceed the allocated buffer.</p>
 <p>Thus, you can safely ignore the first argument to the <code>memcpy</code> call in your taint analysis because it will never be dangerous by itself. Instead, focus on the third argument, which determines the number of bytes copied into the buffer and could potentially cause an overflow.</p>
@@ -553,24 +638,51 @@ It uses a fixed constant value for the number of bytes and thus is not attacker-
 Observe how many false positives you can filter out by locating all instances of <code>memcpy</code> in the code, then removing instances of non-vulnerable
 uses of <code>memcpy</code>.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
 </span></span><span style="display:flex;"><span>╰─$ grep -r <span style="color:#e6db74">&#34;memcpy&#34;</span> --include<span style="color:#f92672">=</span><span style="color:#ae81ff">\*</span>.<span style="color:#f92672">{</span>c,cpp<span style="color:#f92672">}</span> . | wc -l
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">237</span>
-</span></span></code></pre></div><p>This command searches all files with a <code>.c</code> or <code>.cpp</code>  file extension for
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This command searches all files with a <code>.c</code> or <code>.cpp</code>  file extension for
 the <code>memcpy</code> string, returning <strong>237</strong> results.<br>
 Next, tweak the regular expression to match instances of <code>memcpy</code> that
 don’t use a constant for the third argument, based on the assumption that
 constant values either are numeric or have variable names in all capital
 letters:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
 </span></span><span style="display:flex;"><span>╰─$ grep -r <span style="color:#e6db74">&#34;memcpy(.*,.*, [a-z]&#34;</span> --include<span style="color:#f92672">=</span><span style="color:#ae81ff">\*</span>.<span style="color:#f92672">{</span>c,cpp<span style="color:#f92672">}</span> . | wc -l
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">97</span>
-</span></span></code></pre></div><p>This regex uses <code>[a-z]</code>  to ensure that the third argument starts with a lowercase letter, returning <strong>97</strong> results. This cuts down the number of results you have to manually analyze by more than half!</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This regex uses <code>[a-z]</code>  to ensure that the third argument starts with a lowercase letter, returning <strong>97</strong> results. This cuts down the number of results you have to manually analyze by more than half!</p>
 <p>Next, filter out instances where the third argument is sizeof(dest):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●›
 </span></span><span style="display:flex;"><span>╰─$ grep -r <span style="color:#e6db74">&#34;memcpy(.*,.*, [a-z]&#34;</span> --include<span style="color:#f92672">=</span><span style="color:#ae81ff">\*</span>.<span style="color:#f92672">{</span>c,cpp<span style="color:#f92672">}</span> . | grep -v <span style="color:#e6db74">&#34;memcpy(.*,.*,\s*sizeof(&#34;</span> | wc -l
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">54</span>
-</span></span></code></pre></div><p>As shown here, instead of overcomplicating the <strong>regex</strong>, you can simply
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As shown here, instead of overcomplicating the <strong>regex</strong>, you can simply
 pipe the results of the first grep command to a second grep command, which
 uses the <code>-v</code> option to filter out results that match the <strong>regex pattern</strong>.<br>
 The pattern finds <code>memcpy</code> calls whose third argument starts with sizeof(, disregarding
@@ -589,11 +701,21 @@ For manual <strong>code review</strong>, focus your time and energy on quickly f
 <ul>
 <li>The buffer variable is parser by a <code>dhcpv6_option</code> struct who is defined in <code>src/dhcp6relay/src/relay.h</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> dhcpv6_option {
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> dhcpv6_option {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint16_t</span> option_code;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint16_t</span> option_length;
 </span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>The type of <code>option_length</code> is <code>uint16_t</code> who is a (unisgned short integer) with <strong>65535</strong> for max value.<br>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The type of <code>option_length</code> is <code>uint16_t</code> who is a (unisgned short integer) with <strong>65535</strong> for max value.<br>
 Noted that we can choose the value used by
 <code>option-&gt;option_length</code> but the value of <strong>buffer destination</strong>  (<code>current_buffer_position</code>) is fixed to <strong>4096</strong>.<br>
 So this function is <strong>exploitable</strong> .</p>
@@ -612,21 +734,47 @@ At this point, you’ve confirmed three important points in the taint flow:</p>
 <li>The <code>option</code> variable is a instance of <code>dhcpv6_option</code> struct parsed from
 the bytes at the <code>current_position</code> pointer while <code>(current_position - msg) != len</code>.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> option <span style="color:#f92672">=</span> <span style="color:#a6e22e">parse_dhcpv6_opt</span>(current_position, <span style="color:#f92672">&amp;</span>tmp);
-</span></span></code></pre></div><p>Why ? because of <code>parse_dhcpv6_opt</code> is  a function who return a <code>dhcpv6_option</code> struct and also because option have <code>option_code</code> and <code>option_length</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">╭─</span>sig42<span style="color:#960050;background-color:#1e0010">@</span>x76 <span style="color:#f92672">~/</span>Downloads<span style="color:#f92672">/</span>sonic<span style="color:#f92672">-</span>buildimage <span style="color:#960050;background-color:#1e0010">‹</span>bcf5388f2<span style="color:#960050;background-color:#1e0010">●›</span> 
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> option <span style="color:#f92672">=</span> <span style="color:#a6e22e">parse_dhcpv6_opt</span>(current_position, <span style="color:#f92672">&amp;</span>tmp);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Why ? because of <code>parse_dhcpv6_opt</code> is  a function who return a <code>dhcpv6_option</code> struct and also because option have <code>option_code</code> and <code>option_length</code>.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">╭─</span>sig42<span style="color:#960050;background-color:#1e0010">@</span>x76 <span style="color:#f92672">~/</span>Downloads<span style="color:#f92672">/</span>sonic<span style="color:#f92672">-</span>buildimage <span style="color:#960050;background-color:#1e0010">‹</span>bcf5388f2<span style="color:#960050;background-color:#1e0010">●›</span> 
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">╰─$</span> grep <span style="color:#f92672">-</span>A <span style="color:#ae81ff">10</span> <span style="color:#e6db74">&#34;dhcpv6_option&#34;</span> src<span style="color:#f92672">/</span>dhcp6relay<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>relay.h
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> dhcpv6_option {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> option_code;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> option_length;
 </span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><ul>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li><code>msg</code> argument is a pointer to the <strong>DHCPv6</strong> message header position and the <code>len</code> argument  is the <strong>size</strong> of data received (Refer to function annotation).</li>
 <li>Moreover, <code>current_position</code> is initialized as msg
 and incremented by the size of a dhcpv6_relay_msg struct:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>current_position <span style="color:#f92672">+=</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> dhcpv6_relay_msg).
-</span></span></code></pre></div><ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>current_position <span style="color:#f92672">+=</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> dhcpv6_relay_msg).
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>
 <p><code>parse_dhcpv6_opt</code> takes <code>current_position</code> as its first argument. <code>current_position</code> is a pointer (<code>const uint8_t *</code>) that indicates the beginning of the bytes to be interpreted.</p>
 </li>
@@ -646,11 +794,21 @@ and incremented by the size of a dhcpv6_relay_msg struct:</li>
 <p><input disabled="" type="checkbox"> <strong>Packet Schema</strong></p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>msg                                     current_position                                              len
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>msg                                     current_position                                              len
 </span></span><span style="display:flex;"><span>------------------------------------------------------------------------------------------------------
 </span></span><span style="display:flex;"><span>| dhcpv6_relay_msg         |  dhcpv6_option        |  dhcpv6_msg    |                  |             |            
 </span></span><span style="display:flex;"><span>+----------------------------------------------------------------------------------------------------+
-</span></span></code></pre></div><ul>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>After determining that the attacker must control <code>msg</code> (the second argument to <code>relay_relay_reply</code>) to reach the vulnerable <code>memcpy</code>, look for calls to <code>relay_relay_reply</code> to determine the source of the second argument.</li>
 </ul>
 <p>This function is only used in one function on <code>server_callback</code>
@@ -662,13 +820,25 @@ The variable <code>message_buffer</code> is passed to second argument of <code>r
 We know that <code>recvfrom</code> function open socket and copy data to <code>config-&gt;local_sock</code>
 from <code>message_buffer</code> .
 Multiple possibility are offer here, by example  a remote attacker can access to socket when <code>recvfrom</code> is open .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●› 
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>╭─sig42@x76 ~/Downloads/sonic-buildimage/src ‹bcf5388f2●› 
 </span></span><span style="display:flex;"><span>╰─$ grep -ni <span style="color:#e6db74">&#34;config-&gt;local_sock&#34;</span> dhcp6relay/src/relay.cpp
 </span></span><span style="display:flex;"><span>317:    interface_config-&gt;local_sock <span style="color:#f92672">=</span> *local_sock; 
 </span></span><span style="display:flex;"><span>573:    relay_client<span style="color:#f92672">(</span>config-&gt;local_sock, current_position, ntohs<span style="color:#f92672">(</span>udp_header-&gt;len<span style="color:#f92672">)</span> - sizeof<span style="color:#f92672">(</span>udphdr<span style="color:#f92672">)</span>, ip_header, ether_header, config<span style="color:#f92672">)</span>;
 </span></span><span style="display:flex;"><span>594:    <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span>data <span style="color:#f92672">=</span> recvfrom<span style="color:#f92672">(</span>config-&gt;local_sock, message_buffer, 4096, 0, <span style="color:#f92672">(</span>sockaddr *<span style="color:#f92672">)</span>&amp;from, &amp;len<span style="color:#f92672">))</span> <span style="color:#f92672">==</span> -1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>719:        config-&gt;local_sock <span style="color:#f92672">=</span> local_sock;
-</span></span></code></pre></div><p>The sustainable line here is on line <strong>719</strong> because in the others line the <code>config-&gt;local_sock</code> in parameters.  <br>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The sustainable line here is on line <strong>719</strong> because in the others line the <code>config-&gt;local_sock</code> in parameters.  <br>
 <img src="/images/stc/ch1-code_14.png" alt="alt">
 And in this line we can see that a value (<code>local_sock</code>) is affected to <code>config-&gt;local_sock</code> and before this affectation the <code>prepare_socket</code> function is used and <code>local_sock</code> value is passed to parameter.
 <img src="/images/stc/ch1-code_16.png" alt="alt"></p>
@@ -687,30 +857,63 @@ But before we need to know how to build the program locally before to build her 
 the error on google .
 When run <code>make</code> we see this:</p>
 <h3 id="first-problem">First problem</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#12 0.287 src/relay.cpp:3:10: fatal error: event.h: No such file or directory
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#12 0.287 src/relay.cpp:3:10: fatal error: event.h: No such file or directory
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">3</span> <span style="color:#f92672">|</span> <span style="color:#960050;background-color:#1e0010">#</span>include <span style="color:#f92672">&lt;</span>event.h<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">|</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">^~~~~~~~~</span>
 </span></span><span style="display:flex;"><span>compilation terminated.
-</span></span></code></pre></div><p>This error meaning you need to install a shared library that <code>dhcp6relay</code> depends on.<br>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This error meaning you need to install a shared library that <code>dhcp6relay</code> depends on.<br>
 For solve that  a simple  <code>apt install libevent-dev</code>.</p>
 <h3 id="second-problem">Second Problem</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#11 0.328 src/relay.cpp:10:10: fatal error: configdb.h: No such file or
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#11 0.328 src/relay.cpp:10:10: fatal error: configdb.h: No such file or
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>directory
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> <span style="color:#f92672">|</span> <span style="color:#960050;background-color:#1e0010">#</span>include <span style="color:#e6db74">&#34;configdb.h&#34;</span>
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">|</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">^~~~~~~~~~~~</span>
 </span></span><span style="display:flex;"><span>compilation terminated.
-</span></span></code></pre></div><p>Searching for <code>configdb.h</code> shows that it belongs to the <code>sonic-swss-common</code>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Searching for <code>configdb.h</code> shows that it belongs to the <code>sonic-swss-common</code>
 library, which is referred to in the <code>-I</code> argument in the <strong>Makefile</strong>.<br>
 For this new project we need to build ans install the package yourself, the process to install it is on the <code>README.md</code> file on <a href="https://github.com/sonic-net/sonic-swss-common">sonic-swss-common</a> .</p>
 <h3 id="third-problem">Third Problem</h3>
 <p>After resolve all this dependency  on <code>dhcp6relay</code>, we see another problem when  we run :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>terminate called after throwing an instance of <span style="color:#960050;background-color:#1e0010">&#39;</span>std<span style="color:#f92672">::</span>system_error<span style="color:#960050;background-color:#1e0010">&#39;</span>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>terminate called after throwing an instance of <span style="color:#960050;background-color:#1e0010">&#39;</span>std<span style="color:#f92672">::</span>system_error<span style="color:#960050;background-color:#1e0010">&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">what</span>()<span style="color:#f92672">:</span> Unable to connect to <span style="color:#a6e22e">redis</span> (unix<span style="color:#f92672">-</span>socket)<span style="color:#f92672">:</span> Cannot assign requested
 </span></span><span style="display:flex;"><span>address
 </span></span><span style="display:flex;"><span>Aborted
-</span></span></code></pre></div><p>It appears that dhcp6relay is attempting to connect to a Redis server. If
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It appears that dhcp6relay is attempting to connect to a Redis server. If
 you analyze <code>configInterface.cpp</code>, one of the source files for <code>dhcp6relay</code>, you’ll
 see that it checks the <code>DHCP_RELAY</code> table in the <code>CONFIG_DB</code> database for a <code>dhcpv6_servers</code> field name.</p>
 <p><img src="/images/stc/ch1-code_16.png" alt="alt"></p>
@@ -724,14 +927,69 @@ By definition, link-local <strong>IPv6</strong> addresses fall in the range <cod
 thus any valid address within this range works.</p>
 <h3 id="setup-">Setup ?</h3>
 <p>File : <code>add_ipv6_addresses.sh</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/init.d/redis-server restart
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/init.d/redis-server restart
 </span></span><span style="display:flex;"><span>ip link add link eth0 name vlan type vlan id <span style="color:#ae81ff">3</span>
 </span></span><span style="display:flex;"><span>ip -6 addr add fe80::20c:29ff:fe90:14c5/64 dev vlan
 </span></span><span style="display:flex;"><span>ip -6 addr add 2a00:7b80:451:1::10/64 dev vlan
 </span></span><span style="display:flex;"><span>ip link set vlan up
 </span></span><span style="display:flex;"><span>redis-cli -n <span style="color:#ae81ff">4</span> HSET <span style="color:#e6db74">&#34;DHCP_RELAY|vlan&#34;</span> dhcpv6_servers <span style="color:#e6db74">&#34;fe80::20c:29ff:fe90:14c5/64&#34;</span>
-</span></span></code></pre></div><p>The <code>Dockerfile</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:20.04</span><span style="color:#960050;background-color:#1e0010">
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>Dockerfile</code></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:20.04</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install dependencies</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt update<span style="color:#960050;background-color:#1e0010">
@@ -770,17 +1028,38 @@ thus any valid address within this range works.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># copy add ipv6 address script</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> add_ipv6_addresses.sh add_ipv6_addresses.sh<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chmod +x add_ipv6_addresses.sh<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>Place this <code>Dockerfile</code> in a folder with the <code>add_ipv6_addresses.sh</code> script.<br>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Place this <code>Dockerfile</code> in a folder with the <code>add_ipv6_addresses.sh</code> script.<br>
 Now build and run it with:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker build -t dhcp6relay .
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker build -t dhcp6relay .
 </span></span><span style="display:flex;"><span>$ docker run -it --cap-add<span style="color:#f92672">=</span>NET_ADMIN --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> dhcp6relay
-</span></span></code></pre></div><p>Finally, run the script and start <code>dhcp6relay</code> :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@8928b41ace8c:/sonic-buildimage/src/dhcp6relay# ./add_ipv6_addresses.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Finally, run the script and start <code>dhcp6relay</code> :</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@8928b41ace8c:/sonic-buildimage/src/dhcp6relay# ./add_ipv6_addresses.sh
 </span></span><span style="display:flex;"><span>Stopping redis-server: redis-server.
 </span></span><span style="display:flex;"><span>Starting redis-server: redis-server.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>integer<span style="color:#f92672">)</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>root@8928b41ace8c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
-</span></span></code></pre></div><h2 id="building-the-proof-of-concept">Building the Proof of Concept</h2>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="building-the-proof-of-concept">Building the Proof of Concept</h2>
 <p>You must send <strong>bytes</strong> that match the <code>dhcpv6_relay_msg</code> and <code>dhcpv6_option</code>
 structs, as <code>src/dhcp6relay/src/relay.h</code> defines :</p>
 <p>The link_address and peer_address members of the dhcpv6_relay_msg struct
@@ -808,22 +1087,57 @@ and struct <strong>libraries</strong>. In particular, the <strong>pack</strong> 
 large <code>option_length</code> being used as the size of a <code>memcpy</code> to a <code>4,096-byte</code> destination <strong>buffer</strong>, so set <code>option_length</code> to the maximum <strong>65535</strong> value and add additional <strong>overflow bytes</strong> to the end of the payload. Since <code>dhcp6relay</code> converts the
 values of <code>option_code</code> and <code>option_length</code> from network to host byte order, convert these values to network byte order first using <code>socket.htons</code>.</p>
 <p>Next, rebuild the container image and start a new session:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker build -t dhcp6relay .
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker build -t dhcp6relay .
 </span></span><span style="display:flex;"><span>$ docker run -it --cap-add<span style="color:#f92672">=</span>NET_ADMIN --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> dhcp6relay
-</span></span></code></pre></div><pre tabindex="0"><code class="language-docker-bash" data-lang="docker-bash">root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./add_ipv6_addresses.sh
-Stopping redis-server: redis-server.
-Starting redis-server: redis-server.
-(integer) 1
-root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
-</code></pre><p>Start a second interactive session by listing the running containers and
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./add_ipv6_addresses.sh
+</span></span><span style="display:flex;"><span>Stopping redis-server: redis-server.
+</span></span><span style="display:flex;"><span>Starting redis-server: redis-server.
+</span></span><span style="display:flex;"><span>(integer) 1
+</span></span><span style="display:flex;"><span>root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Start a second interactive session by listing the running containers and
 starting bash in the current one:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker exec -it 743a13d9862c bash
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker exec -it 743a13d9862c bash
 </span></span><span style="display:flex;"><span>root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# python3 /tmp/exploit.py
-</span></span></code></pre></div><p>You should observe a segmentation fault in your first session when you
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>You should observe a segmentation fault in your first session when you
 run <code>dhcp6relay</code>:</p>
-<pre tabindex="0"><code class="language-docker-bash" data-lang="docker-bash">root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
-Segmentation fault
-</code></pre><p>To perform a quick triage of the crash, debug <code>dhcp6relay</code> using <code>gdb</code> , run the program on <code>gdb</code> with <code>run</code> command and check where the <strong>vulnerability</strong> appears with <code>backtrace</code>.<br>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>root@743a13d9862c:/sonic-buildimage/src/dhcp6relay# ./dhcp6relay
+</span></span><span style="display:flex;"><span>Segmentation fault
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>To perform a quick triage of the crash, debug <code>dhcp6relay</code> using <code>gdb</code> , run the program on <code>gdb</code> with <code>run</code> command and check where the <strong>vulnerability</strong> appears with <code>backtrace</code>.<br>
 Reviewing each step in discovering <code>CVE-2022-0324</code> demonstrated the <strong>key</strong> principle of selection in the <strong>sink-to-source</strong> tactic.</p>
 
   </div>
@@ -835,6 +1149,7 @@ Reviewing each step in discovering <code>CVE-2022-0324</code> demonstrated the <
           <a class="tag" href="/tags/book-review/">book-review</a>
         
       </div>
+    
     
   </footer>
 

