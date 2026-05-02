@@ -21,14 +21,19 @@
               {{ if $summary }}
                 <div class="post-card__excerpt">{{ $summary }}</div>
               {{ end }}
-              {{ with $page.Params.tags }}
-                <div class="post-card__tags">
-                  {{ range . }}
-                    {{ $tagUrl := printf "/tags/%s/" (urlize .) }}
-                    <a class="post-card__tag" href="{{ $tagUrl | relURL }}">{{ . }}</a>
-                  {{ end }}
-                </div>
-              {{ end }}
+              <div class="post-card__meta">
+                {{ with $page.Date }}
+                  <span class="post-card__tag post-card__date">{{ .Format "Jan 2006" }}</span>
+                {{ end }}
+                {{ with $page.Params.tags }}
+                  <div class="post-card__tags">
+                    {{ range . }}
+                      {{ $tagUrl := printf "/tags/%s/" (urlize .) }}
+                      <a class="post-card__tag" href="{{ $tagUrl | relURL }}">{{ . }}</a>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
             </div>
           </div>
         </a>

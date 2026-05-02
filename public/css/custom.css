@@ -126,12 +126,18 @@
     font-size: 0.95rem;
 }
 
-.post-card__tags {
+.post-card__meta {
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     font-size: 0.75rem;
+}
+
+.post-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .post-card__tag {
@@ -143,6 +149,10 @@
     background: var(--bg);
     box-shadow: 1px 1px 0 var(--fg), 2px 2px 0 var(--fg), 3px 3px 0 var(--fg);
     text-decoration: none;
+}
+
+.post-card__date {
+    pointer-events: none;
 }
 
 .post-card__tag:hover {
@@ -209,6 +219,46 @@
 .term-pill:hover {
     color: var(--bg);
     background: var(--fg);
+}
+
+/* Single post table of contents */
+.toc-card {
+    margin: 1rem 0 1.25rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--fg);
+    background: var(--inner-bg);
+}
+
+.toc-card__title {
+    margin: 0 0 0.55rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.toc-card__nav #TableOfContents ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.toc-card__nav #TableOfContents li {
+    margin: 0.25rem 0;
+}
+
+.toc-card__nav #TableOfContents a {
+    color: var(--fg);
+    text-decoration: none;
+}
+
+.toc-card__nav #TableOfContents a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 45rem) {
+    .toc-card {
+        position: sticky;
+        top: 1rem;
+    }
 }
 
 @media (min-width: 48rem) {
