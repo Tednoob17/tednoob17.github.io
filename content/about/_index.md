@@ -11,16 +11,20 @@ I have spent much of my time at schools such as **42 School**, **Epitech**, and 
 I spend my **free time** on **web security research** and recently started **bug bounty hunting**.    
 From time to time, I contribute to **open source** projects such as [Exegol](https://exegol.com/), [The Hacker Recipes](https://www.thehacker.recipes/), [Payload All The Things](https://swisskyrepo.github.io/PayloadsAllTheThings/), and other open source projects, especially when I **submit patches for vulnerabilities I discover**.    
 I play CTF and collaborate with the [@TheBugsReapers](https://thebugsreapers.com) **vulnerability researcher/bug hunter team**.     
-I strive to share what I have learned on my blog [tedsig42.re](https://tednoob17.github.io/), which includes CTF writeups, research projects, and more.     
-My [YouTube Channel](https://www.youtube.com/@Tedsig42)    
-**Currently self-employed, but open to new opportunities.**     
+I strive to share what I have learned on my blog [tedsig42.re](https://tednoob17.github.io/), which includes CTF writeups, research projects, and more.      
+**Currently self-employed, but open to new opportunities.**   
+PDF Resume here: [English](/assets/Tedsig42-CV.pdf)      
+My [YouTube Channel](https://www.youtube.com/@Tedsig42)     
+
+
+  
 
 **What they says about me :**
 
 <blockquote class="twitter-tweet"><p lang="art" dir="ltr">🤣🤣 <a href="https://t.co/Y02HZHdqzC">https://t.co/Y02HZHdqzC</a></p>&mdash; Tedsig42 (@Tedsig42) <a href="https://twitter.com/Tedsig42/status/1750272153717473728?ref_src=twsrc%5Etfw">January 24, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 
-PDF Resume here: [English](/assets/Tedsig42-CV.pdf)     
+  
 ## My Root-me Stats Here.  
 ![Root-me-stats](https://root-me-diff.vercel.app/rm-gh?nickname=Tedsig42&style=midnight)    
 
