@@ -128,8 +128,6 @@ if (isset ($_COOKIE['leet_hax0r'])) {
         echo $e;
     }
 ```
-so we can if we want bypass this check like this : 
-![alt text](/images/stc/bypass.png)
 
 Now about a term used in image : 
 - **SQL** `Object` was choosen because `__destruct()` method
