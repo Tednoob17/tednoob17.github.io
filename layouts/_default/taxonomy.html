@@ -4,41 +4,18 @@
     {{ .Content }}
   </header>
 
-  <div class="posts-cards">
-    {{ range $index, $page := .Pages.ByDate.Reverse }}
-      {{ $image := $page.Params.banner | default $page.Params.image | default $page.Params.cover }}
-      {{ $summary := $page.Params.description | default ($page.Summary | plainify) }}
-      <div class="post-card {{ if modBool $index 2 }}post-card--reverse{{ end }}">
-        <a class="post-card__link" href="{{ $page.RelPermalink }}">
-          <div class="post-card__frame">
-            {{ if $image }}
-              <div class="post-card__media">
-                <img src="{{ $image | absURL }}" alt="{{ $page.Title | plainify }} cover" loading="lazy" />
-              </div>
-            {{ end }}
-            <div class="post-card__body">
-              <div class="post-card__title">{{ $page.Title | markdownify }}</div>
-              {{ if $summary }}
-                <div class="post-card__excerpt">{{ $summary }}</div>
-              {{ end }}
-              <div class="post-card__meta">
-                {{ with $page.Date }}
-                  <span class="post-card__tag post-card__date">{{ .Format "Jan 2006" }}</span>
-                {{ end }}
-                {{ with $page.Params.tags }}
-                  <div class="post-card__tags">
-                    {{ range . }}
-                      {{ $tagUrl := printf "/tags/%s/" (urlize .) }}
-                      <a class="post-card__tag" href="{{ $tagUrl | relURL }}">{{ . }}</a>
-                    {{ end }}
-                  </div>
-                {{ end }}
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    {{ end }}
+  <div class="posts-archive">
+    <section class="archive-group">
+      <ul class="archive-group__list">
+        {{ range .Pages.ByDate.Reverse }}
+          <li class="archive-item">
+            <a class="archive-item__link" href="{{ .RelPermalink }}">
+              <span class="archive-item__title">{{ .Title | markdownify }}</span>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
   </div>
 {{ end }}
 
