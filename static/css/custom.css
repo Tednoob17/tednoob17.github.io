@@ -595,3 +595,31 @@ article pre code,
     text-decoration: none;
     font-weight: 600;
 }
+
+/* Theme selector in main nav */
+.main-nav__theme-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.theme-select-label {
+    display: inline-flex;
+    align-items: center;
+    color: var(--fg);
+}
+
+.theme-select {
+    max-width: 11rem;
+    padding: 0.2rem 0.3rem;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 0.8rem;
+}
+
+.theme-select:focus {
+    outline: 1px solid var(--fg);
+    outline-offset: 1px;
+}
