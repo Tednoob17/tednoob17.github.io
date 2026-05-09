@@ -2,11 +2,28 @@
 {{- $path := printf "static/images/art/%s" $folder -}}
 {{- $files := readDir $path -}}
 
+{{- /* Build a map of descriptions from .txt files in the same folder. Keys = basename without ext */ -}}
+{{- $.Scratch.Set "descs" (dict) -}}
+{{- range $files -}}
+  {{- if and (not .IsDir) (hasSuffix .Name ".txt") -}}
+    {{- $key := replaceRE "\.[^.]+$" "" .Name -}}
+    {{- $content := readFile (printf "%s/%s" $path .Name) -}}
+    {{- $old := $.Scratch.Get "descs" -}}
+    {{- $.Scratch.Set "descs" (merge $old (dict $key $content)) -}}
+  {{- end -}}
+{{- end -}}
+
 <div class="art-grid content__body">
     {{- range $files -}}
         {{- if not .IsDir -}}
+            {{- $base := replaceRE "\.[^.]+$" "" .Name -}}
+            {{- $descs := $.Scratch.Get "descs" -}}
+            {{- $desc := index $descs $base -}}
             <div class="art-tile">
                 <img class="gallery-img" src="{{ printf "images/art/%s/%s" $folder .Name | absURL }}" alt="{{ .Name }}" loading="lazy">
+                {{- if $desc }}
+                  <div class="art-desc">{{ $desc | markdownify }}</div>
+                {{- end }}
             </div>
         {{- end -}}
     {{- end -}}

@@ -96,6 +96,14 @@
   display: block;
 }
 
+.art-desc {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    background: rgba(0,0,0,0.02);
+    border-top: 1px solid rgba(0,0,0,0.04);
+}
+
 .art-tile--empty {
     display: flex;
     flex-direction: column;
