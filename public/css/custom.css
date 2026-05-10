@@ -84,6 +84,8 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease-in-out;
+    content-visibility: auto;
+    contain-intrinsic-size: 320px 240px;
 }
 
 .art-tile:hover {
@@ -94,6 +96,108 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+.art-desc {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    background: rgba(0,0,0,0.02);
+    border-top: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Lightbox with side description */
+.content__body img,
+.post-card__media img,
+article img {
+    cursor: zoom-in;
+}
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    z-index: 9999;
+}
+.lightbox-overlay.active {
+    display: flex;
+}
+.lightbox-inner {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: start;
+    padding: 0 4.5rem;
+}
+.lightbox-img {
+    flex: 1 1 auto;
+    max-width: 75%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.lightbox-desc {
+    flex: 0 0 28%;
+    max-width: 28%;
+    color: var(--muted);
+    overflow: auto;
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.03);
+    border-radius: 6px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+@media (max-width: 800px) {
+    .lightbox-inner {
+        flex-direction: column;
+        padding: 0 3.5rem;
+    }
+    .lightbox-img { max-width: 100%; }
+    .lightbox-desc {
+        max-width: 100%;
+        flex-basis: auto;
+    }
+}
+
+/* controls */
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 0.9rem;
+    font-size: 1.25rem;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 2;
+}
+.lightbox-prev { left: 0.75rem; }
+.lightbox-next { right: 0.75rem; }
+
+/* fade animation */
+.lightbox-overlay .lightbox-inner,
+.lightbox-overlay .lightbox-img,
+.lightbox-overlay .lightbox-desc {
+    transition: opacity 220ms ease, transform 220ms ease;
+    opacity: 0;
+    transform: scale(0.99);
+}
+.lightbox-overlay.active .lightbox-inner,
+.lightbox-overlay.active .lightbox-img,
+.lightbox-overlay.active .lightbox-desc {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .art-tile--empty {
@@ -470,46 +574,6 @@
     }
 }
 
-/* ── Lightbox / Click-to-zoom ── */
-.content__body img,
-.post-card__media img,
-article img {
-    cursor: zoom-in;
-}
-
-.lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.85);
-    cursor: zoom-out;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
-}
-
-.lightbox-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.lightbox-overlay img {
-    max-width: 92vw;
-    max-height: 92vh;
-    border-radius: 6px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    transform: scale(0.95);
-    transition: transform 0.25s ease;
-    cursor: zoom-out;
-}
-
-.lightbox-overlay.active img {
-    transform: scale(1);
-}
-
 /* Make bold text green */
 strong,
 b {
@@ -594,4 +658,32 @@ article pre code,
     color: var(--fg);
     text-decoration: none;
     font-weight: 600;
+}
+
+/* Theme selector in main nav */
+.main-nav__theme-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.theme-select-label {
+    display: inline-flex;
+    align-items: center;
+    color: var(--fg);
+}
+
+.theme-select {
+    max-width: 11rem;
+    padding: 0.2rem 0.3rem;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 0.8rem;
+}
+
+.theme-select:focus {
+    outline: 1px solid var(--fg);
+    outline-offset: 1px;
 }

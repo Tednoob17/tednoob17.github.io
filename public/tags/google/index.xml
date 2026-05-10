@@ -1,26 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Google on Tedsig42</title>
-    <link>https://tednoob17.github.io/tags/google/</link>
-    <description>Recent content in Google on Tedsig42</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0100</lastBuildDate>
-    <atom:link href="https://tednoob17.github.io/tags/google/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Google VRP: Bypassing the Fix for CVE-2022-25647</title>
-      <link>https://tednoob17.github.io/posts/google-vrp-bypass-fix-of-cve-2022-25647/</link>
-      <pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate>
-      <guid>https://tednoob17.github.io/posts/google-vrp-bypass-fix-of-cve-2022-25647/</guid>
-      <description>&lt;h2 id=&#34;gson-not-json&#34;&gt;Gson, not JSON&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Gson&lt;/code&gt; (Google JSON) is an &lt;strong&gt;open-source&lt;/strong&gt; Java library developed by &lt;strong&gt;Google&lt;/strong&gt;.   &lt;br&gt;&#xA;Its primary purpose is to convert Java objects into their &lt;code&gt;JSON&lt;/code&gt; representation (&lt;strong&gt;serialization&lt;/strong&gt;) and to convert a &lt;code&gt;JSON&lt;/code&gt; string back into an equivalent &lt;strong&gt;Java object&lt;/strong&gt; (&lt;strong&gt;deserialization&lt;/strong&gt;).&lt;/p&gt;&#xA;&lt;h3 id=&#34;how-gson-works&#34;&gt;How Gson Works&lt;/h3&gt;&#xA;&lt;p&gt;To understand &lt;code&gt;Gson&lt;/code&gt;, think of it as a two-way bridge between your Java code and the &lt;code&gt;JSON&lt;/code&gt; format.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Serialization&lt;/strong&gt; (&lt;code&gt;Object&lt;/code&gt; -&amp;gt; &lt;code&gt;JSON&lt;/code&gt;)&#xA;If you have a &lt;strong&gt;Java object&lt;/strong&gt; (e.g., a &lt;code&gt;User&lt;/code&gt; class with a name and age), Gson &lt;strong&gt;reads&lt;/strong&gt; that object&amp;rsquo;s fields and writes them into a JSON string.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;code&gt;Java: User user = new User(&amp;quot;Ted&amp;quot;, 21);&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Google VRP: To Be a Comment, or Not to Be ?</title>
-      <link>https://tednoob17.github.io/posts/google-vrp-feature-not-bug/</link>
-      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
-      <guid>https://tednoob17.github.io/posts/google-vrp-feature-not-bug/</guid>
-      <description>&lt;h2 id=&#34;the-hook-the-what&#34;&gt;The Hook (The &amp;ldquo;What&amp;rdquo;)&lt;/h2&gt;&#xA;&lt;p&gt;Can a single invisible character bypass a security sandbox ? &lt;br&gt;&#xA;&lt;img src=&#34;https://tednoob17.github.io/images/stc/what-meme.gif&#34; alt=&#34;alt text&#34;&gt;  &lt;br&gt;&#xA;I discovered a vulnerability in &lt;code&gt;google/zx&lt;/code&gt; where a Carriage Return (&lt;code&gt;\r&lt;/code&gt;) allows arbitrary code execution in Markdown files—right under the nose of code reviewers.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-zx-&#34;&gt;What is zx ?&lt;/h2&gt;&#xA;&lt;p&gt;In the world of DevOps, we often struggle with &lt;strong&gt;Bash&lt;/strong&gt; (which is powerful but messy) and &lt;strong&gt;Node.js&lt;/strong&gt; (which is clean but wordy).&lt;br&gt;&#xA;&lt;strong&gt;zx&lt;/strong&gt; is a tool created by &lt;strong&gt;Google&lt;/strong&gt; that marries the two.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Google on Tedsig42</title><link>https://tednoob17.github.io/tags/google/</link><description>Recent content in Google on Tedsig42</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0100</lastBuildDate><atom:link href="https://tednoob17.github.io/tags/google/index.xml" rel="self" type="application/rss+xml"/><item><title>Google VRP: Bypassing the Fix for CVE-2022-25647</title><link>https://tednoob17.github.io/posts/google-vrp-bypass-fix-of-cve-2022-25647/</link><pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/posts/google-vrp-bypass-fix-of-cve-2022-25647/</guid><description>&lt;h2 id="gson-not-json"&gt;Gson, not JSON&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Gson&lt;/code&gt; (Google JSON) is an &lt;strong&gt;open-source&lt;/strong&gt; Java library developed by &lt;strong&gt;Google&lt;/strong&gt;. &lt;br&gt;
+Its primary purpose is to convert Java objects into their &lt;code&gt;JSON&lt;/code&gt; representation (&lt;strong&gt;serialization&lt;/strong&gt;) and to convert a &lt;code&gt;JSON&lt;/code&gt; string back into an equivalent &lt;strong&gt;Java object&lt;/strong&gt; (&lt;strong&gt;deserialization&lt;/strong&gt;).&lt;/p&gt;
+&lt;h3 id="how-gson-works"&gt;How Gson Works&lt;/h3&gt;
+&lt;p&gt;To understand &lt;code&gt;Gson&lt;/code&gt;, think of it as a two-way bridge between your Java code and the &lt;code&gt;JSON&lt;/code&gt; format.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Serialization&lt;/strong&gt; (&lt;code&gt;Object&lt;/code&gt; -&amp;gt; &lt;code&gt;JSON&lt;/code&gt;)
+If you have a &lt;strong&gt;Java object&lt;/strong&gt; (e.g., a &lt;code&gt;User&lt;/code&gt; class with a name and age), Gson &lt;strong&gt;reads&lt;/strong&gt; that object&amp;rsquo;s fields and writes them into a JSON string.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Java: User user = new User(&amp;quot;Ted&amp;quot;, 21);&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Google VRP: To Be a Comment, or Not to Be ?</title><link>https://tednoob17.github.io/posts/google-vrp-feature-not-bug/</link><pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/posts/google-vrp-feature-not-bug/</guid><description>&lt;h2 id="the-hook-the-what"&gt;The Hook (The &amp;ldquo;What&amp;rdquo;)&lt;/h2&gt;
+&lt;p&gt;Can a single invisible character bypass a security sandbox ? &lt;br&gt;
+&lt;img src="https://tednoob17.github.io/images/stc/what-meme.gif" alt="alt text"&gt; &lt;br&gt;
+I discovered a vulnerability in &lt;code&gt;google/zx&lt;/code&gt; where a Carriage Return (&lt;code&gt;\r&lt;/code&gt;) allows arbitrary code execution in Markdown files—right under the nose of code reviewers.&lt;/p&gt;
+&lt;h2 id="what-is-zx-"&gt;What is zx ?&lt;/h2&gt;
+&lt;p&gt;In the world of DevOps, we often struggle with &lt;strong&gt;Bash&lt;/strong&gt; (which is powerful but messy) and &lt;strong&gt;Node.js&lt;/strong&gt; (which is clean but wordy).&lt;br&gt;
+&lt;strong&gt;zx&lt;/strong&gt; is a tool created by &lt;strong&gt;Google&lt;/strong&gt; that marries the two.&lt;/p&gt;</description></item></channel></rss>

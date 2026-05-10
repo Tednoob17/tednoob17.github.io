@@ -107,6 +107,12 @@
 }
 
 /* Lightbox with side description */
+.content__body img,
+.post-card__media img,
+article img {
+    cursor: zoom-in;
+}
+
 .lightbox-overlay {
     position: fixed;
     inset: 0;
@@ -121,13 +127,17 @@
     display: flex;
 }
 .lightbox-inner {
+    position: relative;
     display: flex;
     gap: 1rem;
     max-width: 1200px;
     width: 100%;
+    box-sizing: border-box;
     align-items: start;
+    padding: 0 4.5rem;
 }
 .lightbox-img {
+    flex: 1 1 auto;
     max-width: 75%;
     max-height: 80vh;
     object-fit: contain;
@@ -135,17 +145,26 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 .lightbox-desc {
-    max-width: 35%;
+    flex: 0 0 28%;
+    max-width: 28%;
     color: var(--muted);
     overflow: auto;
     padding: 0.5rem 1rem;
     background: rgba(0,0,0,0.03);
     border-radius: 6px;
+    white-space: pre-wrap;
+    line-height: 1.5;
 }
 @media (max-width: 800px) {
-    .lightbox-inner { flex-direction: column; }
+    .lightbox-inner {
+        flex-direction: column;
+        padding: 0 3.5rem;
+    }
     .lightbox-img { max-width: 100%; }
-    .lightbox-desc { max-width: 100%; }
+    .lightbox-desc {
+        max-width: 100%;
+        flex-basis: auto;
+    }
 }
 
 /* controls */
@@ -161,9 +180,10 @@
     font-size: 1.25rem;
     border-radius: 6px;
     cursor: pointer;
+    z-index: 2;
 }
-.lightbox-prev { left: 1rem; }
-.lightbox-next { right: 1rem; }
+.lightbox-prev { left: 0.75rem; }
+.lightbox-next { right: 0.75rem; }
 
 /* fade animation */
 .lightbox-overlay .lightbox-inner,
@@ -552,46 +572,6 @@
     .post-card__body {
         width: 50%;
     }
-}
-
-/* ── Lightbox / Click-to-zoom ── */
-.content__body img,
-.post-card__media img,
-article img {
-    cursor: zoom-in;
-}
-
-.lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.85);
-    cursor: zoom-out;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
-}
-
-.lightbox-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.lightbox-overlay img {
-    max-width: 92vw;
-    max-height: 92vh;
-    border-radius: 6px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    transform: scale(0.95);
-    transition: transform 0.25s ease;
-    cursor: zoom-out;
-}
-
-.lightbox-overlay.active img {
-    transform: scale(1);
 }
 
 /* Make bold text green */
