@@ -20,7 +20,7 @@
             {{- $descs := $.Scratch.Get "descs" -}}
             {{- $desc := index $descs $base -}}
             <div class="art-tile">
-                <img class="gallery-img" src="{{ printf "images/art/%s/%s" $folder .Name | absURL }}" alt="{{ .Name }}" loading="lazy">
+                <img class="gallery-img" src="{{ printf "images/art/%s/%s" $folder .Name | absURL }}" alt="{{ .Name }}" loading="lazy" data-desc-url="{{ printf "images/art/%s/%s.txt" $folder $base | absURL }}">
                 {{- if $desc }}
                   <div class="art-desc">{{ $desc | markdownify }}</div>
                 {{- end }}
