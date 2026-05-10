@@ -2,7 +2,7 @@
 {{- $path := printf "static/images/art/%s" $folder -}}
 {{- $files := readDir $path -}}
 
-{{- /* Build a map of descriptions from .txt files in the same folder. Keys = basename without ext */ -}}
+{{/* Build a map of descriptions from .txt files in the same folder. Keys = basename without ext */}}
 {{- $.Scratch.Set "descs" (dict) -}}
 {{- range $files -}}
   {{- if and (not .IsDir) (hasSuffix .Name ".txt") -}}
