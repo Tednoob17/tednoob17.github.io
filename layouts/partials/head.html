@@ -346,7 +346,20 @@ document.addEventListener('DOMContentLoaded', function () {
         showImage(allImages[currentImageIndex]);
       }
     }
-  });
+  // Simple markdown parser for basic formatting
+  function simpleMarkdown(text) {
+    // Headers
+    text = text.replace(/^### (.*)$/gm, '<h3>$1</h3>');
+    text = text.replace(/^## (.*)$/gm, '<h2>$1</h2>');
+    text = text.replace(/^# (.*)$/gm, '<h1>$1</h1>');
+    // Bold
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Italic
+    text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    // Line breaks
+    text = text.replace(/\n/g, '<br>');
+    return text;
+  }
 
   function showImage(img) {
     lbImg.src = img.src;
@@ -375,8 +388,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return r.text();
           })
           .then(text => {
-            // insert as text to avoid HTML injection
-            lbDesc.textContent = text.trim();
+            // insert as HTML after markdown processing
+            lbDesc.innerHTML = simpleMarkdown(text.trim());
             overlay.classList.add('with-desc');
             overlay.classList.add('active');
           })

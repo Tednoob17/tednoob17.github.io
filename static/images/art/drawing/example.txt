@@ -1,0 +1,12 @@
+Comment utiliser :
+
+Dans un fichier .txt (par exemple nouvelle-image.txt), écris en Markdown :
+
+Cela s'affichera dans la lightbox avec :
+
+    "Nuages d'été" en grand titre gras
+    "Moment de vie" en sous-titre
+    "Photographie prise..." en italique
+    "Note :" en gras, suivi du texte normal
+
+La grille des miniatures affichera la même mise en forme (mais plus petite).

@@ -105,6 +105,31 @@
     background: rgba(0,0,0,0.02);
     border-top: 1px solid rgba(0,0,0,0.04);
 }
+.art-desc h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 0 0.3em 0;
+    color: var(--fg);
+}
+.art-desc h2 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0.3em 0 0.2em 0;
+    color: var(--fg);
+}
+.art-desc h3 {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.2em 0;
+    color: var(--fg);
+}
+.art-desc strong {
+    font-weight: bold;
+    color: var(--fg);
+}
+.art-desc em {
+    font-style: italic;
+}
 
 /* Lightbox with side description */
 .content__body img,
@@ -152,8 +177,32 @@ article img {
     padding: 0.5rem 1rem;
     background: rgba(0,0,0,0.03);
     border-radius: 6px;
-    white-space: pre-wrap;
     line-height: 1.5;
+}
+.lightbox-desc h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 0 0.5em 0;
+    color: var(--fg);
+}
+.lightbox-desc h2 {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 0.5em 0 0.25em 0;
+    color: var(--fg);
+}
+.lightbox-desc h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0.25em 0;
+    color: var(--fg);
+}
+.lightbox-desc strong {
+    font-weight: bold;
+    color: var(--fg);
+}
+.lightbox-desc em {
+    font-style: italic;
 }
 @media (max-width: 800px) {
     .lightbox-inner {
