@@ -381,11 +381,13 @@ document.addEventListener('DOMContentLoaded', function () {
             overlay.classList.add('active');
           })
           .catch(() => {
-            overlay.classList.remove('with-desc');
+            lbDesc.textContent = 'Artwork by Tednoob17';
+            overlay.classList.add('with-desc');
             overlay.classList.add('active');
           });
       } else {
-        overlay.classList.remove('with-desc');
+        lbDesc.textContent = 'Artwork by Tednoob17';
+        overlay.classList.add('with-desc');
         overlay.classList.add('active');
       }
     }
