@@ -104,6 +104,7 @@
     color: var(--muted);
     background: rgba(0,0,0,0.02);
     border-top: 1px solid rgba(0,0,0,0.04);
+    white-space: pre-line;
 }
 .art-desc h1 {
     font-size: 1.2em;
@@ -178,6 +179,7 @@ article img {
     background: rgba(0,0,0,0.03);
     border-radius: 6px;
     line-height: 1.5;
+    white-space: pre-line;
 }
 .lightbox-desc h1 {
     font-size: 1.5em;
