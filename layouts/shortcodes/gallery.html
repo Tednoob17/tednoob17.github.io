@@ -13,10 +13,23 @@
       {{- if fileExists $txtPath -}}
         {{- $content = readFile $txtPath -}}
         {{- $authorMatches := findRE "@[A-Za-z0-9_.-]+" $content -}}
+        {{- $titleMatches := findRE "(?m)^#\\s+.+$" $content -}}
+        {{- $title := "" -}}
+        {{- if gt (len $titleMatches) 0 -}}
+          {{- $title = replaceRE "^#\\s+" "" (index $titleMatches 0) -}}
+        {{- end -}}
         {{- if gt (len $authorMatches) 0 -}}
-          {{- $summary = index $authorMatches 0 -}}
+          {{- if $title -}}
+            {{- $summary = printf "**%s**\n\n%s" $title (index $authorMatches 0) -}}
+          {{- else -}}
+            {{- $summary = index $authorMatches 0 -}}
+          {{- end -}}
         {{- else -}}
-          {{- $summary = $content -}}
+          {{- if $title -}}
+            {{- $summary = printf "**%s**" $title -}}
+          {{- else -}}
+            {{- $summary = $content -}}
+          {{- end -}}
         {{- end -}}
       {{- end -}}
       <div class="art-tile">

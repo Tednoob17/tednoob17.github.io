@@ -63,33 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
     lbImg.src = img.src;
     lbImg.alt = img.alt || "";
 
-    const descUrl = img.dataset && img.dataset.descUrl;
-    if (descUrl) {
-      fetch(descUrl)
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("No description file");
-          }
-          return response.text();
-        })
-        .then(function (text) {
-          const trimmed = text.trim();
-          if (trimmed) {
-            lbDesc.innerHTML = renderMarkdown(trimmed);
-          } else {
-            lbDesc.textContent = "Artwork by Tedsig42";
-          }
-          overlay.classList.add("with-desc");
-          overlay.classList.add("active");
-        })
-        .catch(function () {
-          lbDesc.textContent = "Artwork by Tedsig42";
-          overlay.classList.add("with-desc");
-          overlay.classList.add("active");
-        });
-      return;
-    }
-
     const tile = img.closest('.art-tile');
     const sourceEl = tile && tile.querySelector('.art-desc-source');
     const descRaw = sourceEl ? sourceEl.textContent || "" : "";
