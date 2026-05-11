@@ -55,42 +55,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Try to find a nearby description element (.art-desc)
     let descHtml = "";
+    let descText = "";
     const tile = img.closest('.art-tile');
     if (tile) {
       const descEl = tile.querySelector('.art-desc');
-      if (descEl) descHtml = descEl.innerHTML;
+      if (descEl) {
+        descHtml = descEl.innerHTML;
+        descText = descEl.textContent;
+      }
     }
 
-    if (descHtml) {
+    // Use the description from the tile if it has content
+    if (descHtml && descHtml.trim()) {
       lbDesc.innerHTML = descHtml;
       overlay.classList.add("with-desc");
       overlay.classList.add("active");
+    } else if (descText && descText.trim()) {
+      lbDesc.textContent = descText;
+      overlay.classList.add("with-desc");
+      overlay.classList.add("active");
     } else {
-      // try AJAX fetch from data-desc-url attribute
-      lbDesc.innerHTML = "";
-      const descUrl = img.dataset && img.dataset.descUrl;
-      if (descUrl) {
-        fetch(descUrl)
-          .then(r => {
-            if (!r.ok) throw new Error("No desc");
-            return r.text();
-          })
-          .then(text => {
-            // insert as text for now
-            lbDesc.textContent = text.trim();
-            overlay.classList.add("with-desc");
-            overlay.classList.add("active");
-          })
-          .catch(() => {
-            lbDesc.textContent = "Artwork by Tednoob17";
-            overlay.classList.add("with-desc");
-            overlay.classList.add("active");
-          });
-      } else {
-        lbDesc.textContent = "Artwork by Tednoob17";
-        overlay.classList.add("with-desc");
-        overlay.classList.add("active");
-      }
+      // Fallback to default credit
+      lbDesc.textContent = "Artwork by Tedsig42";
+      overlay.classList.add("with-desc");
+      overlay.classList.add("active");
     }
   }
 
