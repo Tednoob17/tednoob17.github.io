@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const descEl = tile.querySelector('.art-desc');
       if (descEl) {
         descHtml = descEl.innerHTML;
+        console.log("HTML from .art-desc:", descHtml);
       }
     }
 
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (descHtml && descHtml.trim()) {
       // Try to extract author first
       const author = extractAuthor(descHtml);
+      console.log("Extracted author:", author);
       if (author) {
         lbDesc.textContent = author;
       } else {
@@ -87,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
       overlay.classList.add("active");
     } else {
       // Fallback to default credit
+      console.log("No HTML found, using fallback");
       lbDesc.textContent = "Artwork by Tedsig42";
       overlay.classList.add("with-desc");
       overlay.classList.add("active");
