@@ -49,6 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  function extractAuthor(html) {
+    // Look for pattern like @username or @username (Platform)
+    const regex = /@([a-zA-Z0-9_.-]+)/;
+    const match = html.match(regex);
+    if (match) {
+      return "@" + match[1];
+    }
+    return null;
+  }
+
   function showImage(img) {
     lbImg.src = img.src;
     lbImg.alt = img.alt || "";
@@ -65,7 +75,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Use the description from the tile if it has content
     if (descHtml && descHtml.trim()) {
-      lbDesc.innerHTML = descHtml;
+      // Try to extract author first
+      const author = extractAuthor(descHtml);
+      if (author) {
+        lbDesc.textContent = author;
+      } else {
+        // Fall back to full content
+        lbDesc.innerHTML = descHtml;
+      }
       overlay.classList.add("with-desc");
       overlay.classList.add("active");
     } else {
