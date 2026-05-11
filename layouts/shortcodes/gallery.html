@@ -8,13 +8,15 @@
     {{- if and (not .IsDir) (or (hasSuffix $name ".jpg") (hasSuffix $name ".jpeg") (hasSuffix $name ".png") (hasSuffix $name ".gif") (hasSuffix $name ".webp") (hasSuffix $name ".avif")) -}}
       {{- $parts := split .Name "." -}}
       {{- $base := delimit (slice $parts 0 (sub (len $parts) 1)) "." -}}
+      {{- $txtPath := printf "%s/%s.txt" $path $base -}}
+      {{- $content := "Artwork by Tedsig42" -}}
+      {{- if fileExists $txtPath -}}
+        {{- $content = readFile $txtPath -}}
+      {{- else -}}
+        <!-- DEBUG: File not found: {{ $txtPath }} -->
+      {{- end -}}
       <div class="art-tile">
-        <img class="gallery-img" src="{{ printf "images/art/%s/%s" $folder .Name | absURL }}" alt="{{ .Name }}" loading="lazy" decoding="async" data-desc-url="{{ printf "images/art/%s/%s.txt" $folder $base | absURL }}">
-        {{- $txtPath := printf "%s/%s.txt" $path $base -}}
-        {{- $content := "Artwork by Tedsig42" -}}
-        {{- if fileExists $txtPath -}}
-          {{- $content = readFile $txtPath -}}
-        {{- end -}}
+        <img class="gallery-img" src="{{ printf "images/art/%s/%s" $folder .Name | absURL }}" alt="{{ .Name }}" loading="lazy" decoding="async" data-desc-url="{{ printf "images/art/%s/%s.txt" $folder $base | absURL }}" data-filename="{{ $base }}">
         <div class="art-desc">{{ $content | markdownify }}</div>
       </div>
     {{- end -}}
