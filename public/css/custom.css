@@ -77,19 +77,32 @@
 }
 
 .art-tile {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   display: inline-block;
   width: 100%;
-  overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease-in-out;
-    content-visibility: auto;
-    contain-intrinsic-size: 320px 240px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  content-visibility: auto;
+  contain-intrinsic-size: 320px 240px;
+  transform-origin: center;
 }
 
+.art-tile:nth-child(1) { transform: rotate(-1.5deg); }
+.art-tile:nth-child(2) { transform: rotate(0.8deg); }
+.art-tile:nth-child(3) { transform: rotate(-0.5deg); }
+.art-tile:nth-child(4) { transform: rotate(1.2deg); }
+.art-tile:nth-child(5) { transform: rotate(-1deg); }
+.art-tile:nth-child(6n+1) { transform: rotate(-1.5deg); }
+.art-tile:nth-child(6n+2) { transform: rotate(0.8deg); }
+.art-tile:nth-child(6n+3) { transform: rotate(-0.5deg); }
+.art-tile:nth-child(6n+4) { transform: rotate(1.2deg); }
+.art-tile:nth-child(6n+5) { transform: rotate(-1deg); }
+.art-tile:nth-child(6n) { transform: rotate(1deg); }
+
 .art-tile:hover {
-    transform: scale(1.03);
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.25), 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .art-tile img {
