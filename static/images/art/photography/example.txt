@@ -1,6 +1,7 @@
 Comment utiliser :
 
-Dans un fichier .txt (par exemple nouvelle-image.txt), écris en Markdown :
+Dans un fichier .txt (par exemple nouvelle-image.txt), 
+écris en Markdown :
 
 Cela s'affichera dans la lightbox avec :
 
