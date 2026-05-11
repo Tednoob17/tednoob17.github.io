@@ -63,26 +63,28 @@ document.addEventListener("DOMContentLoaded", function () {
     lbImg.src = img.src;
     lbImg.alt = img.alt || "";
 
-    // Try to find a nearby description element (.art-desc)
+    // Try to find the full raw description source first.
+    let descRaw = "";
     let descHtml = "";
     const tile = img.closest('.art-tile');
     if (tile) {
+      const sourceEl = tile.querySelector('.art-desc-source');
+      if (sourceEl) {
+        descRaw = sourceEl.textContent || "";
+      }
       const descEl = tile.querySelector('.art-desc');
       if (descEl) {
         descHtml = descEl.innerHTML;
       }
     }
 
-    // Use the description from the tile if it has content
-    if (descHtml && descHtml.trim()) {
-      // Try to extract author first
-      const author = extractAuthor(descHtml);
-      if (author) {
-        lbDesc.textContent = author;
-      } else {
-        // Fall back to full content
-        lbDesc.innerHTML = descHtml;
-      }
+    // Prefer the full raw txt content in the lightbox, rendered as markdown.
+    if (descRaw && descRaw.trim()) {
+      lbDesc.innerHTML = renderMarkdown(descRaw);
+      overlay.classList.add("with-desc");
+      overlay.classList.add("active");
+    } else if (descHtml && descHtml.trim()) {
+      lbDesc.innerHTML = descHtml;
       overlay.classList.add("with-desc");
       overlay.classList.add("active");
     } else {
@@ -121,3 +123,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+function renderMarkdown(text) {
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  return escaped
+    .replace(/^### (.*)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.*)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.*)$/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\n+/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+}

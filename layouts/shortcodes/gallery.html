@@ -9,12 +9,20 @@
       {{- $base := replaceRE "\\.[^.]+$" "" .Name -}}
       {{- $txtPath := printf "%s/%s.txt" $path $base -}}
       {{- $content := "Artwork by Tedsig42" -}}
+      {{- $summary := $content -}}
       {{- if fileExists $txtPath -}}
         {{- $content = readFile $txtPath -}}
+        {{- $authorMatches := findRE "@[A-Za-z0-9_.-]+" $content -}}
+        {{- if gt (len $authorMatches) 0 -}}
+          {{- $summary = index $authorMatches 0 -}}
+        {{- else -}}
+          {{- $summary = $content -}}
+        {{- end -}}
       {{- end -}}
       <div class="art-tile">
         <img class="gallery-img" src="{{ printf "images/art/%s/%s" $folder .Name | absURL }}" alt="{{ .Name }}" loading="lazy" decoding="async" data-desc-url="{{ printf "images/art/%s/%s.txt" $folder $base | absURL }}" data-filename="{{ $base }}">
-        <div class="art-desc">{{ $content | markdownify }}</div>
+        <div class="art-desc">{{ $summary | markdownify }}</div>
+        <div class="art-desc-source" hidden>{{ $content }}</div>
       </div>
     {{- end -}}
   {{- end -}}
