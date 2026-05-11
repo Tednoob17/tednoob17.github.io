@@ -86,13 +86,11 @@
   content-visibility: auto;
   contain-intrinsic-size: 320px 240px;
   transform-origin: center;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
 }
 
-.art-tile:nth-child(1) { transform: rotate(-1.5deg); }
-.art-tile:nth-child(2) { transform: rotate(0.8deg); }
-.art-tile:nth-child(3) { transform: rotate(-0.5deg); }
-.art-tile:nth-child(4) { transform: rotate(1.2deg); }
-.art-tile:nth-child(5) { transform: rotate(-1deg); }
 .art-tile:nth-child(6n+1) { transform: rotate(-1.5deg); }
 .art-tile:nth-child(6n+2) { transform: rotate(0.8deg); }
 .art-tile:nth-child(6n+3) { transform: rotate(-0.5deg); }
@@ -109,6 +107,7 @@
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 8px;
 }
 
 .art-desc {
