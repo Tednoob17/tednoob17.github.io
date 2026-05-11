@@ -14,10 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.createElement("button");
   nextBtn.className = "lightbox-next";
   nextBtn.innerHTML = "\u2192";
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "lightbox-close";
+  closeBtn.type = "button";
+  closeBtn.setAttribute("aria-label", "Close image viewer");
+  closeBtn.innerHTML = "\u00d7";
   inner.appendChild(lbImg);
   inner.appendChild(lbDesc);
   inner.appendChild(prevBtn);
   inner.appendChild(nextBtn);
+  inner.appendChild(closeBtn);
   overlay.appendChild(inner);
   document.body.appendChild(overlay);
 
@@ -30,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.target === overlay) {
       overlay.classList.remove("active");
     }
+  });
+  closeBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    overlay.classList.remove("active");
   });
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {

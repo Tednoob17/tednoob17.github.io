@@ -247,6 +247,31 @@ article img {
 }
 .lightbox-prev { left: 0.75rem; }
 .lightbox-next { right: 0.75rem; }
+.lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3;
+}
+
+@media (max-width: 800px) {
+    .lightbox-close {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+}
 
 /* fade animation */
 .lightbox-overlay .lightbox-inner,
