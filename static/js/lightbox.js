@@ -63,36 +63,43 @@ document.addEventListener("DOMContentLoaded", function () {
     lbImg.src = img.src;
     lbImg.alt = img.alt || "";
 
-    // Try to find the full raw description source first.
-    let descRaw = "";
-    let descHtml = "";
-    const tile = img.closest('.art-tile');
-    if (tile) {
-      const sourceEl = tile.querySelector('.art-desc-source');
-      if (sourceEl) {
-        descRaw = sourceEl.textContent || "";
-      }
-      const descEl = tile.querySelector('.art-desc');
-      if (descEl) {
-        descHtml = descEl.innerHTML;
-      }
+    const descUrl = img.dataset && img.dataset.descUrl;
+    if (descUrl) {
+      fetch(descUrl)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("No description file");
+          }
+          return response.text();
+        })
+        .then(function (text) {
+          const trimmed = text.trim();
+          if (trimmed) {
+            lbDesc.innerHTML = renderMarkdown(trimmed);
+          } else {
+            lbDesc.textContent = "Artwork by Tedsig42";
+          }
+          overlay.classList.add("with-desc");
+          overlay.classList.add("active");
+        })
+        .catch(function () {
+          lbDesc.textContent = "Artwork by Tedsig42";
+          overlay.classList.add("with-desc");
+          overlay.classList.add("active");
+        });
+      return;
     }
 
-    // Prefer the full raw txt content in the lightbox, rendered as markdown.
-    if (descRaw && descRaw.trim()) {
-      lbDesc.innerHTML = renderMarkdown(descRaw);
-      overlay.classList.add("with-desc");
-      overlay.classList.add("active");
-    } else if (descHtml && descHtml.trim()) {
-      lbDesc.innerHTML = descHtml;
-      overlay.classList.add("with-desc");
-      overlay.classList.add("active");
+    const tile = img.closest('.art-tile');
+    const sourceEl = tile && tile.querySelector('.art-desc-source');
+    const descRaw = sourceEl ? sourceEl.textContent || "" : "";
+    if (descRaw.trim()) {
+      lbDesc.innerHTML = renderMarkdown(descRaw.trim());
     } else {
-      // Fallback to default credit
       lbDesc.textContent = "Artwork by Tedsig42";
-      overlay.classList.add("with-desc");
-      overlay.classList.add("active");
     }
+    overlay.classList.add("with-desc");
+    overlay.classList.add("active");
   }
 
   // Prev/Next button handlers
