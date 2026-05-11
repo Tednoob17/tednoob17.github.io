@@ -9,4 +9,5 @@ Cela s'affichera dans la lightbox avec :
     "Photographie prise..." en italique
     "Note :" en gras, suivi du texte normal
 
-La grille des miniatures affichera la même mise en forme (mais plus petite).
+La grille des miniatures affichera la même mise en forme 
+(mais plus petite).
