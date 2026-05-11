@@ -8,7 +8,7 @@ This page serves as a visual notebook: on one side, photographs taken with a cam
 <section class="art-section art-section--photo">
 		<div class="art-section__intro">
 				<h2 class="art-section__title">Photography</h2>
-				<p>A place for documentary-style shots, street atmospheres, textures, and moments I capture on the fly.</p>
+				<p>A place for documentary-style shots, street atmospheres, textures, and moments captured on the fly, whether by me or by friends who share their own images for me to publish here.</p>
 		</div>
 
 
