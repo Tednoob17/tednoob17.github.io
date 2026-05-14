@@ -137,7 +137,7 @@ can force the app to run a arbitrary SQL query .
 - `conn` represent database **connexion** and `N` is her value
 because by setting it have a `NULL` value .
 
-I personnaly write a **serialized data** using the default serialized data given by app :
+I personally wrote a serialized payload using the default serialized data provided by the app:
 
 `a:2:{s:2:"ip";s:15:"137.255.127.129";s:7:"exploit";O:3:"SQL":1:{s:5:"query";s:39:"SELECT password AS username FROM users;";s:4:"conn";N;}}`
 

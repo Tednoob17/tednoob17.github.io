@@ -152,7 +152,7 @@ What it look like
 
 - *Result on Interact.sh*
 
-You can see that it leak a **github token** without that a command in not in code block.
+You can see that it leaks a GitHub token even when the command is not in a code block.
 
 ![alt text](/images/stc/poc_result.png)
 
