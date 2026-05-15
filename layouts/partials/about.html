@@ -72,22 +72,47 @@
         {{ end }}
     </div>
 </div>
+    
+    <div class="aside__carousel" style="margin-top: 20px; text-align: center;">
+        <h3 style="margin-bottom: 15px; font-size: 1rem; font-weight: bold;">Podcasts I listen to</h3>
+        <div class="carousel-container" style="position: relative; width: 100%; max-width: 250px; aspect-ratio: 1/1; margin: 0 auto; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+            {{ $pPath := "static/images/podcast" }}
+            {{ $pFiles := readDir $pPath }}
+            {{ range $pFiles }}
+                {{ $pname := .Name }}
+                {{ $pisImage := gt (len (findRE `(?i)\.(jpg|jpeg|png|webp|avif)$` $pname)) 0 }}
+                {{ $phasControlChars := gt (len (findRE `[\x00-\x1F\x7F]` $pname)) 0 }}
+                {{ $psafeName := trim (replaceRE `\s+` " " (replaceRE `[\r\n\t]+` " " $pname)) " " }}
+                {{ $pdisplayName := trim (replaceRE `\s+` " " (replaceRE "\\.[^.]+$" "" $psafeName)) " " }}
+                {{ if and $pisImage (not $phasControlChars) }}
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="{{ printf "/images/podcast/%s" $pname | absURL }}" 
+                         alt="{{ $psafeName }}" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        {{ $pdisplayName }}
+                    </div>
+                </div>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const items = document.querySelectorAll('.carousel-item');
-        let currentIndex = 0;
-        
-        if (items.length > 0) {
-            // Randomly select start index
-            currentIndex = Math.floor(Math.random() * items.length);
-            items[currentIndex].style.opacity = '1';
-            
+        const containers = document.querySelectorAll('.carousel-container');
+        containers.forEach(container => {
+            const items = container.querySelectorAll('.carousel-item');
+            if (items.length === 0) return;
+
+            let currentIndex = Math.floor(Math.random() * items.length);
+            items.forEach((it, idx) => it.style.opacity = (idx === currentIndex) ? '1' : '0');
+
             setInterval(() => {
                 items[currentIndex].style.opacity = '0';
                 currentIndex = (currentIndex + 1) % items.length;
                 items[currentIndex].style.opacity = '1';
             }, 3000);
-        }
+        });
     });
 </script>
