@@ -4,6 +4,11 @@
     --card-border: rgba(0, 0, 0, 0.2);
     --card-shadow: rgba(0, 0, 0, 0.35);
     --card-dots: rgba(255, 0, 0, 0.65);
+    --markdown-accent: #29ba6d;
+    --markdown-accent-soft: rgba(41, 186, 109, 0.14);
+    --markdown-quote-bg: rgba(41, 186, 109, 0.08);
+    --markdown-quote-border: rgba(41, 186, 109, 0.78);
+    --markdown-emphasis-bg: rgba(255, 255, 255, 0.07);
 }
 
 /* Wider layout like px-[5%] / lg:px-[15%] */
@@ -662,19 +667,108 @@ article img {
     }
 }
 
-/* Make bold text green */
-strong,
-b {
-    color: #29ba6d !important;
-    font-weight: 600;
+/* Markdown reading charter */
+.content__body,
+article {
+    line-height: 1.78;
+    font-size: 1.03rem;
 }
 
-/* Ensure bold text in content is green */
+.content__body > * + *,
+article > * + * {
+    margin-top: 1rem;
+}
+
+.content__body p,
+.content__body ul,
+.content__body ol,
+.content__body blockquote,
+.content__body pre,
+.content__body table,
+article p,
+article ul,
+article ol,
+article blockquote,
+article pre,
+article table {
+    margin-bottom: 1rem;
+}
+
+.content__body em,
+.content__body i,
+article em,
+article i {
+    color: var(--fg);
+    font-style: italic;
+    padding: 0 0.12em;
+    background: linear-gradient(transparent 62%, var(--markdown-emphasis-bg) 62%);
+}
+
 .content__body strong,
 .content__body b,
 article strong,
 article b {
-    color: #29ba6d !important;
+    color: var(--markdown-accent) !important;
+    font-weight: 700;
+}
+
+.content__body a,
+article a {
+    color: var(--markdown-accent);
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.18em;
+}
+
+.content__body a:hover,
+article a:hover {
+    color: var(--fg);
+    background: var(--markdown-accent-soft);
+}
+
+.content__body blockquote,
+article blockquote {
+    margin: 1.25rem 0;
+    padding: 0.95rem 1rem 0.95rem 1.1rem;
+    border-left: 4px solid var(--markdown-quote-border);
+    border-radius: 0 0.75rem 0.75rem 0;
+    background: var(--markdown-quote-bg);
+    color: var(--muted);
+    box-shadow: inset 0 0 0 1px rgba(41, 186, 109, 0.08);
+}
+
+.content__body blockquote > :first-child,
+article blockquote > :first-child {
+    margin-top: 0;
+}
+
+.content__body blockquote > :last-child,
+article blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+.content__body blockquote strong,
+.content__body blockquote b,
+article blockquote strong,
+article blockquote b {
+    color: var(--fg) !important;
+}
+
+.content__body blockquote em,
+.content__body blockquote i,
+article blockquote em,
+article blockquote i {
+    background: transparent;
+}
+
+.content__body blockquote::before,
+article blockquote::before {
+    content: "\201C";
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--markdown-quote-border);
+    font-size: 2rem;
+    line-height: 0.8;
+    font-weight: 700;
 }
 
 /* Inline markdown code */
