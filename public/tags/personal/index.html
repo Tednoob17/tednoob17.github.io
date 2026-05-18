@@ -1,6 +1,2411 @@
-<!doctype html><html lang=en><head><title>Personal &ndash; Tedsig42</title><meta name=description content="Another infosec enthusiast blog"><meta name=viewport content="width=device-width,initial-scale=1"><meta charset=UTF-8><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaelZ+aIm2c0EjH2LmJ0pSHN+b9f2cR3zd1PCmzC8hX5V4cW2r5c9c8p9kw==" crossorigin=anonymous referrerpolicy=no-referrer><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin=anonymous referrerpolicy=no-referrer><link rel=stylesheet href=https://tednoob17.github.io/css/palettes/material.css id=theme-css><link rel=stylesheet href=https://tednoob17.github.io/css/risotto.css><link rel=stylesheet href=https://tednoob17.github.io/css/custom.css><script>document.addEventListener("DOMContentLoaded",function(){const u=document.getElementById("theme-toggle"),n=document.getElementById("theme-select"),e=document.getElementById("theme-css"),p="tokyo-night-dark",j="tokyo-night-light",f=["base16-dark","base16-light","tokyo-night-dark","tokyo-night-light","material","apprentice","atelier-cave-dark","atelier-cave-light","atelier-dune-dark","atelier-dune-light","atelier-estuary-dark","atelier-estuary-light","atelier-forest-dark","atelier-forest-light","atelier-heath-dark","atelier-heath-light","atelier-lakeside-dark","atelier-lakeside-light","atelier-plateau-dark","atelier-plateau-light","atelier-savanna-dark","atelier-savanna-light","atelier-seaside-dark","atelier-seaside-light","atom-one-dark","atom-one-light","gruvbox-dark","gruvbox-light"],d=e=>f.includes(e),b=()=>{if(!e||!e.href)return null;const t=e.href.substring(e.href.lastIndexOf("/")+1);return t.replace(".css","")},v=e=>e.split("-").map(e=>e.charAt(0).toUpperCase()+e.slice(1)).join(" "),o=(t,s)=>{if(!d(t)||!e)return;const o=e.href.substring(0,e.href.lastIndexOf("/"));e.href=o+"/"+t+".css",s!==!1&&localStorage.setItem("theme",t),n&&(n.value=t)};n&&f.forEach(e=>{const t=document.createElement("option");t.value=e,t.textContent=v(e),n.appendChild(t)});const c=localStorage.getItem("theme"),l=b();c&&d(c)?o(c,!1):l&&d(l)&&o(l,!1),u&&u.addEventListener("click",function(t){t.preventDefault();const n=e?e.href:"",s=n.includes(p)||n.includes("dark"),i=s?j:p;o(i,!0)}),n&&n.addEventListener("change",function(){o(this.value,!0)});const h=document.getElementById("search-trigger"),r=document.getElementById("search-overlay"),m=document.getElementById("search-close"),s=document.getElementById("search-input"),t=document.getElementById("search-results");let a=null,i=!1;const y=(e,t)=>{const o=document.createElement("li");o.style.marginBottom="15px";const s=document.createElement("a");s.href=e.permalink,s.style.color="#61bfff",s.style.fontSize="1.2em",s.style.textDecoration="none",s.style.fontWeight="bold",s.style.display="block",s.textContent=e.title;const n=document.createElement("div");if(n.style.color="#ccc",n.style.fontSize="0.9em",n.style.marginTop="5px",e.content&&t.length>=2){const o=e.content.toLowerCase(),i=t.toLowerCase(),s=o.indexOf(i);if(s!==-1){const i=Math.max(0,s-40),a=Math.min(e.content.length,s+t.length+40);n.appendChild(document.createTextNode("...")),i>0&&n.appendChild(document.createTextNode(e.content.substring(i,s)));const o=document.createElement("mark");o.style.backgroundColor="#0f0",o.style.color="#000",o.textContent=e.content.substring(s,s+t.length),n.appendChild(o),n.appendChild(document.createTextNode(e.content.substring(s+t.length,a))),n.appendChild(document.createTextNode("..."))}else n.textContent=e.content.substring(0,100)}return o.appendChild(s),o.appendChild(n),o},g=e=>{if(!a||e.length<2){t.innerHTML="";return}const n=a.filter(t=>{const n=t.title?t.title.toLowerCase():"",s=t.content?t.content.toLowerCase():"";return n.includes(e)||s.includes(e)});if(t.innerHTML="",n.length>0){const s=document.createElement("ul");s.style.listStyle="none",s.style.padding="0",n.slice(0,10).forEach(t=>{const n=y(t,e);s.appendChild(n)}),t.appendChild(s)}else{const e=document.createElement("p");e.textContent="No results found.",t.appendChild(e)}};h&&h.addEventListener("click",function(e){if(e.preventDefault(),r.style.display="block",s.focus(),!a&&!i){i=!0,t.innerHTML="";const e=document.createElement("p");e.style.color="#888",e.textContent="Loading search index...",t.appendChild(e),fetch("/index.json").then(e=>{if(!e.ok)throw new Error("Network response was not ok: "+e.statusText);return e.json()}).then(e=>{a=e,i=!1,t.innerHTML="",s.value.length>=2&&g(s.value.toLowerCase())}).catch(e=>{console.error("Error fetching search index:",e),i=!1,t.innerHTML="";const n=document.createElement("p");n.style.color="red",n.textContent="Error loading search index. Check console.",t.appendChild(n)})}}),m&&m.addEventListener("click",function(){r.style.display="none"}),document.addEventListener("keydown",function(e){e.key==="Escape"&&r.style.display==="block"&&(r.style.display="none")}),s&&s.addEventListener("input",function(){const e=this.value.toLowerCase();g(e)})})</script><link rel=icon href=https://tednoob17.github.io/images/gif/jinji.gif><script src=https://tednoob17.github.io/js/lightbox.js defer></script><script src=https://tednoob17.github.io/js/lightbox.js defer></script></head><body><div class=page><header class=page__header><nav class="page__nav main-nav"><ul><li class=nomarker><h1 class=page__logo><a href=https://tednoob17.github.io/ class=page__logo-inner>Tedsig42</a></h1></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/about/ title>About</a></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/posts/ title>Posts</a></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/friends/ title>Friends</a></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/art/ title>Art</a></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/blogs/ title>Blogs</a></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/book-reviews/ title>Book Review</a></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/contact/ title>Contact</a></li><li class=main-nav__item><a class=nav-main-item href=https://tednoob17.github.io/achievements/ title>Achievements</a></li><li class=main-nav__item><a class=nav-main-item href=# id=theme-toggle title="Toggle Theme"><i class="fas fa-adjust"></i></a></li><li class="main-nav__item main-nav__theme-picker"><label class=theme-select-label for=theme-select title="Select Theme"><i class="fas fa-palette"></i>
-</label><select id=theme-select class=theme-select aria-label="Select Theme" title="Select Theme"></select></li><li class=main-nav__item><a class=nav-main-item href=# id=search-trigger title=Search><i class="fas fa-search"></i></a></li></ul></nav><div id=search-overlay style=display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);z-index:1000;padding:50px;overflow-y:auto><div style="max-width:600px;margin:0 auto;color:#fff"><div style=display:flex;justify-content:space-between;align-items:center;margin-bottom:20px><h2>Search</h2><button id=search-close style="background:0 0;border:none;color:#fff;font-size:24px;cursor:pointer">&#215;</button></div><input type=text id=search-input placeholder="Type to search..." style=width:100%;padding:10px;font-size:18px;margin-bottom:20px;color:#000><div id=search-results></div></div></div></header><section class=page__body><header class="content__header posts-header"><h1 class=posts-title>Personal</h1></header><div class=posts-archive><section class=archive-group><ul class=archive-group__list><li class=archive-item><a class=archive-item__link href=/about/><span class=archive-item__title>Whoami</span></a></li></ul></section></div></section><section class=page__aside><div class=aside__about><div class=aside__about><img class=about__logo src=https://tednoob17.github.io/images/gif/ed.gif alt=Logo><h1 class=about__title>Tedsig42</h1><p class=about__description>Another infosec enthusiast blog</p></div><ul class=aside__social-links><li><a href=https://twitter.com/Tedsig42 rel=me aria-label=Twitter title=Twitter class=social-link-item><svg width="16" height="16" viewBox="0 0 24 24" fill="currentcolor" aria-hidden="true" focusable="false"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3.0 001.88-2.37 8.6 8.6.0 01-2.72 1.04 4.28 4.28.0 00-7.29 3.9A12.14 12.14.0 013.15 4.6a4.28 4.28.0 001.33 5.72c-.66-.02-1.28-.2-1.82-.5v.05a4.28 4.28.0 003.43 4.2c-.3.08-.6.12-.92.12-.22.0-.44-.02-.65-.06a4.29 4.29.0 004 2.98A8.59 8.59.0 012 19.54a12.1 12.1.0 006.56 1.92c7.88.0 12.2-6.53 12.2-12.2l-.01-.56A8.72 8.72.0 0024 5.6a8.5 8.5.0 01-2.54.7z"/></svg>
-<span class=handle>@Tedsig42</span>
-</a>&nbsp;</li><li><a href=https://github.com/Tednoob17 rel=me aria-label=GitHub title=GitHub class=social-link-item><svg width="16" height="16" viewBox="0 0 24 24" fill="currentcolor" aria-hidden="true" focusable="false"><path d="M12 0C5.374.0.0 5.373.0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931.0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176.0.0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221.0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-<span class=handle>@Tednoob17</span>
-</a>&nbsp;</li><li><a href=https://instagram.com/tedsig_art rel=me aria-label=Instagram title=Instagram><i class="fab fa-instagram" aria-hidden=true></i></a>&nbsp;</li><li><a href=https://linkedin.com/in/ted-kouhouenou rel=me aria-label=LinkedIn title=LinkedIn><i class="fab fa-linkedin" aria-hidden=true></i></a>&nbsp;</li></ul></ul><div class=aside__carousel style=margin-top:30px;text-align:center><h3 style=margin-bottom:15px;font-size:1rem;font-weight:700>A Rap / Classic Album that i ❤️</h3><div class=carousel-container style="position:relative;width:100%;max-width:250px;aspect-ratio:1/1;margin:0 auto;overflow:hidden;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,.3)"><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/%20Caballero%20&%20Jeanjass%20-%20ZushiBoyz%20vol.4%20-%20Edition%20exclusive%20%28avec%20OBI%29.png alt="Caballero & Jeanjass - ZushiBoyz vol.4 - Edition exclusive (avec OBI).png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Caballero & Jeanjass - ZushiBoyz vol.4 - Edition exclusive (avec OBI)</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/%20Rounhaa%20-%20Jaafar.jpeg alt="Rounhaa - Jaafar.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Rounhaa - Jaafar</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/%20ZushiBoyz%20vol.3%20-%20Edition%20exclusive%20%28avec%20OBI%29.png alt="ZushiBoyz vol.3 - Edition exclusive (avec OBI).png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">ZushiBoyz vol.3 - Edition exclusive (avec OBI)</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Absolem%20-%20Les%20yeux%20grands%20ferm%C3%A9s.jpg alt="Absolem - Les yeux grands fermés.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Absolem - Les yeux grands fermés</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Al-Walid%20-%20Sarman.jpg alt="Al-Walid - Sarman.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Al-Walid - Sarman</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Alpha%20Wann%20-%20Don%20Dada%20Mixtape.jpeg alt="Alpha Wann - Don Dada Mixtape.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Alpha Wann - Don Dada Mixtape</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Alpha%20Wann%20-%20UMLA.webp alt="Alpha Wann - UMLA.webp" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Alpha Wann - UMLA</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Beeby%20-%20Gaia.jpg alt="Beeby - Gaia.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Beeby - Gaia</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Beeby%20-%20Morningstar.jpg alt="Beeby - Morningstar.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Beeby - Morningstar</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Beeby%20-%20UN%20GRAND%20C%C5%92UR%20DANS%20UN%20MONDE%20DE%20FILS%20DE%20PUTE.jpg alt="Beeby - UN GRAND CŒUR DANS UN MONDE DE FILS DE PUTE.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Beeby - UN GRAND CŒUR DANS UN MONDE DE FILS DE PUTE</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Bushi%20-%20Bushi%20Tape%203.jpg alt="Bushi - Bushi Tape 3.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Bushi - Bushi Tape 3</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Caballero%20&%20Jeanjass%20-%20DOuble%20Helice%203.jpg alt="Caballero & Jeanjass - DOuble Helice 3.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Caballero & Jeanjass - DOuble Helice 3</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Caballero%20&%20Jeanjass%20-%20High%20&%20Fines%20Herbes.jpg alt="Caballero & Jeanjass - High & Fines Herbes.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Caballero & Jeanjass - High & Fines Herbes</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Caballero%20&%20Jeanjass%20-%20Zushiboyz%20Vol%20.1.jpg alt="Caballero & Jeanjass - Zushiboyz Vol .1.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Caballero & Jeanjass - Zushiboyz Vol .1</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Caballero%20&%20Jeanjass%20-%20Zushiboyz%20Vol.2.jpg alt="Caballero & Jeanjass - Zushiboyz Vol.2.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Caballero & Jeanjass - Zushiboyz Vol.2</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Caballero%20-%20Dose%20Heroique.webp alt="Caballero - Dose Heroique.webp" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Caballero - Dose Heroique</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Chavi%20&%20Guydelafonsdal%20-%20Chavidelafonsdal.jpeg alt="Chavi & Guydelafonsdal - Chavidelafonsdal.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Chavi & Guydelafonsdal - Chavidelafonsdal</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Damso%20-%20Batterie%20Faible.jpg alt="Damso - Batterie Faible.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Damso - Batterie Faible</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Damso%20-%20Ipseite.jpg alt="Damso - Ipseite.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Damso - Ipseite</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Damso%20-%20Lithopedion.jpg alt="Damso - Lithopedion.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Damso - Lithopedion</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Damso%20-%20QALF.jpg alt="Damso - QALF.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Damso - QALF</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20Cercle%20Vertueux.jpg alt="Deen Burbigo - Cercle Vertueux.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Deen Burbigo - Cercle Vertueux</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20OG%20SAN%201.jpg alt="Deen Burbigo - OG SAN 1.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Deen Burbigo - OG SAN 1</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Deen%20Burbigo%20-OG%20SAN%202.jpg alt="Deen Burbigo -OG SAN 2.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Deen Burbigo -OG SAN 2</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Dimeh%20-%20OV3.jpg alt="Dimeh - OV3.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Dimeh - OV3</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/GAL%20-%20Du%20Caviar%20Pour%20Mon%20Chien.jpeg alt="GAL - Du Caviar Pour Mon Chien.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">GAL - Du Caviar Pour Mon Chien</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/GAL%20-%20JeuneBeurdelafontaine%20vol2.jpeg alt="GAL - JeuneBeurdelafontaine vol2.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">GAL - JeuneBeurdelafontaine vol2</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/HJeuneCrack%20-%202eme%20Mouvement.jpeg alt="HJeuneCrack - 2eme Mouvement.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">HJeuneCrack - 2eme Mouvement</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/HJeuneCrack%20-%20La%20Pieuvre.jpg alt="HJeuneCrack - La Pieuvre.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">HJeuneCrack - La Pieuvre</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/HJeuneCrack%20-%20Matiere%20Premiere.jpg alt="HJeuneCrack - Matiere Premiere.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">HJeuneCrack - Matiere Premiere</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/HJeunecrack%20-%201er%20Mouvement.jpg alt="HJeunecrack - 1er Mouvement.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">HJeunecrack - 1er Mouvement</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/HJeunecrack%20-%203eme%20Cycle.jpg alt="HJeunecrack - 3eme Cycle.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">HJeunecrack - 3eme Cycle</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Hamza%20-1994.jpg alt="Hamza -1994.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Hamza -1994</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Hamza%20-Paradise.jpg alt="Hamza -Paradise.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Hamza -Paradise</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Huntrill%20-%20LE%20BRUIT%20DE%20LA%20MACHINE%20A%20BILLETS%20.jpg alt="Huntrill - LE BRUIT DE LA MACHINE A BILLETS .jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Huntrill - LE BRUIT DE LA MACHINE A BILLETS</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Huntrill%20-%20Replica%202.jpeg alt="Huntrill - Replica 2.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Huntrill - Replica 2</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Infinit%20-%20888.jpg alt="Infinit - 888.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Infinit - 888</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Infinit%20-%20Ma%20vie%20est%20un%20film%202.jpg alt="Infinit - Ma vie est un film 2.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Infinit - Ma vie est un film 2</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Infinit%20-%20Mr%20Le%20Faire.jpg alt="Infinit - Mr Le Faire.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Infinit - Mr Le Faire</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Isha%20&%20Limsa%20D%27Aulnay%20-%20Bitume%20%20caviar.jpg alt="Isha & Limsa D'Aulnay - Bitume caviar.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Isha & Limsa D'Aulnay - Bitume caviar</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/JUngle%20Jack%20-%20%20Jungle%20des%20illusions%20Vol%202.jpg alt="JUngle Jack - Jungle des illusions Vol 2.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">JUngle Jack - Jungle des illusions Vol 2</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/JeanJass%20-%20Goldman.png alt="JeanJass - Goldman.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">JeanJass - Goldman</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jeanjass%20-%20Doudoune%20en%20%20%C3%A9t%C3%A9.png alt="Jeanjass - Doudoune en été.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jeanjass - Doudoune en été</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jeanjass%20-%20Tous%20ces%20ongles%20rong%C3%A9s%20.jpg alt="Jeanjass - Tous ces ongles rongés .jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jeanjass - Tous ces ongles rongés</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jok%27AIr%20-%20Jok%27Rambo.jpg alt="Jok'AIr - Jok'Rambo.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jok'AIr - Jok'Rambo</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jok%27Air%20-%20Jok%27Chirac.jpg alt="Jok'Air - Jok'Chirac.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jok'Air - Jok'Chirac</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jok%27Air%20-%20Jok%27Travolta.jpg alt="Jok'Air - Jok'Travolta.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jok'Air - Jok'Travolta</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jok%27Air%20-%20New%20Jok%20City.jpg alt="Jok'Air - New Jok City.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jok'Air - New Jok City</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Josman%20-%20J.000.$.jpg alt="Josman - J.000.$.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Josman - J.000.$</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Josman%20-%20J.O.$.jpg alt="Josman - J.O.$.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Josman - J.O.$</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Josman%20-%20M.A.N%20%28Black%20Roses%20&%20Lost%20Feelings%29.jpg alt="Josman - M.A.N (Black Roses & Lost Feelings).jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Josman - M.A.N (Black Roses & Lost Feelings)</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Josman%20-%20MYSTR%20J.O.$.jpg alt="Josman - MYSTR J.O.$.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Josman - MYSTR J.O.$</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Josman%20-%20SPLIT.png alt="Josman - SPLIT.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Josman - SPLIT</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jungle%20Jack%20-%20Cognacs%20et%20Cigarette.jpg alt="Jungle Jack - Cognacs et Cigarette.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jungle Jack - Cognacs et Cigarette</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jungle%20Jack%20-%20Creamland.png alt="Jungle Jack - Creamland.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jungle Jack - Creamland</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Jungle%20Jack%20-%20Jungle%20des%20illusions.jpg alt="Jungle Jack - Jungle des illusions.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Jungle Jack - Jungle des illusions</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Juwel%20Usain%20-%20Ou%20les%20garcons%20grandissent.jpg alt="Juwel Usain - Ou les garcons grandissent.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Juwel Usain - Ou les garcons grandissent</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Keroue%20-%20Candella.jpg alt="Keroue - Candella.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Keroue - Candella</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Keroue%20-%20Record.webp alt="Keroue - Record.webp" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Keroue - Record</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Keroue%20-%20Scope.jpg alt="Keroue - Scope.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Keroue - Scope</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/LaFeve%20-%2024.jpg alt="LaFeve - 24.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">LaFeve - 24</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/LaFeve%20-%20ERRR.jpg alt="LaFeve - ERRR.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">LaFeve - ERRR</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Le%20Monde%20Daho%20-%20Le%20Monde%2000.jpg alt="Le Monde Daho - Le Monde 00.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Le Monde Daho - Le Monde 00</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Ledouble%20&%20Guydelafonsdal%20-%20LeDoubledelafonsdal.jpeg alt="Ledouble & Guydelafonsdal - LeDoubledelafonsdal.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Ledouble & Guydelafonsdal - LeDoubledelafonsdal</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Lefa%20-%20Fame.jpg alt="Lefa - Fame.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Lefa - Fame</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Lefa%20-3%20du%20mat.jpg alt="Lefa -3 du mat.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Lefa -3 du mat</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Lefa-DMNR.jpg alt=Lefa-DMNR.jpg style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Lefa-DMNR</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Luidji%20-%20Boscolo%20Exedra.jpg alt="Luidji - Boscolo Exedra.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Luidji - Boscolo Exedra</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Luidji%20-%20Saison%2000.png alt="Luidji - Saison 00.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Luidji - Saison 00</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Luidji%20-%20Tristesse%20Business.jpg alt="Luidji - Tristesse Business.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Luidji - Tristesse Business</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Luther%20-%20EXIT.jpeg alt="Luther - EXIT.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Luther - EXIT</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Luther%20-%20Gar%C3%A7on.jpg alt="Luther - Garçon.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Luther - Garçon</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Mairo%20-%20%20Omar%20Chappier.png alt="Mairo - Omar Chappier.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Mairo - Omar Chappier</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Mairo%20-%20Dejeuner%20en%20paix.jpg alt="Mairo - Dejeuner en paix.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Mairo - Dejeuner en paix</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Mairo,%20H%20JeuneCrack%20-%20La%20solution.png alt="Mairo, H JeuneCrack - La solution.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Mairo, H JeuneCrack - La solution</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Makala%20-%20%20Chaos%20Kiss.jpg alt="Makala - Chaos Kiss.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Makala - Chaos Kiss</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Makala%20-%20Radio%20Suicide.jpg alt="Makala - Radio Suicide.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Makala - Radio Suicide</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Makala%20-%20Yamoto.jpg alt="Makala - Yamoto.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Makala - Yamoto</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nekfeu%20-%20LEV.jpg alt="Nekfeu - LEV.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nekfeu - LEV</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nepal%20-%20Adios%20Bahamas.jpg alt="Nepal - Adios Bahamas.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nepal - Adios Bahamas</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nes%20-%20CQSS.jpg alt="Nes - CQSS.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nes - CQSS</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nes%20-%20LA%20COURSE.jpg alt="Nes - LA COURSE.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nes - LA COURSE</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nes%20-%20Pour%202%20VRAI.jpg alt="Nes - Pour 2 VRAI.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nes - Pour 2 VRAI</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nes%20-%20%C3%87A%20VA%20ALLER%20.jpg alt="Nes - ÇA VA ALLER .jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nes - ÇA VA ALLER</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nujabes%20-%20MetaphoricalMusic.jpg alt="Nujabes - MetaphoricalMusic.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nujabes - MetaphoricalMusic</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nujabes%20-%20Modal%20Music.jpg alt="Nujabes - Modal Music.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nujabes - Modal Music</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Nujabes%20-%20departure.jpg alt="Nujabes - departure.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Nujabes - departure</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/OgLounis%20&%20Guydelafonsdal%20-%20OgLounisdelafonsdal.png alt="OgLounis & Guydelafonsdal - OgLounisdelafonsdal.png" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">OgLounis & Guydelafonsdal - OgLounisdelafonsdal</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Oglounis%20-%20HARD%20LAIDBACKING%20BEFORE.jpg alt="Oglounis - HARD LAIDBACKING BEFORE.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Oglounis - HARD LAIDBACKING BEFORE</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Prince%20Wally%20-%20Moussa.jpg alt="Prince Wally - Moussa.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Prince Wally - Moussa</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Romeo%20Elvis%20-%20Chocolat.webp alt="Romeo Elvis - Chocolat.webp" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Romeo Elvis - Chocolat</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Romeo%20Elvis%20-%20Tout%20Peut%20Arriver.jpg alt="Romeo Elvis - Tout Peut Arriver.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Romeo Elvis - Tout Peut Arriver</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Romeo%20Elvis%20Morale.webp alt="Romeo Elvis Morale.webp" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Romeo Elvis Morale</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Selug%20&%20Kyo%20Itachi%20-%20TATAKAE.jpeg alt="Selug & Kyo Itachi - TATAKAE.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Selug & Kyo Itachi - TATAKAE</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Slimka%20-%20Le%20Grand%20Mystico.jpg alt="Slimka - Le Grand Mystico.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Slimka - Le Grand Mystico</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Tisma%20&%20Guydelafonsdal%20-%20Tismadelafonsdal.jpeg alt="Tisma & Guydelafonsdal - Tismadelafonsdal.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Tisma & Guydelafonsdal - Tismadelafonsdal</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Toothpick%20&%20Guydelafonsdal%20-%20%20Toothpickdelafonsdal.jpeg alt="Toothpick & Guydelafonsdal - Toothpickdelafonsdal.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Toothpick & Guydelafonsdal - Toothpickdelafonsdal</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Toothpick%20-%20JEUNE%20LIFTIER.webp alt="Toothpick - JEUNE LIFTIER.webp" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Toothpick - JEUNE LIFTIER</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Toothpick%20x%203.14%20-%20No%20Casquette%20Vol.1.webp alt="Toothpick x 3.14 - No Casquette Vol.1.webp" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Toothpick x 3.14 - No Casquette Vol.1</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Vald%20-%20Agartha.jpg alt="Vald - Agartha.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Vald - Agartha</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Vald%20-%20Ce%20Monde%20Est%20Cruel.jpeg alt="Vald - Ce Monde Est Cruel.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Vald - Ce Monde Est Cruel</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Vald%20-%20V.jpg alt="Vald - V.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Vald - V</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Yvnnis%20-%20NOVAE.jpg alt="Yvnnis - NOVAE.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Yvnnis - NOVAE</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/Zushiboyz%20%28Info%29.jpg alt="Zushiboyz (Info).jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">Zushiboyz (Info)</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/a5el%20-%20Mercenaire.jpeg alt="a5el - Mercenaire.jpeg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">a5el - Mercenaire</div></div><div class=carousel-item style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out"><img src=https://tednoob17.github.io/images/Zushiboyz%20Merch/okis%20&%20Mani%20De%C3%AFz%20-%20R%C3%AAve%20d%27un%20rouilleur.jpg alt="okis & Mani Deïz - Rêve d'un rouilleur.jpg" style=width:100%;height:100%;object-fit:cover><div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,.6);color:#fff;padding:8px 5px;text-align:center;font-size:.9rem;font-weight:700">okis & Mani Deïz - Rêve d'un rouilleur</div></div></div></div><script>document.addEventListener("DOMContentLoaded",function(){const e=document.querySelectorAll(".carousel-item");let t=0;e.length>0&&(t=Math.floor(Math.random()*e.length),e[t].style.opacity="1",setInterval(()=>{e[t].style.opacity="0",t=(t+1)%e.length,e[t].style.opacity="1"},3e3))})</script></div><hr><div class=aside__content></div></section><footer class=page__footer><p class=copyright></p><p class=advertisement>Easy peasy ⚡<br>by Tedsig42</p></footer></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>Personal &ndash; Tedsig42</title>
+<meta name="description" content="Another infosec enthusiast blog">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaelZ+aIm2c0EjH2LmJ0pSHN+b9f2cR3zd1PCmzC8hX5V4cW2r5c9c8p9kw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/palettes/material.css" id="theme-css">
+<link rel="stylesheet" href="http://localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="http://localhost:1313/css/custom.css">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeSelect = document.getElementById('theme-select');
+  const themeCss = document.getElementById('theme-css');
+  const darkTheme = "tokyo-night-dark";
+  const lightTheme = "tokyo-night-light";
+  
+  
+  const ALLOWED_THEMES = [
+    "base16-dark",
+    "base16-light",
+    "tokyo-night-dark",
+    "tokyo-night-light",
+    "material",
+    "apprentice",
+    "atelier-cave-dark",
+    "atelier-cave-light",
+    "atelier-dune-dark",
+    "atelier-dune-light",
+    "atelier-estuary-dark",
+    "atelier-estuary-light",
+    "atelier-forest-dark",
+    "atelier-forest-light",
+    "atelier-heath-dark",
+    "atelier-heath-light",
+    "atelier-lakeside-dark",
+    "atelier-lakeside-light",
+    "atelier-plateau-dark",
+    "atelier-plateau-light",
+    "atelier-savanna-dark",
+    "atelier-savanna-light",
+    "atelier-seaside-dark",
+    "atelier-seaside-light",
+    "atom-one-dark",
+    "atom-one-light",
+    "gruvbox-dark",
+    "gruvbox-light"
+  ];
+  
+  
+  const isValidTheme = (theme) => {
+    return ALLOWED_THEMES.includes(theme);
+  };
+
+  const getThemeFromHref = () => {
+    if (!themeCss || !themeCss.href) {
+      return null;
+    }
+    const fileName = themeCss.href.substring(themeCss.href.lastIndexOf('/') + 1);
+    return fileName.replace('.css', '');
+  };
+
+  const formatThemeName = (theme) => {
+    return theme
+      .split('-')
+      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(' ');
+  };
+
+  const applyTheme = (theme, persist) => {
+    if (!isValidTheme(theme) || !themeCss) {
+      return;
+    }
+
+    const baseUrl = themeCss.href.substring(0, themeCss.href.lastIndexOf('/'));
+    themeCss.href = baseUrl + '/' + theme + '.css';
+
+    if (persist !== false) {
+      localStorage.setItem('theme', theme);
+    }
+
+    if (themeSelect) {
+      themeSelect.value = theme;
+    }
+  };
+
+  if (themeSelect) {
+    ALLOWED_THEMES.forEach(theme => {
+      const option = document.createElement('option');
+      option.value = theme;
+      option.textContent = formatThemeName(theme);
+      themeSelect.appendChild(option);
+    });
+  }
+
+  
+  const savedTheme = localStorage.getItem('theme');
+  const initialThemeFromConfig = getThemeFromHref();
+  if (savedTheme && isValidTheme(savedTheme)) {
+    applyTheme(savedTheme, false);
+  } else if (initialThemeFromConfig && isValidTheme(initialThemeFromConfig)) {
+    applyTheme(initialThemeFromConfig, false);
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      const currentHref = themeCss ? themeCss.href : '';
+      const isDark = currentHref.includes(darkTheme) || currentHref.includes('dark');
+      const newTheme = isDark ? lightTheme : darkTheme;
+
+      applyTheme(newTheme, true);
+    });
+  }
+
+  if (themeSelect) {
+    themeSelect.addEventListener('change', function() {
+      applyTheme(this.value, true);
+    });
+  }
+
+  
+  const searchTrigger = document.getElementById('search-trigger');
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  let searchIndex = null;
+  let isLoading = false;
+
+  
+  const createSafeSearchResult = (result, query) => {
+    const li = document.createElement('li');
+    li.style.marginBottom = '15px';
+    
+    
+    const titleLink = document.createElement('a');
+    titleLink.href = result.permalink;
+    titleLink.style.color = '#61bfff';
+    titleLink.style.fontSize = '1.2em';
+    titleLink.style.textDecoration = 'none';
+    titleLink.style.fontWeight = 'bold';
+    titleLink.style.display = 'block';
+    titleLink.textContent = result.title;
+    
+    
+    const snippetDiv = document.createElement('div');
+    snippetDiv.style.color = '#ccc';
+    snippetDiv.style.fontSize = '0.9em';
+    snippetDiv.style.marginTop = '5px';
+    
+    
+    if (result.content && query.length >= 2) {
+      const lowerContent = result.content.toLowerCase();
+      const queryLower = query.toLowerCase();
+      const idx = lowerContent.indexOf(queryLower);
+      
+      if (idx !== -1) {
+        const start = Math.max(0, idx - 40);
+        const end = Math.min(result.content.length, idx + query.length + 40);
+        
+        snippetDiv.appendChild(document.createTextNode('...'));
+        
+        if (start > 0) {
+          snippetDiv.appendChild(document.createTextNode(result.content.substring(start, idx)));
+        }
+        
+        const mark = document.createElement('mark');
+        mark.style.backgroundColor = '#0f0';
+        mark.style.color = '#000';
+        mark.textContent = result.content.substring(idx, idx + query.length);
+        snippetDiv.appendChild(mark);
+        
+        snippetDiv.appendChild(document.createTextNode(result.content.substring(idx + query.length, end)));
+        snippetDiv.appendChild(document.createTextNode('...'));
+      } else {
+        snippetDiv.textContent = result.content.substring(0, 100);
+      }
+    }
+    
+    li.appendChild(titleLink);
+    li.appendChild(snippetDiv);
+    
+    return li;
+  };
+
+  const performSearch = (query) => {
+    if (!searchIndex || query.length < 2) {
+        searchResults.innerHTML = '';
+        return;
+    }
+
+    const results = searchIndex.filter(item => {
+        const title = item.title ? item.title.toLowerCase() : '';
+        const content = item.content ? item.content.toLowerCase() : '';
+        return title.includes(query) || content.includes(query);
+    });
+
+    
+    searchResults.innerHTML = '';
+    
+    if (results.length > 0) {
+        const ul = document.createElement('ul');
+        ul.style.listStyle = 'none';
+        ul.style.padding = '0';
+        
+        results.slice(0, 10).forEach(result => {
+            const li = createSafeSearchResult(result, query);
+            ul.appendChild(li);
+        });
+        
+        searchResults.appendChild(ul);
+    } else {
+        const noResults = document.createElement('p');
+        noResults.textContent = 'No results found.';
+        searchResults.appendChild(noResults);
+    }
+  };
+
+  if (searchTrigger) {
+    searchTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchOverlay.style.display = 'block';
+        searchInput.focus();
+
+        if (!searchIndex && !isLoading) {
+            isLoading = true;
+            searchResults.innerHTML = '';
+            const loadingMsg = document.createElement('p');
+            loadingMsg.style.color = '#888';
+            loadingMsg.textContent = 'Loading search index...';
+            searchResults.appendChild(loadingMsg);
+            
+            
+            fetch('\/index.json')
+                .then(response => {
+                    if (!response.ok) {
+                         throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    searchIndex = data;
+                    isLoading = false;
+                    searchResults.innerHTML = '';
+                    if (searchInput.value.length >= 2) {
+                        performSearch(searchInput.value.toLowerCase());
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching search index:', error);
+                    isLoading = false;
+                    searchResults.innerHTML = '';
+                    const errorMsg = document.createElement('p');
+                    errorMsg.style.color = 'red';
+                    errorMsg.textContent = 'Error loading search index. Check console.';
+                    searchResults.appendChild(errorMsg);
+                });
+        }
+    });
+  }
+
+  if (searchClose) {
+    searchClose.addEventListener('click', function() {
+        searchOverlay.style.display = 'none';
+    });
+  }
+  
+  
+  document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape" && searchOverlay.style.display === 'block') {
+          searchOverlay.style.display = 'none';
+      }
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        performSearch(query);
+    });
+  }
+});
+</script>
+
+
+
+<link rel="icon" href="http://localhost:1313/images/gif/jinji.gif">
+
+
+
+<script src="http://localhost:1313/js/lightbox.js" defer></script>
+
+
+<script src="http://localhost:1313/js/lightbox.js" defer></script>
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="http://localhost:1313/" class="page__logo-inner">Tedsig42</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/posts/" title="">Posts</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/friends/" title="">Friends</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/art/" title="">Art</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/blogs/" title="">Blogs</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/book-reviews/" title="">Book Review</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/contact/" title="">Contact</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="http://localhost:1313/achievements/" title="">Achievements</a></li>
+    
+    <li class="main-nav__item">
+      <a class="nav-main-item" href="#" id="theme-toggle" title="Toggle Theme">
+        <i class="fas fa-adjust"></i>
+      </a>
+    </li>
+    <li class="main-nav__item main-nav__theme-picker">
+      <label class="theme-select-label" for="theme-select" title="Select Theme">
+        <i class="fas fa-palette"></i>
+      </label>
+      <select id="theme-select" class="theme-select" aria-label="Select Theme" title="Select Theme"></select>
+    </li>
+    <li class="main-nav__item">
+      <a class="nav-main-item" href="#" id="search-trigger" title="Search">
+        <i class="fas fa-search"></i>
+      </a>
+    </li>
+    </ul>
+</nav>
+
+<div id="search-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; padding: 50px; overflow-y: auto;">
+  <div style="max-width: 600px; margin: 0 auto; color: white;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2>Search</h2>
+      <button id="search-close" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">&times;</button>
+    </div>
+    <input type="text" id="search-input" placeholder="Type to search..." style="width: 100%; padding: 10px; font-size: 18px; margin-bottom: 20px; color: black;">
+    <div id="search-results"></div>
+  </div>
+</div>
+</header>
+
+            <section class="page__body">
+  <header class="content__header posts-header">
+    <h1 class="posts-title">Personal</h1>
+    
+  </header>
+
+  <div class="posts-archive">
+    <section class="archive-group">
+      <ul class="archive-group__list">
+        
+          <li class="archive-item">
+            <a class="archive-item__link" href="/about/">
+              <span class="archive-item__title">Whoami</span>
+            </a>
+          </li>
+        
+      </ul>
+    </section>
+  </div>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    
+    <img class="about__logo" src="http://localhost:1313/images/gif/ed.gif" alt="Logo">
+<h1 class="about__title">Tedsig42</h1>
+<p class="about__description">Another infosec enthusiast blog</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    
+    
+    
+    
+    
+    <li>
+        <a href="https://twitter.com/Tedsig42" rel="me" aria-label="Twitter" title="Twitter" class="social-link-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentcolor" aria-hidden="true" focusable="false"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3.0 001.88-2.37 8.6 8.6.0 01-2.72 1.04 4.28 4.28.0 00-7.29 3.9A12.14 12.14.0 013.15 4.6a4.28 4.28.0 001.33 5.72c-.66-.02-1.28-.2-1.82-.5v.05a4.28 4.28.0 003.43 4.2c-.3.08-.6.12-.92.12-.22.0-.44-.02-.65-.06a4.29 4.29.0 004 2.98A8.59 8.59.0 012 19.54a12.1 12.1.0 006.56 1.92c7.88.0 12.2-6.53 12.2-12.2l-.01-.56A8.72 8.72.0 0024 5.6a8.5 8.5.0 01-2.54.7z"></path></svg>
+            <span class="handle">@Tedsig42</span>
+        </a>&nbsp;
+    </li>
+    
+
+    
+    
+    
+    <li>
+        <a href="https://github.com/Tednoob17" rel="me" aria-label="GitHub" title="GitHub" class="social-link-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentcolor" aria-hidden="true" focusable="false"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+            <span class="handle">@Tednoob17</span>
+        </a>&nbsp;
+    </li>
+    
+
+    
+    <li>
+            <a href="https://instagram.com/tedsig_art" rel="me" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>&nbsp;
+        </li><li>
+            <a href="https://linkedin.com/in/ted-kouhouenou" rel="me" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>&nbsp;
+        </li>
+</ul>
+</ul>
+
+<div class="aside__carousel" style="margin-top: 30px; text-align: center;">
+    <h3 style="margin-bottom: 15px; font-size: 1rem; font-weight: bold;">A Rap / Classic Album that i ❤️</h3>
+    <div class="carousel-container" style="position: relative; width: 100%; max-width: 250px; aspect-ratio: 1/1; margin: 0 auto; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+        
+        
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/%20Caballero%20&amp;%20Jeanjass%20-%20ZushiBoyz%20vol.4%20-%20Edition%20exclusive%20%28avec%20OBI%29.png" 
+                     alt="Caballero &amp; Jeanjass - ZushiBoyz vol.4 - Edition exclusive (avec OBI).png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Caballero &amp; Jeanjass - ZushiBoyz vol.4 - Edition exclusive (avec OBI)
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/%20Rounhaa%20-%20Jaafar.jpeg" 
+                     alt="Rounhaa - Jaafar.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Rounhaa - Jaafar
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/%20ZushiBoyz%20vol.3%20-%20Edition%20exclusive%20%28avec%20OBI%29.png" 
+                     alt="ZushiBoyz vol.3 - Edition exclusive (avec OBI).png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    ZushiBoyz vol.3 - Edition exclusive (avec OBI)
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Absolem%20-%20Les%20yeux%20grands%20ferm%C3%A9s.jpg" 
+                     alt="Absolem - Les yeux grands fermés.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Absolem - Les yeux grands fermés
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Al-Walid%20-%20Sarman.jpg" 
+                     alt="Al-Walid - Sarman.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Al-Walid - Sarman
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Alpha%20Wann%20-%20Don%20Dada%20Mixtape.jpeg" 
+                     alt="Alpha Wann - Don Dada Mixtape.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Alpha Wann - Don Dada Mixtape
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Alpha%20Wann%20-%20UMLA.webp" 
+                     alt="Alpha Wann - UMLA.webp" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Alpha Wann - UMLA
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Beeby%20-%20Gaia.jpg" 
+                     alt="Beeby - Gaia.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Beeby - Gaia
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Beeby%20-%20Morningstar.jpg" 
+                     alt="Beeby - Morningstar.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Beeby - Morningstar
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Beeby%20-%20UN%20GRAND%20C%C5%92UR%20DANS%20UN%20MONDE%20DE%20FILS%20DE%20PUTE.jpg" 
+                     alt="Beeby - UN GRAND CŒUR DANS UN MONDE DE FILS DE PUTE.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Beeby - UN GRAND CŒUR DANS UN MONDE DE FILS DE PUTE
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Bushi%20-%20Bushi%20Tape%203.jpg" 
+                     alt="Bushi - Bushi Tape 3.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Bushi - Bushi Tape 3
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Caballero%20&amp;%20Jeanjass%20-%20DOuble%20Helice%203.jpg" 
+                     alt="Caballero &amp; Jeanjass - DOuble Helice 3.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Caballero &amp; Jeanjass - DOuble Helice 3
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Caballero%20&amp;%20Jeanjass%20-%20High%20&amp;%20Fines%20Herbes.jpg" 
+                     alt="Caballero &amp; Jeanjass - High &amp; Fines Herbes.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Caballero &amp; Jeanjass - High &amp; Fines Herbes
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Caballero%20&amp;%20Jeanjass%20-%20Zushiboyz%20Vol%20.1.jpg" 
+                     alt="Caballero &amp; Jeanjass - Zushiboyz Vol .1.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Caballero &amp; Jeanjass - Zushiboyz Vol .1
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Caballero%20&amp;%20Jeanjass%20-%20Zushiboyz%20Vol.2.jpg" 
+                     alt="Caballero &amp; Jeanjass - Zushiboyz Vol.2.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Caballero &amp; Jeanjass - Zushiboyz Vol.2
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Caballero%20-%20Dose%20Heroique.webp" 
+                     alt="Caballero - Dose Heroique.webp" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Caballero - Dose Heroique
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Chavi%20&amp;%20Guydelafonsdal%20-%20Chavidelafonsdal.jpeg" 
+                     alt="Chavi &amp; Guydelafonsdal - Chavidelafonsdal.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Chavi &amp; Guydelafonsdal - Chavidelafonsdal
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Damso%20-%20Batterie%20Faible.jpg" 
+                     alt="Damso - Batterie Faible.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Damso - Batterie Faible
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Damso%20-%20Ipseite.jpg" 
+                     alt="Damso - Ipseite.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Damso - Ipseite
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Damso%20-%20Lithopedion.jpg" 
+                     alt="Damso - Lithopedion.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Damso - Lithopedion
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Damso%20-%20QALF.jpg" 
+                     alt="Damso - QALF.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Damso - QALF
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20Cercle%20Vertueux.jpg" 
+                     alt="Deen Burbigo - Cercle Vertueux.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Deen Burbigo - Cercle Vertueux
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Deen%20Burbigo%20-%20OG%20SAN%201.jpg" 
+                     alt="Deen Burbigo - OG SAN 1.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Deen Burbigo - OG SAN 1
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Deen%20Burbigo%20-OG%20SAN%202.jpg" 
+                     alt="Deen Burbigo -OG SAN 2.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Deen Burbigo -OG SAN 2
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Dimeh%20-%20OV3.jpg" 
+                     alt="Dimeh - OV3.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Dimeh - OV3
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/GAL%20-%20Du%20Caviar%20Pour%20Mon%20Chien.jpeg" 
+                     alt="GAL - Du Caviar Pour Mon Chien.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    GAL - Du Caviar Pour Mon Chien
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/GAL%20-%20JeuneBeurdelafontaine%20vol2.jpeg" 
+                     alt="GAL - JeuneBeurdelafontaine vol2.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    GAL - JeuneBeurdelafontaine vol2
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/HJeuneCrack%20-%202eme%20Mouvement.jpeg" 
+                     alt="HJeuneCrack - 2eme Mouvement.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    HJeuneCrack - 2eme Mouvement
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/HJeuneCrack%20-%20La%20Pieuvre.jpg" 
+                     alt="HJeuneCrack - La Pieuvre.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    HJeuneCrack - La Pieuvre
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/HJeuneCrack%20-%20Matiere%20Premiere.jpg" 
+                     alt="HJeuneCrack - Matiere Premiere.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    HJeuneCrack - Matiere Premiere
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/HJeunecrack%20-%201er%20Mouvement.jpg" 
+                     alt="HJeunecrack - 1er Mouvement.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    HJeunecrack - 1er Mouvement
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/HJeunecrack%20-%203eme%20Cycle.jpg" 
+                     alt="HJeunecrack - 3eme Cycle.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    HJeunecrack - 3eme Cycle
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Hamza%20-1994.jpg" 
+                     alt="Hamza -1994.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Hamza -1994
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Hamza%20-Paradise.jpg" 
+                     alt="Hamza -Paradise.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Hamza -Paradise
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Huntrill%20-%20LE%20BRUIT%20DE%20LA%20MACHINE%20A%20BILLETS%20.jpg" 
+                     alt="Huntrill - LE BRUIT DE LA MACHINE A BILLETS .jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Huntrill - LE BRUIT DE LA MACHINE A BILLETS
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Huntrill%20-%20Replica%202.jpeg" 
+                     alt="Huntrill - Replica 2.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Huntrill - Replica 2
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Infinit%20-%20888.jpg" 
+                     alt="Infinit - 888.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Infinit - 888
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Infinit%20-%20Ma%20vie%20est%20un%20film%202.jpg" 
+                     alt="Infinit - Ma vie est un film 2.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Infinit - Ma vie est un film 2
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Infinit%20-%20Mr%20Le%20Faire.jpg" 
+                     alt="Infinit - Mr Le Faire.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Infinit - Mr Le Faire
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Isha%20&amp;%20Limsa%20D%27Aulnay%20-%20Bitume%20%20caviar.jpg" 
+                     alt="Isha &amp; Limsa D&#39;Aulnay - Bitume caviar.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Isha &amp; Limsa D&#39;Aulnay - Bitume caviar
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/JUngle%20Jack%20-%20%20Jungle%20des%20illusions%20Vol%202.jpg" 
+                     alt="JUngle Jack - Jungle des illusions Vol 2.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    JUngle Jack - Jungle des illusions Vol 2
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/JeanJass%20-%20Goldman.png" 
+                     alt="JeanJass - Goldman.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    JeanJass - Goldman
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jeanjass%20-%20Doudoune%20en%20%20%C3%A9t%C3%A9.png" 
+                     alt="Jeanjass - Doudoune en été.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jeanjass - Doudoune en été
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jeanjass%20-%20Tous%20ces%20ongles%20rong%C3%A9s%20.jpg" 
+                     alt="Jeanjass - Tous ces ongles rongés .jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jeanjass - Tous ces ongles rongés
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jok%27AIr%20-%20Jok%27Rambo.jpg" 
+                     alt="Jok&#39;AIr - Jok&#39;Rambo.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jok&#39;AIr - Jok&#39;Rambo
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jok%27Air%20-%20Jok%27Chirac.jpg" 
+                     alt="Jok&#39;Air - Jok&#39;Chirac.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jok&#39;Air - Jok&#39;Chirac
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jok%27Air%20-%20Jok%27Travolta.jpg" 
+                     alt="Jok&#39;Air - Jok&#39;Travolta.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jok&#39;Air - Jok&#39;Travolta
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jok%27Air%20-%20New%20Jok%20City.jpg" 
+                     alt="Jok&#39;Air - New Jok City.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jok&#39;Air - New Jok City
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Josman%20-%20J.000.$.jpg" 
+                     alt="Josman - J.000.$.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Josman - J.000.$
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Josman%20-%20J.O.$.jpg" 
+                     alt="Josman - J.O.$.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Josman - J.O.$
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Josman%20-%20M.A.N%20%28Black%20Roses%20&amp;%20Lost%20Feelings%29.jpg" 
+                     alt="Josman - M.A.N (Black Roses &amp; Lost Feelings).jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Josman - M.A.N (Black Roses &amp; Lost Feelings)
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Josman%20-%20MYSTR%20J.O.$.jpg" 
+                     alt="Josman - MYSTR J.O.$.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Josman - MYSTR J.O.$
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Josman%20-%20SPLIT.png" 
+                     alt="Josman - SPLIT.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Josman - SPLIT
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jungle%20Jack%20-%20Cognacs%20et%20Cigarette.jpg" 
+                     alt="Jungle Jack - Cognacs et Cigarette.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jungle Jack - Cognacs et Cigarette
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jungle%20Jack%20-%20Creamland.png" 
+                     alt="Jungle Jack - Creamland.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jungle Jack - Creamland
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Jungle%20Jack%20-%20Jungle%20des%20illusions.jpg" 
+                     alt="Jungle Jack - Jungle des illusions.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Jungle Jack - Jungle des illusions
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Juwel%20Usain%20-%20Ou%20les%20garcons%20grandissent.jpg" 
+                     alt="Juwel Usain - Ou les garcons grandissent.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Juwel Usain - Ou les garcons grandissent
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Keroue%20-%20Candella.jpg" 
+                     alt="Keroue - Candella.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Keroue - Candella
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Keroue%20-%20Record.webp" 
+                     alt="Keroue - Record.webp" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Keroue - Record
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Keroue%20-%20Scope.jpg" 
+                     alt="Keroue - Scope.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Keroue - Scope
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/LaFeve%20-%2024.jpg" 
+                     alt="LaFeve - 24.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    LaFeve - 24
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/LaFeve%20-%20ERRR.jpg" 
+                     alt="LaFeve - ERRR.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    LaFeve - ERRR
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Le%20Monde%20Daho%20-%20Le%20Monde%2000.jpg" 
+                     alt="Le Monde Daho - Le Monde 00.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Le Monde Daho - Le Monde 00
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Ledouble%20&amp;%20Guydelafonsdal%20-%20LeDoubledelafonsdal.jpeg" 
+                     alt="Ledouble &amp; Guydelafonsdal - LeDoubledelafonsdal.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Ledouble &amp; Guydelafonsdal - LeDoubledelafonsdal
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Lefa%20-%20Fame.jpg" 
+                     alt="Lefa - Fame.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Lefa - Fame
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Lefa%20-3%20du%20mat.jpg" 
+                     alt="Lefa -3 du mat.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Lefa -3 du mat
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Lefa-DMNR.jpg" 
+                     alt="Lefa-DMNR.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Lefa-DMNR
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Luidji%20-%20Boscolo%20Exedra.jpg" 
+                     alt="Luidji - Boscolo Exedra.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Luidji - Boscolo Exedra
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Luidji%20-%20Saison%2000.png" 
+                     alt="Luidji - Saison 00.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Luidji - Saison 00
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Luidji%20-%20Tristesse%20Business.jpg" 
+                     alt="Luidji - Tristesse Business.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Luidji - Tristesse Business
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Luther%20-%20EXIT.jpeg" 
+                     alt="Luther - EXIT.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Luther - EXIT
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Luther%20-%20Gar%C3%A7on.jpg" 
+                     alt="Luther - Garçon.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Luther - Garçon
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Mairo%20-%20%20Omar%20Chappier.png" 
+                     alt="Mairo - Omar Chappier.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Mairo - Omar Chappier
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Mairo%20-%20Dejeuner%20en%20paix.jpg" 
+                     alt="Mairo - Dejeuner en paix.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Mairo - Dejeuner en paix
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Mairo,%20H%20JeuneCrack%20-%20La%20solution.png" 
+                     alt="Mairo, H JeuneCrack - La solution.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Mairo, H JeuneCrack - La solution
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Makala%20-%20%20Chaos%20Kiss.jpg" 
+                     alt="Makala - Chaos Kiss.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Makala - Chaos Kiss
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Makala%20-%20Radio%20Suicide.jpg" 
+                     alt="Makala - Radio Suicide.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Makala - Radio Suicide
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Makala%20-%20Yamoto.jpg" 
+                     alt="Makala - Yamoto.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Makala - Yamoto
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nekfeu%20-%20LEV.jpg" 
+                     alt="Nekfeu - LEV.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nekfeu - LEV
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nepal%20-%20Adios%20Bahamas.jpg" 
+                     alt="Nepal - Adios Bahamas.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nepal - Adios Bahamas
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nes%20-%20CQSS.jpg" 
+                     alt="Nes - CQSS.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nes - CQSS
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nes%20-%20LA%20COURSE.jpg" 
+                     alt="Nes - LA COURSE.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nes - LA COURSE
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nes%20-%20Pour%202%20VRAI.jpg" 
+                     alt="Nes - Pour 2 VRAI.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nes - Pour 2 VRAI
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nes%20-%20%C3%87A%20VA%20ALLER%20.jpg" 
+                     alt="Nes - ÇA VA ALLER .jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nes - ÇA VA ALLER
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nujabes%20-%20MetaphoricalMusic.jpg" 
+                     alt="Nujabes - MetaphoricalMusic.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nujabes - MetaphoricalMusic
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nujabes%20-%20Modal%20Music.jpg" 
+                     alt="Nujabes - Modal Music.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nujabes - Modal Music
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Nujabes%20-%20departure.jpg" 
+                     alt="Nujabes - departure.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Nujabes - departure
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/OgLounis%20&amp;%20Guydelafonsdal%20-%20OgLounisdelafonsdal.png" 
+                     alt="OgLounis &amp; Guydelafonsdal - OgLounisdelafonsdal.png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    OgLounis &amp; Guydelafonsdal - OgLounisdelafonsdal
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Oglounis%20-%20HARD%20LAIDBACKING%20BEFORE.jpg" 
+                     alt="Oglounis - HARD LAIDBACKING BEFORE.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Oglounis - HARD LAIDBACKING BEFORE
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Prince%20Wally%20-%20Moussa.jpg" 
+                     alt="Prince Wally - Moussa.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Prince Wally - Moussa
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Romeo%20Elvis%20-%20Chocolat.webp" 
+                     alt="Romeo Elvis - Chocolat.webp" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Romeo Elvis - Chocolat
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Romeo%20Elvis%20-%20Tout%20Peut%20Arriver.jpg" 
+                     alt="Romeo Elvis - Tout Peut Arriver.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Romeo Elvis - Tout Peut Arriver
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Romeo%20Elvis%20Morale.webp" 
+                     alt="Romeo Elvis Morale.webp" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Romeo Elvis Morale
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Selug%20&amp;%20Kyo%20Itachi%20-%20TATAKAE.jpeg" 
+                     alt="Selug &amp; Kyo Itachi - TATAKAE.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Selug &amp; Kyo Itachi - TATAKAE
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Slimka%20-%20Le%20Grand%20Mystico.jpg" 
+                     alt="Slimka - Le Grand Mystico.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Slimka - Le Grand Mystico
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Tisma%20&amp;%20Guydelafonsdal%20-%20Tismadelafonsdal.jpeg" 
+                     alt="Tisma &amp; Guydelafonsdal - Tismadelafonsdal.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Tisma &amp; Guydelafonsdal - Tismadelafonsdal
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Toothpick%20&amp;%20Guydelafonsdal%20-%20%20Toothpickdelafonsdal.jpeg" 
+                     alt="Toothpick &amp; Guydelafonsdal - Toothpickdelafonsdal.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Toothpick &amp; Guydelafonsdal - Toothpickdelafonsdal
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Toothpick%20-%20JEUNE%20LIFTIER.webp" 
+                     alt="Toothpick - JEUNE LIFTIER.webp" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Toothpick - JEUNE LIFTIER
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Toothpick%20x%203.14%20-%20No%20Casquette%20Vol.1.webp" 
+                     alt="Toothpick x 3.14 - No Casquette Vol.1.webp" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Toothpick x 3.14 - No Casquette Vol.1
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Vald%20-%20Agartha.jpg" 
+                     alt="Vald - Agartha.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Vald - Agartha
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Vald%20-%20Ce%20Monde%20Est%20Cruel.jpeg" 
+                     alt="Vald - Ce Monde Est Cruel.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Vald - Ce Monde Est Cruel
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Vald%20-%20V.jpg" 
+                     alt="Vald - V.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Vald - V
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Yvnnis%20-%20NOVAE.jpg" 
+                     alt="Yvnnis - NOVAE.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Yvnnis - NOVAE
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/Zushiboyz%20%28Info%29.jpg" 
+                     alt="Zushiboyz (Info).jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    Zushiboyz (Info)
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/a5el%20-%20Mercenaire.jpeg" 
+                     alt="a5el - Mercenaire.jpeg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    a5el - Mercenaire
+                </div>
+            </div>
+            
+        
+            
+            
+            
+            
+            
+            
+            <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                <img src="http://localhost:1313/images/Zushiboyz%20Merch/okis%20&amp;%20Mani%20De%C3%AFz%20-%20R%C3%AAve%20d%27un%20rouilleur.jpg" 
+                     alt="okis &amp; Mani Deïz - Rêve d&#39;un rouilleur.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                    okis &amp; Mani Deïz - Rêve d&#39;un rouilleur
+                </div>
+            </div>
+            
+        
+    </div>
+</div>
+    
+    <div class="aside__carousel" style="margin-top: 20px; text-align: center;">
+        <h3 style="margin-bottom: 15px; font-size: 1rem; font-weight: bold;">Podcasts I listen to</h3>
+        <div class="carousel-container" style="position: relative; width: 100%; max-width: 250px; aspect-ratio: 1/1; margin: 0 auto; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+            
+            
+            
+                
+                
+                
+                
+                
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/A%20la%20french.jpeg" 
+                         alt="A la french.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        A la french
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Cyber%20Talk.jpg" 
+                         alt="Cyber Talk.jpg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Cyber Talk
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Cyberpunk%20Compagnie.jpg" 
+                         alt="Cyberpunk Compagnie.jpg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Cyberpunk Compagnie
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Darknet%20Diaries.jpeg" 
+                         alt="Darknet Diaries.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Darknet Diaries
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Hack%27n%20Speak.jpeg" 
+                         alt="Hack&#39;n Speak.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Hack&#39;n Speak
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/La%20Cybersecurite%20expliquee%20a%20ma%20grande%20mere.jpeg" 
+                         alt="La Cybersecurite expliquee a ma grande mere.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        La Cybersecurite expliquee a ma grande mere
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Le%20comptoir%20secu.jpeg" 
+                         alt="Le comptoir secu.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Le comptoir secu
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/No-Limit-Secu.jpg" 
+                         alt="No-Limit-Secu.jpg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        No-Limit-Secu
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Oxide%20and%20Friends.jpeg" 
+                         alt="Oxide and Friends.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Oxide and Friends
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Polysecure.jpeg" 
+                         alt="Polysecure.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Polysecure
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Purple%20Voice.jpeg" 
+                         alt="Purple Voice.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Purple Voice
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Service%20Hacktion.jpg" 
+                         alt="Service Hacktion.jpg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Service Hacktion
+                    </div>
+                </div>
+                
+            
+                
+                
+                
+                
+                
+                
+                <div class="carousel-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
+                    <img src="http://localhost:1313/images/podcast/Underscore.jpeg" 
+                         alt="Underscore.jpeg" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 8px 5px; text-align: center; font-size: 0.9rem; font-weight: bold;">
+                        Underscore
+                    </div>
+                </div>
+                
+            
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const containers = document.querySelectorAll('.carousel-container');
+        containers.forEach(container => {
+            const items = container.querySelectorAll('.carousel-item');
+            if (items.length === 0) return;
+
+            let currentIndex = Math.floor(Math.random() * items.length);
+            items.forEach((it, idx) => it.style.opacity = (idx === currentIndex) ? '1' : '0');
+
+            setInterval(() => {
+                items[currentIndex].style.opacity = '0';
+                currentIndex = (currentIndex + 1) % items.length;
+                items[currentIndex].style.opacity = '1';
+            }, 3000);
+        });
+    });
+</script>
+</div>
+                <hr>
+                <div class="aside__content">
+  
+
+                </div>
+            </section>
+
+            <footer class="page__footer">
+<p class="copyright"></p>
+<p class="advertisement">Easy peasy ⚡<br>by Tedsig42</p>
+
+</footer>
+
+        </div>
+    </body>
+
+</html>

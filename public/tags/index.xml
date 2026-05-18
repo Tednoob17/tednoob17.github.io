@@ -1,1 +1,110 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Tedsig42</title><link>https://tednoob17.github.io/tags/</link><description>Recent content in Tags on Tedsig42</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0100</lastBuildDate><atom:link href="https://tednoob17.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Dos</title><link>https://tednoob17.github.io/tags/dos/</link><pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/dos/</guid><description/></item><item><title>Google</title><link>https://tednoob17.github.io/tags/google/</link><pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/google/</guid><description/></item><item><title>Gson</title><link>https://tednoob17.github.io/tags/gson/</link><pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/gson/</guid><description/></item><item><title>RCE</title><link>https://tednoob17.github.io/tags/rce/</link><pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/rce/</guid><description/></item><item><title>Zx</title><link>https://tednoob17.github.io/tags/zx/</link><pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/zx/</guid><description/></item><item><title>Insecure-Deserialization</title><link>https://tednoob17.github.io/tags/insecure-deserialization/</link><pubDate>Sun, 14 Dec 2025 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/insecure-deserialization/</guid><description/></item><item><title>Sqli</title><link>https://tednoob17.github.io/tags/sqli/</link><pubDate>Sun, 14 Dec 2025 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/sqli/</guid><description/></item><item><title>Websec</title><link>https://tednoob17.github.io/tags/websec/</link><pubDate>Sun, 14 Dec 2025 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/websec/</guid><description/></item><item><title>File-Upload</title><link>https://tednoob17.github.io/tags/file-upload/</link><pubDate>Fri, 12 Dec 2025 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/file-upload/</guid><description/></item><item><title>Php</title><link>https://tednoob17.github.io/tags/php/</link><pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/php/</guid><description/></item><item><title>Type Jungling</title><link>https://tednoob17.github.io/tags/type-jungling/</link><pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/type-jungling/</guid><description/></item><item><title>Weak Comparison</title><link>https://tednoob17.github.io/tags/weak-comparison/</link><pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate><guid>https://tednoob17.github.io/tags/weak-comparison/</guid><description/></item><item><title>Personal</title><link>https://tednoob17.github.io/tags/personal/</link><pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate><guid>https://tednoob17.github.io/tags/personal/</guid><description/></item><item><title>Book-Review</title><link>https://tednoob17.github.io/tags/book-review/</link><pubDate>Wed, 06 Aug 2025 00:22:36 +1300</pubDate><guid>https://tednoob17.github.io/tags/book-review/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Tedsig42</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Tedsig42</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dos</title>
+      <link>http://localhost:1313/tags/dos/</link>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/dos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Google</title>
+      <link>http://localhost:1313/tags/google/</link>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/google/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gson</title>
+      <link>http://localhost:1313/tags/gson/</link>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/gson/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RCE</title>
+      <link>http://localhost:1313/tags/rce/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/rce/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zx</title>
+      <link>http://localhost:1313/tags/zx/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/zx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Insecure-Deserialization</title>
+      <link>http://localhost:1313/tags/insecure-deserialization/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/insecure-deserialization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sqli</title>
+      <link>http://localhost:1313/tags/sqli/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/sqli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Websec</title>
+      <link>http://localhost:1313/tags/websec/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/websec/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>File-Upload</title>
+      <link>http://localhost:1313/tags/file-upload/</link>
+      <pubDate>Fri, 12 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/file-upload/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Php</title>
+      <link>http://localhost:1313/tags/php/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Type Jungling</title>
+      <link>http://localhost:1313/tags/type-jungling/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/type-jungling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Weak Comparison</title>
+      <link>http://localhost:1313/tags/weak-comparison/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/tags/weak-comparison/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Book-Review</title>
+      <link>http://localhost:1313/tags/book-review/</link>
+      <pubDate>Wed, 10 Sep 2025 23:28:38 +0200</pubDate>
+      <guid>http://localhost:1313/tags/book-review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Personal</title>
+      <link>http://localhost:1313/tags/personal/</link>
+      <pubDate>Fri, 08 Aug 2025 01:19:25 +0200</pubDate>
+      <guid>http://localhost:1313/tags/personal/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
