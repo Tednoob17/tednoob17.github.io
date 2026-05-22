@@ -1,38 +1,75 @@
 ---
-title: "Toboggan"
+
+title: "Toboggan — slides everywhere"
 date: 2026-05-29T00:00:00Z
 draft: true
 description: "Modern, multi-platform slides system written in Rust."
 tags: [toboggan, slides, rust]
 ---
 
-Short description (replace this line with your short description):
+Replace the short description below with your own line if you prefer a more personal phrasing.
 
-<!--
-Write a one- or two-line short description of Toboggan here. Example:
-"Toboggan is a modern, multi-platform presentation system built in Rust."
--->
-
-## Overview
-
-Toboggan is a compact, multi-platform slides system implemented in Rust. It lets you write presentations in Markdown or TOML, serve them from a WebSocket-enabled server, and present from any client — web browser, terminal, desktop app, or mobile device. The design focuses on low-latency remote control, portability and simple workflows for creating and sharing live slides.
-
-## Key features
-
-- Write slides in Markdown or TOML for easy authoring.
-- Live presentation via WebSocket server: present remotely from browser/terminal/desktop/mobile.
-- Small, fast, and cross-platform thanks to Rust.
-
-## Quick usage notes
-
-1. Prepare slides as Markdown or TOML files.
-2. Run the Toboggan server to serve slides and accept client connections.
-3. Open a browser or other client and connect to the server to present.
-
-## Why Toboggan
-
-Toboggan is useful when you want a lightweight, code-friendly presentation workflow that works across devices and integrates well into developer toolchains. Its Rust implementation provides performance and portability.
+Short description: Toboggan is a modern, multi-platform slides system built in Rust.
 
 ---
 
-Feel free to replace the top "Short description" with your text; I'll integrate it into the article and expand or edit as you prefer.
+## Why Toboggan
+
+I prefer presentations that are easy to write and flexible to present. Toboggan was created to meet that need: write your slides in Markdown (or TOML if you prefer structured files), start a small WebSocket server, and control the presentation from any device. Rust provides a fast, portable foundation—useful when you want a reliable tool without heavy dependencies.
+
+## What it is (brief)
+
+Toboggan offers:
+
+- Authoring: write slides in Markdown or TOML.
+- Distribution: a lightweight server that serves slides and accepts clients over WebSocket.
+- Presentation: connect from a browser, terminal client, desktop app, or mobile device and control progress in real time.
+
+The flow is intentionally simple: author → server → client(s). That makes remote demos, collaborative workshops and multi-screen setups easy.
+
+## Design principles
+
+- Minimalism: few layers between the source file and final rendering.
+- Interoperability: many client types (web, TUI, native) can communicate via WebSocket.
+- Performance and safety: Rust enables a compact, fast binary with a reduced attack surface.
+
+## Quick example
+
+1. Create `slides.md`:
+
+	# Slide 1
+
+	- point 1
+
+	# Slide 2
+
+2. Start the Toboggan server:
+
+	toboggan serve slides.md
+
+3. Open a browser at `http://localhost:PORT` or connect a third-party client.
+
+Navigation commands (next/previous) are sent over WebSocket, so you can control the presentation from a second device.
+
+## Use cases
+
+- Conferences and meetups: synchronize multiple screens or show a presenter view separately.
+- Classes and workshops: let participants connect to follow or control the presentation.
+- Quick demos: share a local link for code reviews or technical walkthroughs.
+
+## Limitations and roadmap
+
+Toboggan favors lightweight workflows over WYSIWYG editing—if you need a heavy GUI editor (Keynote/PowerPoint style), this is not the goal. For developers and users who prefer source-first workflows (Markdown/TOML), Toboggan fits well.
+
+Possible improvements: additional CSS themes, live annotation support, streaming integrations, or a native desktop app for easier distribution.
+
+## Contributing
+
+If you'd like to contribute:
+
+- Open issues and PRs in the repository.
+- Help create slide templates or alternative client implementations.
+
+---
+
+Write your short description at the top if you want me to rephrase it or integrate it into the introduction; I can also generate thumbnail images or a homepage excerpt.
