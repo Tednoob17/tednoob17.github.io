@@ -25,7 +25,7 @@
                 <ul style='padding-left: 0'>
                     <li><a href="https://zone-01.vercel.app/">Zone01</a> - Interactive curriculum map for Zone01 learning paths with Piscine and another project </li>
                     <li><a href="https://github.com/Tednoob17/FaaS">Faasp</a> - FaaS Platform - Function as a Service</li>
-                    <!-- firefox-wayback-url-finder removed -->
+                    <li><a href="https://tednoob17.github.io/toboggan">Toboggan</a> - Modern, multi-platform slides system written in Rust: write slides in Markdown or TOML, serve them via a WebSocket-enabled server, and present from browser, terminal, desktop or mobile.</li>
                     <li><a href="https://github.com/Tednoob17/Final-HackerLab2023">
 Final-HackerLab2023
 </a> - A writeup for Hackerlab 2023</li>
