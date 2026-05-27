@@ -61,6 +61,11 @@ Navigation commands (next/previous) are sent over WebSocket, so you can control 
 
 The origin of Toboggan is practical and a bit serendipitous. It was mentioned during the presentation "Access Granted 01.4 - FCSC Challenge Retex : Shrimp-Say !" by BitK (video: https://www.youtube.com/watch?v=E_SVWmd5-aA). BitK (https://bi.tk) and Kevin Mizu (https://mizu.re) worked on FCSC challenges together. During the Q&A (see around 00:16:10), BitK explained that his slides were home‑made and named the tool "Toboggan".
 
+<div style="max-width:100%;margin:16px 0;text-align:center;">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/E_SVWmd5-aA" title="Access Granted 01.4 - FCSC Challenge Retex : Shrimp-Say !" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;max-width:720px;height:405px;border:0;">
+	</iframe>
+</div>
+
 After searching, the project repository was found at https://github.com/ilaborie/toboggan (author: Igor Laborie, @ilaborie). The repository appears to be an educational side project for generating slides rather than a fully polished commercial product. Building the project can be resource intensive — some builds may require a large amount of RAM (I experienced builds that used more than 12 GB).
 
 If you want to learn more about the wider context, search for FCSC (the challenge series mentioned in the talk) and watch the video linked above for the original demonstration.
