@@ -1,6 +1,6 @@
 ---
 
-title: "Toboggan — slides everywhere"
+title: "Toboggan -- slides everywhere"
 date: 2026-05-29T00:00:00Z
 draft: false
 description: "Modern, multi-platform slides system written in Rust."
@@ -13,10 +13,10 @@ Toboggan is a modern, multi-platform slides system built in Rust. Write your sli
 
 ## Background and origin
 
-Toboggan comes from the presentation "Access Granted 01.4 - FCSC Challenge Retex : Shrimp-Say !" by BitK: https://www.youtube.com/watch?v=E_SVWmd5-aA. BitK (https://bi.tk) and Kevin Mizu (https://mizu.re) worked together on FCSC challenges. Around 00:16:10 in the Q&A, BitK explains that his slides were homemade and names the tool "Toboggan".
+Toboggan comes from the presentation "Access Granted 01.4 - FCSC Challenge Retex : Shrimp-Say !" by BitK: https://www.youtube.com/watch?v=E_SVWmd5-aA. BitK (https://bi.tk) and Kevin Mizu (https://mizu.re) worked together on FCSC challenges. In the Q&A, [around 00:16:10](https://youtu.be/E_SVWmd5-aA?t=970), BitK explains that his slides were homemade and names the tool "Toboggan".
 
 <div style="max-width:100%;margin:16px 0;text-align:center;">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/E_SVWmd5-aA" title="Access Granted 01.4 - FCSC Challenge Retex : Shrimp-Say !" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;max-width:720px;height:405px;border:0;">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/E_SVWmd5-aA?start=970" title="Access Granted 01.4 - FCSC Challenge Retex : Shrimp-Say !" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;max-width:720px;height:405px;border:0;">
 	</iframe>
 </div>
 
