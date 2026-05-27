@@ -20,7 +20,7 @@ Toboggan comes from the presentation [Access Granted 01.4 - FCSC Challenge Retex
 	</iframe>
 </div>
 
-The project repository is at https://github.com/Tednoob17/toboggan (author: Tednoob17). It's an educational side project rather than a polished commercial product. Builds can be memory intensive.
+The original project was created by [Igor Laborie](https://github.com/ilaborie/toboggan) (@ilaborie). [I](https://github.com/Tednoob17) forked and significantly modified the project to make it more accessible, easier to build, and simpler to distribute. While inspired by Igor's original work, this version includes many improvements and tweaks to make it practical for personal use and easier to work with. The current repository is at [https://github.com/Tednoob17/toboggan](https://github.com/Tednoob17/toboggan).
 
 ## Why Toboggan
 
