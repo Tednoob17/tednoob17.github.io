@@ -61,8 +61,8 @@ These steps show a typical workflow to build and run the upstream Toboggan proje
 
 2. Clone the repository:
 
-	 git clone https://github.com/ilaborie/toboggan.git
-	 cd toboggan
+	git clone https://github.com/Tednoob17/toboggan.git
+	cd toboggab
 
 3. Build (development)
 
@@ -90,7 +90,7 @@ These steps show a typical workflow to build and run the upstream Toboggan proje
 	- If build fails due to resource limits, try `cargo run` for dev mode or use a machine with more RAM.
 	- Look in the project's README for flags (port, host, TLS) or examples of slide formats (Markdown/TOML).
 
-If you want, I can fetch the repository README and adapt these instructions to the exact commands and options used by the upstream `ilaborie/toboggan` project — want me to do that now?
+If you want, I can fetch the repository README and adapt these instructions to the exact commands and options used by the repository `Tednoob17/toboggab` — want me to do that now?
 
 ## Use cases
 
@@ -107,7 +107,7 @@ The origin of Toboggan is practical and a bit serendipitous. It was mentioned du
 	</iframe>
 </div>
 
-After searching, the project repository was found at https://github.com/ilaborie/toboggan (author: Igor Laborie, @ilaborie). The repository appears to be an educational side project for generating slides rather than a fully polished commercial product. Building the project can be resource intensive — some builds may require a large amount of RAM (I experienced builds that used more than 12 GB).
+After searching, the project repository was found at https://github.com/Tednoob17/toboggab (author: Tednoob17). The repository appears to be an educational side project for generating slides rather than a fully polished commercial product. Building the project can be resource intensive — some builds may require a large amount of RAM (I experienced builds that used more than 12 GB).
 
 If you want to learn more about the wider context, search for FCSC (the challenge series mentioned in the talk) and watch the video linked above for the original demonstration.
 
