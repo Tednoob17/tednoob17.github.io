@@ -714,7 +714,7 @@ article b {
 
 .content__body a,
 article a {
-    color: var(--markdown-accent);
+    color: #ff0000;
     text-decoration-thickness: 0.12em;
     text-underline-offset: 0.18em;
 }
@@ -722,7 +722,7 @@ article a {
 .content__body a:hover,
 article a:hover {
     color: var(--fg);
-    background: var(--markdown-accent-soft);
+    background: rgba(255, 0, 0, 0.14);
 }
 
 .content__body blockquote,
