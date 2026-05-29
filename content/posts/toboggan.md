@@ -51,6 +51,47 @@ The flow is intentionally simple: author → server → client(s). That makes re
 
 Navigation commands (next/previous) are sent over WebSocket, so you can control the presentation from a second device.
 
+## Getting started (practical)
+
+These steps show a typical workflow to build and run the upstream Toboggan project. Exact commands and options may vary by version — check the repository README if available.
+
+1. Prerequisites:
+	- Install Rust toolchain (rustup + cargo).
+	- Have `git` installed to clone the repository.
+
+2. Clone the repository:
+
+	 git clone https://github.com/ilaborie/toboggan.git
+	 cd toboggan
+
+3. Build (development)
+
+	 cargo run -- serve slides.md
+
+	This runs the project without producing a release binary and is convenient for development. For a release build:
+
+	 cargo build --release
+	 ./target/release/toboggan serve slides.md
+
+	Note: some builds can be resource-intensive; building in release mode may use a lot of RAM on some machines.
+
+4. Start the server before connecting clients:
+
+	- The server prints the listening address and port to stdout. Open that URL in a browser or connect a client.
+	- Example: `http://localhost:PORT` (replace PORT with the value printed by the server).
+
+5. Presenting and controls:
+
+	- Connect a browser or other client to the server URL.
+	- Navigation commands (next/previous) are typically available via UI buttons or keyboard (arrow keys, space). Remote clients send commands over WebSocket to control slide state.
+
+6. Troubleshooting and tips:
+
+	- If build fails due to resource limits, try `cargo run` for dev mode or use a machine with more RAM.
+	- Look in the project's README for flags (port, host, TLS) or examples of slide formats (Markdown/TOML).
+
+If you want, I can fetch the repository README and adapt these instructions to the exact commands and options used by the upstream `ilaborie/toboggan` project — want me to do that now?
+
 ## Use cases
 
 - Conferences and meetups: synchronize multiple screens or show a presenter view separately.
