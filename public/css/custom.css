@@ -713,16 +713,18 @@ article b {
 }
 
 .content__body a,
-article a {
-    color: var(--markdown-accent);
-    text-decoration-thickness: 0.12em;
-    text-underline-offset: 0.18em;
+article a,
+a {
+    color: #ff0000 !important;
+    text-decoration-thickness: 0.12em !important;
+    text-underline-offset: 0.18em !important;
 }
 
 .content__body a:hover,
-article a:hover {
-    color: var(--fg);
-    background: var(--markdown-accent-soft);
+article a:hover,
+a:hover {
+    color: var(--fg) !important;
+    background: rgba(255, 0, 0, 0.14) !important;
 }
 
 .content__body blockquote,

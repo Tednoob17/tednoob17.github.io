@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gson on Tedsig42</title>
-    <link>http://localhost:1313/tags/gson/</link>
+    <link>https://tednoob17.github.io/tags/gson/</link>
     <description>Recent content in Gson on Tedsig42</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/gson/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tednoob17.github.io/tags/gson/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Google VRP: Bypassing the Fix for CVE-2022-25647</title>
-      <link>http://localhost:1313/posts/google-vrp-bypass-fix-of-cve-2022-25647/</link>
+      <link>https://tednoob17.github.io/posts/google-vrp-bypass-fix-of-cve-2022-25647/</link>
       <pubDate>Sun, 19 Apr 2026 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/google-vrp-bypass-fix-of-cve-2022-25647/</guid>
+      <guid>https://tednoob17.github.io/posts/google-vrp-bypass-fix-of-cve-2022-25647/</guid>
       <description>&lt;h2 id=&#34;gson-not-json&#34;&gt;Gson, not JSON&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Gson&lt;/code&gt; (Google JSON) is an &lt;strong&gt;open-source&lt;/strong&gt; Java library developed by &lt;strong&gt;Google&lt;/strong&gt;.   &lt;br&gt;&#xA;Its primary purpose is to convert Java objects into their &lt;code&gt;JSON&lt;/code&gt; representation (&lt;strong&gt;serialization&lt;/strong&gt;) and to convert a &lt;code&gt;JSON&lt;/code&gt; string back into an equivalent &lt;strong&gt;Java object&lt;/strong&gt; (&lt;strong&gt;deserialization&lt;/strong&gt;).&lt;/p&gt;&#xA;&lt;h3 id=&#34;how-gson-works&#34;&gt;How Gson Works&lt;/h3&gt;&#xA;&lt;p&gt;To understand &lt;code&gt;Gson&lt;/code&gt;, think of it as a two-way bridge between your Java code and the &lt;code&gt;JSON&lt;/code&gt; format.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Serialization&lt;/strong&gt; (&lt;code&gt;Object&lt;/code&gt; -&amp;gt; &lt;code&gt;JSON&lt;/code&gt;)&#xA;If you have a &lt;strong&gt;Java object&lt;/strong&gt; (e.g., a &lt;code&gt;User&lt;/code&gt; class with a name and age), Gson &lt;strong&gt;reads&lt;/strong&gt; that object&amp;rsquo;s fields and writes them into a JSON string.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;code&gt;Java: User user = new User(&amp;quot;Ted&amp;quot;, 21);&lt;/code&gt;&lt;/p&gt;</description>
     </item>
   </channel>
