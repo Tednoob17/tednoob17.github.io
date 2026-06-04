@@ -1,7 +1,9 @@
 ---
-title: "Oxide Computer -- "
-date: 2026-05-29T00:00:00Z
-draft: false
-description: "Modern, multi-platform slides system written in Rust."
-tags: [toboggan, slides, rust]
+title: "What I Learned from the Oxide Podcast"
+date: 2026-06-20T00:00:00Z
+draft: true
+description: "Personal notes on the Oxide and Friends podcast"
+tags: [oxide, blog, podcast, review]
+lang: en
 ---
+
