@@ -1,7 +1,7 @@
 ---
 title: "What I Learned from the Oxide Podcast and Bryan Cantrill's Blog"
 date: 2026-06-20T00:00:00Z
-draft: true
+draft: false
 description: "Personal notes on the Oxide and Friends podcast and Bryan Cantrill's blog."
 tags: [oxide, bryan cantrill, blog, podcast, review]
 lang: en
