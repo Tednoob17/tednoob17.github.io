@@ -7,23 +7,27 @@ tags: [oxide, bryan cantrill, blog, podcast, review]
 lang: en
 ---
 
-# What I Learned from the Oxide Podcast and Bryan Cantrill's Blog
 
-
-Let me start with something stupid. Two years ago, I lost some data on an external drive. Nothing unrecoverable, but enough to send me on a Google hunt like "how ZFS works." I stumbled on an episode of **Oxide and Friends** where Bryan Cantrill and [Adam Leventhal](https://en.wikipedia.org/wiki/Adam_Leventhal_(programmer))  were talking about the history of ZFS with [Jeff Bonwick](https://en.wikipedia.org/wiki/Jeff_Bonwick) -- the guy who wrote it.
+Let me start with something stupid. Two years ago, I lost some data on an external drive. Nothing unrecoverable, but enough to send me on a Google hunt like "how ZFS works." I stumbled on an episode of **Oxide and Friends** where [Bryan Cantrill](https://bcantrill.dtrace.org/about) and [Adam Leventhal](https://en.wikipedia.org/wiki/Adam_Leventhal_(programmer))  were talking about the history of [ZFS](en.wikipedia.org/wiki/ZFS) with [Jeff Bonwick](https://en.wikipedia.org/wiki/Jeff_Bonwick) -- the guy who wrote it.
 
 Three hours later, I was still there. I hadn't fixed my disk problem.
 
-![oxide computer](/static/images/stc/oxide-and-friends.jpeg)
+![alt](/images/stc/oxide-and-friends.jpeg)
 
-I haven't stopped listening since. And eventually I ended up on Bryan's blog, *The Observation Deck*, hosted at an address that reeks of the old world: `bcantrill.dtrace.org`. The blog has been around since 2004. 22 years of posts. I read most of them.
+I haven't stopped listening since. And eventually I ended up on Bryan's blog, *The Observation Deck*, hosted at an address that reeks of the old world: [`bcantrill.dtrace.org`](https://bcantrill.dtrace.org). The blog has been around since 2004. 22 years of posts. I read most of them.
 
 This article is just my notes. What I remembered, what made me laugh, what made me think. It's not a thesis, it's the mess of a guy who listened to too many hours of podcast and wanted to put words on it.
+
+## What is Oxide Computer ?
+To start, it's important to mention that Oxide Computer is made by alumni of Sun Microsystems, and they brought that DNA into a new company. Co-founders Steve Tuck and Bryan Cantrill had decades of cloud infrastructure experience at Dell, Sun Microsystems, and Joyent, and assembled a band of around 60 veteran technologists skilled in software, mechanical, electrical, and industrial engineering to rebuild server infrastructure from the ground up.
+
+![alt](/images/stc/oxide-site.png)
+
+Rather than selling software that runs on someone else's hardware (the typical cloud model), Oxide designs and builds rack-scale computers — the physical servers, the firmware, the hypervisor, and the control plane — as a single integrated product, marketed as an on-premises alternative to the public cloud for companies that need cloud-like infrastructure inside their own datacenters (governments, banks, regulated industries). The Sun pedigree shows up constantly in how they talk about the company: a deep distrust of "good enough" commodity hardware/firmware, a strong systems-engineering culture, and a habit of digging into low-level details (BMCs, root of trust, network switches) that most cloud vendors abstract away. 
 
 ## How I fell into this
 
 *Oxide and Friends* started from a Twitter Space in April 2021. Twitter Spaces had just launched, Bryan and Adam figured "let's try it." No format, no planning, no producer.
-![oxide computer]()
 
 Six years later, 180 episodes. They talk for an hour or two with guests, no script, no prepared questions. Topics are announced on Twitter but the conversation always goes somewhere unexpected.
 
