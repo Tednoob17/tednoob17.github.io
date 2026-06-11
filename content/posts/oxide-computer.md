@@ -10,9 +10,11 @@ lang: en
 # What I Learned from the Oxide Podcast and Bryan Cantrill's Blog
 
 
-Let me start with something stupid. Two years ago, I lost some data on an external drive. Nothing unrecoverable, but enough to send me on a Google hunt like "how ZFS works." I stumbled on an episode of *Oxide and Friends* where Bryan Cantrill and Adam Leventhal were talking about the history of ZFS with Jeff Bonwick — the guy who wrote it.
+Let me start with something stupid. Two years ago, I lost some data on an external drive. Nothing unrecoverable, but enough to send me on a Google hunt like "how ZFS works." I stumbled on an episode of **Oxide and Friends** where Bryan Cantrill and [Adam Leventhal](https://en.wikipedia.org/wiki/Adam_Leventhal_(programmer))  were talking about the history of ZFS with [Jeff Bonwick](https://en.wikipedia.org/wiki/Jeff_Bonwick) -- the guy who wrote it.
 
 Three hours later, I was still there. I hadn't fixed my disk problem.
+
+![oxide computer](/static/images/stc/oxide-and-friends.jpeg)
 
 I haven't stopped listening since. And eventually I ended up on Bryan's blog, *The Observation Deck*, hosted at an address that reeks of the old world: `bcantrill.dtrace.org`. The blog has been around since 2004. 22 years of posts. I read most of them.
 
@@ -21,10 +23,11 @@ This article is just my notes. What I remembered, what made me laugh, what made 
 ## How I fell into this
 
 *Oxide and Friends* started from a Twitter Space in April 2021. Twitter Spaces had just launched, Bryan and Adam figured "let's try it." No format, no planning, no producer.
+![oxide computer]()
 
 Six years later, 180 episodes. They talk for an hour or two with guests, no script, no prepared questions. Topics are announced on Twitter but the conversation always goes somewhere unexpected.
 
-The guests are people who *built* the stuff they talk about. Not evangelists. One week it's Cliff Biffle, the guy who wrote the Hubris microkernel. The week before, Dave Pacheco working on rack updates. And outsiders too — storage veterans rehashing NAS wars from the 2000s. Oxide's YouTube channel (https://www.youtube.com/@oxidecomputercompany) has shorter series like FAQ Friday that are worth a look.
+The guests are people who *built* the stuff they talk about. Not evangelists. One week it's [Cliff Biffle](https://cliffle.com), the guy who wrote the [Hubris microkernel](https://hubris.oxide.computer). The week before, Dave Pacheco working on rack updates. And outsiders too -- storage veterans rehashing NAS wars from the 2000s. Oxide's YouTube channel (https://www.youtube.com/@oxidecomputercompany) has shorter series like FAQ Friday that are worth a look.
 
 ## When they trusted engineers
 
