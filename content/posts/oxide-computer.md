@@ -19,11 +19,11 @@ I haven't stopped listening since. And eventually I ended up on Bryan's blog, *T
 This article is just my notes. What I remembered, what made me laugh, what made me think. It's not a thesis, it's the mess of a guy who listened to too many hours of podcast and wanted to put words on it.
 
 ## What is Oxide Computer ?
-To start, it's important to mention that Oxide Computer is made by alumni of Sun Microsystems, and they brought that DNA into a new company. Co-founders Steve Tuck and Bryan Cantrill had decades of cloud infrastructure experience at Dell, Sun Microsystems, and Joyent, and assembled a band of around 60 veteran technologists skilled in software, mechanical, electrical, and industrial engineering to rebuild server infrastructure from the ground up.
+To start, it's important to mention that **Oxide Computer** is made by alumni of *Sun Microsystems*, and they brought that DNA into a new company. Co-founders [Steve Tuck](https://x.com/sdtuck) and Bryan Cantrill had decades of cloud infrastructure experience at Dell, [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems), and [Joyent](https://www.joyent.com/about), and assembled a band of around 60 veteran technologists skilled in software, mechanical, electrical, and industrial engineering to rebuild server infrastructure from the ground up.
 
 ![alt](/images/stc/oxide-site.png)
 
-Rather than selling software that runs on someone else's hardware (the typical cloud model), Oxide designs and builds rack-scale computers — the physical servers, the firmware, the hypervisor, and the control plane — as a single integrated product, marketed as an on-premises alternative to the public cloud for companies that need cloud-like infrastructure inside their own datacenters (governments, banks, regulated industries). The Sun pedigree shows up constantly in how they talk about the company: a deep distrust of "good enough" commodity hardware/firmware, a strong systems-engineering culture, and a habit of digging into low-level details (BMCs, root of trust, network switches) that most cloud vendors abstract away. 
+Rather than selling software that runs on someone else's hardware (the typical cloud model), *Oxide* designs and builds *rack-scale computers* -- the **physical servers**, the **firmware**, the **hypervisor**, and the **control plane** -- as a single integrated product, marketed as an on-premises alternative to the public cloud for companies that need cloud-like infrastructure inside their own datacenters (governments, banks, regulated industries). The Sun pedigree shows up constantly in how they talk about the company: a deep distrust of "good enough" commodity hardware/firmware, a strong systems-engineering culture, and a habit of digging into low-level details (BMCs, root of trust, network switches) that most cloud vendors abstract away. 
 
 ## How I fell into this
 
@@ -43,9 +43,9 @@ The guests are people who *built* the stuff they talk about. Not evangelists. On
 
 The thing that struck me the most was discovering what the industry looked like before I got into it.
 
-Bryan started his career at Sun Microsystems in the mid-90s. Not because it was a good career move — because he wanted to work on an OS kernel at a real *computer company*, where hardware and software were designed by the same shop. At the time, that was already an iconoclastic idea.
+Bryan started his career at Sun Microsystems in the mid-90s. Not because it was a good career move -- because he wanted to work on an OS kernel at a real *computer company*, where hardware and software were designed by the same shop. At the time, that was already an iconoclastic idea.
 
-Sun had this incredible blogging policy. In 2004, they launched `blogs.sun.com` with an explicit message to employees: you're not just *allowed* to blog, you're *encouraged* to. The message was "We trust you." The result: a mountain of technical content written by the engineers themselves — DTrace, ZFS, Solaris — that doesn't exist anywhere else.
+Sun had this incredible blogging policy. In 2004, they launched `blogs.sun.com` with an explicit message to employees: you're not just *allowed* to blog, you're *encouraged* to. The message was "We trust you." The result: a mountain of technical content written by the engineers themselves -- DTrace, ZFS, Solaris — that doesn't exist anywhere else.
 
 Today, most technical articles online are written by marketers or people trying to sell you something. On this podcast, you hear engineers say "here's what worked, here's what broke, here's what we'd do differently."
 
@@ -55,7 +55,7 @@ No bullshit. It's rare.
 
 I read "On Dreaming in Code" (2007) and laughed out loud like an idiot.
 
-Scott Rosenberg's book follows the development of Chandler. Chandler was supposed to be a personal information manager. The Open Source Applications Foundation (OSAF) ran the project, founded by Mitch Kapor — the creator of Lotus 1-2-3. I write this and realize it already sounds shaky. The project drifted for years without shipping.
+Scott Rosenberg's book follows the development of Chandler. Chandler was supposed to be a personal information manager. The Open Source Applications Foundation (OSAF) ran the project, founded by Mitch Kapor -- the creator of Lotus 1-2-3. I write this and realize it already sounds shaky. The project drifted for years without shipping.
 
 Bryan asks a question that stuck with me:
 
