@@ -31,13 +31,7 @@ Rather than selling software that runs on someone else's hardware (the typical c
 
 Six years later, 180 episodes. They talk for an hour or two with guests, no script, no prepared questions. Topics are announced on Twitter but the conversation always goes somewhere unexpected.
 
-The guests are people who *built* the stuff they talk about. Not evangelists. One week it's [Cliff Biffle](https://cliffle.com), the guy who wrote the [Hubris microkernel](https://hubris.oxide.computer). The week before, Dave Pacheco working on rack updates. And outsiders too -- storage veterans rehashing NAS wars from the 2000s. Oxide's YouTube channel (<a href="https://www.youtube.com/@oxidecomputercompany" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;text-decoration:none;border:1px solid #ddd;border-radius:8px;padding:10px;max-width:420px;">
-  <img src="/static/images/stc/logo.png" alt="Oxide Computer Company" width="48" height="48" style="border-radius:50%;">
-  <span style="color:inherit;">
-    <strong>Oxide Computer Company</strong><br>
-    <span style="font-size:0.9em;color:#666;">youtube.com/@oxidecomputercompany</span>
-  </span>
-</a> has shorter series like FAQ Friday that are worth a look.
+The guests are people who *built* the stuff they talk about. Not evangelists. One week it's [Cliff Biffle](https://cliffle.com), the guy who wrote the [Hubris microkernel](https://hubris.oxide.computer). The week before, Dave Pacheco working on rack updates. And outsiders too -- storage veterans rehashing NAS wars from the 2000s. Oxide's YouTube channel (https://www.youtube.com/@oxidecomputercompany) has shorter series like FAQ Friday that are worth a look.
 
 ## When they trusted engineers
 
