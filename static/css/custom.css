@@ -8,7 +8,7 @@
     --markdown-accent-soft: rgba(41, 186, 109, 0.14);
     --markdown-quote-bg: rgba(41, 186, 109, 0.08);
     --markdown-quote-border: rgba(41, 186, 109, 0.78);
-    --markdown-emphasis-bg: rgba(33, 52, 221, 0.699);
+    --markdown-emphasis-bg: rgba(41, 186, 109, 0.18);
 }
 
 /* Wider layout like px-[5%] / lg:px-[15%] */
@@ -715,7 +715,7 @@ article b {
 .content__body a,
 article a,
 a {
-    color: #ff0000 !important;
+    color: #e53e3e !important;
     text-decoration-thickness: 0.12em !important;
     text-underline-offset: 0.18em !important;
 }

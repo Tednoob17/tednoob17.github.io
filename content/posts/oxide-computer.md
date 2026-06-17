@@ -21,11 +21,11 @@ This article is just my notes. What I remembered, what made me laugh, what made 
 
 Context, because you probably need it.
 
-Oxide is basically what you get when a bunch of [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) veterans get tired of watching cloud providers cut corners on the hardware. Bryan was at Sun, then [Joyent](https://www.joyent.com/about). [Steve Tuck](https://x.com/sdtuck) was at Dell. Around 60 of them pulled together to build the whole thing -- physical server, firmware, hypervisor, control plane -- as one product. Not software you license to run on someone else's rack. The actual computer. For companies that need cloud-like infrastructure inside their own datacenter and don't want to hand their data to AWS.
+*Oxide* is basically what you get when a bunch of [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) veterans get tired of watching cloud providers cut corners on the hardware. Bryan was at Sun, then [Joyent](https://www.joyent.com/about). [Steve Tuck](https://x.com/sdtuck) was at Dell. Around 60 of them pulled together to build the whole thing -- *physical server, firmware, hypervisor, control plane* -- as one product. Not software you license to run on someone else's rack. The actual computer. For companies that need cloud-like infrastructure inside their own datacenter and don't want to hand their data to AWS.
 
 ![alt](/images/stc/oxide-site.png)
 
-The Sun DNA is everywhere in how they talk. Deep suspicion of "good enough" firmware. The reflex to dig into BMCs and root-of-trust chips that most cloud vendors pretend don't exist. And this conviction that hardware and software designed by separate companies, bolted together after the fact, is why servers are still as unreliable as they are. They've been saying that for years. Now they're building the thing they wanted to exist.
+The Sun DNA is everywhere in how they talk. Deep suspicion of *good enough* firmware. The reflex to dig into BMCs and root-of-trust chips that most cloud vendors pretend don't exist. And this conviction that hardware and software designed by separate companies, bolted together after the fact, is why servers are still as unreliable as they are. They've been saying that for years. Now they're building the thing they wanted to exist.
 
 ## How I fell into this
 
@@ -151,9 +151,9 @@ I don't fully agree. Rust conferences kept some of that spirit. But his general 
 
 ## The thumbnails
 
-I spent an hour looking at all 175 YouTube thumbnails at once. Every one of them dumped into a single folder.
+Every one of YouTube thumbnails  into a single folder.
 
-There's hardware, but not the kind you see in catalogues. Messy benches -- cables going everywhere, bare boards on a table, oscilloscope probes with eight traces running simultaneously. The kind of setup that looks like 3am on a Friday. There's a bust of John von Neumann, the USENIX '83 badge "Sex, Drugs and Unix", the Theranos Sample Processing Unit diagram. Green phosphor terminals. The cover of *Show-Stopper!*.
+Every thumbnails used on  youtube are a variety of references in culture like  hardware, but not the kind you see in catalogues. Messy benches -- cables going everywhere, bare boards on a table, oscilloscope probes with eight traces running simultaneously. The kind of setup that looks like 3am on a Friday. There's a bust of John von Neumann, the USENIX '83 badge "Sex, Drugs and Unix", the Theranos Sample Processing Unit diagram. Green phosphor terminals. The cover of *Show-Stopper!*.
 
 Then there are the memes. The tombstone "Intel Optane 1993–2022". A "0xide B-I-N-G-0x" card. Spider-Man pointing at himself. Homer designing a car by committee. Some generic guy leaning on a counter with a milkshake, talking to an "Oxide" robot -- it shows up multiple times, clearly a running gag.
 
