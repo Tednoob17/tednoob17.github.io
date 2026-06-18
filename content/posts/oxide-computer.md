@@ -1,172 +1,101 @@
 ---
-title: "What I Learned from the Oxide Podcast and Bryan Cantrill's Blog"
+title: "Oxide and Friends: Things Worth Recovering"
 date: 2026-06-20T00:00:00Z
 draft: false
-description: "Personal notes on the Oxide and Friends podcast and Bryan Cantrill's blog."
+description: "On Oxide Computer, a dying tradition of engineering, and a podcast that documents it."
 tags: [oxide, bryan cantrill, blog, podcast, review]
 lang: en
 ---
 
-Let me start with something stupid. Two years ago, I lost some data on an external drive. Nothing unrecoverable, but enough to send me on a Google hunt like "how ZFS works." I stumbled on an episode of **Oxide and Friends** where [Bryan Cantrill](https://bcantrill.dtrace.org/about) and [Adam Leventhal](https://en.wikipedia.org/wiki/Adam_Leventhal_(programmer)) were talking about the history of [ZFS](https://en.wikipedia.org/wiki/ZFS) with [Jeff Bonwick](https://en.wikipedia.org/wiki/Jeff_Bonwick) -- the guy who wrote it.
+In September 1993, Bryan Cantrill was a freshman at Brown University. He wrote a two-player Tetris game on a floppy disk and called it BattleTris. 
+Late-night tournaments in the dorms. Rivalries between graduating classes. Then the terminals got replaced, the disk got lost, the game disappeared.
 
-Three hours later, I was still there. I hadn't fixed my disk problem.
+Thirty-three years later, a fan mailed him the disk, digitized.
+
+He and [Adam Leventhal](https://en.wikipedia.org/wiki/Adam_Leventhal_(programmer)) used Claude to compile the C code on modern 64-bit Linux. Claude found a bug dormant for two decades -- `sizeof(int)` vs. `sizeof(unsigned long)`, identical under 32-bit, lethal under 64. Stack overflow, dormant since 1993. They fixed it. They played until 1 AM. His wife won her first game.
+
+Everyone wrote the AI angle. What I keep thinking about is something smaller: someone kept the disk. Someone thought it was worth keeping.
+
+---
+
+I found the podcast because I lost data on an external drive. Not a lot -- just enough to send me searching for how *ZFS* actually works. I ended up watching an episode where Bryan and Adam sat down with [Jeff Bonwick](https://en.wikipedia.org/wiki/Jeff_Bonwick), the guy who wrote ZFS. Three hours later I hadn't fixed the drive. I still haven't.
 
 ![alt](/images/stc/oxide-and-friends.jpeg)
 
-I haven't stopped listening since. And eventually I ended up on Bryan's blog, *The Observation Deck*, hosted at an address that reeks of the old world: [`bcantrill.dtrace.org`](https://bcantrill.dtrace.org). The blog has been around since 2004. 22 years of posts. I read most of them.
+What I didn't expect was how much of it I simply didn't know existed.
 
-This article is just my notes. What I remembered, what made me laugh, what made me think. It's not a thesis, it's the mess of a guy who listened to too many hours of podcast and wanted to put words on it.
+[Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems)  was gone before I got into tech. [SPARC](https://fr.wikipedia.org/wiki/Architecture_SPARC) was a footnote in a Wikipedia article I'd skimmed once. SGI I'd vaguely heard of. DEC -- Digital Equipment Corporation, at one point the second largest computer company in the world -- I'd never heard of at all. There's an episode where Tom Lyon does [a requiem for SPARC](https://youtu.be/79NNXn5Kr90), the processor architecture Sun built. It's not just a history lesson. It's the first time I actually understood what kind of thing gets lost when the industry standardizes on one answer. Not just a chip. A whole approach to what a computer could be.
 
-## What is Oxide Computer?
+Nobody tells you the field has this much past. You start, you learn git, you deploy on AWS, you get comfortable with Docker and Kubernetes, and somewhere in there you're supposed to absorb forty years of context that nobody taught you. Bryan's generation has it. Adam's generation has it. It's in their heads, and they're using it every time they make a decision, and if nobody writes it down or talks about it, it just goes away.
 
-Context, because you probably need it.
+The podcast is partly just them talking. But it ends up being something closer to an oral history.
 
-*Oxide* is basically what you get when a bunch of [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) veterans get tired of watching cloud providers cut corners on the hardware. Bryan was at Sun, then [Joyent](https://www.joyent.com/about). [Steve Tuck](https://x.com/sdtuck) was at Dell. Around 60 of them pulled together to build the whole thing -- *physical server, firmware, hypervisor, control plane* -- as one product. Not software you license to run on someone else's rack. The actual computer. For companies that need cloud-like infrastructure inside their own datacenter and don't want to hand their data to AWS.
+There's an episode on the *[Silicon Cowboys](https://youtu.be/faY7kWHQuNE)* -- Compaq reverse-engineering the IBM PC BIOS in a Houston hotel room in 1982. There's one on *[NeXT and Objective-C](https://youtu.be/2H9XQBdLB0Y)*, the years Jobs spent building something almost nobody used, that became the DNA of every Apple product today. There's a deep dive on the *[Barracuda 7200.11](https://youtu.be/qisoAIx8EE8)*, a consumer hard drive that bricked itself silently because of broken firmware. Not sabotage -- just a team that didn't have enough process around what happens when firmware fails. They spend a full hour on that. A hard drive from 2008.
+
+And it goes way outside the tech industry too. [Theranos](https://en.wikipedia.org/wiki/Theranos) -- not the [Elizabeth Holmes](https://en.wikipedia.org/wiki/Elizabeth_Holmes) trial everyone's already seen, but the actual chemistry. Why the blood tests were physically impossible, what minimum sample volume means in practice, why someone who actually understood the biology would have known immediately. BlackBerry's collapse explained by people who watched it happen in real time and can tell you exactly at which meeting the company decided to protect its enterprise clients instead of chasing consumers, and why that was the last decision they made that mattered. The 2024 CrowdStrike outage -- 8.5 million Windows machines, same bad kernel driver, same blue screen, same morning -- and what it tells you about the architecture decisions that made that possible at that scale.
+
+It's a lot. I listened for a long time before I felt like I had real context for any of it.
+
+---
+
+There's a book I'll never buy called *Dreaming in Code*.
+
+Scott Rosenberg embedded himself with Chandler -- a personal information manager, funded by the Open Source Applications Foundation, founded by Mitch Kapor of *Lotus 1-2-3*. The project drifted for years. Nothing shipped. In 2007 Bryan wrote a review of the book, and there's a question in it that I've turned over probably more than anything else I've read about software:
+
+> Did Rosenberg pick a doomed project because he was convinced at the outset that developing software was impossible, and he wanted to be sure to write about a project that wouldn't hang the jury? Or did his views of the impossibility of developing software come about as a result of his being trapped on such a reeking vessel ?
+
+He compares Chandler to the *Mobro 4000* -- a garbage barge that wandered the American coast for months in 1987 because no state would accept its cargo. Rosenberg got on a garbage barge and decided the whole ocean smelled the same.
+
+Joel Spolsky wrote something similar around the same time, less poetic but more specific: the specs used adjectives instead of descriptions, the "No Silos" concept asked users to abandon mental models they'd had for twenty years, and volunteer open source doesn't work on projects with no existing users. Three different failure modes, none of them mysterious. All of them avoidable.
+
+---
+
+Bryan started at Sun in the mid-90s because Sun was one of the last places building hardware and software as a single thing, and he wanted to work on a real kernel in a real computer company. After DTrace, he and Mike Shapiro went to Sun's CTO [Greg Papadopoulos](https://en.wikipedia.org/wiki/Greg_Papadopoulos) with an idea for a NAS appliance -- hardware *and* software, built together from the start. Papadopoulos jumped out of his chair.
+
+They called it **Fishworks**. It's an acronym Mike Shapiro invented -- **Fully Integrated Software and Hardware** -- but also a Simpsons reference. In "The War of the Simpsons," Homer buys a boat that immediately sinks. Building hardware when you're a software company. Didn't stop them.
+
+The flagship product answered "what am I serving and to whom ?" through a **DTrace** analytics interface. A veteran sysadmin described it as "the one GUI that I actually want to use." That line -- from someone who hates GUIs -- tells you everything about what it means to solve a problem completely instead of partially.
+
+Sun is gone. `blogs.sun.com`, where engineers were actively encouraged to write publicly about their work -- not just allowed, encouraged -- is gone. The writing that existed there, the kind that explains what was actually built and why and what broke, doesn't exist anywhere else.
+
+
+
+In May 2025, Bryan wrote an obituary for USENIX ATC, the conference where he'd presented DTrace in 2004. He first went in 1994 as a student. Researchers, engineers, students, everyone in the same room, talking about real problems. The New York Times covered DTrace when it appeared there. Cancelled in 2025. His argument: open source made academic publication obsolete for spreading technique, conferences became paper-count factories, industry left.
+
+I don't fully agree -- Rust conferences still feel like the old thing, mostly. But I understand what he's mourning.
+
+---
+
+[Oxide Computer](https://oxide.computer) is what [Bryan Cantrill](https://bcantrill.dtrace.org/about) and [Steve Tuck](https://x.com/sdtuck), [Jessie Frazelle](https://blog.jessfraz.com/) and about sixty engineers built in response to all of that.
+
+The product is a rack-scale computer -- *server, firmware, hypervisor, control plane* -- as one integrated thing. Not software you license to run on someone else's hardware. The actual machine. For companies that want cloud infrastructure inside their own datacenter, air-gapped, without handing their data to a provider. The Sun DNA is obvious: they dig into BMCs and root-of-trust chips that most cloud vendors don't talk about. They treat firmware like software because it is.  
 
 ![alt](/images/stc/oxide-site.png)
 
-The Sun DNA is everywhere in how they talk. Deep suspicion of *good enough* firmware. The reflex to dig into BMCs and root-of-trust chips that most cloud vendors pretend don't exist. And this conviction that hardware and software designed by separate companies, bolted together after the fact, is why servers are still as unreliable as they are. They've been saying that for years. Now they're building the thing they wanted to exist.
+Same salary scale from intern to CTO. No individual negotiation. No annual performance review. Demo Friday every week -- engineers show what they built, even if it's small. [Cliff Biffle](https://cliffle.com/), who wrote their [Hubris microkernel](https://hubris.oxide.computer/), said the culture rewards "openness, curiosity, and communication" and discourages "defensiveness, empire-building, and gatekeeping." They wrote it down. You write things down when you know they're fragile.
 
-## How I fell into this
+The hiring process Bryan documented at Joyent -- code sample, writing sample, analysis, then eight written questions about what you've built, what you regret, who shaped you, before any in-person interview -- starts its debriefs with the "Do not hire" positions. Doubts first. One is enough to stop the process, especially on values. He calls tech quizzes "spelling bees for adults." I think he's right. The whole thing is designed on the assumption that you can't fake who you are in writing the same way you can on a whiteboard.
 
-*Oxide and Friends* started from a Twitter Space in April 2021. Twitter Spaces had just launched, Bryan and Adam figured "let's try it." No format, no planning, no producer.
+---
 
-Six years later, 180 episodes. They talk for an hour or two with guests, no script, no prepared questions. Topics are announced on Twitter but the conversation always goes somewhere unexpected.
+At every new episodes i looking at all  YouTube thumbnails from the podcast.
 
-The guests are people who *built* the stuff they talk about. Not evangelists. One week it's [Cliff Biffle](https://cliffle.com), the guy who wrote the [Hubris microkernel](https://hubris.oxide.computer). The week before, Dave Pacheco working on rack updates. And outsiders too -- storage veterans rehashing NAS wars from the 2000s. The [YouTube channel](https://www.youtube.com/@oxidecomputercompany) has shorter series like FAQ Friday that are worth a look too.
+The visual language is somewhere between a 90s Usenet thread and a Simpsons 
+episode. Dead tech mourned as memes — a tombstone for a discontinued Intel
+memory product, a Theranos diagram used as a cautionary prop. In-jokes that assume you already know the context: a bingo card with the company name on it, a recurring bit with a cartoon guy at a counter talking to a robot that apparently never got an explanation. Hardware that looks like it's mid-debug at 2am rather than staged for a photo shoot. And then completely unrelated imagery —
+Renaissance paintings, parrots, Dalí, things on fire — that seem chosen beca
+use someone thought they were funny that week.    
 
-## When they trusted engineers
+The thumbnail has often nothing to do with the episode. It's just what they felt like that week.
 
-Bryan started his career at Sun Microsystems in the mid-90s. Not because it was a good career move -- because he wanted to work on an OS kernel at a real *computer company*, where hardware and software were designed by the same shop. At the time, that was already an iconoclastic idea.
+---
 
-Sun had this incredible blogging policy. In 2004, they launched `blogs.sun.com` with an explicit message to employees: you're not just *allowed* to blog, you're *encouraged* to. The message was "We trust you." The result: a mountain of technical content written by the engineers themselves -- DTrace, ZFS, Solaris -- that doesn't exist anywhere else.
+I still haven't fixed the drive.
 
-Today, most technical articles online are written by marketers or people trying to sell you something. On this podcast, you hear engineers say "here's what worked, here's what broke, here's what we'd do differently."
+I tried reading a software architecture book last month. Thirty pages. I kept thinking: where are the war stories, where did it break, where did someone stay up until 3 AM because they got something wrong? The book was technically correct. It was also completely bloodless.
 
-No bullshit. It's rare.
+The podcast did something to my calibration that I didn't notice until it was done. Bryan writes about Euclid's GCD algorithm still running fine after 2300 years -- software, done right, doesn't rot the way physical things do. The implication being that most software isn't done right, and most people in the industry know it, and almost nobody says it in public.
 
-## Don't buy "Dreaming in Code"
+These people say it. That's not nothing.
 
-I read "On Dreaming in Code" (2007) and laughed out loud like an idiot.
-
-Scott Rosenberg's book follows the development of Chandler. Chandler was supposed to be a personal information manager. The Open Source Applications Foundation (OSAF) ran the project, founded by Mitch Kapor -- the creator of Lotus 1-2-3. I write this and realize it already sounds shaky. The project drifted for years without shipping.
-
-Bryan asks a question that stuck with me:
-
-> "Did Rosenberg pick a doomed project because he was convinced at the outset that developing software was impossible, and he wanted to be sure to write about a project that wouldn't hang the jury ? Or did his views of the impossibility of developing software come about as a result of his being trapped on such a reeking vessel ?"
-
-He compares Chandler to the *Mobro 4000* -- the New York garbage barge that wandered for months because no state would take its cargo. Chandler was software's *Mobro 4000*: Rosenberg boarded a garbage barge and came out thinking the whole world smelled the same.
-
-He accuses Rosenberg of being "hoodwinked by every long-known crank in software." He cites the "Crank Holy Trinity" -- Minsky, Kurzweil, Joy -- to whom Rosenberg gives a platform they don't deserve. For Bryan, the book is a "Tour de Crank": a parade of characters that computer science had carefully locked in the basement, and that Rosenberg let loose.
-
-But Bryan has this line:
-
-> "Long after the Lighthouse at Alexandria crumbled, Euclid's greatest common divisor algorithm is showing no signs of wearing out."
-
-Rosenberg sees a swamp; Bryan sees pyramids. OK, that sounds pompous, but the idea holds.
-
-I still haven't read *Dreaming in Code*. Maybe I should, to make up my own mind. But for now Bryan's argument is enough.
-
-## BattleTris
-
-The May 25, 2026 post, "A portentous reunion", is my favorite. Possibly the best thing he's written. (The podcast covered it too -- see https://youtu.be/fmFt4-jjEc0 for that discussion.)
-
-Setup: Bryan goes to his 30th college reunion at Brown University. Everyone is anxious about AI. And then he pulls out BattleTris.
-
-BattleTris is a two-player Tetris-like game he coded in 1993 on a floppy disk, during his Brown days. It had become legendary on campus. Late-night games in the dorm, improvised tournaments, rivalries between graduating classes. Then the terminals were replaced, the floppies lost, the game forgotten.
-
-Bryan thought the code was lost forever. A fan found a floppy, digitized it, sent it to him.
-
-He and Adam used Claude (an LLM) to compile the C code on modern 64-bit Linux. Claude found a 22-year-old bug: `sizeof(int)` vs `sizeof(unsigned long)`, which were equivalent under 32-bit but not 64-bit. Cascading stack overflow, dormant for two decades.
-
-The first game in 20 years was played. It crashed immediately. They fixed the bug, relaunched, and played until 1 AM. Bryan's wife (Brigid, his then-girlfriend) won her first game, and Adam texted: "You know what this means, right? It means that she's the one -- you need to marry that girl."
-
-And then he drops this:
-
-> "This profoundly human, joyful moment was indisputably brought to us by the very thing that we are worried is going to strip us of our humanity."
-
-The people freaking out about AI stealing humanity -- they spent a night playing a 30-year-old game resurrected by that exact tech. It's absurd. Or poetic, I don't know.
-
-## Systems Software in the Large
-
-September 2025, "Systems Software in the Large." His most technical post, and the one that made me think.
-
-Bryan has this distinction. **Systems software** provides abstractions to other programs, with an expectation of perfection. **Programming in the large** is software made of many modules, teams, years. The intersection -- *systems software in the large* -- he calls "the most grueling of projects." I think he's right.
-
-The article revolves around a Dave Pacheco presentation on the Oxide rack update system. The problem: how do you update a distributed system without downtime, staying operational in a state *between* old and new? (It's on YouTube if you're interested: https://youtu.be/rrgp4WXnA5Y.)
-
-And there's the *air gap* on top. Oxide customers can't use the cloud to cheat. No remote access, no hidden runbooks. It has to work on its own. Completely.
-
-## Fishworks
-
-"Fishworks: Now it can be told" (2008). I've re-read it many times.
-
-In 2006, after DTrace, Bryan and Mike Shapiro were looking for what to do next. They went to see Greg Papadopoulos, Sun's CTO, with the idea of a NAS appliance -- hardware *and* software, designed together. Papadopoulos jumped out of his chair: "Let's do it!"
-
-The name "Fishworks" is a silly acronym Mike Shapiro came up with: FISH = "Fully Integrated Software and Hardware". But it's really a Simpsons gag -- in "The War of the Simpsons", Homer buys a crappy boat that sinks. The joke is that building hardware when you're a software company is a bit like Homer buying a boat. Didn't seem to stop them.
-
-The flagship product, a DTrace-based analytics interface, answered concrete questions like "what am I serving and to whom?" A command-line veteran called it "the one GUI that I actually want to use." That kills me. The guy who hates GUIs -- and he likes *that one*.
-
-## Hiring without the red-black trees
-
-"Assessing software engineering candidates" (2018) covers Joyent's process, documented in joyent/rfd 151. It's so far from what companies do today I had to read it twice.
-
-The candidate sends three things: code, writing, analysis. Then they answer eight written questions -- pride, regrets, struggles, mentors. In-person interviews come after.
-
-Two rules stuck with me. The debrief starts with "Do not hire" positions -- each member gives reservations *before* positives. So doubts don't get buried under groupthink. And one "Do not hire" is enough, especially on values or integrity. Doesn't matter if the guy's brilliant.
-
-Bryan hates tech quizzes. Calls them "spelling bees" for adults. Agreed.
-
-## Oxide's culture
-
-"Engineering a culture" (March 2024). The title says it: they designed their culture deliberately, like you'd design a system.
-
-Intern to CTO, same salary scale. No individual negotiation, no annual review. "Demo Friday" every week -- engineers show what they built, no matter how small. (Found a YouTube example: https://youtu.be/hdqcrj5TBvE.)
-
-Cliff Biffle said something that made me smile:
-
-> "Our culture rewards openness, curiosity, and communication, and discourages defensiveness, empire-building, and gatekeeping."
-
-If only that were the norm. But it isn't, which is why they wrote it down.
-
-## USENIX ATC is dead
-
-"RIP USENIX ATC" (May 2025). Bryan writes an obituary for the conference where he presented DTrace in 2004.
-
-He first went in 1994 as a student. He says it was a mix of researchers, engineers, students -- everyone talking about real problems. The New York Times covered DTrace when he presented it there.
-
-Cancelled in 2025. Bryan says open source made academic publications useless for spreading tech, conferences became paper mills, industry left.
-
-I don't fully agree. Rust conferences kept some of that spirit. But his general point isn't wrong: the research-industry mix barely exists anymore. And that sucks.
-
-## The books
-
-**The Soul of a New Machine** by Tracy Kidder. The most cited book on the podcast. The story of the Data General Eclipse in the 1970s -- a team bonded around an impossible mission. Bryan re-read it in 2019 after recommending it to Jess Frazelle, and it showed him things he hadn't seen the first time.
-
-**The Mythical Man-Month** by Fred Brooks. Everyone cites it, not many have read it. They've read it and it shows.
-
-**Writing for Developers** by Sarna and Dunlop (2025). Bryan wrote the foreword. If you blog, go for it.
-
-**Dreaming in Code** by Scott Rosenberg. Already said it but I'll say it again: I'm not buying. Not after Bryan's demolition.
-
-## The thumbnails
-
-Every one of YouTube thumbnails  into a single folder.
-
-Every thumbnails used on  youtube are a variety of references in culture like  hardware, but not the kind you see in catalogues. Messy benches -- cables going everywhere, bare boards on a table, oscilloscope probes with eight traces running simultaneously. The kind of setup that looks like 3am on a Friday. There's a bust of John von Neumann, the USENIX '83 badge "Sex, Drugs and Unix", the Theranos Sample Processing Unit diagram. Green phosphor terminals. The cover of *Show-Stopper!*.
-
-Then there are the memes. The tombstone "Intel Optane 1993–2022". A "0xide B-I-N-G-0x" card. Spider-Man pointing at himself. Homer designing a car by committee. Some generic guy leaning on a counter with a milkshake, talking to an "Oxide" robot -- it shows up multiple times, clearly a running gag.
-
-And then there's the stuff that has nothing to do with anything. A kakapo parrot contemplating a crystal ball surrounded by candles. Dalí's *Persistence of Memory*. Turkeys in a field. A starling murmuration. A phoenix. A container ship on fire.
-
-You look at that and you get it: the thumbnail isn't a summary of the episode. It's just an image they liked or found funny at that moment. A company building microkernels and distributed update systems, and they pick a kakapo with a crystal ball. Says a lot.
-
-## What it gave me, honestly
-
-I still haven't fixed my external drive. I plugged it in the other day, it's making a weird noise. Maybe I'll re-listen to the ZFS episode. Maybe not.
-
-I tried reading a software architecture book last month. Made it 30 pages. I thought "where are the jokes, man?" The podcast made me unable to read serious tech without humor next to it. Not sure that's progress.
-
-What I've come to believe after all this is that engineering is just stories. Stories about things that broke, nights debugging, guys jumping out of chairs yelling "let's do it!" The rest -- the specs, the papers, the diagrams -- it's the same thing, but dried up, dehydrated, without the life.
-
-Anyway. If you're starting, read "On Dreaming in Code" on the blog. Then "A portentous reunion." If you don't like it, whatever. If you do, you've been warned: in six months you'll know the difference between a BMC and a hardware root of trust, and you'll think that's normal.
+Start with ["On Dreaming in Code"](https://bcantrill.dtrace.org/2007/11/11/ondreaming-in-code/) on the blog. Then ["A portentous reunion."](https://bcantrill.dtrace.org/2026/05/25/a-portentous-reunion/) If neither of those catches you, you're probably fine. If they do -- six months from now you'll know the difference between a BMC and a hardware root of trust, and you'll think that's a normal thing to know.
