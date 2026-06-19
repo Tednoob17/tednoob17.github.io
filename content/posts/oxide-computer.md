@@ -68,7 +68,7 @@ I don't fully agree -- Rust conferences still feel like the old thing, mostly. B
 
 [Oxide Computer](https://oxide.computer) is what [Bryan Cantrill](https://bcantrill.dtrace.org/about) and [Steve Tuck](https://x.com/sdtuck), [Jessie Frazelle](https://blog.jessfraz.com/) and about sixty engineers built in response to all of that.
 
-The product is a rack-scale computer -- *server, firmware, hypervisor, control plane* -- as one integrated thing. Not software you license to run on someone else's hardware. The actual machine. For companies that want cloud infrastructure inside their own datacenter, air-gapped, without handing their data to a provider. The Sun DNA is obvious: they dig into BMCs and root-of-trust chips that most cloud vendors don't talk about. They treat firmware like software because it is.  
+The product is a rack-scale computer -- *server*, *firmware*, *hypervisor*, *control plane* -- as one integrated thing. Not software you license to run on someone else's hardware. The actual machine. For companies that want cloud infrastructure inside their own datacenter, air-gapped, without handing their data to a provider. The Sun DNA is obvious: they dig into BMCs and root-of-trust chips that most cloud vendors don't talk about. They treat firmware like software because it is.  
 
 ![alt](/images/stc/oxide-site.png)
 

@@ -8,7 +8,7 @@
     --markdown-accent-soft: rgba(41, 186, 109, 0.14);
     --markdown-quote-bg: rgba(41, 186, 109, 0.08);
     --markdown-quote-border: rgba(41, 186, 109, 0.78);
-    --markdown-emphasis-bg: rgba(41, 186, 109, 0.18);
+    --markdown-emphasis-bg: rgba(20, 14, 104, 0.18);
 }
 
 /* Wider layout like px-[5%] / lg:px-[15%] */
