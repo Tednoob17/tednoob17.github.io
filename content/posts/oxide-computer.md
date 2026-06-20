@@ -7,7 +7,7 @@ tags: [oxide, bryan cantrill, blog, podcast, review]
 lang: en
 ---
 
-In September 1993, Bryan Cantrill was a freshman at Brown University. He wrote a two-player Tetris game on a floppy disk and called it BattleTris. 
+In September 1993, [Bryan Cantrill](https://en.wikipedia.org/wiki/Bryan_Cantrill) was a freshman at Brown University. He wrote a two-player Tetris game on a floppy disk and called it BattleTris. 
 Late-night tournaments in the dorms. Rivalries between graduating classes. Then the terminals got replaced, the disk got lost, the game disappeared.
 
 Thirty-three years later, a fan mailed him the disk, digitized.
