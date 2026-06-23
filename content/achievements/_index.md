@@ -5,7 +5,7 @@ date: 2026-02-18
 
 
 # Awards
-
+- **?/2026** - [Publication inside Pagedout Magazine Issue 09](https://pagedout.institute/)
 - **08/2023** — [Hackerlab 2023 and Best Final Writeups](https://github.com/Tednoob17/Final-HackerLab2023): 9th/20 teams and 1st for writeups (ASIN)
 
 - **11/2025** — [Deepreview: Vulnerability Code Review, 1st of Platform](https://deepreview.app/leaderboard/)  
