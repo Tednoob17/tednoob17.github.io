@@ -40,7 +40,7 @@ It's a lot. I listened for a long time before I felt like I had real context for
 
 There's a book I'll never buy called *Dreaming in Code*.
 
-Scott Rosenberg embedded himself with Chandler -- a personal information manager, funded by the Open Source Applications Foundation, founded by Mitch Kapor of *Lotus 1-2-3*. The project drifted for years. Nothing shipped. In 2007 Bryan wrote a review of the book, and there's a question in it that I've turned over probably more than anything else I've read about software:
+Scott Rosenberg embedded himself with Chandler -- a personal information manager, funded by the Open Source Applications Foundation, founded by Mitch Kapor of **Lotus 1-2-3**. The project drifted for years. Nothing shipped. In 2007 Bryan wrote a review of the book, and there's a question in it that I've turned over probably more than anything else I've read about software:
 
 > Did Rosenberg pick a doomed project because he was convinced at the outset that developing software was impossible, and he wanted to be sure to write about a project that wouldn't hang the jury? Or did his views of the impossibility of developing software come about as a result of his being trapped on such a reeking vessel ?
 
