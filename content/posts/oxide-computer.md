@@ -60,7 +60,7 @@ Sun is gone. `blogs.sun.com`, where engineers were actively encouraged to write 
 
 
 
-In May 2025, Bryan wrote an obituary for USENIX ATC, the conference where he'd presented DTrace in 2004. He first went in 1994 as a student. Researchers, engineers, students, everyone in the same room, talking about real problems. The New York Times covered DTrace when it appeared there. Cancelled in 2025. His argument: open source made academic publication obsolete for spreading technique, conferences became paper-count factories, industry left.
+In May 2025, Bryan wrote an obituary for **USENIX ATC**, the conference where he'd presented DTrace in 2004. He first went in 1994 as a student. Researchers, engineers, students, everyone in the same room, talking about real problems. The New York Times covered DTrace when it appeared there. Cancelled in 2025. His argument: open source made academic publication obsolete for spreading technique, conferences became paper-count factories, industry left.
 
 I don't fully agree -- Rust conferences still feel like the old thing, mostly. But I understand what he's mourning.
 
