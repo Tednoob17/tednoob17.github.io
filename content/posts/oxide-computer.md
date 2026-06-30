@@ -72,7 +72,7 @@ The product is a rack-scale computer -- *server*, *firmware*, *hypervisor*, *con
 
 ![alt](/images/stc/oxide-site.png)
 
-Same salary scale from intern to CTO. No individual negotiation. No annual performance review. Demo Friday every week -- engineers show what they built, even if it's small. [Cliff Biffle](https://cliffle.com/), who wrote their [Hubris microkernel](https://hubris.oxide.computer/), said the culture rewards "openness, curiosity, and communication" and discourages "defensiveness, empire-building, and gatekeeping." They wrote it down. You write things down when you know they're fragile.
+Same salary scale from intern to CTO. No individual negotiation. No annual performance review. Demo Friday every week (with youtube shorts format) -- engineers show what they built, even if it's small. [Cliff Biffle](https://cliffle.com/), who wrote their [Hubris microkernel](https://hubris.oxide.computer/), said the culture rewards "openness, curiosity, and communication" and discourages "defensiveness, empire-building, and gatekeeping." They wrote it down. You write things down when you know they're fragile.
 
 The hiring process Bryan documented at Joyent -- code sample, writing sample, analysis, then eight written questions about what you've built, what you regret, who shaped you, before any in-person interview -- starts its debriefs with the "Do not hire" positions. Doubts first. One is enough to stop the process, especially on values. He calls tech quizzes "spelling bees for adults." I think he's right. The whole thing is designed on the assumption that you can't fake who you are in writing the same way you can on a whiteboard.
 
