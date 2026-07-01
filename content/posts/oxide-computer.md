@@ -50,7 +50,7 @@ Joel Spolsky wrote something similar around the same time, less poetic but more 
 
 ---
 
-Bryan started at Sun in the mid-90s because Sun was one of the last places building hardware and software as a single thing, and he wanted to work on a real kernel in a real computer company. After DTrace, he and Mike Shapiro went to Sun's CTO [Greg Papadopoulos](https://en.wikipedia.org/wiki/Greg_Papadopoulos) with an idea for a NAS appliance -- hardware *and* software, built together from the start. Papadopoulos jumped out of his chair.
+Bryan started at Sun in the mid-90s because Sun was one of the last places building hardware and software as a single thing, and he wanted to work on a real kernel in a real computer company. After DTrace, he and Mike Shapiro went to Sun's CTO [Greg Papadopoulos](https://en.wikipedia.org/wiki/Greg_Papadopoulos) with an idea for a NAS appliance -- hardware *and* software, built together from the start. *Papadopoulos* jumped out of his chair.
 
 They called it **Fishworks**. It's an acronym Mike Shapiro invented -- **Fully Integrated Software and Hardware** -- but also a Simpsons reference. In "The War of the Simpsons," Homer buys a boat that immediately sinks. Building hardware when you're a software company. Didn't stop them.
 
