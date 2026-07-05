@@ -26,7 +26,7 @@ My [YouTube Channel](https://www.youtube.com/@Tedsig42)
 
   
 ## My Root-me Stats Here.  
-![Root-me-stats](https://root-me-diff.vercel.app/rm-gh?nickname=Tedsig42&style=midnight)    
+
 
 ## My Deepreview rank Here.    
 
