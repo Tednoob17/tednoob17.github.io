@@ -24,9 +24,6 @@ My [YouTube Channel](https://www.youtube.com/@Tedsig42)
 <blockquote class="twitter-tweet"><p lang="art" dir="ltr">🤣🤣 <a href="https://t.co/Y02HZHdqzC">https://t.co/Y02HZHdqzC</a></p>&mdash; Tedsig42 (@Tedsig42) <a href="https://twitter.com/Tedsig42/status/1750272153717473728?ref_src=twsrc%5Etfw">January 24, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 
-  
-## My Root-me Stats Here.  
-
 
 ## My Deepreview rank Here.    
 
