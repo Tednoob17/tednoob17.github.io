@@ -13,6 +13,7 @@ From time to time, I contribute to **open source** projects such as [Exegol](htt
 I play CTF and collaborate with the [@TheBugsReapers](https://thebugsreapers.com) **vulnerability researcher/bug hunter team**.     
 I strive to share what I have learned on my blog [tedsig42.re](https://tednoob17.github.io/), which includes CTF writeups, research projects, and more.      
 **Currently self-employed, but open to new opportunities.**   
+
 PDF Resume here: [English](/assets/Tedsig42-CV.pdf)      
 My [YouTube Channel](https://www.youtube.com/@Tedsig42)     
 
