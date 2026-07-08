@@ -21,7 +21,7 @@ date: 2026-02-18
 
 - **NoLimitSecu** : **Visual Threat Intelligence** (book) price after a **challenges**.
 
-Mention honorable par NoLimitSecu pour participation au concours "Visual Threat Intelligence" (prix attribué à un autre participant, mention spéciale pour moi) 
+
 <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Félicitations à <a href="https://twitter.com/adruet?ref_src=twsrc%5Etfw">@adruet</a> qui gagne un exemplaire de l'ouvrage &quot;Visual Threat Intelligence&quot; par <a href="https://twitter.com/fr0gger_?ref_src=twsrc%5Etfw">@fr0gger_</a> <br><br>Mention honorable à <a href="https://twitter.com/etienneakopcan?ref_src=twsrc%5Etfw">@etienneakopcan</a> et <a href="https://twitter.com/Tedsig42?ref_src=twsrc%5Etfw">@Tedsig42</a>, merci d'avoir participé !</p>&mdash; NoLimitSecu (@nolimitsecu) <a href="https://twitter.com/nolimitsecu/status/1732404499585618167?ref_src=twsrc%5Etfw">December 6, 2023</a></blockquote>
 
 
