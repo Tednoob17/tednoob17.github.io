@@ -32,7 +32,7 @@ date: 2026-02-18
 
 -  **Root-me Christmas swag**
 
-Remerciement de Root-Me pour la participation et la solution écrite 
+ 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Congratulation <a href="https://twitter.com/Tedsig42?ref_src=twsrc%5Etfw">@Tedsig42</a> and <a href="https://twitter.com/AzazheI?ref_src=twsrc%5Etfw">@AzazheI</a> for winning these two swag pack !! 🥳 🎁 <a href="https://t.co/x6p5h26Jyf">https://t.co/x6p5h26Jyf</a></p>&mdash; Root-Me (@rootme_org) <a href="https://twitter.com/rootme_org/status/1740418615848169822?ref_src=twsrc%5Etfw">December 28, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
