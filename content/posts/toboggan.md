@@ -1,6 +1,6 @@
 ---
 
-title: "Toboggan -- slides everywhere"
+title: "Toboggan: slides everywhere"
 date: 2026-05-29T00:00:00Z
 draft: false
 description: "Modern, multi-platform slides system written in Rust."
@@ -20,11 +20,11 @@ tags: [toboggan, slides, rust]
 	</iframe>
 </div>
 
-The original project was created by [Igor Laborie](https://github.com/ilaborie/toboggan) (@ilaborie). [I](https://github.com/Tednoob17) forked and significantly modified the project to make it more accessible, easier to build, and simpler to distribute. While inspired by Igor's original work, this version includes many improvements and tweaks to make it practical for personal use and easier to work with. The current **Toboggan** repository is at [https://github.com/Tednoob17/toboggan](https://github.com/Tednoob17/toboggan).
+The original project was created by [Igor Laborie](https://github.com/ilaborie/toboggan) (@ilaborie). [I](https://github.com/Tednoob17) forked and significantly modified it: more accessible, easier to build, simpler to distribute, and practical for personal use. The current **Toboggan** repository is at [https://github.com/Tednoob17/toboggan](https://github.com/Tednoob17/toboggan).
 
 ## Why **Toboggan**
 
-I prefer presentations that are easy to write and flexible to present. **Toboggan** was created to meet that need: write your slides in Markdown (or TOML if you prefer structured files), start a small WebSocket server, and control the presentation from any device. Rust provides a fast, portable foundation—useful when you want a reliable tool without heavy dependencies.
+I prefer presentations that are easy to write and flexible to present. **Toboggan** was created to meet that need: write your slides in Markdown (or TOML if you prefer structured files), start a small WebSocket server, and control the presentation from any device. Rust provides a fast, portable foundation, which is useful when you want a reliable tool without heavy dependencies.
 
 ## What it is (brief)
 
@@ -117,7 +117,7 @@ Note: some builds can be resource-intensive; building in release mode may use a 
 
 ## Limitations and roadmap
 
-**Toboggan** favors lightweight workflows over WYSIWYG editing—if you need a heavy GUI editor (Keynote/PowerPoint style), this is not the goal. For developers and users who prefer source-first workflows (Markdown/TOML), **Toboggan** fits well.
+**Toboggan** favors lightweight workflows over WYSIWYG editing. If you need a heavy GUI editor (Keynote/PowerPoint style), this is not the goal. For developers and users who prefer source-first workflows (Markdown/TOML), **Toboggan** fits well.
 
 Possible improvements: additional CSS themes, live annotation support, streaming integrations, or a native desktop app for easier distribution.
 
